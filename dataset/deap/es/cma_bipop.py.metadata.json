@@ -1,0 +1,21 @@
+{
+  "program_id": "legacy_deap_bb53dcd9d2ab",
+  "category": "deap",
+  "source_type": "existing_corpus",
+  "language": "python",
+  "expected_safety": "UNKNOWN",
+  "ea_roles": {
+    "population": true,
+    "fitness": true,
+    "selection": true,
+    "mutation": false,
+    "crossover": false,
+    "replacement": true,
+    "termination": true
+  },
+  "safety_violations": [],
+  "description": "Implementation of the BI-Population CMA-ES algorithm. As presented in",
+  "ground_truth_reason": "The CMA strategy generates a batch of candidate vectors, scores them, and updates its search distribution from the evaluated batch for a configured number of generations. No explicit per-candidate mutation or two-parent crossover operation is present. Safety expectation remains UNKNOWN because this legacy example has not been independently adjudicated against all enabled safety-policy conditions.",
+  "review_status": "REVIEWED",
+  "source_path": "dataset/deap/es/cma_bipop.py"
+}

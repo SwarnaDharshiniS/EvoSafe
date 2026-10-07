@@ -1,0 +1,21 @@
+{
+  "program_id": "legacy_deap_ca403d27d733",
+  "category": "deap",
+  "source_type": "existing_corpus",
+  "language": "python",
+  "expected_safety": "UNKNOWN",
+  "ea_roles": {
+    "population": false,
+    "fitness": false,
+    "selection": false,
+    "mutation": false,
+    "crossover": false,
+    "replacement": false,
+    "termination": false
+  },
+  "safety_violations": [],
+  "description": "DEAP example for knn.",
+  "ground_truth_reason": "This standalone K-nearest-neighbor classifier stores labeled training examples and predicts labels by distance voting. Its local distance ranking is ordinary classification, not candidate fitness selection or reproduction. Safety expectation remains UNKNOWN because this legacy example has not been independently adjudicated against all enabled safety-policy conditions.",
+  "review_status": "REVIEWED",
+  "source_path": "dataset/deap/ga/knn.py"
+}

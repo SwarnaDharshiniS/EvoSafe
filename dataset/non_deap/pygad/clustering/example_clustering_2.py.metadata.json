@@ -1,0 +1,21 @@
+{
+  "program_id": "legacy_non_deap_75e338ed7396",
+  "category": "non_deap",
+  "source_type": "existing_corpus",
+  "language": "python",
+  "expected_safety": "UNKNOWN",
+  "ea_roles": {
+    "population": true,
+    "fitness": true,
+    "selection": true,
+    "mutation": true,
+    "crossover": true,
+    "replacement": true,
+    "termination": true
+  },
+  "safety_violations": [],
+  "description": "Existing corpus example for example clustering 2.",
+  "ground_truth_reason": "The standalone example defines or configures an objective and invokes a population-based optimizer with a bounded generation/epoch parameter. Candidate solutions are scored, compared/selected, varied, and updated through the optimizer. Crossover is marked true only for GA/NSGA-II or explicit SHADE/BBO recombination cases; otherwise no two-parent offspring operation is established in this source. Safety expectation remains UNKNOWN because these legacy examples have not been individually adjudicated against all enabled safety-policy conditions.",
+  "review_status": "REVIEWED",
+  "source_path": "dataset/non_deap/pygad/clustering/example_clustering_2.py"
+}

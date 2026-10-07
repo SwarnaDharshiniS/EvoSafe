@@ -1,0 +1,1112 @@
+{
+  "schema_version": "1.0",
+  "generated_on": "2026-10-07",
+  "scope": {
+    "categories_included": [
+      "benign",
+      "deap",
+      "generic_unsafe",
+      "llm_ea",
+      "llm_non_ea",
+      "non_deap",
+      "unsafe_ea",
+      "unsafe_non_ea"
+    ],
+    "total_programs": 1114,
+    "program_count_definition": "All recursive Python source files under the eight dataset category folders except package __init__.py markers.",
+    "python_file_count_including_package_markers": 1162,
+    "notebook_files_excluded_from_program_count": 7,
+    "metadata_labeled_programs": 936,
+    "unlabeled_programs": 178,
+    "unlabeled_policy": "Legacy corpus programs without a reviewed per-program sidecar remain unlabeled and are not counted as expected_safety=UNKNOWN."
+  },
+  "category_counts": {
+    "benign": {
+      "program_count": 602,
+      "python_file_count_including_package_markers": 622,
+      "package_marker_count_excluded_from_program_count": 20,
+      "notebook_count_excluded_from_program_count": 0,
+      "metadata_labeled_program_count": 600,
+      "unlabeled_program_count": 2,
+      "expected_safety_counts": {
+        "SAFE": 0,
+        "CONDITIONALLY_SAFE": 0,
+        "UNSAFE": 0,
+        "UNKNOWN": 600
+      },
+      "source_type_counts": {
+        "UNLABELED": 2,
+        "existing_corpus": 600
+      },
+      "ea_role_counts": {
+        "population": {
+          "positive": 0,
+          "negative": 600
+        },
+        "fitness": {
+          "positive": 0,
+          "negative": 600
+        },
+        "selection": {
+          "positive": 0,
+          "negative": 600
+        },
+        "mutation": {
+          "positive": 0,
+          "negative": 600
+        },
+        "crossover": {
+          "positive": 0,
+          "negative": 600
+        },
+        "replacement": {
+          "positive": 0,
+          "negative": 600
+        },
+        "termination": {
+          "positive": 0,
+          "negative": 600
+        }
+      }
+    },
+    "deap": {
+      "program_count": 54,
+      "python_file_count_including_package_markers": 55,
+      "package_marker_count_excluded_from_program_count": 1,
+      "notebook_count_excluded_from_program_count": 1,
+      "metadata_labeled_program_count": 51,
+      "unlabeled_program_count": 3,
+      "expected_safety_counts": {
+        "SAFE": 0,
+        "CONDITIONALLY_SAFE": 0,
+        "UNSAFE": 0,
+        "UNKNOWN": 51
+      },
+      "source_type_counts": {
+        "UNLABELED": 3,
+        "existing_corpus": 51
+      },
+      "ea_role_counts": {
+        "population": {
+          "positive": 48,
+          "negative": 3
+        },
+        "fitness": {
+          "positive": 50,
+          "negative": 1
+        },
+        "selection": {
+          "positive": 50,
+          "negative": 1
+        },
+        "mutation": {
+          "positive": 43,
+          "negative": 8
+        },
+        "crossover": {
+          "positive": 37,
+          "negative": 14
+        },
+        "replacement": {
+          "positive": 50,
+          "negative": 1
+        },
+        "termination": {
+          "positive": 50,
+          "negative": 1
+        }
+      }
+    },
+    "generic_unsafe": {
+      "program_count": 40,
+      "python_file_count_including_package_markers": 40,
+      "package_marker_count_excluded_from_program_count": 0,
+      "notebook_count_excluded_from_program_count": 0,
+      "metadata_labeled_program_count": 40,
+      "unlabeled_program_count": 0,
+      "expected_safety_counts": {
+        "SAFE": 0,
+        "CONDITIONALLY_SAFE": 2,
+        "UNSAFE": 15,
+        "UNKNOWN": 23
+      },
+      "source_type_counts": {
+        "controlled_generation": 40
+      },
+      "ea_role_counts": {
+        "population": {
+          "positive": 0,
+          "negative": 40
+        },
+        "fitness": {
+          "positive": 0,
+          "negative": 40
+        },
+        "selection": {
+          "positive": 0,
+          "negative": 40
+        },
+        "mutation": {
+          "positive": 0,
+          "negative": 40
+        },
+        "crossover": {
+          "positive": 0,
+          "negative": 40
+        },
+        "replacement": {
+          "positive": 0,
+          "negative": 40
+        },
+        "termination": {
+          "positive": 0,
+          "negative": 40
+        }
+      }
+    },
+    "llm_ea": {
+      "program_count": 40,
+      "python_file_count_including_package_markers": 40,
+      "package_marker_count_excluded_from_program_count": 0,
+      "notebook_count_excluded_from_program_count": 0,
+      "metadata_labeled_program_count": 40,
+      "unlabeled_program_count": 0,
+      "expected_safety_counts": {
+        "SAFE": 17,
+        "CONDITIONALLY_SAFE": 1,
+        "UNSAFE": 13,
+        "UNKNOWN": 9
+      },
+      "source_type_counts": {
+        "llm_generated": 40
+      },
+      "ea_role_counts": {
+        "population": {
+          "positive": 40,
+          "negative": 0
+        },
+        "fitness": {
+          "positive": 40,
+          "negative": 0
+        },
+        "selection": {
+          "positive": 40,
+          "negative": 0
+        },
+        "mutation": {
+          "positive": 38,
+          "negative": 2
+        },
+        "crossover": {
+          "positive": 14,
+          "negative": 26
+        },
+        "replacement": {
+          "positive": 40,
+          "negative": 0
+        },
+        "termination": {
+          "positive": 25,
+          "negative": 15
+        }
+      }
+    },
+    "llm_non_ea": {
+      "program_count": 40,
+      "python_file_count_including_package_markers": 40,
+      "package_marker_count_excluded_from_program_count": 0,
+      "notebook_count_excluded_from_program_count": 0,
+      "metadata_labeled_program_count": 40,
+      "unlabeled_program_count": 0,
+      "expected_safety_counts": {
+        "SAFE": 18,
+        "CONDITIONALLY_SAFE": 1,
+        "UNSAFE": 10,
+        "UNKNOWN": 11
+      },
+      "source_type_counts": {
+        "llm_generated": 40
+      },
+      "ea_role_counts": {
+        "population": {
+          "positive": 0,
+          "negative": 40
+        },
+        "fitness": {
+          "positive": 0,
+          "negative": 40
+        },
+        "selection": {
+          "positive": 0,
+          "negative": 40
+        },
+        "mutation": {
+          "positive": 0,
+          "negative": 40
+        },
+        "crossover": {
+          "positive": 0,
+          "negative": 40
+        },
+        "replacement": {
+          "positive": 0,
+          "negative": 40
+        },
+        "termination": {
+          "positive": 0,
+          "negative": 40
+        }
+      }
+    },
+    "non_deap": {
+      "program_count": 258,
+      "python_file_count_including_package_markers": 285,
+      "package_marker_count_excluded_from_program_count": 27,
+      "notebook_count_excluded_from_program_count": 6,
+      "metadata_labeled_program_count": 85,
+      "unlabeled_program_count": 173,
+      "expected_safety_counts": {
+        "SAFE": 0,
+        "CONDITIONALLY_SAFE": 0,
+        "UNSAFE": 0,
+        "UNKNOWN": 85
+      },
+      "source_type_counts": {
+        "UNLABELED": 173,
+        "existing_corpus": 85
+      },
+      "ea_role_counts": {
+        "population": {
+          "positive": 79,
+          "negative": 6
+        },
+        "fitness": {
+          "positive": 79,
+          "negative": 6
+        },
+        "selection": {
+          "positive": 79,
+          "negative": 6
+        },
+        "mutation": {
+          "positive": 79,
+          "negative": 6
+        },
+        "crossover": {
+          "positive": 59,
+          "negative": 26
+        },
+        "replacement": {
+          "positive": 79,
+          "negative": 6
+        },
+        "termination": {
+          "positive": 79,
+          "negative": 6
+        }
+      }
+    },
+    "unsafe_ea": {
+      "program_count": 40,
+      "python_file_count_including_package_markers": 40,
+      "package_marker_count_excluded_from_program_count": 0,
+      "notebook_count_excluded_from_program_count": 0,
+      "metadata_labeled_program_count": 40,
+      "unlabeled_program_count": 0,
+      "expected_safety_counts": {
+        "SAFE": 0,
+        "CONDITIONALLY_SAFE": 1,
+        "UNSAFE": 11,
+        "UNKNOWN": 28
+      },
+      "source_type_counts": {
+        "controlled_generation": 40
+      },
+      "ea_role_counts": {
+        "population": {
+          "positive": 40,
+          "negative": 0
+        },
+        "fitness": {
+          "positive": 40,
+          "negative": 0
+        },
+        "selection": {
+          "positive": 40,
+          "negative": 0
+        },
+        "mutation": {
+          "positive": 34,
+          "negative": 6
+        },
+        "crossover": {
+          "positive": 5,
+          "negative": 35
+        },
+        "replacement": {
+          "positive": 34,
+          "negative": 6
+        },
+        "termination": {
+          "positive": 18,
+          "negative": 22
+        }
+      }
+    },
+    "unsafe_non_ea": {
+      "program_count": 40,
+      "python_file_count_including_package_markers": 40,
+      "package_marker_count_excluded_from_program_count": 0,
+      "notebook_count_excluded_from_program_count": 0,
+      "metadata_labeled_program_count": 40,
+      "unlabeled_program_count": 0,
+      "expected_safety_counts": {
+        "SAFE": 0,
+        "CONDITIONALLY_SAFE": 2,
+        "UNSAFE": 18,
+        "UNKNOWN": 20
+      },
+      "source_type_counts": {
+        "controlled_generation": 40
+      },
+      "ea_role_counts": {
+        "population": {
+          "positive": 0,
+          "negative": 40
+        },
+        "fitness": {
+          "positive": 0,
+          "negative": 40
+        },
+        "selection": {
+          "positive": 0,
+          "negative": 40
+        },
+        "mutation": {
+          "positive": 0,
+          "negative": 40
+        },
+        "crossover": {
+          "positive": 0,
+          "negative": 40
+        },
+        "replacement": {
+          "positive": 0,
+          "negative": 40
+        },
+        "termination": {
+          "positive": 0,
+          "negative": 40
+        }
+      }
+    }
+  },
+  "safety_counts": {
+    "labeled_program_count": 936,
+    "counts": {
+      "SAFE": 35,
+      "CONDITIONALLY_SAFE": 7,
+      "UNSAFE": 67,
+      "UNKNOWN": 827
+    },
+    "unlabeled_program_count": 178,
+    "counts_by_category": {
+      "benign": {
+        "SAFE": 0,
+        "CONDITIONALLY_SAFE": 0,
+        "UNSAFE": 0,
+        "UNKNOWN": 600
+      },
+      "deap": {
+        "SAFE": 0,
+        "CONDITIONALLY_SAFE": 0,
+        "UNSAFE": 0,
+        "UNKNOWN": 51
+      },
+      "generic_unsafe": {
+        "SAFE": 0,
+        "CONDITIONALLY_SAFE": 2,
+        "UNSAFE": 15,
+        "UNKNOWN": 23
+      },
+      "llm_ea": {
+        "SAFE": 17,
+        "CONDITIONALLY_SAFE": 1,
+        "UNSAFE": 13,
+        "UNKNOWN": 9
+      },
+      "llm_non_ea": {
+        "SAFE": 18,
+        "CONDITIONALLY_SAFE": 1,
+        "UNSAFE": 10,
+        "UNKNOWN": 11
+      },
+      "non_deap": {
+        "SAFE": 0,
+        "CONDITIONALLY_SAFE": 0,
+        "UNSAFE": 0,
+        "UNKNOWN": 85
+      },
+      "unsafe_ea": {
+        "SAFE": 0,
+        "CONDITIONALLY_SAFE": 1,
+        "UNSAFE": 11,
+        "UNKNOWN": 28
+      },
+      "unsafe_non_ea": {
+        "SAFE": 0,
+        "CONDITIONALLY_SAFE": 2,
+        "UNSAFE": 18,
+        "UNKNOWN": 20
+      }
+    }
+  },
+  "ea_role_counts": {
+    "ground_truth_labeled_program_count": 936,
+    "positive_counts": {
+      "population": 207,
+      "fitness": 209,
+      "selection": 209,
+      "mutation": 194,
+      "crossover": 115,
+      "replacement": 203,
+      "termination": 172
+    },
+    "negative_counts": {
+      "population": 729,
+      "fitness": 727,
+      "selection": 727,
+      "mutation": 742,
+      "crossover": 821,
+      "replacement": 733,
+      "termination": 764
+    },
+    "unlabeled_program_count": 178,
+    "counts_by_category": {
+      "benign": {
+        "population": {
+          "positive": 0,
+          "negative": 600
+        },
+        "fitness": {
+          "positive": 0,
+          "negative": 600
+        },
+        "selection": {
+          "positive": 0,
+          "negative": 600
+        },
+        "mutation": {
+          "positive": 0,
+          "negative": 600
+        },
+        "crossover": {
+          "positive": 0,
+          "negative": 600
+        },
+        "replacement": {
+          "positive": 0,
+          "negative": 600
+        },
+        "termination": {
+          "positive": 0,
+          "negative": 600
+        }
+      },
+      "deap": {
+        "population": {
+          "positive": 48,
+          "negative": 3
+        },
+        "fitness": {
+          "positive": 50,
+          "negative": 1
+        },
+        "selection": {
+          "positive": 50,
+          "negative": 1
+        },
+        "mutation": {
+          "positive": 43,
+          "negative": 8
+        },
+        "crossover": {
+          "positive": 37,
+          "negative": 14
+        },
+        "replacement": {
+          "positive": 50,
+          "negative": 1
+        },
+        "termination": {
+          "positive": 50,
+          "negative": 1
+        }
+      },
+      "generic_unsafe": {
+        "population": {
+          "positive": 0,
+          "negative": 40
+        },
+        "fitness": {
+          "positive": 0,
+          "negative": 40
+        },
+        "selection": {
+          "positive": 0,
+          "negative": 40
+        },
+        "mutation": {
+          "positive": 0,
+          "negative": 40
+        },
+        "crossover": {
+          "positive": 0,
+          "negative": 40
+        },
+        "replacement": {
+          "positive": 0,
+          "negative": 40
+        },
+        "termination": {
+          "positive": 0,
+          "negative": 40
+        }
+      },
+      "llm_ea": {
+        "population": {
+          "positive": 40,
+          "negative": 0
+        },
+        "fitness": {
+          "positive": 40,
+          "negative": 0
+        },
+        "selection": {
+          "positive": 40,
+          "negative": 0
+        },
+        "mutation": {
+          "positive": 38,
+          "negative": 2
+        },
+        "crossover": {
+          "positive": 14,
+          "negative": 26
+        },
+        "replacement": {
+          "positive": 40,
+          "negative": 0
+        },
+        "termination": {
+          "positive": 25,
+          "negative": 15
+        }
+      },
+      "llm_non_ea": {
+        "population": {
+          "positive": 0,
+          "negative": 40
+        },
+        "fitness": {
+          "positive": 0,
+          "negative": 40
+        },
+        "selection": {
+          "positive": 0,
+          "negative": 40
+        },
+        "mutation": {
+          "positive": 0,
+          "negative": 40
+        },
+        "crossover": {
+          "positive": 0,
+          "negative": 40
+        },
+        "replacement": {
+          "positive": 0,
+          "negative": 40
+        },
+        "termination": {
+          "positive": 0,
+          "negative": 40
+        }
+      },
+      "non_deap": {
+        "population": {
+          "positive": 79,
+          "negative": 6
+        },
+        "fitness": {
+          "positive": 79,
+          "negative": 6
+        },
+        "selection": {
+          "positive": 79,
+          "negative": 6
+        },
+        "mutation": {
+          "positive": 79,
+          "negative": 6
+        },
+        "crossover": {
+          "positive": 59,
+          "negative": 26
+        },
+        "replacement": {
+          "positive": 79,
+          "negative": 6
+        },
+        "termination": {
+          "positive": 79,
+          "negative": 6
+        }
+      },
+      "unsafe_ea": {
+        "population": {
+          "positive": 40,
+          "negative": 0
+        },
+        "fitness": {
+          "positive": 40,
+          "negative": 0
+        },
+        "selection": {
+          "positive": 40,
+          "negative": 0
+        },
+        "mutation": {
+          "positive": 34,
+          "negative": 6
+        },
+        "crossover": {
+          "positive": 5,
+          "negative": 35
+        },
+        "replacement": {
+          "positive": 34,
+          "negative": 6
+        },
+        "termination": {
+          "positive": 18,
+          "negative": 22
+        }
+      },
+      "unsafe_non_ea": {
+        "population": {
+          "positive": 0,
+          "negative": 40
+        },
+        "fitness": {
+          "positive": 0,
+          "negative": 40
+        },
+        "selection": {
+          "positive": 0,
+          "negative": 40
+        },
+        "mutation": {
+          "positive": 0,
+          "negative": 40
+        },
+        "crossover": {
+          "positive": 0,
+          "negative": 40
+        },
+        "replacement": {
+          "positive": 0,
+          "negative": 40
+        },
+        "termination": {
+          "positive": 0,
+          "negative": 40
+        }
+      }
+    }
+  },
+  "source_type_counts": {
+    "counts": {
+      "UNLABELED": 178,
+      "controlled_generation": 120,
+      "existing_corpus": 736,
+      "llm_generated": 80
+    },
+    "counts_by_category": {
+      "benign": {
+        "UNLABELED": 2,
+        "existing_corpus": 600
+      },
+      "deap": {
+        "UNLABELED": 3,
+        "existing_corpus": 51
+      },
+      "generic_unsafe": {
+        "controlled_generation": 40
+      },
+      "llm_ea": {
+        "llm_generated": 40
+      },
+      "llm_non_ea": {
+        "llm_generated": 40
+      },
+      "non_deap": {
+        "UNLABELED": 173,
+        "existing_corpus": 85
+      },
+      "unsafe_ea": {
+        "controlled_generation": 40
+      },
+      "unsafe_non_ea": {
+        "controlled_generation": 40
+      }
+    }
+  },
+  "syntax_validation": {
+    "method": "Python ast.parse; source files were not imported or executed.",
+    "python_files_checked": 1162,
+    "package_markers_included": true,
+    "program_files_checked": 1114,
+    "pass_count": 1160,
+    "failure_count": 2,
+    "failures": [
+      {
+        "path": "dataset/benign/algorithms/dynamic_programming/catalan_numbers.py",
+        "error_type": "SyntaxError",
+        "line": 74,
+        "message": "multiple exception types must be parenthesized (catalan_numbers.py, line 74)"
+      },
+      {
+        "path": "dataset/benign/algorithms/dynamic_programming/egg_dropping.py",
+        "error_type": "SyntaxError",
+        "line": 69,
+        "message": "multiple exception types must be parenthesized (egg_dropping.py, line 69)"
+      }
+    ]
+  },
+  "metadata_validation": {
+    "paired_metadata_count": 936,
+    "failure_count": 0,
+    "failures": [],
+    "review_status_counts": {
+      "REVIEWED": 936
+    },
+    "sidecar_format_counts": {
+      "adjacent_filename_metadata.json": 736,
+      "program_directory_metadata.json": 200
+    }
+  },
+  "duplicate_detection": {
+    "program_files_compared": 1114,
+    "normalized_token_files_compared": 1114,
+    "exact_byte_duplicate_group_count": 3,
+    "exact_byte_duplicate_extra_file_count": 9,
+    "exact_byte_duplicate_groups": [
+      [
+        "dataset/benign/cookbook/11/creating_a_tcp_server/echoserv.py",
+        "dataset/benign/cookbook/11/creating_a_tcp_server/echoserv1.py"
+      ],
+      [
+        "dataset/benign/cookbook/15/consuming_an_iterable_from_c/setup.py",
+        "dataset/benign/cookbook/15/diagnosing_segmentation_faults/setup.py",
+        "dataset/benign/cookbook/15/passing_null_terminated_strings_to_c_libraries/setup.py",
+        "dataset/benign/cookbook/15/passing_unicode_strings_to_c_libraries/setup.py",
+        "dataset/benign/cookbook/15/reading_file_like_objects_from_c/setup.py",
+        "dataset/benign/cookbook/15/working_with_c_strings_of_dubious_encoding/setup.py"
+      ],
+      [
+        "dataset/benign/cookbook/15/defining_and_exporting_c_apis_from_extension_modules/setup.py",
+        "dataset/benign/cookbook/15/managing_opaque_pointers_in_c_extension_modules/setup.py",
+        "dataset/benign/cookbook/15/writing_a_simple_c_extension_module/setup.py",
+        "dataset/benign/cookbook/15/writing_an_extension_function_that_operates_on_arrays/setup.py"
+      ]
+    ],
+    "exact_normalized_token_duplicate_group_count": 4,
+    "exact_normalized_token_duplicate_extra_file_count": 10,
+    "exact_normalized_token_duplicate_groups": [
+      [
+        "dataset/benign/cookbook/11/creating_a_tcp_server/echoserv.py",
+        "dataset/benign/cookbook/11/creating_a_tcp_server/echoserv1.py"
+      ],
+      [
+        "dataset/benign/cookbook/15/consuming_an_iterable_from_c/setup.py",
+        "dataset/benign/cookbook/15/diagnosing_segmentation_faults/setup.py",
+        "dataset/benign/cookbook/15/passing_null_terminated_strings_to_c_libraries/setup.py",
+        "dataset/benign/cookbook/15/passing_unicode_strings_to_c_libraries/setup.py",
+        "dataset/benign/cookbook/15/reading_file_like_objects_from_c/setup.py",
+        "dataset/benign/cookbook/15/working_with_c_strings_of_dubious_encoding/setup.py"
+      ],
+      [
+        "dataset/benign/cookbook/15/defining_and_exporting_c_apis_from_extension_modules/setup.py",
+        "dataset/benign/cookbook/15/managing_opaque_pointers_in_c_extension_modules/setup.py",
+        "dataset/benign/cookbook/15/writing_a_simple_c_extension_module/setup.py",
+        "dataset/benign/cookbook/15/writing_an_extension_function_that_operates_on_arrays/setup.py"
+      ],
+      [
+        "dataset/non_deap/mealpy/utils/run_History.py",
+        "dataset/non_deap/pymoo/algorithms/hyperparameters.py"
+      ]
+    ],
+    "near_duplicate_method": "SequenceMatcher ratio over Python token sequences after excluding comments, indentation, and newline tokens; candidates with token-count ratio below threshold are skipped.",
+    "near_duplicate_threshold": 0.9,
+    "near_duplicate_pair_count": 141,
+    "near_duplicate_pairs_by_category_pair": {
+      "benign <-> benign": 30,
+      "deap <-> deap": 3,
+      "non_deap <-> non_deap": 108
+    },
+    "near_duplicate_pairs": [
+      {
+        "left": "dataset/benign/cookbook/11/creating_a_tcp_server/echoserv.py",
+        "right": "dataset/benign/cookbook/11/creating_a_tcp_server/echoserv1.py",
+        "similarity": 1.0
+      },
+      {
+        "left": "dataset/benign/cookbook/15/consuming_an_iterable_from_c/setup.py",
+        "right": "dataset/benign/cookbook/15/diagnosing_segmentation_faults/setup.py",
+        "similarity": 1.0
+      },
+      {
+        "left": "dataset/benign/cookbook/15/consuming_an_iterable_from_c/setup.py",
+        "right": "dataset/benign/cookbook/15/passing_null_terminated_strings_to_c_libraries/setup.py",
+        "similarity": 1.0
+      },
+      {
+        "left": "dataset/benign/cookbook/15/consuming_an_iterable_from_c/setup.py",
+        "right": "dataset/benign/cookbook/15/passing_unicode_strings_to_c_libraries/setup.py",
+        "similarity": 1.0
+      },
+      {
+        "left": "dataset/benign/cookbook/15/consuming_an_iterable_from_c/setup.py",
+        "right": "dataset/benign/cookbook/15/reading_file_like_objects_from_c/setup.py",
+        "similarity": 1.0
+      },
+      {
+        "left": "dataset/benign/cookbook/15/consuming_an_iterable_from_c/setup.py",
+        "right": "dataset/benign/cookbook/15/working_with_c_strings_of_dubious_encoding/setup.py",
+        "similarity": 1.0
+      },
+      {
+        "left": "dataset/benign/cookbook/15/defining_and_exporting_c_apis_from_extension_modules/setup.py",
+        "right": "dataset/benign/cookbook/15/managing_opaque_pointers_in_c_extension_modules/setup.py",
+        "similarity": 1.0
+      },
+      {
+        "left": "dataset/benign/cookbook/15/defining_and_exporting_c_apis_from_extension_modules/setup.py",
+        "right": "dataset/benign/cookbook/15/writing_a_simple_c_extension_module/setup.py",
+        "similarity": 1.0
+      },
+      {
+        "left": "dataset/benign/cookbook/15/defining_and_exporting_c_apis_from_extension_modules/setup.py",
+        "right": "dataset/benign/cookbook/15/writing_an_extension_function_that_operates_on_arrays/setup.py",
+        "similarity": 1.0
+      },
+      {
+        "left": "dataset/benign/cookbook/15/diagnosing_segmentation_faults/setup.py",
+        "right": "dataset/benign/cookbook/15/passing_null_terminated_strings_to_c_libraries/setup.py",
+        "similarity": 1.0
+      },
+      {
+        "left": "dataset/benign/cookbook/15/diagnosing_segmentation_faults/setup.py",
+        "right": "dataset/benign/cookbook/15/passing_unicode_strings_to_c_libraries/setup.py",
+        "similarity": 1.0
+      },
+      {
+        "left": "dataset/benign/cookbook/15/diagnosing_segmentation_faults/setup.py",
+        "right": "dataset/benign/cookbook/15/reading_file_like_objects_from_c/setup.py",
+        "similarity": 1.0
+      },
+      {
+        "left": "dataset/benign/cookbook/15/diagnosing_segmentation_faults/setup.py",
+        "right": "dataset/benign/cookbook/15/working_with_c_strings_of_dubious_encoding/setup.py",
+        "similarity": 1.0
+      },
+      {
+        "left": "dataset/benign/cookbook/15/managing_opaque_pointers_in_c_extension_modules/setup.py",
+        "right": "dataset/benign/cookbook/15/writing_a_simple_c_extension_module/setup.py",
+        "similarity": 1.0
+      },
+      {
+        "left": "dataset/benign/cookbook/15/managing_opaque_pointers_in_c_extension_modules/setup.py",
+        "right": "dataset/benign/cookbook/15/writing_an_extension_function_that_operates_on_arrays/setup.py",
+        "similarity": 1.0
+      },
+      {
+        "left": "dataset/benign/cookbook/15/passing_null_terminated_strings_to_c_libraries/setup.py",
+        "right": "dataset/benign/cookbook/15/passing_unicode_strings_to_c_libraries/setup.py",
+        "similarity": 1.0
+      },
+      {
+        "left": "dataset/benign/cookbook/15/passing_null_terminated_strings_to_c_libraries/setup.py",
+        "right": "dataset/benign/cookbook/15/reading_file_like_objects_from_c/setup.py",
+        "similarity": 1.0
+      },
+      {
+        "left": "dataset/benign/cookbook/15/passing_null_terminated_strings_to_c_libraries/setup.py",
+        "right": "dataset/benign/cookbook/15/working_with_c_strings_of_dubious_encoding/setup.py",
+        "similarity": 1.0
+      },
+      {
+        "left": "dataset/benign/cookbook/15/passing_unicode_strings_to_c_libraries/setup.py",
+        "right": "dataset/benign/cookbook/15/reading_file_like_objects_from_c/setup.py",
+        "similarity": 1.0
+      },
+      {
+        "left": "dataset/benign/cookbook/15/passing_unicode_strings_to_c_libraries/setup.py",
+        "right": "dataset/benign/cookbook/15/working_with_c_strings_of_dubious_encoding/setup.py",
+        "similarity": 1.0
+      },
+      {
+        "left": "dataset/benign/cookbook/15/reading_file_like_objects_from_c/setup.py",
+        "right": "dataset/benign/cookbook/15/working_with_c_strings_of_dubious_encoding/setup.py",
+        "similarity": 1.0
+      },
+      {
+        "left": "dataset/benign/cookbook/15/writing_a_simple_c_extension_module/setup.py",
+        "right": "dataset/benign/cookbook/15/writing_an_extension_function_that_operates_on_arrays/setup.py",
+        "similarity": 1.0
+      },
+      {
+        "left": "dataset/non_deap/pymoo/algorithms/moo/nsga3/nsga3.py",
+        "right": "dataset/non_deap/pymoo/algorithms/moo/nsga3/nsga3_inverted.py",
+        "similarity": 0.9906
+      },
+      {
+        "left": "dataset/non_deap/pygad/example_multi_objective.py",
+        "right": "dataset/non_deap/pygad/example_multi_objective_nsga3.py",
+        "similarity": 0.9894
+      },
+      {
+        "left": "dataset/non_deap/mealpy/utils/run_BinaryVar.py",
+        "right": "dataset/non_deap/mealpy/utils/run_BoolVar.py",
+        "similarity": 0.9863
+      },
+      {
+        "left": "dataset/deap/gp/symbreg.py",
+        "right": "dataset/deap/gp/symbreg_epsilon_lexicase.py",
+        "similarity": 0.9818
+      },
+      {
+        "left": "dataset/non_deap/pygad/plots/example_plot_pareto_front_curve_3d.py",
+        "right": "dataset/non_deap/pygad/plots/example_plot_pareto_front_pcp.py",
+        "similarity": 0.9806
+      },
+      {
+        "left": "dataset/non_deap/pygad/benchmarks/example_zdt1.py",
+        "right": "dataset/non_deap/pygad/plots/example_plot_pareto_front_curve_2d.py",
+        "similarity": 0.9789
+      },
+      {
+        "left": "dataset/benign/cookbook/11/implementing_remote_procedure_call/jsonrpcserver.py",
+        "right": "dataset/benign/cookbook/11/implementing_remote_procedure_call/rpcserver.py",
+        "similarity": 0.9766
+      },
+      {
+        "left": "dataset/non_deap/pygad/plots/example_plot_fitness_band.py",
+        "right": "dataset/non_deap/pygad/plots/example_plot_population_diversity.py",
+        "similarity": 0.9747
+      },
+      {
+        "left": "dataset/non_deap/pygad/benchmarks/example_classic_ackley.py",
+        "right": "dataset/non_deap/pygad/benchmarks/example_classic_griewank.py",
+        "similarity": 0.9746
+      },
+      {
+        "left": "dataset/non_deap/pygad/benchmarks/example_classic_ackley.py",
+        "right": "dataset/non_deap/pygad/benchmarks/example_classic_rastrigin.py",
+        "similarity": 0.9746
+      },
+      {
+        "left": "dataset/non_deap/pygad/benchmarks/example_classic_griewank.py",
+        "right": "dataset/non_deap/pygad/benchmarks/example_classic_rastrigin.py",
+        "similarity": 0.9746
+      },
+      {
+        "left": "dataset/deap/gp/symbreg.py",
+        "right": "dataset/deap/gp/symbreg_harm.py",
+        "similarity": 0.9742
+      },
+      {
+        "left": "dataset/non_deap/pymoo/termination/n_eval.py",
+        "right": "dataset/non_deap/pymoo/termination/n_gen.py",
+        "similarity": 0.9737
+      },
+      {
+        "left": "dataset/non_deap/pymoo/algorithms/moo/moead.py",
+        "right": "dataset/non_deap/pymoo/algorithms/moo/moead_parallel.py",
+        "similarity": 0.9735
+      },
+      {
+        "left": "dataset/deap/gp/symbreg_epsilon_lexicase.py",
+        "right": "dataset/deap/gp/symbreg_harm.py",
+        "similarity": 0.9722
+      },
+      {
+        "left": "dataset/non_deap/mealpy/utils/run_TransferBinaryVar.py",
+        "right": "dataset/non_deap/mealpy/utils/run_TransferBoolVar.py",
+        "similarity": 0.9718
+      },
+      {
+        "left": "dataset/non_deap/pygad/benchmarks/example_zdt1.py",
+        "right": "dataset/non_deap/pygad/benchmarks/example_zdt2.py",
+        "similarity": 0.9684
+      },
+      {
+        "left": "dataset/non_deap/pygad/benchmarks/example_zdt1.py",
+        "right": "dataset/non_deap/pygad/benchmarks/example_zdt3.py",
+        "similarity": 0.9684
+      },
+      {
+        "left": "dataset/non_deap/pygad/benchmarks/example_zdt2.py",
+        "right": "dataset/non_deap/pygad/benchmarks/example_zdt3.py",
+        "similarity": 0.9684
+      },
+      {
+        "left": "dataset/non_deap/pygad/benchmarks/example_zdt4.py",
+        "right": "dataset/non_deap/pygad/benchmarks/example_zdt6.py",
+        "similarity": 0.9684
+      },
+      {
+        "left": "dataset/non_deap/pygad/plots/example_plot_pareto_front_curve_3d.py",
+        "right": "dataset/non_deap/pygad/plots/example_plot_pareto_front_heatmap.py",
+        "similarity": 0.9665
+      },
+      {
+        "left": "dataset/non_deap/pygad/plots/example_plot_pareto_front_heatmap.py",
+        "right": "dataset/non_deap/pygad/plots/example_plot_pareto_front_pcp.py",
+        "similarity": 0.9665
+      },
+      {
+        "left": "dataset/non_deap/pygad/plots/example_plot_non_dominated_hypervolume.py",
+        "right": "dataset/non_deap/pygad/plots/example_plot_pareto_front_evolution.py",
+        "similarity": 0.9652
+      },
+      {
+        "left": "dataset/non_deap/pygad/plots/example_plot_fitness_band.py",
+        "right": "dataset/non_deap/pygad/plots/example_plot_new_solution_rate.py",
+        "similarity": 0.962
+      },
+      {
+        "left": "dataset/non_deap/pygad/plots/example_plot_new_solution_rate.py",
+        "right": "dataset/non_deap/pygad/plots/example_plot_population_diversity.py",
+        "similarity": 0.962
+      },
+      {
+        "left": "dataset/non_deap/pymoo/algorithms/moo/dnsga2.py",
+        "right": "dataset/non_deap/pymoo/algorithms/moo/kgb.py",
+        "similarity": 0.9593
+      },
+      {
+        "left": "dataset/non_deap/pygad/benchmarks/example_dtlz1.py",
+        "right": "dataset/non_deap/pygad/benchmarks/example_dtlz2.py",
+        "similarity": 0.9592
+      },
+      {
+        "left": "dataset/benign/cookbook/15/wrapping_existing_c_code_with_cython/setup.py",
+        "right": "dataset/benign/cookbook/15/wrapping_existing_c_code_with_cython/setup_alt.py",
+        "similarity": 0.9583
+      }
+    ],
+    "near_duplicate_pair_list_truncated": true
+  }
+}

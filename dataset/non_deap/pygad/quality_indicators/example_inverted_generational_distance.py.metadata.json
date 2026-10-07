@@ -1,0 +1,21 @@
+{
+  "program_id": "legacy_non_deap_3b54c769c5d7",
+  "category": "non_deap",
+  "source_type": "existing_corpus",
+  "language": "python",
+  "expected_safety": "UNKNOWN",
+  "ea_roles": {
+    "population": false,
+    "fitness": false,
+    "selection": false,
+    "mutation": false,
+    "crossover": false,
+    "replacement": false,
+    "termination": false
+  },
+  "safety_violations": [],
+  "description": "Compute IGD of the final NSGA-II population on ZDT1.",
+  "ground_truth_reason": "This standalone example computes a supervised neural-network fit or a quality indicator over existing records/results. It does not create a candidate population, evaluate candidate fitness for reproduction, or generate offspring; all seven EA-role labels are false. Safety expectation remains UNKNOWN because these legacy examples have not been individually adjudicated against all enabled safety-policy conditions.",
+  "review_status": "REVIEWED",
+  "source_path": "dataset/non_deap/pygad/quality_indicators/example_inverted_generational_distance.py"
+}

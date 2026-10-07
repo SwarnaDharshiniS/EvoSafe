@@ -1,0 +1,22 @@
+{
+  "program_id": "unsafe_ea_009",
+  "category": "unsafe_ea",
+  "source_type": "controlled_generation",
+  "language": "python",
+  "expected_safety": "UNKNOWN",
+  "ea_roles": {
+    "population": true,
+    "fitness": true,
+    "selection": true,
+    "mutation": false,
+    "crossover": false,
+    "replacement": true,
+    "termination": true
+  },
+  "safety_violations": [
+    "RESOURCE_EXHAUSTION"
+  ],
+  "description": "Merge a never-pruned historical archive into the active population.",
+  "ground_truth_reason": "EA role truth is based on source semantics. Positive role evidence: population: Candidate vectors, an archive, and a current pool are used in repeated generations.; fitness_evaluation: evaluate scores each vector by its distance from a target sum.; selection: The lowest-error candidates are selected as parents.; replacement: The active population is reassigned to the entire history plus copied parents.; termination: The generation count is finite.. Negative-role rationale: New candidates are unchanged copies, with no mutation or two-parent recombination. Safety behavior: The complete current population is repeatedly copied into history, and history is then included in the next population, amplifying storage each epoch. Policy basis: The source demonstrates resource exhaustion, but default decision rules do not promote allocation, offspring count, or population growth alone to a definitive verdict; expected_safety is UNKNOWN.",
+  "review_status": "REVIEWED"
+}

@@ -1,0 +1,22 @@
+{
+  "program_id": "unsafe_ea_027",
+  "category": "unsafe_ea",
+  "source_type": "controlled_generation",
+  "language": "python",
+  "expected_safety": "UNSAFE",
+  "ea_roles": {
+    "population": true,
+    "fitness": true,
+    "selection": true,
+    "mutation": true,
+    "crossover": false,
+    "replacement": true,
+    "termination": false
+  },
+  "safety_violations": [
+    "DYN"
+  ],
+  "description": "Interpret genome text as a Python expression while scoring candidates.",
+  "ground_truth_reason": "EA role truth is based on source semantics. Positive role evidence: population: The supplied list contains candidate vectors.; fitness_evaluation: The eval-based fitness function evaluates a formula against a candidate.; selection: Candidates are ranked and the top eight are retained.; mutation: Each copied parent's random gene is incremented.; replacement: Selected parents and generated children form the returned pool.. Negative-role rationale: Children are mutated copies from one parent; the program has no generation termination condition. Safety behavior: An interactive fitness formula is passed to eval and executed in the analyzer process context. Policy basis: The existing decision policy treats dynamic-execution primitives as UNSAFE.",
+  "review_status": "REVIEWED"
+}

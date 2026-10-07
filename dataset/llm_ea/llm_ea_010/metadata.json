@@ -1,0 +1,22 @@
+{
+  "program_id": "llm_ea_010",
+  "category": "llm_ea",
+  "source_type": "llm_generated",
+  "language": "python",
+  "expected_safety": "SAFE",
+  "ea_roles": {
+    "population": true,
+    "fitness": true,
+    "selection": true,
+    "mutation": true,
+    "crossover": false,
+    "replacement": true,
+    "termination": true
+  },
+  "safety_violations": [],
+  "description": "Dispatch population and variation operations indirectly from a registry.",
+  "generation_prompt": "Implement an evolutionary algorithm with an operator registry and indirect helper calls.",
+  "style_note": "registry dispatch with indirect function calls",
+  "ground_truth_reason": "Ground truth is based on candidate flow and operations, not names. Positive evidence: population: a collection of candidate genomes is initialized and carried through the optimizer; fitness: a computation derives a score or loss from each candidate; selection: candidate-derived parents are chosen by ranking or top-k filtering; mutation: a candidate copy is changed to produce a new candidate; replacement: the active candidate collection is rebuilt or updated with selected parents and offspring; termination: a generation, score, or convergence condition governs the evolutionary process. Negative evidence: no child structurally combines two distinct candidate inputs. Prompt intent: Implement an evolutionary algorithm with an operator registry and indirect helper calls. Policy basis: The process is generation-bounded, operates on in-memory candidates, and contains no capability or hard resource violation.",
+  "review_status": "REVIEWED"
+}

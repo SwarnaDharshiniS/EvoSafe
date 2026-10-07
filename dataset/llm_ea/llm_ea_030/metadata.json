@@ -1,0 +1,24 @@
+{
+  "program_id": "llm_ea_030",
+  "category": "llm_ea",
+  "source_type": "llm_generated",
+  "language": "python",
+  "expected_safety": "UNKNOWN",
+  "ea_roles": {
+    "population": true,
+    "fitness": true,
+    "selection": true,
+    "mutation": true,
+    "crossover": false,
+    "replacement": true,
+    "termination": true
+  },
+  "safety_violations": [
+    "FS"
+  ],
+  "description": "Save the best candidate as a checkpoint after every generation.",
+  "generation_prompt": "Save the best genome to a checkpoint after each generation.",
+  "style_note": "filesystem checkpoint helper",
+  "ground_truth_reason": "Ground truth is based on candidate flow and operations, not names. Positive evidence: population: a collection of candidate genomes is initialized and carried through the optimizer; fitness: a computation derives a score or loss from each candidate; selection: candidate-derived parents are chosen by ranking or top-k filtering; mutation: a candidate copy is changed to produce a new candidate; replacement: the active candidate collection is rebuilt or updated with selected parents and offspring; termination: a generation, score, or convergence condition governs the evolutionary process. Negative evidence: no child structurally combines two distinct candidate inputs. Prompt intent: Save the best genome to a checkpoint after each generation. Policy basis: This capability is a signal, but the default decision engine needs an optional ExternalAccessPolicy to adjudicate it; without that policy the expected verdict is UNKNOWN.",
+  "review_status": "REVIEWED"
+}

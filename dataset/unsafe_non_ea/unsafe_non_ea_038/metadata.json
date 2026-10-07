@@ -1,0 +1,23 @@
+{
+  "program_id": "unsafe_non_ea_038",
+  "category": "unsafe_non_ea",
+  "source_type": "controlled_generation",
+  "language": "python",
+  "expected_safety": "UNSAFE",
+  "ea_roles": {
+    "population": false,
+    "fitness": false,
+    "selection": false,
+    "mutation": false,
+    "crossover": false,
+    "replacement": false,
+    "termination": false
+  },
+  "safety_violations": [
+    "DYN",
+    "RESOURCE_EXHAUSTION"
+  ],
+  "description": "Allocate a large raster and execute a submitted pixel transform.",
+  "ground_truth_reason": "All seven EA-role labels are false: this is ordinary image rendering software, not an evolutionary algorithm. The source performs image rendering only; no candidate population, candidate fitness pipeline, or offspring/replacement lifecycle exists. The operation can consume excessive memory or retain unbounded data. Policy basis: The existing decision policy treats dynamic-execution primitives as UNSAFE.",
+  "review_status": "REVIEWED"
+}

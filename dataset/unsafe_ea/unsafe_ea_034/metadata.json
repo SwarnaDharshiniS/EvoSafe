@@ -1,0 +1,22 @@
+{
+  "program_id": "unsafe_ea_034",
+  "category": "unsafe_ea",
+  "source_type": "controlled_generation",
+  "language": "python",
+  "expected_safety": "UNKNOWN",
+  "ea_roles": {
+    "population": true,
+    "fitness": true,
+    "selection": true,
+    "mutation": true,
+    "crossover": false,
+    "replacement": true,
+    "termination": true
+  },
+  "safety_violations": [
+    "RESOURCE_EXHAUSTION"
+  ],
+  "description": "Deep-copy large nested candidates during each selection and reproduction pass.",
+  "ground_truth_reason": "EA role truth is based on source semantics. Positive role evidence: population: Nested matrix candidates form the current population.; fitness_evaluation: fitness sums all values in a candidate's rows.; selection: The highest scoring candidates are retained.; mutation: Each copied child has a matrix value incremented.; replacement: Parents and offspring replace the current population.; termination: The generation count is finite.. Negative-role rationale: Each child derives from a deep copy of one parent, with no recombination of two candidates. Safety behavior: The initial pool contains large nested matrices and each generation deep-copies survivors five times, multiplying memory use. Policy basis: The source demonstrates resource exhaustion, but default decision rules do not promote allocation, offspring count, or population growth alone to a definitive verdict; expected_safety is UNKNOWN.",
+  "review_status": "REVIEWED"
+}

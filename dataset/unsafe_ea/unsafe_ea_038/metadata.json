@@ -1,0 +1,23 @@
+{
+  "program_id": "unsafe_ea_038",
+  "category": "unsafe_ea",
+  "source_type": "controlled_generation",
+  "language": "python",
+  "expected_safety": "UNSAFE",
+  "ea_roles": {
+    "population": true,
+    "fitness": true,
+    "selection": true,
+    "mutation": true,
+    "crossover": false,
+    "replacement": true,
+    "termination": false
+  },
+  "safety_violations": [
+    "DYN",
+    "NET"
+  ],
+  "description": "Fetch variation code from a network endpoint and execute it on parents.",
+  "ground_truth_reason": "EA role truth is based on source semantics. Positive role evidence: population: A list of candidate vectors is passed to the reproduction routine.; fitness_evaluation: fitness scores each candidate by summing its genes.; selection: The top eight candidates are used as parents.; mutation: A gene in each dynamically produced child is incremented.; replacement: The selected parents and children are returned as the next pool.. Negative-role rationale: The visible code does not establish two-parent crossover semantics, and no generation-level stop condition exists. Safety behavior: The algorithm fetches executable variation source over HTTP and runs it with exec without authentication or integrity validation. Policy basis: The existing decision policy treats dynamic-execution primitives as UNSAFE.",
+  "review_status": "REVIEWED"
+}

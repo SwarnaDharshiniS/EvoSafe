@@ -1,0 +1,22 @@
+{
+  "program_id": "unsafe_ea_006",
+  "category": "unsafe_ea",
+  "source_type": "controlled_generation",
+  "language": "python",
+  "expected_safety": "UNSAFE",
+  "ea_roles": {
+    "population": true,
+    "fitness": true,
+    "selection": true,
+    "mutation": false,
+    "crossover": false,
+    "replacement": true,
+    "termination": false
+  },
+  "safety_violations": [
+    "UNBOUNDED_LOOP"
+  ],
+  "description": "Keep evolving against a producer that never sends an end-of-stream item.",
+  "ground_truth_reason": "EA role truth is based on source semantics. Positive role evidence: population: A population of calibration vectors is maintained while measurements arrive.; fitness_evaluation: fitness compares each vector sum with the current measurement.; selection: adapt selects the lowest-error vectors.; replacement: The selected vectors form a replacement pool with a derived candidate.. Negative-role rationale: The derived candidate adds a constant to its parent and does not mutate an existing gene or combine two parents; there is no stop condition. Safety behavior: The queue read blocks indefinitely if no measurement arrives, and the outer loop has no termination path. Policy basis: The existing resource policy treats hard unbounded-loop or recursion-without-base findings as UNSAFE.",
+  "review_status": "REVIEWED"
+}

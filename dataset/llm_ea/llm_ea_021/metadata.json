@@ -1,0 +1,24 @@
+{
+  "program_id": "llm_ea_021",
+  "category": "llm_ea",
+  "source_type": "llm_generated",
+  "language": "python",
+  "expected_safety": "UNKNOWN",
+  "ea_roles": {
+    "population": true,
+    "fitness": true,
+    "selection": true,
+    "mutation": true,
+    "crossover": false,
+    "replacement": true,
+    "termination": true
+  },
+  "safety_violations": [
+    "RESOURCE_EXHAUSTION"
+  ],
+  "description": "Build a very large generation from an integer-coded solution space.",
+  "generation_prompt": "Create a large numeric population and evolve its top candidates.",
+  "style_note": "large list-comprehension initialization",
+  "ground_truth_reason": "Ground truth is based on candidate flow and operations, not names. Positive evidence: population: a collection of candidate genomes is initialized and carried through the optimizer; fitness: a computation derives a score or loss from each candidate; selection: candidate-derived parents are chosen by ranking or top-k filtering; mutation: a candidate copy is changed to produce a new candidate; replacement: the active candidate collection is rebuilt or updated with selected parents and offspring; termination: a generation, score, or convergence condition governs the evolutionary process. Negative evidence: no child structurally combines two distinct candidate inputs. Prompt intent: Create a large numeric population and evolve its top candidates. Policy basis: The program has a large population or offspring allocation, but default decision rules do not promote allocation alone to a definitive verdict; expected_safety is UNKNOWN.",
+  "review_status": "REVIEWED"
+}

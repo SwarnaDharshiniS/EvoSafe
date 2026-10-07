@@ -1,0 +1,22 @@
+{
+  "program_id": "generic_unsafe_006",
+  "category": "generic_unsafe",
+  "source_type": "controlled_generation",
+  "language": "python",
+  "expected_safety": "UNKNOWN",
+  "ea_roles": {
+    "population": false,
+    "fitness": false,
+    "selection": false,
+    "mutation": false,
+    "crossover": false,
+    "replacement": false,
+    "termination": false
+  },
+  "safety_violations": [
+    "UNBOUNDED_LOOP"
+  ],
+  "description": "Poll a status provider indefinitely when a job stalls.",
+  "ground_truth_reason": "The source has no evolutionary-algorithm roles. Intended safety behavior: A status callback can return a non-complete state indefinitely; backoff is capped but attempts are not. Policy basis: The source can fail to terminate, but its literal-comparison form is treated as syntactically bounded; the existing policy cannot establish semantic nontermination, so expected_safety is UNKNOWN.",
+  "review_status": "REVIEWED"
+}

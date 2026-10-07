@@ -1,0 +1,157 @@
+{
+  "schema_version": "1.0",
+  "name": "EvoSafe controlled seven-role EA benchmark",
+  "description": "Small manually labeled examples for seven structural EA roles. Labels and rationales are maintained independently from detector outputs.",
+  "role_order": ["population", "fitness_evaluation", "selection", "mutation", "crossover", "replacement", "termination"],
+  "programs": [
+    {
+      "name": "direct_ea",
+      "path": "programs/direct_ea.py",
+      "category": "direct_ea",
+      "ground_truth": {"population": true, "fitness_evaluation": true, "selection": true, "mutation": true, "crossover": true, "replacement": true, "termination": true},
+      "positive_rationale": {"population": "A collection of candidate vectors is iterated and updated across generations.", "fitness_evaluation": "Each candidate is scored by sum(candidate).", "selection": "Candidates are ranked by score and truncated to the best subset.", "mutation": "A copied candidate gene is changed using a random value.", "crossover": "A child combines slices from two distinct parents.", "replacement": "The old population is replaced by selected parents plus offspring.", "termination": "The generation process is bounded by range(3)."},
+      "negative_rationale": "This source explicitly contains every listed EA role; there are no negative roles in this example."
+    },
+    {
+      "name": "helper_function_ea",
+      "path": "programs/helper_function_ea.py",
+      "category": "helper_function_ea",
+      "ground_truth": {"population": true, "fitness_evaluation": true, "selection": true, "mutation": true, "crossover": false, "replacement": false, "termination": false},
+      "positive_rationale": {"population": "A candidate collection is traversed by candidate and passed into helpers.", "fitness_evaluation": "score(candidate) computes a candidate-dependent length score.", "selection": "select(pool) ranks candidates and returns a subset.", "mutation": "mutate(candidate) changes a copied candidate gene and returns the changed candidate."},
+      "negative_rationale": "There is no two-parent recombination, population replacement, or generation/process termination construct in this helper example."
+    },
+    {
+      "name": "alias_based_ea",
+      "path": "programs/alias_based_ea.py",
+      "category": "alias_based_ea",
+      "ground_truth": {"population": true, "fitness_evaluation": true, "selection": true, "mutation": true, "crossover": false, "replacement": true, "termination": true},
+      "positive_rationale": {"population": "source_pool, first_alias, second_alias, and population are chained aliases of the candidate collection.", "fitness_evaluation": "Each candidate is scored by sum(candidate).", "selection": "The population is ordered by candidate score and sliced to select parents.", "mutation": "child_alias is an alias of a copied candidate whose first element is changed.", "replacement": "A slice assignment replaces the aliased population contents with selected candidates and the child.", "termination": "The generation loop is bounded by range(2)."},
+      "negative_rationale": "No operation combines information from two distinct parent candidates to create a child."
+    },
+    {
+      "name": "generic_registration_dispatch",
+      "path": "programs/generic_registration_dispatch.py",
+      "category": "generic_registration_dispatch",
+      "ground_truth": {"population": true, "fitness_evaluation": true, "selection": true, "mutation": true, "crossover": false, "replacement": false, "termination": false},
+      "positive_rationale": {"population": "A registered population factory is invoked through the same registry and its returned collection is iterated.", "fitness_evaluation": "The registered evaluate function computes sum(candidate) and is dispatched for each candidate.", "selection": "The registered choose function ranks the population and returns the top subset.", "mutation": "The registered mutate function changes a candidate gene and is dispatched on copied selected candidates."},
+      "negative_rationale": "The registered operations do not combine two parents, replace the population, or control a generation termination condition."
+    },
+    {
+      "name": "deap_style_registration",
+      "path": "programs/deap_style_registration.py",
+      "category": "deap_style_registration",
+      "ground_truth": {"population": true, "fitness_evaluation": true, "selection": true, "mutation": true, "crossover": false, "replacement": false, "termination": false},
+      "positive_rationale": {"population": "A population factory is registered and invoked to create the iterated candidates.", "fitness_evaluation": "The registered evaluate callable scores each candidate.", "selection": "The registered select callable sorts the population by the evaluation key.", "mutation": "The registered mutate callable changes candidate content and returns it."},
+      "negative_rationale": "This registration-shape example has no mating/crossover operation, no population replacement, and no generation/process termination construct."
+    },
+    {
+      "name": "comprehension_fitness",
+      "path": "programs/comprehension_fitness.py",
+      "category": "comprehension_fitness",
+      "ground_truth": {"population": true, "fitness_evaluation": true, "selection": false, "mutation": false, "crossover": false, "replacement": false, "termination": false},
+      "positive_rationale": {"population": "The comprehension iterates a collection of candidate vectors.", "fitness_evaluation": "sum(candidate) produces a score for each candidate."},
+      "negative_rationale": "The comprehension only scores candidates; it does not rank/filter survivors, modify candidates, combine parents, replace the collection, or define a generation stop condition."
+    },
+    {
+      "name": "two_parent_crossover_helper",
+      "path": "programs/two_parent_crossover_helper.py",
+      "category": "two_parent_crossover_helper",
+      "ground_truth": {"population": true, "fitness_evaluation": true, "selection": false, "mutation": false, "crossover": true, "replacement": false, "termination": false},
+      "positive_rationale": {"population": "A candidate collection is iterated and supplies both parents.", "fitness_evaluation": "The parents are scored using sum(parent).", "crossover": "crossover(parent_a, parent_b) constructs a child by joining a slice from each parent."},
+      "negative_rationale": "The example does not rank/filter candidates, mutate a candidate, replace the population, or implement a generation stop condition."
+    },
+    {
+      "name": "mutation_helper",
+      "path": "programs/mutation_helper.py",
+      "category": "mutation_helper",
+      "ground_truth": {"population": true, "fitness_evaluation": true, "selection": false, "mutation": true, "crossover": false, "replacement": false, "termination": false},
+      "positive_rationale": {"population": "A collection of candidate vectors is iterated.", "fitness_evaluation": "Each candidate receives a sum-based score.", "mutation": "mutate copies a candidate, changes a gene, and returns the modified copy."},
+      "negative_rationale": "No ranking/filtering, two-parent recombination, population replacement, or generation termination is present."
+    },
+    {
+      "name": "slice_replacement",
+      "path": "programs/slice_replacement.py",
+      "category": "slice_replacement",
+      "ground_truth": {"population": true, "fitness_evaluation": true, "selection": true, "mutation": false, "crossover": false, "replacement": true, "termination": false},
+      "positive_rationale": {"population": "A collection of candidates is iterated and retained as a population.", "fitness_evaluation": "Each candidate is scored by sum(candidate).", "selection": "A slice retains a selected subset of candidates.", "replacement": "population[:] is replaced with the selected subset and offspring collection."},
+      "negative_rationale": "The offspring are supplied as values; this source does not modify an existing candidate or construct one from two parents, and has no process termination condition."
+    },
+    {
+      "name": "termination_helper",
+      "path": "programs/termination_helper.py",
+      "category": "termination_helper",
+      "ground_truth": {"population": true, "fitness_evaluation": true, "selection": false, "mutation": false, "crossover": false, "replacement": false, "termination": true},
+      "positive_rationale": {"population": "A collection of candidate vectors is traversed by the process loop.", "fitness_evaluation": "Each candidate is scored using sum(candidate) to update best_score.", "termination": "The outer EA process loop continues according to the helper-returned condition should_continue(best_score, 2)."},
+      "negative_rationale": "No ranking/filtering, candidate modification, multi-parent combination, or population replacement is present."
+    },
+    {
+      "name": "non_ea_loop",
+      "path": "programs/non_ea_loop.py",
+      "category": "non_ea_control_flow",
+      "safety_expectation": "SAFE",
+      "ground_truth": {"population": false, "fitness_evaluation": false, "selection": false, "mutation": false, "crossover": false, "replacement": false, "termination": false},
+      "positive_rationale": {},
+      "negative_rationale": "The loops only accumulate an integer total; range iteration and a while condition alone are not EA termination or population evidence, and there are no candidates or evolutionary operators."
+    },
+    {
+      "name": "non_ea_indexed_writes",
+      "path": "programs/non_ea_indexed_writes.py",
+      "category": "non_ea_indexed_writes",
+      "ground_truth": {"population": false, "fitness_evaluation": false, "selection": false, "mutation": false, "crossover": false, "replacement": false, "termination": false},
+      "positive_rationale": {},
+      "negative_rationale": "The indexed writes fill a fixed matrix with row-plus-column values; they are not candidate mutation, recombination, or population replacement."
+    },
+    {
+      "name": "non_ea_random_indexing",
+      "path": "programs/non_ea_random_indexing.py",
+      "category": "non_ea_random_indexing",
+      "ground_truth": {"population": false, "fitness_evaluation": false, "selection": false, "mutation": false, "crossover": false, "replacement": false, "termination": false},
+      "positive_rationale": {},
+      "negative_rationale": "A single random choice selects an ordinary color string; there is no candidate population, fitness relationship, iterative selection, or reproduction."
+    },
+    {
+      "name": "ordinary_callback_registration",
+      "path": "programs/ordinary_callback_registration.py",
+      "category": "ordinary_callback_registration",
+      "safety_expectation": "SAFE",
+      "ground_truth": {"population": false, "fitness_evaluation": false, "selection": false, "mutation": false, "crossover": false, "replacement": false, "termination": false},
+      "positive_rationale": {},
+      "negative_rationale": "A generic on_message callback trims text. Registration and dispatch without EA-role structure are not evidence of evolutionary operators."
+    },
+    {
+      "name": "safe_ea",
+      "path": "programs/safe_ea.py",
+      "category": "safe_ea",
+      "safety_expectation": "SAFE",
+      "ground_truth": {"population": true, "fitness_evaluation": true, "selection": true, "mutation": true, "crossover": false, "replacement": true, "termination": true},
+      "positive_rationale": {"population": "Candidate vectors are traversed and updated as a population.", "fitness_evaluation": "Each candidate is scored by sum(candidate).", "selection": "Candidates are ranked and the best subset is selected.", "mutation": "A selected candidate copy has one gene changed.", "replacement": "The population is rebuilt from selected candidates and offspring.", "termination": "The generation process is bounded by range(4)."},
+      "negative_rationale": "Although candidates are copied and mutated, no child is formed by combining two parents; mutation is not crossover."
+    },
+    {
+      "name": "unsafe_ea",
+      "path": "programs/unsafe_ea.py",
+      "category": "unsafe_ea",
+      "safety_expectation": "UNSAFE",
+      "ground_truth": {"population": true, "fitness_evaluation": true, "selection": true, "mutation": true, "crossover": false, "replacement": true, "termination": false},
+      "positive_rationale": {"population": "Candidate vectors are iterated and maintained as a population.", "fitness_evaluation": "sum(candidate) computes a candidate score.", "selection": "Candidates are sorted by score.", "mutation": "A copied candidate has a gene flipped.", "replacement": "A slice assignment replaces the current population with selected candidates and a child."},
+      "negative_rationale": "The program contains no two-parent recombination and no generation/process termination loop; the unsafe eval(input()) sink does not imply any EA role."
+    },
+    {
+      "name": "incomplete_ambiguous_ea",
+      "path": "programs/incomplete_ambiguous_ea.py",
+      "category": "incomplete_ambiguous_ea",
+      "ground_truth": {"population": true, "fitness_evaluation": true, "selection": false, "mutation": false, "crossover": false, "replacement": false, "termination": false},
+      "positive_rationale": {"population": "A candidate collection is explicitly traversed and its elements are passed to an operation.", "fitness_evaluation": "objective(candidate) computes a per-candidate objective value; the program docstring states it is candidate scoring, matching the specification example score = objective(individual)."},
+      "negative_rationale": "Only candidate scoring is visible; the EA is incomplete. No selection, mutation, crossover, replacement, or process termination role is present. (Label corrected in Build 7: an earlier edit set fitness to false without changing the program, contradicting its documented intent.)"
+    },
+    {
+      "name": "unsafe_non_ea",
+      "path": "programs/unsafe_non_ea.py",
+      "category": "unsafe_non_ea",
+      "safety_expectation": "UNSAFE",
+      "ground_truth": {"population": false, "fitness_evaluation": false, "selection": false, "mutation": false, "crossover": false, "replacement": false, "termination": false},
+      "positive_rationale": {},
+      "negative_rationale": "The source only reads and dynamically evaluates a command; an unsafe sink is unrelated to every EA role."
+    }
+  ]
+}

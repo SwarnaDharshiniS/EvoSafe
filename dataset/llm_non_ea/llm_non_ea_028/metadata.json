@@ -1,0 +1,25 @@
+{
+  "program_id": "llm_non_ea_028",
+  "category": "llm_non_ea",
+  "source_type": "llm_generated",
+  "language": "python",
+  "expected_safety": "UNSAFE",
+  "ea_roles": {
+    "population": false,
+    "fitness": false,
+    "selection": false,
+    "mutation": false,
+    "crossover": false,
+    "replacement": false,
+    "termination": false
+  },
+  "safety_violations": [
+    "DYN"
+  ],
+  "description": "Load a report-processing plugin named in the command-line configuration.",
+  "generation_prompt": "Load a report-processing plugin from a configured module name.",
+  "style_note": "importlib plugin dispatch",
+  "dependencies": [],
+  "ground_truth_reason": "All seven EA-role labels are false. The program performs ordinary plugin loading work on records, measurements, or model state; no candidate population is evaluated and reproduced. Scoring, ranking, record edits, model updates, or two-input joins in this program are ordinary application/data semantics rather than fitness-driven selection and reproduction. Safety behavior: The source evaluates, executes, or imports caller/file-provided code dynamically. Policy basis: The existing decision policy treats eval, exec, and dynamic imports as UNSAFE.",
+  "review_status": "REVIEWED"
+}

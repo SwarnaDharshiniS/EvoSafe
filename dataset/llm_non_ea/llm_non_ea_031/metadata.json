@@ -1,0 +1,25 @@
+{
+  "program_id": "llm_non_ea_031",
+  "category": "llm_non_ea",
+  "source_type": "llm_generated",
+  "language": "python",
+  "expected_safety": "UNSAFE",
+  "ea_roles": {
+    "population": false,
+    "fitness": false,
+    "selection": false,
+    "mutation": false,
+    "crossover": false,
+    "replacement": false,
+    "termination": false
+  },
+  "safety_violations": [
+    "UNBOUNDED_LOOP"
+  ],
+  "description": "Read a line-oriented event stream and retain every parsed record.",
+  "generation_prompt": "Read a line-oriented event stream into memory.",
+  "style_note": "readline loop and retained rows",
+  "dependencies": [],
+  "ground_truth_reason": "All seven EA-role labels are false. The program performs ordinary stream ingestion work on records, measurements, or model state; no candidate population is evaluated and reproduced. Scoring, ranking, record edits, model updates, or two-input joins in this program are ordinary application/data semantics rather than fitness-driven selection and reproduction. Safety behavior: The source contains a hard unbounded processing loop. Policy basis: The existing resource policy treats a hard while-true loop as UNSAFE.",
+  "review_status": "REVIEWED"
+}

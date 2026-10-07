@@ -1,0 +1,22 @@
+{
+  "program_id": "unsafe_non_ea_016",
+  "category": "unsafe_non_ea",
+  "source_type": "controlled_generation",
+  "language": "python",
+  "expected_safety": "UNKNOWN",
+  "ea_roles": {
+    "population": false,
+    "fitness": false,
+    "selection": false,
+    "mutation": false,
+    "crossover": false,
+    "replacement": false,
+    "termination": false
+  },
+  "safety_violations": [
+    "RESOURCE_EXHAUSTION"
+  ],
+  "description": "Read an entire input stream and then allocate parsed copies of every row.",
+  "ground_truth_reason": "All seven EA-role labels are false: this is ordinary table ingestion software, not an evolutionary algorithm. The source performs table ingestion only; no candidate population, candidate fitness pipeline, or offspring/replacement lifecycle exists. The operation can consume excessive memory or retain unbounded data. Policy basis: The source has a clear allocation or data-growth risk, but default decision rules do not map allocation size alone to a definitive verdict; expected_safety is UNKNOWN.",
+  "review_status": "REVIEWED"
+}

@@ -1,0 +1,21 @@
+{
+  "name": "EA inference v1 (frozen baseline)",
+  "frozen_on": "2026-10-05",
+  "purpose": "Detector version evaluated unchanged against the independent held-out benchmark. Any later detector change must produce a new fingerprint and a new version.",
+  "detector_fingerprint": {
+    "analysis/ea_inference/_data_flow.py": "aa458724fc66f62c277cb86ee0d624c8378c93b8c3bc3f26068bbba554500163",
+    "analysis/ea_inference/_model.py": "da29dee22f926a7cd5b4dd744d2edfc3e4e5b72bd608fdb7ae391d3e49537dab",
+    "analysis/ea_inference/inference.py": "129f5073d2dccd7d185b68c47ee319f96bcf4404bd8df0fbe87e2a9115eedf70"
+  },
+  "test_suite": {"tests": 393, "status": "OK"},
+  "development_benchmark": {
+    "manifest": "evaluation/ea_role_benchmark/benchmark.json",
+    "programs": 18,
+    "role": "development set; the v1 detector was tuned against it",
+    "result_with_original_labels": {"macro_precision": 0.989, "macro_recall": 1.0, "macro_f1": 0.994},
+    "label_correction": "incomplete_ambiguous_ea fitness_evaluation restored to true: the program computes objective(candidate) and is documented as candidate scoring; an earlier edit had flipped the label without changing the program. No detector change.",
+    "manifest_sha256_after_correction": "df7eb2077acc22cb82a1fe98273ec532f346f7fc041dca6b5a02fec06fdf6801",
+    "result_with_corrected_labels": {"macro_precision": 1.0, "macro_recall": 1.0, "macro_f1": 1.0},
+    "caveat": "Development-set scores are optimistic because the detector was refined on these programs."
+  }
+}

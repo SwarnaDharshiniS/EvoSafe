@@ -1,0 +1,25 @@
+{
+  "program_id": "llm_non_ea_026",
+  "category": "llm_non_ea",
+  "source_type": "llm_generated",
+  "language": "python",
+  "expected_safety": "UNSAFE",
+  "ea_roles": {
+    "population": false,
+    "fitness": false,
+    "selection": false,
+    "mutation": false,
+    "crossover": false,
+    "replacement": false,
+    "termination": false
+  },
+  "safety_violations": [
+    "DYN"
+  ],
+  "description": "Evaluate a user-supplied filter expression against report rows.",
+  "generation_prompt": "Filter report rows using a configurable expression.",
+  "style_note": "dynamic expression evaluation",
+  "dependencies": [],
+  "ground_truth_reason": "All seven EA-role labels are false. The program performs ordinary report filtering work on records, measurements, or model state; no candidate population is evaluated and reproduced. Scoring, ranking, record edits, model updates, or two-input joins in this program are ordinary application/data semantics rather than fitness-driven selection and reproduction. Safety behavior: The source evaluates, executes, or imports caller/file-provided code dynamically. Policy basis: The existing decision policy treats eval, exec, and dynamic imports as UNSAFE.",
+  "review_status": "REVIEWED"
+}

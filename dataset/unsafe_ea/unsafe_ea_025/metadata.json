@@ -1,0 +1,23 @@
+{
+  "program_id": "unsafe_ea_025",
+  "category": "unsafe_ea",
+  "source_type": "controlled_generation",
+  "language": "python",
+  "expected_safety": "UNKNOWN",
+  "ea_roles": {
+    "population": true,
+    "fitness": true,
+    "selection": true,
+    "mutation": true,
+    "crossover": false,
+    "replacement": true,
+    "termination": false
+  },
+  "safety_violations": [
+    "DYN",
+    "PROC"
+  ],
+  "description": "Use a system shell to transform each selected candidate representation.",
+  "ground_truth_reason": "EA role truth is based on source semantics. Positive role evidence: population: Integer vectors are evolved as a candidate pool.; fitness_evaluation: objective scores candidates by summing genes.; selection: The best ten candidates are retained as parents.; mutation: The external mutator is invoked for each copied parent and a gene is then changed.; replacement: Parents and returned mutated candidates form the new pool.. Negative-role rationale: The code mutates one parent at a time and has no multi-parent crossover or generation loop. Safety behavior: Candidate values are interpolated into a command passed to os.system during the EA variation step. Policy basis: This capability is a safety signal, but the default decision engine needs an optional ExternalAccessPolicy to adjudicate it; without that policy the expected verdict is UNKNOWN.",
+  "review_status": "REVIEWED"
+}

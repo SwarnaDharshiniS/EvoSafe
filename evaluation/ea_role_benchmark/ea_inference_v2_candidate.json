@@ -1,0 +1,58 @@
+{
+  "name": "EA inference v2 structural candidate",
+  "status": "candidate_frozen_for_new_unseen_evaluation",
+  "frozen_on": "2026-10-05",
+  "purpose": "Record the candidate implementation before creating a fresh unseen benchmark. Development benchmark scores are not estimates of generalization.",
+  "architecture": [
+    "Existing AST/CFG and intra-procedural data-flow analysis",
+    "Source-located collection and candidate facts",
+    "Conservative candidate lineage with explicit two-distinct-input dependency",
+    "Existing role detectors consuming structural facts behind EA-context checks",
+    "Optional EA inference remains separate from safety verdict logic"
+  ],
+  "detector_fingerprint_sha256": {
+    "analysis/ea_inference/_structure.py": "65c03a64240c7035f2a4c5af29e6095aaaf411899d24fe6ad9dafc1e1935adbb",
+    "analysis/ea_inference/inference.py": "d70b076e7629cdbe2a1a5366c13f5b390401fb7f570be7f964c809f99a5d9e3d",
+    "analysis/ea_inference/_data_flow.py": "aa458724fc66f62c277cb86ee0d624c8378c93b8c3bc3f26068bbba554500163",
+    "analysis/ea_inference/_model.py": "da29dee22f926a7cd5b4dd744d2edfc3e4e5b72bd608fdb7ae391d3e49537dab"
+  },
+  "tests": {
+    "command": "PYTHONDONTWRITEBYTECODE=1 /tmp/evosafe-venv/bin/python -m unittest discover -s tests -q",
+    "count": 416,
+    "status": "OK"
+  },
+  "development_benchmark": {
+    "manifest": "evaluation/ea_role_benchmark/benchmark.json",
+    "manifest_sha256": "df7eb2077acc22cb82a1fe98273ec532f346f7fc041dca6b5a02fec06fdf6801",
+    "programs": 18,
+    "prior_v1_corrected_metrics": {"macro_precision": 1.0, "macro_recall": 1.0, "macro_f1": 1.0},
+    "candidate_metrics": {"macro_precision": 1.0, "macro_recall": 1.0, "macro_f1": 1.0, "roles_included": 7},
+    "per_role": {
+      "population": {"tp": 13, "fp": 0, "fn": 0, "tn": 5, "precision": 1.0, "recall": 1.0, "f1": 1.0},
+      "fitness_evaluation": {"tp": 13, "fp": 0, "fn": 0, "tn": 5, "precision": 1.0, "recall": 1.0, "f1": 1.0},
+      "selection": {"tp": 8, "fp": 0, "fn": 0, "tn": 10, "precision": 1.0, "recall": 1.0, "f1": 1.0},
+      "mutation": {"tp": 8, "fp": 0, "fn": 0, "tn": 10, "precision": 1.0, "recall": 1.0, "f1": 1.0},
+      "crossover": {"tp": 2, "fp": 0, "fn": 0, "tn": 16, "precision": 1.0, "recall": 1.0, "f1": 1.0},
+      "replacement": {"tp": 5, "fp": 0, "fn": 0, "tn": 13, "precision": 1.0, "recall": 1.0, "f1": 1.0},
+      "termination": {"tp": 4, "fp": 0, "fn": 0, "tn": 14, "precision": 1.0, "recall": 1.0, "f1": 1.0}
+    },
+    "false_positives": [],
+    "false_negatives": [],
+    "safety_verdicts_unchanged": {"checked": 18, "changed": 0, "all_checks_pass": true},
+    "expected_safety_cases": "SAFE EA, UNSAFE EA, SAFE non-EA, UNSAFE non-EA, non-EA loop, callback registration, plus invalid syntax status all matched the evaluator's invariance checks."
+  },
+  "validation_set_policy": {
+    "historical_51_program_set": "Previously evaluated under v1 and treated as seen validation data.",
+    "used_for_candidate_tuning": false,
+    "rerun_after_candidate_changes": false,
+    "generalization_claim": false
+  },
+  "framework_specific_logic_added": false,
+  "known_limitations": [
+    "Lineage is intra-procedural and uses bounded existing helper summaries; arbitrary interprocedural and heap alias behavior is not modeled.",
+    "Unknown indexed accesses share a conservative identity and do not establish that two accesses are distinct candidates.",
+    "Dynamic calls, ambiguous branch aliases, and unresolved returns are intentionally not promoted into candidate lineage.",
+    "The existing role detectors remain partly syntax-driven; this change adds reusable structural inputs and is not evidence of unseen generalization.",
+    "The development set has only 18 programs and has already informed prior detector work; its perfect score is optimistic."
+  ]
+}

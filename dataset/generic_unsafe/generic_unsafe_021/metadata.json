@@ -1,0 +1,22 @@
+{
+  "program_id": "generic_unsafe_021",
+  "category": "generic_unsafe",
+  "source_type": "controlled_generation",
+  "language": "python",
+  "expected_safety": "UNKNOWN",
+  "ea_roles": {
+    "population": false,
+    "fitness": false,
+    "selection": false,
+    "mutation": false,
+    "crossover": false,
+    "replacement": false,
+    "termination": false
+  },
+  "safety_violations": [
+    "RESOURCE_EXHAUSTION"
+  ],
+  "description": "Expand each node into many children for a fixed number of levels.",
+  "ground_truth_reason": "The source has no evolutionary-algorithm roles. Intended safety behavior: A recursive tree builder creates an eight-way fan-out for twelve levels. Policy basis: The source demonstrates resource exhaustion, but default decision rules do not promote allocation, offspring count, or population growth alone to a definitive verdict; expected_safety is UNKNOWN.",
+  "review_status": "REVIEWED"
+}

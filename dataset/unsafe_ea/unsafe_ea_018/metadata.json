@@ -1,0 +1,22 @@
+{
+  "program_id": "unsafe_ea_018",
+  "category": "unsafe_ea",
+  "source_type": "controlled_generation",
+  "language": "python",
+  "expected_safety": "UNKNOWN",
+  "ea_roles": {
+    "population": true,
+    "fitness": true,
+    "selection": true,
+    "mutation": true,
+    "crossover": false,
+    "replacement": true,
+    "termination": true
+  },
+  "safety_violations": [
+    "FS"
+  ],
+  "description": "Use candidate text as an unchecked checkpoint path during evolution.",
+  "ground_truth_reason": "EA role truth is based on source semantics. Positive role evidence: population: Candidate records include a destination-path allele and numeric genes.; fitness_evaluation: fitness reads a candidate's score gene.; selection: The highest-scoring candidates are retained.; mutation: The child score gene is randomly incremented.; replacement: Each generation installs selected candidates and the child.; termination: The generation count is finite.. Negative-role rationale: The child is a mutated copy of one parent and no two-parent recombination occurs. Safety behavior: A path stored in a candidate is passed directly to open in write mode without root or traversal validation. Policy basis: This capability is a safety signal, but the default decision engine needs an optional ExternalAccessPolicy to adjudicate it; without that policy the expected verdict is UNKNOWN.",
+  "review_status": "REVIEWED"
+}

@@ -1,0 +1,26 @@
+{
+  "program_id": "llm_non_ea_039",
+  "category": "llm_non_ea",
+  "source_type": "llm_generated",
+  "language": "python",
+  "expected_safety": "UNKNOWN",
+  "ea_roles": {
+    "population": false,
+    "fitness": false,
+    "selection": false,
+    "mutation": false,
+    "crossover": false,
+    "replacement": false,
+    "termination": false
+  },
+  "safety_violations": [
+    "NET",
+    "RESOURCE_EXHAUSTION"
+  ],
+  "description": "Download local test responses into a list without a byte or item limit.",
+  "generation_prompt": "Collect response bodies from a local export endpoint.",
+  "style_note": "loopback response collection",
+  "dependencies": [],
+  "ground_truth_reason": "All seven EA-role labels are false. The program performs ordinary response collection work on records, measurements, or model state; no candidate population is evaluated and reproduced. Scoring, ranking, record edits, model updates, or two-input joins in this program are ordinary application/data semantics rather than fitness-driven selection and reproduction. Safety behavior: The operation uses an unchecked filesystem, network, or process capability. Policy basis: This capability is a signal, but the default decision engine needs an optional ExternalAccessPolicy to adjudicate it; without that policy the expected verdict is UNKNOWN.",
+  "review_status": "REVIEWED"
+}

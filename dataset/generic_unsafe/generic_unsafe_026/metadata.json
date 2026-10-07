@@ -1,0 +1,22 @@
+{
+  "program_id": "generic_unsafe_026",
+  "category": "generic_unsafe",
+  "source_type": "controlled_generation",
+  "language": "python",
+  "expected_safety": "UNKNOWN",
+  "ea_roles": {
+    "population": false,
+    "fitness": false,
+    "selection": false,
+    "mutation": false,
+    "crossover": false,
+    "replacement": false,
+    "termination": false
+  },
+  "safety_violations": [
+    "FS"
+  ],
+  "description": "Extract an untrusted archive without checking member destination paths.",
+  "ground_truth_reason": "The source has no evolutionary-algorithm roles. Intended safety behavior: Untrusted archive members are extracted without validating that paths stay beneath the destination. Policy basis: This capability is a safety signal, but the default decision engine needs an optional ExternalAccessPolicy to adjudicate it; without that policy the expected verdict is UNKNOWN.",
+  "review_status": "REVIEWED"
+}

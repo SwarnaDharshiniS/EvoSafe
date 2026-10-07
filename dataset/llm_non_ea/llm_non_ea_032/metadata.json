@@ -1,0 +1,26 @@
+{
+  "program_id": "llm_non_ea_032",
+  "category": "llm_non_ea",
+  "source_type": "llm_generated",
+  "language": "python",
+  "expected_safety": "UNSAFE",
+  "ea_roles": {
+    "population": false,
+    "fitness": false,
+    "selection": false,
+    "mutation": false,
+    "crossover": false,
+    "replacement": false,
+    "termination": false
+  },
+  "safety_violations": [
+    "DYN",
+    "RESOURCE_EXHAUSTION"
+  ],
+  "description": "Summarize a large generated measurement series using a configured expression.",
+  "generation_prompt": "Compute a configurable summary over a large generated measurement series.",
+  "style_note": "large list materialization with dynamic expression evaluation",
+  "dependencies": [],
+  "ground_truth_reason": "All seven EA-role labels are false. The program summarizes measurements as ordinary numerical data and does not evaluate candidate solutions or reproduce them. It materializes 25 million values and evaluates a configured expression against the resulting series. The existing decision policy treats eval as UNSAFE; the large list also presents resource-exhaustion risk.",
+  "review_status": "REVIEWED"
+}

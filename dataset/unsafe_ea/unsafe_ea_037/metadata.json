@@ -1,0 +1,24 @@
+{
+  "program_id": "unsafe_ea_037",
+  "category": "unsafe_ea",
+  "source_type": "controlled_generation",
+  "language": "python",
+  "expected_safety": "UNSAFE",
+  "ea_roles": {
+    "population": true,
+    "fitness": true,
+    "selection": true,
+    "mutation": true,
+    "crossover": false,
+    "replacement": true,
+    "termination": false
+  },
+  "safety_violations": [
+    "FS",
+    "NET",
+    "UNBOUNDED_LOOP"
+  ],
+  "description": "Accept unbounded candidate submissions and feed them into a live EA.",
+  "ground_truth_reason": "EA role truth is based on source semantics. Positive role evidence: population: A candidate pool is updated with each incoming genome.; fitness_evaluation: fitness scores candidate vectors by their sum.; selection: Candidates are ranked and the top ten are retained.; mutation: A gene in each copied child is randomized by a perturbation.; replacement: Selected candidates and offspring replace the active population.. Negative-role rationale: The offspring are single-parent mutations, and the listener has no stopping condition. Safety behavior: The service binds all interfaces indefinitely and unpickles bytes from each remote client before adding the value to the population. Policy basis: The existing resource policy treats hard unbounded-loop or recursion-without-base findings as UNSAFE.",
+  "review_status": "REVIEWED"
+}

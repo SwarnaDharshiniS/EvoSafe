@@ -1,0 +1,22 @@
+{
+  "program_id": "generic_unsafe_013",
+  "category": "generic_unsafe",
+  "source_type": "controlled_generation",
+  "language": "python",
+  "expected_safety": "UNSAFE",
+  "ea_roles": {
+    "population": false,
+    "fitness": false,
+    "selection": false,
+    "mutation": false,
+    "crossover": false,
+    "replacement": false,
+    "termination": false
+  },
+  "safety_violations": [
+    "RECURSION_RESOURCE_EXHAUSTION"
+  ],
+  "description": "Recursively inspect directory entries while following link cycles.",
+  "ground_truth_reason": "The source has no evolutionary-algorithm roles. Intended safety behavior: Following directory symlinks recursively can revisit ancestors and recurse without bound. Policy basis: The source has a reviewed high-risk behavior covered by an existing hard resource rule.",
+  "review_status": "REVIEWED"
+}

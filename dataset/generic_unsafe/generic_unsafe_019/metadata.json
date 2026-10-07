@@ -1,0 +1,22 @@
+{
+  "program_id": "generic_unsafe_019",
+  "category": "generic_unsafe",
+  "source_type": "controlled_generation",
+  "language": "python",
+  "expected_safety": "UNKNOWN",
+  "ea_roles": {
+    "population": false,
+    "fitness": false,
+    "selection": false,
+    "mutation": false,
+    "crossover": false,
+    "replacement": false,
+    "termination": false
+  },
+  "safety_violations": [
+    "RESOURCE_EXHAUSTION"
+  ],
+  "description": "Fully materialize a combinatorial set of candidate configurations.",
+  "ground_truth_reason": "The source has no evolutionary-algorithm roles. Intended safety behavior: The Cartesian product of twelve dimensions is fully materialized rather than streamed. Policy basis: The source demonstrates resource exhaustion, but default decision rules do not promote allocation, offspring count, or population growth alone to a definitive verdict; expected_safety is UNKNOWN.",
+  "review_status": "REVIEWED"
+}

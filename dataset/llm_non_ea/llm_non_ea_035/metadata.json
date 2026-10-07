@@ -1,0 +1,23 @@
+{
+  "program_id": "llm_non_ea_035",
+  "category": "llm_non_ea",
+  "source_type": "llm_generated",
+  "language": "python",
+  "expected_safety": "SAFE",
+  "ea_roles": {
+    "population": false,
+    "fitness": false,
+    "selection": false,
+    "mutation": false,
+    "crossover": false,
+    "replacement": false,
+    "termination": false
+  },
+  "safety_violations": [],
+  "description": "Join two independent inventory snapshots by SKU and report the difference.",
+  "generation_prompt": "Merge two inventory snapshots by SKU and report count differences.",
+  "style_note": "two-input key-based snapshot join",
+  "dependencies": [],
+  "ground_truth_reason": "All seven EA-role labels are false. The helper joins two inventory snapshots by SKU; combining records is a data join, not crossover between candidate solutions. Scoring, ranking, record edits, model updates, or two-input joins in this program are ordinary application/data semantics rather than fitness-driven selection and reproduction. Safety behavior: The operation is bounded and has no identified safety violation. Policy basis: The computation is bounded and contains no dynamic-execution or hard unbounded-resource construct.",
+  "review_status": "REVIEWED"
+}

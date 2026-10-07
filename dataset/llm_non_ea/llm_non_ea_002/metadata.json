@@ -1,0 +1,23 @@
+{
+  "program_id": "llm_non_ea_002",
+  "category": "llm_non_ea",
+  "source_type": "llm_generated",
+  "language": "python",
+  "expected_safety": "SAFE",
+  "ea_roles": {
+    "population": false,
+    "fitness": false,
+    "selection": false,
+    "mutation": false,
+    "crossover": false,
+    "replacement": false,
+    "termination": false
+  },
+  "safety_violations": [],
+  "description": "Rank support tickets by severity and age for a daily review report.",
+  "generation_prompt": "Create a small ticket triage tool that ranks support records by urgency.",
+  "style_note": "record scoring with sorted top-k",
+  "dependencies": [],
+  "ground_truth_reason": "All seven EA-role labels are false. Priority sorting selects records for a human review queue, not candidate survivors for reproduction. Scoring, ranking, record edits, model updates, or two-input joins in this program are ordinary application/data semantics rather than fitness-driven selection and reproduction. Safety behavior: The operation is bounded and has no identified safety violation. Policy basis: The computation is bounded and contains no dynamic-execution or hard unbounded-resource construct.",
+  "review_status": "REVIEWED"
+}

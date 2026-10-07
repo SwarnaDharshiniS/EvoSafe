@@ -1,0 +1,22 @@
+{
+  "program_id": "unsafe_ea_031",
+  "category": "unsafe_ea",
+  "source_type": "controlled_generation",
+  "language": "python",
+  "expected_safety": "UNKNOWN",
+  "ea_roles": {
+    "population": true,
+    "fitness": true,
+    "selection": true,
+    "mutation": true,
+    "crossover": false,
+    "replacement": true,
+    "termination": true
+  },
+  "safety_violations": [
+    "RESOURCE_EXHAUSTION"
+  ],
+  "description": "Allocate an enormous candidate pool before beginning a small EA run.",
+  "ground_truth_reason": "EA role truth is based on source semantics. Positive role evidence: population: The algorithm initializes and updates a list of floating-point candidates.; fitness_evaluation: fitness sums each candidate's genes.; selection: Candidates are ranked and reduced to the top 100.; mutation: Copied offspring have a gene perturbed by random noise.; replacement: Each round replaces the population with elites plus offspring.; termination: The outer loop has five rounds.. Negative-role rationale: Children are mutated copies of individual parents; no crossover occurs. Safety behavior: Initialization attempts to construct twenty million 64-gene Python lists before evolution begins. Policy basis: The source demonstrates resource exhaustion, but default decision rules do not promote allocation, offspring count, or population growth alone to a definitive verdict; expected_safety is UNKNOWN.",
+  "review_status": "REVIEWED"
+}

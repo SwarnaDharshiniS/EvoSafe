@@ -1,0 +1,22 @@
+{
+  "program_id": "unsafe_ea_017",
+  "category": "unsafe_ea",
+  "source_type": "controlled_generation",
+  "language": "python",
+  "expected_safety": "CONDITIONALLY_SAFE",
+  "ea_roles": {
+    "population": true,
+    "fitness": true,
+    "selection": true,
+    "mutation": true,
+    "crossover": false,
+    "replacement": false,
+    "termination": false
+  },
+  "safety_violations": [
+    "RESOURCE_EXHAUSTION"
+  ],
+  "description": "Continue adding newly bred candidates to the queue being consumed.",
+  "ground_truth_reason": "EA role truth is based on source semantics. Positive role evidence: population: A deque stores pending candidate genomes and examined candidates.; fitness_evaluation: evaluate scores each genome by its gene sum.; selection: Only children below the score cutoff are admitted to the pending population.; mutation: Each child is copied from one parent and one gene is incremented.. Negative-role rationale: The algorithm grows a pending work queue rather than replacing a generation, does not combine parents, and has no practical bound on descendant production. Safety behavior: Each admitted candidate creates two additional candidates; branching creates a very large work queue before scores reach the cutoff. Policy basis: The existing resource policy treats a potentially unbounded loop without a hard-unbounded marker as requiring review, yielding CONDITIONALLY_SAFE at medium risk.",
+  "review_status": "REVIEWED"
+}

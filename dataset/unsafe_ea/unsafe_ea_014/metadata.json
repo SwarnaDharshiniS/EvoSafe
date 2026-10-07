@@ -1,0 +1,22 @@
+{
+  "program_id": "unsafe_ea_014",
+  "category": "unsafe_ea",
+  "source_type": "controlled_generation",
+  "language": "python",
+  "expected_safety": "UNKNOWN",
+  "ea_roles": {
+    "population": true,
+    "fitness": true,
+    "selection": true,
+    "mutation": true,
+    "crossover": true,
+    "replacement": true,
+    "termination": false
+  },
+  "safety_violations": [
+    "RESOURCE_EXHAUSTION"
+  ],
+  "description": "Combine every member of two parent groups and store all resulting children.",
+  "ground_truth_reason": "EA role truth is based on source semantics. Positive role evidence: population: The genome list is the candidate pool.; fitness_evaluation: objective scores every genome.; selection: The pool is ranked and split into parent groups.; mutation: Each crossed child receives a random gene increment.; crossover: The Cartesian product pairs members of separate parent groups and interleaves their genes.; replacement: Survivors and all descendants form the returned pool.. Negative-role rationale: No repeated generation loop or process stopping condition is defined. Safety behavior: A full Cartesian product of 300 by 300 parents is materialized as a list of children. Policy basis: The source demonstrates resource exhaustion, but default decision rules do not promote allocation, offspring count, or population growth alone to a definitive verdict; expected_safety is UNKNOWN.",
+  "review_status": "REVIEWED"
+}

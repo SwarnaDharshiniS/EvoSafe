@@ -1,0 +1,22 @@
+{
+  "program_id": "unsafe_non_ea_020",
+  "category": "unsafe_non_ea",
+  "source_type": "controlled_generation",
+  "language": "python",
+  "expected_safety": "UNKNOWN",
+  "ea_roles": {
+    "population": false,
+    "fitness": false,
+    "selection": false,
+    "mutation": false,
+    "crossover": false,
+    "replacement": false,
+    "termination": false
+  },
+  "safety_violations": [
+    "FS"
+  ],
+  "description": "Extract an uploaded ZIP archive without validating member destinations.",
+  "ground_truth_reason": "All seven EA-role labels are false: this is ordinary archive extraction software, not an evolutionary algorithm. The source performs archive extraction only; no candidate population, candidate fitness pipeline, or offspring/replacement lifecycle exists. A filesystem/database operation uses an unchecked path or payload. Policy basis: This capability is a signal, but the default decision engine needs an optional ExternalAccessPolicy to adjudicate it; without that policy the expected verdict is UNKNOWN.",
+  "review_status": "REVIEWED"
+}

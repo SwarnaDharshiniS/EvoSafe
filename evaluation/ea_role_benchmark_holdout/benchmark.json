@@ -1,0 +1,322 @@
+{
+  "schema_version": "1.0",
+  "name": "EvoSafe held-out seven-role EA evaluation benchmark",
+  "description": "Independently constructed evaluation set for the frozen EA inference v1 detector. Programs and labels were written before the detector was run on any of them; labels are locked by labels.lock.json.",
+  "split": "held_out",
+  "frozen_detector_reference": "../ea_role_benchmark/frozen_v1.json",
+  "labeling_guidelines": [
+    "A role is positive iff the source file itself implements it: inline logic, a helper defined in the file, or a callable defined in the file and supplied to an engine, registry, or dispatch table.",
+    "Behaviour hidden inside an external framework or unresolved call is negative; configuration values such as num_generations are not termination logic.",
+    "Choosing survivors (e.g. min/sort to decide what is removed or kept) may make both selection and replacement positive.",
+    "Ground truth is human semantic judgment and may use names and docstrings; the detector is not expected to rely on names alone."
+  ],
+  "role_order": ["population", "fitness_evaluation", "selection", "mutation", "crossover", "replacement", "termination"],
+  "programs": [
+    {
+      "name": "d01_direct_while_convergence", "path": "programs/d01_direct_while_convergence.py", "category": "direct_ea",
+      "ground_truth": {"population": true, "fitness_evaluation": true, "selection": true, "mutation": true, "crossover": true, "replacement": true, "termination": true},
+      "positive_rationale": {"population": "population is a list of bit-list genomes iterated each generation.", "fitness_evaluation": "sum(ind) scores each genome.", "selection": "Scored genomes are sorted and the top four kept as parents.", "mutation": "A random bit of each child is flipped.", "crossover": "Children join a prefix of one parent and suffix of the next.", "replacement": "population is reassigned to parents + children.", "termination": "while best < 6 stops on reaching the optimum."},
+      "negative_rationale": {}
+    },
+    {
+      "name": "d02_direct_class_based", "path": "programs/d02_direct_class_based.py", "category": "direct_ea",
+      "ground_truth": {"population": true, "fitness_evaluation": true, "selection": true, "mutation": true, "crossover": false, "replacement": true, "termination": true},
+      "positive_rationale": {"population": "self.pool holds the candidate genomes.", "fitness_evaluation": "Search.score sums a genome and is used as the ranking key.", "selection": "sorted(..., key=self.score)[:2] keeps the elite.", "mutation": "A copied genome has a gene overwritten to form offspring.", "replacement": "self.pool is reassigned to elite + offspring.", "termination": "Generations are bounded by range(20)."},
+      "negative_rationale": {"crossover": "Offspring derive from a single elite genome; no two parents are combined."}
+    },
+    {
+      "name": "d03_direct_numpy_es", "path": "programs/d03_direct_numpy_es.py", "category": "direct_ea",
+      "ground_truth": {"population": true, "fitness_evaluation": true, "selection": true, "mutation": true, "crossover": false, "replacement": true, "termination": true},
+      "positive_rationale": {"population": "pop is a 10x3 array of candidate vectors.", "fitness_evaluation": "np.sum(pop ** 2, axis=1) scores every row.", "selection": "argsort order selects the five best rows as parents.", "mutation": "Gaussian noise is added to parents to create kids.", "replacement": "pop is rebuilt from parents and kids via vstack.", "termination": "Generations are bounded by range(50)."},
+      "negative_rationale": {"crossover": "Each kid comes from one parent plus noise; no recombination."}
+    },
+    {
+      "name": "d04_direct_dict_individuals", "path": "programs/d04_direct_dict_individuals.py", "category": "direct_ea",
+      "ground_truth": {"population": true, "fitness_evaluation": true, "selection": true, "mutation": false, "crossover": true, "replacement": true, "termination": true},
+      "positive_rationale": {"population": "pop is a list of dict individuals holding genes.", "fitness_evaluation": "ind['fitness'] is computed from the genes.", "selection": "pop is sorted by fitness and the top five survive.", "crossover": "Uniform crossover picks each gene from ind or mate.", "replacement": "pop is reassigned to survivors + newborn.", "termination": "Generations are bounded by range(30)."},
+      "negative_rationale": {"mutation": "Genes are only inherited; no gene is perturbed or overwritten after crossover."}
+    },
+    {
+      "name": "h01_helper_chain_mutation", "path": "programs/h01_helper_chain_mutation.py", "category": "helper_chain",
+      "ground_truth": {"population": true, "fitness_evaluation": true, "selection": false, "mutation": true, "crossover": false, "replacement": false, "termination": false},
+      "positive_rationale": {"population": "population is a list of genomes iterated in a loop.", "fitness_evaluation": "sum(genome) scores each genome.", "mutation": "mutate copies the genome and flip() inverts a random bit through a second helper."},
+      "negative_rationale": {"selection": "No candidate is chosen over another.", "crossover": "No two genomes are combined.", "replacement": "The population is never rebuilt.", "termination": "There is no generation loop or stop condition."}
+    },
+    {
+      "name": "h02_helper_chain_fitness", "path": "programs/h02_helper_chain_fitness.py", "category": "helper_chain",
+      "ground_truth": {"population": true, "fitness_evaluation": true, "selection": false, "mutation": false, "crossover": false, "replacement": false, "termination": false},
+      "positive_rationale": {"population": "population is a list of genomes iterated in a comprehension.", "fitness_evaluation": "evaluate -> objective(decode(genome)) scores each genome through three helpers."},
+      "negative_rationale": {"selection": "Scores are computed but never used to choose candidates.", "mutation": "decode builds a derived value list for scoring; the genome is not varied.", "crossover": "No two genomes are combined.", "replacement": "The population is never rebuilt.", "termination": "There is no generation loop."}
+    },
+    {
+      "name": "h03_helper_chain_crossover_replace", "path": "programs/h03_helper_chain_crossover_replace.py", "category": "helper_chain",
+      "ground_truth": {"population": true, "fitness_evaluation": true, "selection": true, "mutation": false, "crossover": true, "replacement": true, "termination": true},
+      "positive_rationale": {"population": "pool is the list of genomes evolved by next_generation.", "fitness_evaluation": "pool.sort(key=sum) scores genomes by sum.", "selection": "The two best genomes after sorting become parents.", "crossover": "recombine -> splice joins two parents at a random cut.", "replacement": "pool is reassigned to the helper-returned parents + child.", "termination": "Generations are bounded by range(10)."},
+      "negative_rationale": {"mutation": "No gene is perturbed; the child is a pure recombination."}
+    },
+    {
+      "name": "a01_multilevel_population_alias", "path": "programs/a01_multilevel_population_alias.py", "category": "alias",
+      "ground_truth": {"population": true, "fitness_evaluation": true, "selection": true, "mutation": false, "crossover": false, "replacement": false, "termination": false},
+      "positive_rationale": {"population": "initial -> pool -> current -> alias_of_alias all name the candidate list.", "fitness_evaluation": "cost is a per-individual sum of squares.", "selection": "The aliased list is sorted by cost and sliced to the two best."},
+      "negative_rationale": {"mutation": "No candidate is modified.", "crossover": "No candidates are combined.", "replacement": "elite is a new name; the population is not replaced.", "termination": "There is no generation loop."}
+    },
+    {
+      "name": "a02_candidate_alias_mutation", "path": "programs/a02_candidate_alias_mutation.py", "category": "alias",
+      "ground_truth": {"population": true, "fitness_evaluation": true, "selection": false, "mutation": true, "crossover": false, "replacement": false, "termination": false},
+      "positive_rationale": {"population": "population is a list of candidate vectors iterated as member.", "fitness_evaluation": "score is computed from each member.", "mutation": "same, an alias of view and member, has a gene scaled in place."},
+      "negative_rationale": {"selection": "No candidate is chosen.", "crossover": "No two candidates are combined.", "replacement": "The population is not rebuilt.", "termination": "There is no generation loop."}
+    },
+    {
+      "name": "a03_offspring_alias_replacement", "path": "programs/a03_offspring_alias_replacement.py", "category": "alias",
+      "ground_truth": {"population": true, "fitness_evaluation": true, "selection": false, "mutation": false, "crossover": false, "replacement": true, "termination": false},
+      "positive_rationale": {"population": "pop is a list of candidates iterated as p.", "fitness_evaluation": "sum(p) scores each candidate.", "replacement": "pop[:] is overwritten with next_pop, an alias of offspring."},
+      "negative_rationale": {"selection": "No candidate is chosen by quality.", "mutation": "No candidate is altered.", "crossover": "Offspring are literals, not combinations of parents.", "termination": "There is no generation loop."}
+    },
+    {
+      "name": "c01_uniform_crossover", "path": "programs/c01_uniform_crossover.py", "category": "crossover",
+      "ground_truth": {"population": true, "fitness_evaluation": true, "selection": false, "mutation": false, "crossover": true, "replacement": false, "termination": false},
+      "positive_rationale": {"population": "population is a list of bit genomes.", "fitness_evaluation": "sum(genome) scores each genome.", "crossover": "child picks each gene from mother or father uniformly at random."},
+      "negative_rationale": {"selection": "Parents are fixed indices, not chosen by quality.", "mutation": "No gene is perturbed.", "replacement": "The population is not rebuilt.", "termination": "There is no generation loop."}
+    },
+    {
+      "name": "c02_blend_crossover_helper", "path": "programs/c02_blend_crossover_helper.py", "category": "crossover",
+      "ground_truth": {"population": true, "fitness_evaluation": true, "selection": false, "mutation": false, "crossover": true, "replacement": false, "termination": false},
+      "positive_rationale": {"population": "population is a list of real vectors.", "fitness_evaluation": "loss is a per-vector sum of squares.", "crossover": "blend(x, y) arithmetically combines two adjacent population members."},
+      "negative_rationale": {"selection": "Parents are adjacent indices, not chosen by quality.", "mutation": "No random perturbation is applied.", "replacement": "offspring never replaces population.", "termination": "There is no generation loop."}
+    },
+    {
+      "name": "c03_single_point_numpy", "path": "programs/c03_single_point_numpy.py", "category": "crossover",
+      "ground_truth": {"population": true, "fitness_evaluation": true, "selection": false, "mutation": false, "crossover": true, "replacement": false, "termination": false},
+      "positive_rationale": {"population": "pop is a 6x5 array of candidate rows.", "fitness_evaluation": "pop.sum(axis=1) scores every row.", "crossover": "np.concatenate joins p1[:cut] and p2[cut:]."},
+      "negative_rationale": {"selection": "Rows 0 and 1 are fixed, not chosen by fitness.", "mutation": "No gene is perturbed.", "replacement": "pop is never rebuilt.", "termination": "There is no generation loop."}
+    },
+    {
+      "name": "c04_crossover_method", "path": "programs/c04_crossover_method.py", "category": "crossover",
+      "ground_truth": {"population": true, "fitness_evaluation": true, "selection": false, "mutation": false, "crossover": true, "replacement": false, "termination": false},
+      "positive_rationale": {"population": "population is a list of Genome objects.", "fitness_evaluation": "g.score = sum(g.genes) scores each genome.", "crossover": "Genome.cross(other) builds a child from halves of two genomes."},
+      "negative_rationale": {"selection": "Parents are fixed indices.", "mutation": "No gene is perturbed.", "replacement": "The population is not rebuilt.", "termination": "There is no generation loop."}
+    },
+    {
+      "name": "m01_gaussian_inplace", "path": "programs/m01_gaussian_inplace.py", "category": "mutation",
+      "ground_truth": {"population": true, "fitness_evaluation": true, "selection": false, "mutation": true, "crossover": false, "replacement": false, "termination": false},
+      "positive_rationale": {"population": "population is a list of real vectors.", "fitness_evaluation": "energy is a per-vector sum of squares.", "mutation": "Every gene receives Gaussian noise in place via vec[i] +=."},
+      "negative_rationale": {"selection": "No candidate is chosen.", "crossover": "No candidates are combined.", "replacement": "The population is not rebuilt.", "termination": "There is no generation loop; range loops only index genes."}
+    },
+    {
+      "name": "m02_attribute_mutation", "path": "programs/m02_attribute_mutation.py", "category": "mutation",
+      "ground_truth": {"population": true, "fitness_evaluation": true, "selection": false, "mutation": true, "crossover": false, "replacement": false, "termination": false},
+      "positive_rationale": {"population": "agents is a list of Agent candidates.", "fitness_evaluation": "agent.score is computed from agent attributes.", "mutation": "agent.speed is randomly rescaled in place."},
+      "negative_rationale": {"selection": "No agent is chosen.", "crossover": "No agents are combined.", "replacement": "The agent list is not rebuilt.", "termination": "There is no generation loop."}
+    },
+    {
+      "name": "m03_swap_mutation_copy", "path": "programs/m03_swap_mutation_copy.py", "category": "mutation",
+      "ground_truth": {"population": true, "fitness_evaluation": true, "selection": false, "mutation": true, "crossover": false, "replacement": false, "termination": false},
+      "positive_rationale": {"population": "tours is a list of permutation candidates.", "fitness_evaluation": "length scores each tour.", "mutation": "Two positions of a copied tour are swapped."},
+      "negative_rationale": {"selection": "random.sample picks gene positions, not candidates; tours[0] is fixed.", "crossover": "Only one tour is involved.", "replacement": "tours is not rebuilt.", "termination": "There is no generation loop."}
+    },
+    {
+      "name": "m04_perturb_helper", "path": "programs/m04_perturb_helper.py", "category": "mutation",
+      "ground_truth": {"population": true, "fitness_evaluation": true, "selection": false, "mutation": true, "crossover": false, "replacement": false, "termination": false},
+      "positive_rationale": {"population": "population is a list of candidate solutions.", "fitness_evaluation": "cost is computed per solution.", "mutation": "perturb returns a uniformly perturbed copy of a solution."},
+      "negative_rationale": {"selection": "No solution is chosen.", "crossover": "No solutions are combined.", "replacement": "The population is not rebuilt.", "termination": "There is no generation loop."}
+    },
+    {
+      "name": "s01_tournament", "path": "programs/s01_tournament.py", "category": "selection",
+      "ground_truth": {"population": true, "fitness_evaluation": true, "selection": true, "mutation": false, "crossover": false, "replacement": false, "termination": false},
+      "positive_rationale": {"population": "population is a list of candidate vectors.", "fitness_evaluation": "scores holds sum(p) per candidate.", "selection": "tournament samples k contestants and returns the best by score."},
+      "negative_rationale": {"mutation": "No candidate is altered.", "crossover": "No candidates are combined.", "replacement": "The population is not rebuilt.", "termination": "range(4) repeats parent draws; it is not a generation loop."}
+    },
+    {
+      "name": "s02_roulette", "path": "programs/s02_roulette.py", "category": "selection",
+      "ground_truth": {"population": true, "fitness_evaluation": true, "selection": true, "mutation": false, "crossover": false, "replacement": false, "termination": false},
+      "positive_rationale": {"population": "population is a list of bit genomes.", "fitness_evaluation": "weights are sum(p) + 1 per genome.", "selection": "random.choices draws parents proportionally to weights."},
+      "negative_rationale": {"mutation": "No genome is altered.", "crossover": "No genomes are combined.", "replacement": "The population is not rebuilt.", "termination": "There is no generation loop."}
+    },
+    {
+      "name": "s03_filter_threshold", "path": "programs/s03_filter_threshold.py", "category": "selection",
+      "ground_truth": {"population": true, "fitness_evaluation": true, "selection": true, "mutation": false, "crossover": false, "replacement": false, "termination": false},
+      "positive_rationale": {"population": "population is a list of candidate vectors.", "fitness_evaluation": "sum(p) scores each candidate.", "selection": "Candidates with sum above 0.6 are kept as viable."},
+      "negative_rationale": {"mutation": "No candidate is altered.", "crossover": "No candidates are combined.", "replacement": "viable is a new name; the population is not replaced.", "termination": "There is no generation loop."}
+    },
+    {
+      "name": "s04_heapq_nlargest", "path": "programs/s04_heapq_nlargest.py", "category": "selection",
+      "ground_truth": {"population": true, "fitness_evaluation": true, "selection": true, "mutation": false, "crossover": false, "replacement": false, "termination": false},
+      "positive_rationale": {"population": "population is a list of candidates.", "fitness_evaluation": "merit is c[0] * c[1] per candidate.", "selection": "heapq.nlargest keeps the two best by merit."},
+      "negative_rationale": {"mutation": "No candidate is altered.", "crossover": "No candidates are combined.", "replacement": "The population is not replaced.", "termination": "There is no generation loop."}
+    },
+    {
+      "name": "r01_reassignment_elitism", "path": "programs/r01_reassignment_elitism.py", "category": "replacement",
+      "ground_truth": {"population": true, "fitness_evaluation": true, "selection": true, "mutation": false, "crossover": false, "replacement": true, "termination": false},
+      "positive_rationale": {"population": "population is a list of candidates.", "fitness_evaluation": "sum(ind) scores each candidate.", "selection": "sorted(..., key=sum)[-1:] keeps the best as elite.", "replacement": "population is reassigned to elite + children."},
+      "negative_rationale": {"mutation": "No candidate is altered.", "crossover": "children are literals, not combinations.", "termination": "There is no generation loop."}
+    },
+    {
+      "name": "r02_steady_state_remove_append", "path": "programs/r02_steady_state_remove_append.py", "category": "replacement",
+      "ground_truth": {"population": true, "fitness_evaluation": true, "selection": true, "mutation": false, "crossover": false, "replacement": true, "termination": false},
+      "positive_rationale": {"population": "population is a list of candidates.", "fitness_evaluation": "sum(ind) scores each candidate.", "selection": "min(population, key=sum) chooses the worst for removal.", "replacement": "The worst is removed and a newcomer appended."},
+      "negative_rationale": {"mutation": "No candidate is altered.", "crossover": "newcomer is a literal.", "termination": "There is no generation loop."}
+    },
+    {
+      "name": "r03_index_replacement", "path": "programs/r03_index_replacement.py", "category": "replacement",
+      "ground_truth": {"population": true, "fitness_evaluation": true, "selection": true, "mutation": false, "crossover": false, "replacement": true, "termination": false},
+      "positive_rationale": {"population": "population is a list of candidates.", "fitness_evaluation": "scores holds p[0] per candidate.", "selection": "scores.index(min(scores)) chooses the worst slot.", "replacement": "population[worst] is overwritten with a new random candidate."},
+      "negative_rationale": {"mutation": "The worst slot is replaced, not varied.", "crossover": "No candidates are combined.", "termination": "There is no generation loop."}
+    },
+    {
+      "name": "t01_bounded_generations", "path": "programs/t01_bounded_generations.py", "category": "termination",
+      "ground_truth": {"population": true, "fitness_evaluation": true, "selection": false, "mutation": true, "crossover": false, "replacement": false, "termination": true},
+      "positive_rationale": {"population": "population is a list of candidates.", "fitness_evaluation": "loss is computed per candidate.", "mutation": "Each candidate's gene is updated in place every epoch.", "termination": "The generation loop is bounded by range(100)."},
+      "negative_rationale": {"selection": "No candidate is chosen.", "crossover": "No candidates are combined.", "replacement": "The population is not rebuilt."}
+    },
+    {
+      "name": "t02_stagnation", "path": "programs/t02_stagnation.py", "category": "termination",
+      "ground_truth": {"population": true, "fitness_evaluation": true, "selection": false, "mutation": true, "crossover": false, "replacement": false, "termination": true},
+      "positive_rationale": {"population": "population is a list of candidates.", "fitness_evaluation": "(ind[0] - 0.3) ** 2 scores each candidate.", "mutation": "Gaussian noise is added to each candidate in place.", "termination": "while stale < 10 stops after ten non-improving generations."},
+      "negative_rationale": {"selection": "min only tracks the best value; no candidate is chosen.", "crossover": "No candidates are combined.", "replacement": "The population is not rebuilt."}
+    },
+    {
+      "name": "t03_helper_convergence", "path": "programs/t03_helper_convergence.py", "category": "termination",
+      "ground_truth": {"population": true, "fitness_evaluation": false, "selection": false, "mutation": true, "crossover": false, "replacement": false, "termination": true},
+      "positive_rationale": {"population": "population is a list of candidates.", "mutation": "ind[0] is scaled in place each iteration.", "termination": "while not converged(history) stops when the helper reports convergence."},
+      "negative_rationale": {"fitness_evaluation": "Only a population-wide aggregate is recorded; no candidate is individually scored.", "selection": "No candidate is chosen.", "crossover": "No candidates are combined.", "replacement": "The population is not rebuilt."}
+    },
+    {
+      "name": "g01_registry_neutral_names", "path": "programs/g01_registry_neutral_names.py", "category": "registration",
+      "ground_truth": {"population": true, "fitness_evaluation": true, "selection": false, "mutation": true, "crossover": false, "replacement": false, "termination": false},
+      "positive_rationale": {"population": "population is a list of candidates passed to registered operators.", "fitness_evaluation": "helper_b, registered as 'measure', scores a candidate.", "mutation": "helper_a, registered as 'transform', negates a gene in place."},
+      "negative_rationale": {"selection": "No candidate is chosen.", "crossover": "No candidates are combined.", "replacement": "The population is not rebuilt.", "termination": "There is no generation loop."}
+    },
+    {
+      "name": "g02_misleading_ea_keys_non_ea", "path": "programs/g02_misleading_ea_keys_non_ea.py", "category": "registration_non_ea",
+      "ground_truth": {"population": false, "fitness_evaluation": false, "selection": false, "mutation": false, "crossover": false, "replacement": false, "termination": false},
+      "positive_rationale": {},
+      "negative_rationale": {"population": "Strings and lines are processed; there is no candidate collection.", "fitness_evaluation": "Nothing is scored.", "selection": "Filtering empty lines is ordinary text cleanup.", "mutation": "upper() formats a message; no candidate is varied.", "crossover": "Nothing is combined.", "replacement": "Nothing is replaced.", "termination": "There is no loop."}
+    },
+    {
+      "name": "g03_dict_dispatch_mutation", "path": "programs/g03_dict_dispatch_mutation.py", "category": "registration",
+      "ground_truth": {"population": true, "fitness_evaluation": true, "selection": false, "mutation": true, "crossover": false, "replacement": false, "termination": false},
+      "positive_rationale": {"population": "population is a list of vectors.", "fitness_evaluation": "sum(vec) scores each vector.", "mutation": "ops['mut'] dispatches to jitter, which perturbs a copied vector."},
+      "negative_rationale": {"selection": "No vector is chosen.", "crossover": "No vectors are combined.", "replacement": "The population is not rebuilt.", "termination": "There is no generation loop."}
+    },
+    {
+      "name": "f01_engine_callbacks", "path": "programs/f01_engine_callbacks.py", "category": "framework",
+      "ground_truth": {"population": false, "fitness_evaluation": true, "selection": false, "mutation": true, "crossover": true, "replacement": false, "termination": false},
+      "positive_rationale": {"fitness_evaluation": "fitness_func scores a solution and is supplied to Engine.", "mutation": "mutation_func adds noise to offspring genes and is supplied to Engine.", "crossover": "crossover_func joins halves of two parents and is supplied to Engine."},
+      "negative_rationale": {"population": "The population lives inside the external engine.", "selection": "Parent selection is framework-internal.", "replacement": "Population replacement is framework-internal.", "termination": "num_generations is configuration; the loop is framework-internal."}
+    },
+    {
+      "name": "f02_engine_parent_selection", "path": "programs/f02_engine_parent_selection.py", "category": "framework",
+      "ground_truth": {"population": false, "fitness_evaluation": true, "selection": true, "mutation": false, "crossover": false, "replacement": false, "termination": false},
+      "positive_rationale": {"fitness_evaluation": "fitness_func scores a solution and is supplied to Engine.", "selection": "parent_selection_func returns the top-ranked solutions and is supplied to Engine."},
+      "negative_rationale": {"population": "The population lives inside the external engine.", "mutation": "Mutation is framework-internal.", "crossover": "Crossover is framework-internal.", "replacement": "Replacement is framework-internal.", "termination": "num_generations is configuration only."}
+    },
+    {
+      "name": "f03_engine_config_only", "path": "programs/f03_engine_config_only.py", "category": "framework",
+      "ground_truth": {"population": false, "fitness_evaluation": false, "selection": false, "mutation": false, "crossover": false, "replacement": false, "termination": false},
+      "positive_rationale": {},
+      "negative_rationale": {"population": "No population is defined in source.", "fitness_evaluation": "No fitness function is defined in source.", "selection": "No selection logic in source.", "mutation": "mutation_percent_genes is configuration only.", "crossover": "No crossover logic in source.", "replacement": "No replacement logic in source.", "termination": "num_generations is configuration only."}
+    },
+    {
+      "name": "n01_matrix_multiply", "path": "programs/n01_matrix_multiply.py", "category": "non_ea", "safety_expectation": "SAFE",
+      "ground_truth": {"population": false, "fitness_evaluation": false, "selection": false, "mutation": false, "crossover": false, "replacement": false, "termination": false},
+      "positive_rationale": {},
+      "negative_rationale": "Plain matrix multiplication: index loops accumulate products; nothing evolves."
+    },
+    {
+      "name": "n02_image_blur", "path": "programs/n02_image_blur.py", "category": "non_ea",
+      "ground_truth": {"population": false, "fitness_evaluation": false, "selection": false, "mutation": false, "crossover": false, "replacement": false, "termination": false},
+      "positive_rationale": {},
+      "negative_rationale": "Image box blur: pixel writes are convolution, not candidate variation."
+    },
+    {
+      "name": "n03_sgd_training", "path": "programs/n03_sgd_training.py", "category": "non_ea",
+      "ground_truth": {"population": false, "fitness_evaluation": false, "selection": false, "mutation": false, "crossover": false, "replacement": false, "termination": false},
+      "positive_rationale": {},
+      "negative_rationale": "Single-model gradient descent: data rows are not candidates and weight updates are not mutation."
+    },
+    {
+      "name": "n04_event_callbacks", "path": "programs/n04_event_callbacks.py", "category": "non_ea",
+      "ground_truth": {"population": false, "fitness_evaluation": false, "selection": false, "mutation": false, "crossover": false, "replacement": false, "termination": false},
+      "positive_rationale": {},
+      "negative_rationale": "Ordinary publish/subscribe callbacks with no optimisation process."
+    },
+    {
+      "name": "n05_record_processing", "path": "programs/n05_record_processing.py", "category": "non_ea",
+      "ground_truth": {"population": false, "fitness_evaluation": false, "selection": false, "mutation": false, "crossover": false, "replacement": false, "termination": false},
+      "positive_rationale": {},
+      "negative_rationale": "Records are annotated and reported; sorting by age is reporting, not evolutionary selection."
+    },
+    {
+      "name": "n06_survey_sampling", "path": "programs/n06_survey_sampling.py", "category": "non_ea",
+      "ground_truth": {"population": false, "fitness_evaluation": false, "selection": false, "mutation": false, "crossover": false, "replacement": false, "termination": false},
+      "positive_rationale": {},
+      "negative_rationale": "Random survey sampling with no scoring or evolution."
+    },
+    {
+      "name": "n07_list_splice", "path": "programs/n07_list_splice.py", "category": "non_ea",
+      "ground_truth": {"population": false, "fitness_evaluation": false, "selection": false, "mutation": false, "crossover": false, "replacement": false, "termination": false},
+      "positive_rationale": {},
+      "negative_rationale": "Two ordinary lists are spliced; they are data, not parent candidates."
+    },
+    {
+      "name": "n08_tensor_batch", "path": "programs/n08_tensor_batch.py", "category": "non_ea",
+      "ground_truth": {"population": false, "fitness_evaluation": false, "selection": false, "mutation": false, "crossover": false, "replacement": false, "termination": false},
+      "positive_rationale": {},
+      "negative_rationale": "Batched linear-layer training: batch rows are data and the weight update is a gradient step."
+    },
+    {
+      "name": "n09_cache_eviction", "path": "programs/n09_cache_eviction.py", "category": "non_ea",
+      "ground_truth": {"population": false, "fitness_evaluation": false, "selection": false, "mutation": false, "crossover": false, "replacement": false, "termination": false},
+      "positive_rationale": {},
+      "negative_rationale": "FIFO cache eviction: slice assignment updates a cache, not a population."
+    },
+    {
+      "name": "x01_unresolved_transform", "path": "programs/x01_unresolved_transform.py", "category": "ambiguous",
+      "ground_truth": {"population": false, "fitness_evaluation": false, "selection": false, "mutation": false, "crossover": false, "replacement": false, "termination": false},
+      "positive_rationale": {},
+      "negative_rationale": "load_population and transform are unresolved; no role is implemented in this source."
+    },
+    {
+      "name": "x02_getattr_dispatch", "path": "programs/x02_getattr_dispatch.py", "category": "ambiguous",
+      "ground_truth": {"population": true, "fitness_evaluation": true, "selection": false, "mutation": true, "crossover": false, "replacement": false, "termination": false},
+      "positive_rationale": {"population": "population is a list of genomes.", "fitness_evaluation": "sum(genome) scores each genome.", "mutation": "The getattr-resolved operator is Operators.bitflip, which flips a gene in place."},
+      "negative_rationale": {"selection": "random.choice picks an operator name, not a candidate.", "crossover": "No genomes are combined.", "replacement": "The population is not rebuilt.", "termination": "There is no generation loop."}
+    },
+    {
+      "name": "x03_eval_built_operator", "path": "programs/x03_eval_built_operator.py", "category": "ambiguous", "safety_expectation": "UNSAFE",
+      "ground_truth": {"population": true, "fitness_evaluation": true, "selection": false, "mutation": true, "crossover": false, "replacement": false, "termination": false},
+      "positive_rationale": {"population": "population is a list of genomes.", "fitness_evaluation": "rank is computed from each genome.", "mutation": "An eval-built reversal operator produces a mutant from each genome."},
+      "negative_rationale": {"selection": "No genome is chosen.", "crossover": "No genomes are combined.", "replacement": "The population is not rebuilt.", "termination": "There is no generation loop."}
+    },
+    {
+      "name": "sf01_safe_ea", "path": "programs/sf01_safe_ea.py", "category": "safety", "safety_expectation": "SAFE",
+      "ground_truth": {"population": true, "fitness_evaluation": true, "selection": true, "mutation": true, "crossover": false, "replacement": true, "termination": true},
+      "positive_rationale": {"population": "population is a list of bit genomes.", "fitness_evaluation": "sort(key=sum) scores genomes.", "selection": "After sorting, the best genome is chosen as the variation source.", "mutation": "A copy of best has one gene set.", "replacement": "population[-1] (the worst) is overwritten by the variant.", "termination": "Generations are bounded by range(10)."},
+      "negative_rationale": {"crossover": "Only one parent is used."}
+    },
+    {
+      "name": "sf02_unsafe_ea_eval", "path": "programs/sf02_unsafe_ea_eval.py", "category": "safety", "safety_expectation": "UNSAFE",
+      "ground_truth": {"population": true, "fitness_evaluation": true, "selection": true, "mutation": false, "crossover": false, "replacement": true, "termination": true},
+      "positive_rationale": {"population": "population is a list of candidates.", "fitness_evaluation": "A user expression is evaluated per candidate as fitness.", "selection": "Scored candidates are sorted and the best three kept.", "replacement": "population is reassigned to the duplicated survivors.", "termination": "Generations are bounded by range(5)."},
+      "negative_rationale": {"mutation": "Survivors are duplicated unchanged.", "crossover": "No candidates are combined."}
+    },
+    {
+      "name": "sf03_unsafe_ea_subprocess", "path": "programs/sf03_unsafe_ea_subprocess.py", "category": "safety", "safety_expectation": "UNSAFE",
+      "ground_truth": {"population": true, "fitness_evaluation": true, "selection": false, "mutation": true, "crossover": false, "replacement": false, "termination": true},
+      "positive_rationale": {"population": "population is a list of candidates.", "fitness_evaluation": "cost is computed per candidate.", "mutation": "Uniform noise is added to each candidate in place.", "termination": "Generations are bounded by range(5)."},
+      "negative_rationale": {"selection": "No candidate is chosen.", "crossover": "No candidates are combined.", "replacement": "The population is not rebuilt."}
+    },
+    {
+      "name": "sf04_safe_non_ea", "path": "programs/sf04_safe_non_ea.py", "category": "safety", "safety_expectation": "SAFE",
+      "ground_truth": {"population": false, "fitness_evaluation": false, "selection": false, "mutation": false, "crossover": false, "replacement": false, "termination": false},
+      "positive_rationale": {},
+      "negative_rationale": "Plain string formatting with no optimisation process."
+    },
+    {
+      "name": "sf05_unsafe_non_ea", "path": "programs/sf05_unsafe_non_ea.py", "category": "safety", "safety_expectation": "UNSAFE",
+      "ground_truth": {"population": false, "fitness_evaluation": false, "selection": false, "mutation": false, "crossover": false, "replacement": false, "termination": false},
+      "positive_rationale": {},
+      "negative_rationale": "Executes user-supplied code; no EA structure."
+    }
+  ]
+}

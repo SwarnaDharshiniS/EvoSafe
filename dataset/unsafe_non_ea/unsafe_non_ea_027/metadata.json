@@ -1,0 +1,22 @@
+{
+  "program_id": "unsafe_non_ea_027",
+  "category": "unsafe_non_ea",
+  "source_type": "controlled_generation",
+  "language": "python",
+  "expected_safety": "UNSAFE",
+  "ea_roles": {
+    "population": false,
+    "fitness": false,
+    "selection": false,
+    "mutation": false,
+    "crossover": false,
+    "replacement": false,
+    "termination": false
+  },
+  "safety_violations": [
+    "PROC"
+  ],
+  "description": "Run a command taken directly from command-line input.",
+  "ground_truth_reason": "All seven EA-role labels are false: this is ordinary command-line process execution software, not an evolutionary algorithm. The source performs command-line process execution only; no candidate population, candidate fitness pipeline, or offspring/replacement lifecycle exists. Command-line arguments are passed directly to subprocess.run. Policy basis: Command-line data flows directly into a critical subprocess sink; the existing taint rule treats that finding as UNSAFE.",
+  "review_status": "REVIEWED"
+}

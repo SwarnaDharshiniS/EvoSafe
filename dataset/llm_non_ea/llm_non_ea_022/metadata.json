@@ -1,0 +1,25 @@
+{
+  "program_id": "llm_non_ea_022",
+  "category": "llm_non_ea",
+  "source_type": "llm_generated",
+  "language": "python",
+  "expected_safety": "UNKNOWN",
+  "ea_roles": {
+    "population": false,
+    "fitness": false,
+    "selection": false,
+    "mutation": false,
+    "crossover": false,
+    "replacement": false,
+    "termination": false
+  },
+  "safety_violations": [
+    "FS"
+  ],
+  "description": "Write submitted archive members beneath a destination without checking paths.",
+  "generation_prompt": "Extract an uploaded ZIP archive into a destination directory.",
+  "style_note": "manual member-by-member extraction from archive metadata",
+  "dependencies": [],
+  "ground_truth_reason": "All seven EA-role labels are false. The program extracts operational archive members and does not evaluate or reproduce candidate solutions. It constructs destination paths directly from archive member names and writes them without checking that they remain beneath the destination. Filesystem capability findings require an optional ExternalAccessPolicy for a definitive default verdict, so expected_safety is UNKNOWN.",
+  "review_status": "REVIEWED"
+}

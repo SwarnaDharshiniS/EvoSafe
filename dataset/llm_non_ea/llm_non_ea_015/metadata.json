@@ -1,0 +1,25 @@
+{
+  "program_id": "llm_non_ea_015",
+  "category": "llm_non_ea",
+  "source_type": "llm_generated",
+  "language": "python",
+  "expected_safety": "CONDITIONALLY_SAFE",
+  "ea_roles": {
+    "population": false,
+    "fitness": false,
+    "selection": false,
+    "mutation": false,
+    "crossover": false,
+    "replacement": false,
+    "termination": false
+  },
+  "safety_violations": [
+    "UNBOUNDED_LOOP"
+  ],
+  "description": "Wait for a readiness callback without setting a deadline.",
+  "generation_prompt": "Write a readiness poller that backs off between checks.",
+  "style_note": "callback polling and exponential backoff",
+  "dependencies": [],
+  "ground_truth_reason": "All seven EA-role labels are false. The program performs ordinary readiness monitoring work on records, measurements, or model state; no candidate population is evaluated and reproduced. Scoring, ranking, record edits, model updates, or two-input joins in this program are ordinary application/data semantics rather than fitness-driven selection and reproduction. Safety behavior: A callback-controlled readiness loop has no deadline. Policy basis: The existing policy treats a potentially unbounded loop without a hard-unbounded marker as requiring review, yielding CONDITIONALLY_SAFE at medium risk.",
+  "review_status": "REVIEWED"
+}

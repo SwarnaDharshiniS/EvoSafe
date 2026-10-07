@@ -1,0 +1,24 @@
+{
+  "program_id": "llm_ea_029",
+  "category": "llm_ea",
+  "source_type": "llm_generated",
+  "language": "python",
+  "expected_safety": "UNKNOWN",
+  "ea_roles": {
+    "population": true,
+    "fitness": true,
+    "selection": true,
+    "mutation": true,
+    "crossover": false,
+    "replacement": true,
+    "termination": false
+  },
+  "safety_violations": [
+    "PROC"
+  ],
+  "description": "Start a separate evaluator process for every individual in a population.",
+  "generation_prompt": "Use a separate worker process to score every candidate in a generation.",
+  "style_note": "Popen worker batch",
+  "ground_truth_reason": "Ground truth is based on candidate flow and operations, not names. Positive evidence: population: a collection of candidate genomes is initialized and carried through the optimizer; fitness: a computation derives a score or loss from each candidate; selection: candidate-derived parents are chosen by ranking or top-k filtering; mutation: a candidate copy is changed to produce a new candidate; replacement: the active candidate collection is rebuilt or updated with selected parents and offspring. Negative evidence: no child structurally combines two distinct candidate inputs; the evolutionary process has no explicit generation or convergence stop condition. Prompt intent: Use a separate worker process to score every candidate in a generation. Policy basis: This capability is a signal, but the default decision engine needs an optional ExternalAccessPolicy to adjudicate it; without that policy the expected verdict is UNKNOWN.",
+  "review_status": "REVIEWED"
+}

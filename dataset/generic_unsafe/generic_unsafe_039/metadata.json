@@ -1,0 +1,23 @@
+{
+  "program_id": "generic_unsafe_039",
+  "category": "generic_unsafe",
+  "source_type": "controlled_generation",
+  "language": "python",
+  "expected_safety": "UNSAFE",
+  "ea_roles": {
+    "population": false,
+    "fitness": false,
+    "selection": false,
+    "mutation": false,
+    "crossover": false,
+    "replacement": false,
+    "termination": false
+  },
+  "safety_violations": [
+    "DYN",
+    "RESOURCE_EXHAUSTION"
+  ],
+  "description": "Generate a large source string and execute it dynamically.",
+  "ground_truth_reason": "The source has no evolutionary-algorithm roles. Intended safety behavior: A large generated source string is compiled and executed in-process. Policy basis: The existing decision policy treats dynamic-execution primitives as UNSAFE.",
+  "review_status": "REVIEWED"
+}

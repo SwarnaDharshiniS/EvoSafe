@@ -1,0 +1,2867 @@
+{
+  "benchmark_name": "EvoSafe controlled seven-role EA benchmark",
+  "detector_fingerprint": {
+    "analysis/ea_inference/_data_flow.py": "aa458724fc66f62c277cb86ee0d624c8378c93b8c3bc3f26068bbba554500163",
+    "analysis/ea_inference/_model.py": "da29dee22f926a7cd5b4dd744d2edfc3e4e5b72bd608fdb7ae391d3e49537dab",
+    "analysis/ea_inference/inference.py": "129f5073d2dccd7d185b68c47ee319f96bcf4404bd8df0fbe87e2a9115eedf70"
+  },
+  "manifest_sha256": "df7eb2077acc22cb82a1fe98273ec532f346f7fc041dca6b5a02fec06fdf6801",
+  "metrics": {
+    "macro_average": {
+      "f1": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "roles_included": 7
+    },
+    "per_role": {
+      "crossover": {
+        "f1": 1.0,
+        "fn": 0,
+        "fp": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "tn": 16,
+        "tp": 2
+      },
+      "fitness_evaluation": {
+        "f1": 1.0,
+        "fn": 0,
+        "fp": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "tn": 5,
+        "tp": 13
+      },
+      "mutation": {
+        "f1": 1.0,
+        "fn": 0,
+        "fp": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "tn": 10,
+        "tp": 8
+      },
+      "population": {
+        "f1": 1.0,
+        "fn": 0,
+        "fp": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "tn": 5,
+        "tp": 13
+      },
+      "replacement": {
+        "f1": 1.0,
+        "fn": 0,
+        "fp": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "tn": 13,
+        "tp": 5
+      },
+      "selection": {
+        "f1": 1.0,
+        "fn": 0,
+        "fp": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "tn": 10,
+        "tp": 8
+      },
+      "termination": {
+        "f1": 1.0,
+        "fn": 0,
+        "fp": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "tn": 14,
+        "tp": 4
+      }
+    }
+  },
+  "note": "These metrics apply only to this labeled benchmark. They are not corpus metrics and do not estimate generalization.",
+  "program_count": 18,
+  "programs": [
+    {
+      "category": "direct_ea",
+      "ground_truth": {
+        "crossover": true,
+        "fitness_evaluation": true,
+        "mutation": true,
+        "population": true,
+        "replacement": true,
+        "selection": true,
+        "termination": true
+      },
+      "path": "programs/direct_ea.py",
+      "predictions": {
+        "crossover": {
+          "confidence": "HIGH",
+          "detected": true,
+          "evidence": [
+            {
+              "ast_node": "BinOp",
+              "cfg_blocks": [
+                "<module>:loop_header@13",
+                "<module>:sequence@14"
+              ],
+              "col": 12,
+              "description": "A combined representation is constructed from at least two candidate sources.",
+              "end_col": 39,
+              "end_line": 14,
+              "kind": "multi_parent_recombination",
+              "line": 14,
+              "snippet": "parent_a[:1] + parent_b[1:]"
+            }
+          ],
+          "reason": "A combined representation is constructed from at least two candidate sources."
+        },
+        "fitness_evaluation": {
+          "confidence": "HIGH",
+          "detected": true,
+          "evidence": [
+            {
+              "ast_node": "Assign",
+              "cfg_blocks": [
+                "<module>:loop_header@5",
+                "<module>:sequence@6"
+              ],
+              "col": 4,
+              "description": "A computed value depends on a candidate passed to a call.",
+              "end_col": 35,
+              "end_line": 6,
+              "kind": "candidate_dependent_call",
+              "line": 6,
+              "snippet": "fitness_value = sum(individual)"
+            },
+            {
+              "ast_node": "Assign",
+              "cfg_blocks": [
+                "<module>:loop_header@17",
+                "<module>:loop_header@18",
+                "<module>:sequence@19"
+              ],
+              "col": 8,
+              "description": "A computed value depends on a candidate passed to a call.",
+              "end_col": 39,
+              "end_line": 19,
+              "kind": "candidate_dependent_call",
+              "line": 19,
+              "snippet": "fitness_value = sum(individual)"
+            }
+          ],
+          "reason": "A computed value depends on a candidate passed to a call."
+        },
+        "mutation": {
+          "confidence": "HIGH",
+          "detected": true,
+          "evidence": [
+            {
+              "ast_node": "AugAssign",
+              "cfg_blocks": [
+                "<module>:loop_header@9",
+                "<module>:sequence@10"
+              ],
+              "col": 4,
+              "description": "A candidate or its alias is modified through an element or attribute update.",
+              "end_col": 36,
+              "end_line": 11,
+              "kind": "candidate_modification",
+              "line": 11,
+              "snippet": "child[0] += random.randint(0, 1)"
+            }
+          ],
+          "reason": "A candidate or its alias is modified through an element or attribute update."
+        },
+        "population": {
+          "confidence": "HIGH",
+          "detected": true,
+          "evidence": [
+            {
+              "ast_node": "For",
+              "cfg_blocks": [
+                "<module>:loop_header@5"
+              ],
+              "col": 0,
+              "description": "A loop iterates a collection and uses each element in candidate evaluation or reproduction logic.",
+              "end_col": 35,
+              "end_line": 6,
+              "kind": "candidate_iteration",
+              "line": 5,
+              "snippet": "for individual in population:\n    fitness_value = sum(individual)"
+            },
+            {
+              "ast_node": "For",
+              "cfg_blocks": [
+                "<module>:loop_header@9"
+              ],
+              "col": 0,
+              "description": "A loop iterates a collection and uses each element in candidate evaluation or reproduction logic.",
+              "end_col": 27,
+              "end_line": 12,
+              "kind": "candidate_iteration",
+              "line": 9,
+              "snippet": "for individual in selected:\n    child = individual.copy()\n    child[0] += random.randint(0, 1)\n    offspring.append(child)"
+            },
+            {
+              "ast_node": "For",
+              "cfg_blocks": [
+                "<module>:loop_header@13"
+              ],
+              "col": 0,
+              "description": "A loop iterates a collection and uses each element in candidate evaluation or reproduction logic.",
+              "end_col": 27,
+              "end_line": 15,
+              "kind": "candidate_iteration",
+              "line": 13,
+              "snippet": "for parent_a, parent_b in zip(selected, selected[1:]):\n    child = parent_a[:1] + parent_b[1:]\n    offspring.append(child)"
+            },
+            {
+              "ast_node": "For",
+              "cfg_blocks": [
+                "<module>:loop_header@17",
+                "<module>:loop_header@18"
+              ],
+              "col": 4,
+              "description": "A loop iterates a collection and uses each element in candidate evaluation or reproduction logic.",
+              "end_col": 39,
+              "end_line": 19,
+              "kind": "candidate_iteration",
+              "line": 18,
+              "snippet": "for individual in population:\n    fitness_value = sum(individual)"
+            }
+          ],
+          "reason": "A loop iterates a collection and uses each element in candidate evaluation or reproduction logic."
+        },
+        "replacement": {
+          "confidence": "HIGH",
+          "detected": true,
+          "evidence": [
+            {
+              "ast_node": "Assign",
+              "cfg_blocks": [
+                "<module>:sequence@16"
+              ],
+              "col": 0,
+              "description": "A candidate collection is replaced by a newly composed collection.",
+              "end_col": 33,
+              "end_line": 16,
+              "kind": "population_reconstruction",
+              "line": 16,
+              "snippet": "population = selected + offspring"
+            }
+          ],
+          "reason": "A candidate collection is replaced by a newly composed collection."
+        },
+        "selection": {
+          "confidence": "HIGH",
+          "detected": true,
+          "evidence": [
+            {
+              "ast_node": "Call",
+              "cfg_blocks": [
+                "<module>:sequence@7"
+              ],
+              "col": 11,
+              "description": "A ranking, filtering, or sampling operation consumes an inferred candidate collection.",
+              "end_col": 52,
+              "end_line": 7,
+              "kind": "rank_or_filter",
+              "line": 7,
+              "snippet": "sorted(population, key=sum, reverse=True)"
+            }
+          ],
+          "reason": "A ranking, filtering, or sampling operation consumes an inferred candidate collection."
+        },
+        "termination": {
+          "confidence": "HIGH",
+          "detected": true,
+          "evidence": [
+            {
+              "ast_node": "For",
+              "cfg_blocks": [
+                "<module>:loop_header@17"
+              ],
+              "col": 0,
+              "description": "The evolutionary loop iterates a finite built-in range or literal collection.",
+              "end_col": 39,
+              "end_line": 19,
+              "kind": "loop_termination",
+              "line": 17,
+              "snippet": "for generation in range(3):\n    for individual in population:\n        fitness_value = sum(individual)"
+            }
+          ],
+          "reason": "The evolutionary loop iterates a finite built-in range or literal collection."
+        }
+      },
+      "program_name": "direct_ea",
+      "rationale": {
+        "crossover": "A child combines slices from two distinct parents.",
+        "fitness_evaluation": "Each candidate is scored by sum(candidate).",
+        "mutation": "A copied candidate gene is changed using a random value.",
+        "population": "A collection of candidate vectors is iterated and updated across generations.",
+        "replacement": "The old population is replaced by selected parents plus offspring.",
+        "selection": "Candidates are ranked by score and truncated to the best subset.",
+        "termination": "The generation process is bounded by range(3)."
+      },
+      "safety_expectation": null,
+      "safety_verdict": "SAFE",
+      "safety_verdict_unchanged": true,
+      "safety_verdict_without_ea": "SAFE"
+    },
+    {
+      "category": "helper_function_ea",
+      "ground_truth": {
+        "crossover": false,
+        "fitness_evaluation": true,
+        "mutation": true,
+        "population": true,
+        "replacement": false,
+        "selection": true,
+        "termination": false
+      },
+      "path": "programs/helper_function_ea.py",
+      "predictions": {
+        "crossover": {
+          "confidence": "LOW",
+          "detected": false,
+          "evidence": [],
+          "reason": null
+        },
+        "fitness_evaluation": {
+          "confidence": "MEDIUM",
+          "detected": true,
+          "evidence": [
+            {
+              "ast_node": "Call",
+              "cfg_blocks": [
+                "<module>:sequence@1",
+                "score:sequence@4"
+              ],
+              "col": 11,
+              "description": "The helper returns a call result whose arguments include candidate-derived values.",
+              "end_col": 25,
+              "end_line": 4,
+              "kind": "helper_fitness_evaluation",
+              "line": 4,
+              "snippet": "len(candidate)"
+            },
+            {
+              "ast_node": "Call",
+              "cfg_blocks": [
+                "<module>:loop_header@14",
+                "<module>:sequence@15"
+              ],
+              "col": 20,
+              "description": "Local helper 'score' receives values structurally linked to the EA role inputs.",
+              "end_col": 36,
+              "end_line": 15,
+              "kind": "helper_call_site",
+              "line": 15,
+              "snippet": "score(candidate)"
+            }
+          ],
+          "reason": "The helper returns a call result whose arguments include candidate-derived values."
+        },
+        "mutation": {
+          "confidence": "MEDIUM",
+          "detected": true,
+          "evidence": [
+            {
+              "ast_node": "Assign",
+              "cfg_blocks": [
+                "<module>:sequence@9",
+                "mutate:sequence@10"
+              ],
+              "col": 4,
+              "description": "The helper writes an element or attribute of its candidate argument.",
+              "end_col": 35,
+              "end_line": 10,
+              "kind": "helper_mutation",
+              "line": 10,
+              "snippet": "candidate[0] = 1 - candidate[0]"
+            },
+            {
+              "ast_node": "Call",
+              "cfg_blocks": [
+                "<module>:loop_header@17",
+                "<module>:sequence@18"
+              ],
+              "col": 12,
+              "description": "Local helper 'mutate' receives values structurally linked to the EA role inputs.",
+              "end_col": 36,
+              "end_line": 18,
+              "kind": "helper_call_site",
+              "line": 18,
+              "snippet": "mutate(candidate.copy())"
+            }
+          ],
+          "reason": "The helper writes an element or attribute of its candidate argument."
+        },
+        "population": {
+          "confidence": "HIGH",
+          "detected": true,
+          "evidence": [
+            {
+              "ast_node": "For",
+              "cfg_blocks": [
+                "<module>:loop_header@14"
+              ],
+              "col": 0,
+              "description": "A loop iterates a collection and uses each element in candidate evaluation or reproduction logic.",
+              "end_col": 36,
+              "end_line": 15,
+              "kind": "candidate_iteration",
+              "line": 14,
+              "snippet": "for candidate in population:\n    fitness_value = score(candidate)"
+            },
+            {
+              "ast_node": "For",
+              "cfg_blocks": [
+                "<module>:loop_header@17"
+              ],
+              "col": 0,
+              "description": "A loop iterates a collection and uses each element in candidate evaluation or reproduction logic.",
+              "end_col": 36,
+              "end_line": 18,
+              "kind": "candidate_iteration",
+              "line": 17,
+              "snippet": "for candidate in selected:\n    child = mutate(candidate.copy())"
+            }
+          ],
+          "reason": "A loop iterates a collection and uses each element in candidate evaluation or reproduction logic."
+        },
+        "replacement": {
+          "confidence": "LOW",
+          "detected": false,
+          "evidence": [],
+          "reason": null
+        },
+        "selection": {
+          "confidence": "MEDIUM",
+          "detected": true,
+          "evidence": [
+            {
+              "ast_node": "Subscript",
+              "cfg_blocks": [
+                "<module>:sequence@6",
+                "select:sequence@7"
+              ],
+              "col": 11,
+              "description": "The helper returns a slice of an argument-derived collection.",
+              "end_col": 36,
+              "end_line": 7,
+              "kind": "helper_selection",
+              "line": 7,
+              "snippet": "sorted(pool, key=len)[:2]"
+            },
+            {
+              "ast_node": "Call",
+              "cfg_blocks": [
+                "<module>:sequence@16"
+              ],
+              "col": 11,
+              "description": "Local helper 'select' receives values structurally linked to the EA role inputs.",
+              "end_col": 29,
+              "end_line": 16,
+              "kind": "helper_call_site",
+              "line": 16,
+              "snippet": "select(population)"
+            }
+          ],
+          "reason": "The helper returns a slice of an argument-derived collection."
+        },
+        "termination": {
+          "confidence": "LOW",
+          "detected": false,
+          "evidence": [],
+          "reason": null
+        }
+      },
+      "program_name": "helper_function_ea",
+      "rationale": {
+        "crossover": "There is no two-parent recombination, population replacement, or generation/process termination construct in this helper example.",
+        "fitness_evaluation": "score(candidate) computes a candidate-dependent length score.",
+        "mutation": "mutate(candidate) changes a copied candidate gene and returns the changed candidate.",
+        "population": "A candidate collection is traversed by candidate and passed into helpers.",
+        "replacement": "There is no two-parent recombination, population replacement, or generation/process termination construct in this helper example.",
+        "selection": "select(pool) ranks candidates and returns a subset.",
+        "termination": "There is no two-parent recombination, population replacement, or generation/process termination construct in this helper example."
+      },
+      "safety_expectation": null,
+      "safety_verdict": "SAFE",
+      "safety_verdict_unchanged": true,
+      "safety_verdict_without_ea": "SAFE"
+    },
+    {
+      "category": "alias_based_ea",
+      "ground_truth": {
+        "crossover": false,
+        "fitness_evaluation": true,
+        "mutation": true,
+        "population": true,
+        "replacement": true,
+        "selection": true,
+        "termination": true
+      },
+      "path": "programs/alias_based_ea.py",
+      "predictions": {
+        "crossover": {
+          "confidence": "LOW",
+          "detected": false,
+          "evidence": [],
+          "reason": null
+        },
+        "fitness_evaluation": {
+          "confidence": "HIGH",
+          "detected": true,
+          "evidence": [
+            {
+              "ast_node": "Assign",
+              "cfg_blocks": [
+                "<module>:loop_header@6",
+                "<module>:sequence@7"
+              ],
+              "col": 4,
+              "description": "A computed value depends on a candidate passed to a call.",
+              "end_col": 27,
+              "end_line": 7,
+              "kind": "candidate_dependent_call",
+              "line": 7,
+              "snippet": "score = sum(individual)"
+            },
+            {
+              "ast_node": "Assign",
+              "cfg_blocks": [
+                "<module>:loop_header@13",
+                "<module>:loop_header@14",
+                "<module>:sequence@15"
+              ],
+              "col": 8,
+              "description": "A computed value depends on a candidate passed to a call.",
+              "end_col": 31,
+              "end_line": 15,
+              "kind": "candidate_dependent_call",
+              "line": 15,
+              "snippet": "score = sum(individual)"
+            }
+          ],
+          "reason": "A computed value depends on a candidate passed to a call."
+        },
+        "mutation": {
+          "confidence": "MEDIUM",
+          "detected": true,
+          "evidence": [
+            {
+              "ast_node": "Assign",
+              "cfg_blocks": [
+                "<module>:sequence@8"
+              ],
+              "col": 0,
+              "description": "A population or selected candidate is copied.",
+              "end_col": 25,
+              "end_line": 9,
+              "kind": "candidate_copy",
+              "line": 9,
+              "snippet": "child = parents[0].copy()"
+            },
+            {
+              "ast_node": "Assign",
+              "cfg_blocks": [
+                "<module>:sequence@8"
+              ],
+              "col": 0,
+              "description": "The candidate copy (or an alias of it) is modified through an element or attribute write.",
+              "end_col": 18,
+              "end_line": 11,
+              "kind": "candidate_copy_modification",
+              "line": 11,
+              "snippet": "child_alias[0] = 1"
+            }
+          ],
+          "reason": "A population or selected candidate is copied."
+        },
+        "population": {
+          "confidence": "HIGH",
+          "detected": true,
+          "evidence": [
+            {
+              "ast_node": "For",
+              "cfg_blocks": [
+                "<module>:loop_header@6"
+              ],
+              "col": 0,
+              "description": "A loop iterates a collection and uses each element in candidate evaluation or reproduction logic.",
+              "end_col": 27,
+              "end_line": 7,
+              "kind": "candidate_iteration",
+              "line": 6,
+              "snippet": "for individual in population:\n    score = sum(individual)"
+            },
+            {
+              "ast_node": "For",
+              "cfg_blocks": [
+                "<module>:loop_header@13",
+                "<module>:loop_header@14"
+              ],
+              "col": 4,
+              "description": "A loop iterates a collection and uses each element in candidate evaluation or reproduction logic.",
+              "end_col": 31,
+              "end_line": 15,
+              "kind": "candidate_iteration",
+              "line": 14,
+              "snippet": "for individual in population:\n    score = sum(individual)"
+            }
+          ],
+          "reason": "A loop iterates a collection and uses each element in candidate evaluation or reproduction logic."
+        },
+        "replacement": {
+          "confidence": "HIGH",
+          "detected": true,
+          "evidence": [
+            {
+              "ast_node": "Assign",
+              "cfg_blocks": [
+                "<module>:sequence@8"
+              ],
+              "col": 0,
+              "description": "A statically resolved alias of an inferred population is replaced by slice assignment.",
+              "end_col": 39,
+              "end_line": 12,
+              "kind": "population_slice_replacement",
+              "line": 12,
+              "snippet": "population[:] = parents + [child_alias]"
+            },
+            {
+              "ast_node": "Assign",
+              "cfg_blocks": [
+                "<module>:sequence@8"
+              ],
+              "col": 0,
+              "description": "An element of an inferred candidate collection is replaced.",
+              "end_col": 39,
+              "end_line": 12,
+              "kind": "survivor_replacement",
+              "line": 12,
+              "snippet": "population[:] = parents + [child_alias]"
+            }
+          ],
+          "reason": "A statically resolved alias of an inferred population is replaced by slice assignment."
+        },
+        "selection": {
+          "confidence": "HIGH",
+          "detected": true,
+          "evidence": [
+            {
+              "ast_node": "Call",
+              "cfg_blocks": [
+                "<module>:sequence@8"
+              ],
+              "col": 10,
+              "description": "A ranking, filtering, or sampling operation consumes an inferred candidate collection.",
+              "end_col": 37,
+              "end_line": 8,
+              "kind": "rank_or_filter",
+              "line": 8,
+              "snippet": "sorted(population, key=sum)"
+            }
+          ],
+          "reason": "A ranking, filtering, or sampling operation consumes an inferred candidate collection."
+        },
+        "termination": {
+          "confidence": "HIGH",
+          "detected": true,
+          "evidence": [
+            {
+              "ast_node": "For",
+              "cfg_blocks": [
+                "<module>:loop_header@13"
+              ],
+              "col": 0,
+              "description": "The evolutionary loop iterates a finite built-in range or literal collection.",
+              "end_col": 31,
+              "end_line": 15,
+              "kind": "loop_termination",
+              "line": 13,
+              "snippet": "for generation in range(2):\n    for individual in population:\n        score = sum(individual)"
+            }
+          ],
+          "reason": "The evolutionary loop iterates a finite built-in range or literal collection."
+        }
+      },
+      "program_name": "alias_based_ea",
+      "rationale": {
+        "crossover": "No operation combines information from two distinct parent candidates to create a child.",
+        "fitness_evaluation": "Each candidate is scored by sum(candidate).",
+        "mutation": "child_alias is an alias of a copied candidate whose first element is changed.",
+        "population": "source_pool, first_alias, second_alias, and population are chained aliases of the candidate collection.",
+        "replacement": "A slice assignment replaces the aliased population contents with selected candidates and the child.",
+        "selection": "The population is ordered by candidate score and sliced to select parents.",
+        "termination": "The generation loop is bounded by range(2)."
+      },
+      "safety_expectation": null,
+      "safety_verdict": "SAFE",
+      "safety_verdict_unchanged": true,
+      "safety_verdict_without_ea": "SAFE"
+    },
+    {
+      "category": "generic_registration_dispatch",
+      "ground_truth": {
+        "crossover": false,
+        "fitness_evaluation": true,
+        "mutation": true,
+        "population": true,
+        "replacement": false,
+        "selection": true,
+        "termination": false
+      },
+      "path": "programs/generic_registration_dispatch.py",
+      "predictions": {
+        "crossover": {
+          "confidence": "LOW",
+          "detected": false,
+          "evidence": [],
+          "reason": null
+        },
+        "fitness_evaluation": {
+          "confidence": "MEDIUM",
+          "detected": true,
+          "evidence": [
+            {
+              "ast_node": "Call",
+              "cfg_blocks": [
+                "<module>:sequence@6",
+                "evaluate:sequence@7"
+              ],
+              "col": 11,
+              "description": "The helper returns a call result whose arguments include candidate-derived values.",
+              "end_col": 25,
+              "end_line": 7,
+              "kind": "registered_callback_summary",
+              "line": 7,
+              "snippet": "sum(candidate)"
+            },
+            {
+              "ast_node": "Call",
+              "cfg_blocks": [
+                "<module>:sequence@16"
+              ],
+              "col": 0,
+              "description": "Registration key 'fitness_evaluation' explicitly labels the callback as fitness_evaluation.",
+              "end_col": 49,
+              "end_line": 18,
+              "kind": "registered_role",
+              "line": 18,
+              "snippet": "registry.register('fitness_evaluation', evaluate)"
+            },
+            {
+              "ast_node": "Attribute",
+              "cfg_blocks": [
+                "<module>:loop_header@22",
+                "<module>:sequence@23"
+              ],
+              "col": 20,
+              "description": "This reference resolves to the callable registered under 'fitness_evaluation'.",
+              "end_col": 46,
+              "end_line": 23,
+              "kind": "registered_callable_reference",
+              "line": 23,
+              "snippet": "registry.invoke_registered"
+            },
+            {
+              "ast_node": "Call",
+              "cfg_blocks": [
+                "<module>:loop_header@22",
+                "<module>:sequence@23"
+              ],
+              "col": 20,
+              "description": "The registered callable is dispatched with arguments linked to the fitness_evaluation role.",
+              "end_col": 79,
+              "end_line": 23,
+              "kind": "registered_dispatch",
+              "line": 23,
+              "snippet": "registry.invoke_registered('fitness_evaluation', candidate)"
+            }
+          ],
+          "reason": "The helper returns a call result whose arguments include candidate-derived values."
+        },
+        "mutation": {
+          "confidence": "MEDIUM",
+          "detected": true,
+          "evidence": [
+            {
+              "ast_node": "Assign",
+              "cfg_blocks": [
+                "<module>:sequence@12",
+                "mutate:sequence@13"
+              ],
+              "col": 4,
+              "description": "The helper writes an element or attribute of its candidate argument.",
+              "end_col": 35,
+              "end_line": 13,
+              "kind": "registered_callback_summary",
+              "line": 13,
+              "snippet": "candidate[0] = 1 - candidate[0]"
+            },
+            {
+              "ast_node": "Call",
+              "cfg_blocks": [
+                "<module>:sequence@16"
+              ],
+              "col": 0,
+              "description": "Registration key 'mutation' explicitly labels the callback as mutation.",
+              "end_col": 37,
+              "end_line": 20,
+              "kind": "registered_role",
+              "line": 20,
+              "snippet": "registry.register('mutation', mutate)"
+            },
+            {
+              "ast_node": "Attribute",
+              "cfg_blocks": [
+                "<module>:loop_header@25",
+                "<module>:sequence@26"
+              ],
+              "col": 12,
+              "description": "This reference resolves to the callable registered under 'mutation'.",
+              "end_col": 38,
+              "end_line": 26,
+              "kind": "registered_callable_reference",
+              "line": 26,
+              "snippet": "registry.invoke_registered"
+            },
+            {
+              "ast_node": "Call",
+              "cfg_blocks": [
+                "<module>:loop_header@25",
+                "<module>:sequence@26"
+              ],
+              "col": 12,
+              "description": "The registered callable is dispatched with arguments linked to the mutation role.",
+              "end_col": 68,
+              "end_line": 26,
+              "kind": "registered_dispatch",
+              "line": 26,
+              "snippet": "registry.invoke_registered('mutation', candidate.copy())"
+            }
+          ],
+          "reason": "The helper writes an element or attribute of its candidate argument."
+        },
+        "population": {
+          "confidence": "HIGH",
+          "detected": true,
+          "evidence": [
+            {
+              "ast_node": "Call",
+              "cfg_blocks": [
+                "<module>:sequence@16"
+              ],
+              "col": 0,
+              "description": "A statically paired registration and invocation declares a population-producing role.",
+              "end_col": 44,
+              "end_line": 17,
+              "kind": "registered_role",
+              "line": 17,
+              "snippet": "registry.register('population', create_pool)"
+            },
+            {
+              "ast_node": "Call",
+              "cfg_blocks": [
+                "<module>:sequence@16"
+              ],
+              "col": 13,
+              "description": "The registered callable is invoked and its result is assigned to a collection variable.",
+              "end_col": 53,
+              "end_line": 21,
+              "kind": "registered_dispatch",
+              "line": 21,
+              "snippet": "registry.invoke_registered('population')"
+            },
+            {
+              "ast_node": "For",
+              "cfg_blocks": [
+                "<module>:loop_header@22"
+              ],
+              "col": 0,
+              "description": "A loop iterates a collection and uses each element in candidate evaluation or reproduction logic.",
+              "end_col": 79,
+              "end_line": 23,
+              "kind": "candidate_iteration",
+              "line": 22,
+              "snippet": "for candidate in population:\n    fitness_value = registry.invoke_registered('fitness_evaluation', candidate)"
+            },
+            {
+              "ast_node": "For",
+              "cfg_blocks": [
+                "<module>:loop_header@22"
+              ],
+              "col": 0,
+              "description": "A registered EA operation consumes a loop element drawn from a collection.",
+              "end_col": 79,
+              "end_line": 23,
+              "kind": "registered_candidate_iteration",
+              "line": 22,
+              "snippet": "for candidate in population:\n    fitness_value = registry.invoke_registered('fitness_evaluation', candidate)"
+            },
+            {
+              "ast_node": "For",
+              "cfg_blocks": [
+                "<module>:loop_header@25"
+              ],
+              "col": 0,
+              "description": "A loop iterates a collection and uses each element in candidate evaluation or reproduction logic.",
+              "end_col": 68,
+              "end_line": 26,
+              "kind": "candidate_iteration",
+              "line": 25,
+              "snippet": "for candidate in selected:\n    child = registry.invoke_registered('mutation', candidate.copy())"
+            },
+            {
+              "ast_node": "For",
+              "cfg_blocks": [
+                "<module>:loop_header@25"
+              ],
+              "col": 0,
+              "description": "A registered EA operation consumes a loop element drawn from a collection.",
+              "end_col": 68,
+              "end_line": 26,
+              "kind": "registered_candidate_iteration",
+              "line": 25,
+              "snippet": "for candidate in selected:\n    child = registry.invoke_registered('mutation', candidate.copy())"
+            }
+          ],
+          "reason": "A statically paired registration and invocation declares a population-producing role."
+        },
+        "replacement": {
+          "confidence": "LOW",
+          "detected": false,
+          "evidence": [],
+          "reason": null
+        },
+        "selection": {
+          "confidence": "MEDIUM",
+          "detected": true,
+          "evidence": [
+            {
+              "ast_node": "Subscript",
+              "cfg_blocks": [
+                "<module>:sequence@9",
+                "choose:sequence@10"
+              ],
+              "col": 11,
+              "description": "The helper returns a slice of an argument-derived collection.",
+              "end_col": 36,
+              "end_line": 10,
+              "kind": "registered_callback_summary",
+              "line": 10,
+              "snippet": "sorted(pool, key=sum)[:2]"
+            },
+            {
+              "ast_node": "Call",
+              "cfg_blocks": [
+                "<module>:sequence@16"
+              ],
+              "col": 0,
+              "description": "Registration key 'selection' explicitly labels the callback as selection.",
+              "end_col": 38,
+              "end_line": 19,
+              "kind": "registered_role",
+              "line": 19,
+              "snippet": "registry.register('selection', choose)"
+            },
+            {
+              "ast_node": "Attribute",
+              "cfg_blocks": [
+                "<module>:sequence@24"
+              ],
+              "col": 11,
+              "description": "This reference resolves to the callable registered under 'selection'.",
+              "end_col": 37,
+              "end_line": 24,
+              "kind": "registered_callable_reference",
+              "line": 24,
+              "snippet": "registry.invoke_registered"
+            },
+            {
+              "ast_node": "Call",
+              "cfg_blocks": [
+                "<module>:sequence@24"
+              ],
+              "col": 11,
+              "description": "The registered callable is dispatched with arguments linked to the selection role.",
+              "end_col": 62,
+              "end_line": 24,
+              "kind": "registered_dispatch",
+              "line": 24,
+              "snippet": "registry.invoke_registered('selection', population)"
+            }
+          ],
+          "reason": "The helper returns a slice of an argument-derived collection."
+        },
+        "termination": {
+          "confidence": "LOW",
+          "detected": false,
+          "evidence": [],
+          "reason": null
+        }
+      },
+      "program_name": "generic_registration_dispatch",
+      "rationale": {
+        "crossover": "The registered operations do not combine two parents, replace the population, or control a generation termination condition.",
+        "fitness_evaluation": "The registered evaluate function computes sum(candidate) and is dispatched for each candidate.",
+        "mutation": "The registered mutate function changes a candidate gene and is dispatched on copied selected candidates.",
+        "population": "A registered population factory is invoked through the same registry and its returned collection is iterated.",
+        "replacement": "The registered operations do not combine two parents, replace the population, or control a generation termination condition.",
+        "selection": "The registered choose function ranks the population and returns the top subset.",
+        "termination": "The registered operations do not combine two parents, replace the population, or control a generation termination condition."
+      },
+      "safety_expectation": null,
+      "safety_verdict": "SAFE",
+      "safety_verdict_unchanged": true,
+      "safety_verdict_without_ea": "SAFE"
+    },
+    {
+      "category": "deap_style_registration",
+      "ground_truth": {
+        "crossover": false,
+        "fitness_evaluation": true,
+        "mutation": true,
+        "population": true,
+        "replacement": false,
+        "selection": true,
+        "termination": false
+      },
+      "path": "programs/deap_style_registration.py",
+      "predictions": {
+        "crossover": {
+          "confidence": "LOW",
+          "detected": false,
+          "evidence": [],
+          "reason": null
+        },
+        "fitness_evaluation": {
+          "confidence": "HIGH",
+          "detected": true,
+          "evidence": [
+            {
+              "ast_node": "Call",
+              "cfg_blocks": [
+                "<module>:sequence@1",
+                "evaluate:sequence@4"
+              ],
+              "col": 11,
+              "description": "The helper returns a call result whose arguments include candidate-derived values.",
+              "end_col": 25,
+              "end_line": 4,
+              "kind": "registered_callback_summary",
+              "line": 4,
+              "snippet": "sum(candidate)"
+            },
+            {
+              "ast_node": "Call",
+              "cfg_blocks": [
+                "<module>:sequence@10"
+              ],
+              "col": 0,
+              "description": "Registration key 'evaluate' explicitly labels the callback as fitness_evaluation.",
+              "end_col": 38,
+              "end_line": 12,
+              "kind": "registered_role",
+              "line": 12,
+              "snippet": "toolbox.register('evaluate', evaluate)"
+            },
+            {
+              "ast_node": "Call",
+              "cfg_blocks": [
+                "<module>:loop_header@16",
+                "<module>:sequence@17"
+              ],
+              "col": 14,
+              "description": "A candidate is consumed by an evaluation-like computation inside collection iteration.",
+              "end_col": 42,
+              "end_line": 17,
+              "kind": "candidate_evaluation_call",
+              "line": 17,
+              "snippet": "toolbox.evaluate(individual)"
+            },
+            {
+              "ast_node": "Attribute",
+              "cfg_blocks": [
+                "<module>:loop_header@16",
+                "<module>:sequence@17"
+              ],
+              "col": 14,
+              "description": "This reference resolves to the callable registered under 'evaluate'.",
+              "end_col": 30,
+              "end_line": 17,
+              "kind": "registered_callable_reference",
+              "line": 17,
+              "snippet": "toolbox.evaluate"
+            },
+            {
+              "ast_node": "Call",
+              "cfg_blocks": [
+                "<module>:loop_header@16",
+                "<module>:sequence@17"
+              ],
+              "col": 14,
+              "description": "The registered callable is dispatched with arguments linked to the fitness_evaluation role.",
+              "end_col": 42,
+              "end_line": 17,
+              "kind": "registered_dispatch",
+              "line": 17,
+              "snippet": "toolbox.evaluate(individual)"
+            }
+          ],
+          "reason": "The helper returns a call result whose arguments include candidate-derived values."
+        },
+        "mutation": {
+          "confidence": "MEDIUM",
+          "detected": true,
+          "evidence": [
+            {
+              "ast_node": "Assign",
+              "cfg_blocks": [
+                "<module>:sequence@6",
+                "mutate:sequence@7"
+              ],
+              "col": 4,
+              "description": "The helper writes an element or attribute of its candidate argument.",
+              "end_col": 35,
+              "end_line": 7,
+              "kind": "registered_callback_summary",
+              "line": 7,
+              "snippet": "candidate[0] = 1 - candidate[0]"
+            },
+            {
+              "ast_node": "Call",
+              "cfg_blocks": [
+                "<module>:sequence@10"
+              ],
+              "col": 0,
+              "description": "Registration key 'mutate' explicitly labels the callback as mutation.",
+              "end_col": 34,
+              "end_line": 14,
+              "kind": "registered_role",
+              "line": 14,
+              "snippet": "toolbox.register('mutate', mutate)"
+            },
+            {
+              "ast_node": "Attribute",
+              "cfg_blocks": [
+                "<module>:loop_header@19",
+                "<module>:sequence@20"
+              ],
+              "col": 12,
+              "description": "This reference resolves to the callable registered under 'mutate'.",
+              "end_col": 26,
+              "end_line": 20,
+              "kind": "registered_callable_reference",
+              "line": 20,
+              "snippet": "toolbox.mutate"
+            },
+            {
+              "ast_node": "Call",
+              "cfg_blocks": [
+                "<module>:loop_header@19",
+                "<module>:sequence@20"
+              ],
+              "col": 12,
+              "description": "The registered callable is dispatched with arguments linked to the mutation role.",
+              "end_col": 45,
+              "end_line": 20,
+              "kind": "registered_dispatch",
+              "line": 20,
+              "snippet": "toolbox.mutate(individual.copy())"
+            }
+          ],
+          "reason": "The helper writes an element or attribute of its candidate argument."
+        },
+        "population": {
+          "confidence": "HIGH",
+          "detected": true,
+          "evidence": [
+            {
+              "ast_node": "For",
+              "cfg_blocks": [
+                "<module>:loop_header@16"
+              ],
+              "col": 0,
+              "description": "A loop iterates a collection and uses each element in candidate evaluation or reproduction logic.",
+              "end_col": 42,
+              "end_line": 17,
+              "kind": "candidate_iteration",
+              "line": 16,
+              "snippet": "for individual in population:\n    fitness = toolbox.evaluate(individual)"
+            },
+            {
+              "ast_node": "For",
+              "cfg_blocks": [
+                "<module>:loop_header@16"
+              ],
+              "col": 0,
+              "description": "A registered EA operation consumes a loop element drawn from a collection.",
+              "end_col": 42,
+              "end_line": 17,
+              "kind": "registered_candidate_iteration",
+              "line": 16,
+              "snippet": "for individual in population:\n    fitness = toolbox.evaluate(individual)"
+            },
+            {
+              "ast_node": "For",
+              "cfg_blocks": [
+                "<module>:loop_header@19"
+              ],
+              "col": 0,
+              "description": "A loop iterates a collection and uses each element in candidate evaluation or reproduction logic.",
+              "end_col": 45,
+              "end_line": 20,
+              "kind": "candidate_iteration",
+              "line": 19,
+              "snippet": "for individual in selected:\n    child = toolbox.mutate(individual.copy())"
+            },
+            {
+              "ast_node": "For",
+              "cfg_blocks": [
+                "<module>:loop_header@19"
+              ],
+              "col": 0,
+              "description": "A registered EA operation consumes a loop element drawn from a collection.",
+              "end_col": 45,
+              "end_line": 20,
+              "kind": "registered_candidate_iteration",
+              "line": 19,
+              "snippet": "for individual in selected:\n    child = toolbox.mutate(individual.copy())"
+            }
+          ],
+          "reason": "A loop iterates a collection and uses each element in candidate evaluation or reproduction logic."
+        },
+        "replacement": {
+          "confidence": "LOW",
+          "detected": false,
+          "evidence": [],
+          "reason": null
+        },
+        "selection": {
+          "confidence": "MEDIUM",
+          "detected": true,
+          "evidence": [
+            {
+              "ast_node": "Call",
+              "cfg_blocks": [
+                "<module>:sequence@10"
+              ],
+              "col": 0,
+              "description": "Registered callable 'sorted' is a builtin ranking/filtering function applied to the population.",
+              "end_col": 34,
+              "end_line": 13,
+              "kind": "registered_role",
+              "line": 13,
+              "snippet": "toolbox.register('select', sorted)"
+            },
+            {
+              "ast_node": "Attribute",
+              "cfg_blocks": [
+                "<module>:sequence@18"
+              ],
+              "col": 11,
+              "description": "This reference resolves to the callable registered under 'select'.",
+              "end_col": 25,
+              "end_line": 18,
+              "kind": "registered_callable_reference",
+              "line": 18,
+              "snippet": "toolbox.select"
+            },
+            {
+              "ast_node": "Call",
+              "cfg_blocks": [
+                "<module>:sequence@18"
+              ],
+              "col": 11,
+              "description": "The registered callable is dispatched with arguments linked to the selection role.",
+              "end_col": 51,
+              "end_line": 18,
+              "kind": "registered_dispatch",
+              "line": 18,
+              "snippet": "toolbox.select(population, key=evaluate)"
+            }
+          ],
+          "reason": "Registered callable 'sorted' is a builtin ranking/filtering function applied to the population."
+        },
+        "termination": {
+          "confidence": "LOW",
+          "detected": false,
+          "evidence": [],
+          "reason": null
+        }
+      },
+      "program_name": "deap_style_registration",
+      "rationale": {
+        "crossover": "This registration-shape example has no mating/crossover operation, no population replacement, and no generation/process termination construct.",
+        "fitness_evaluation": "The registered evaluate callable scores each candidate.",
+        "mutation": "The registered mutate callable changes candidate content and returns it.",
+        "population": "A population factory is registered and invoked to create the iterated candidates.",
+        "replacement": "This registration-shape example has no mating/crossover operation, no population replacement, and no generation/process termination construct.",
+        "selection": "The registered select callable sorts the population by the evaluation key.",
+        "termination": "This registration-shape example has no mating/crossover operation, no population replacement, and no generation/process termination construct."
+      },
+      "safety_expectation": null,
+      "safety_verdict": "SAFE",
+      "safety_verdict_unchanged": true,
+      "safety_verdict_without_ea": "SAFE"
+    },
+    {
+      "category": "comprehension_fitness",
+      "ground_truth": {
+        "crossover": false,
+        "fitness_evaluation": true,
+        "mutation": false,
+        "population": true,
+        "replacement": false,
+        "selection": false,
+        "termination": false
+      },
+      "path": "programs/comprehension_fitness.py",
+      "predictions": {
+        "crossover": {
+          "confidence": "LOW",
+          "detected": false,
+          "evidence": [],
+          "reason": null
+        },
+        "fitness_evaluation": {
+          "confidence": "MEDIUM",
+          "detected": true,
+          "evidence": [
+            {
+              "ast_node": "Call",
+              "cfg_blocks": [
+                "<module>:sequence@1"
+              ],
+              "col": 18,
+              "description": "A call consumes the comprehension's candidate variable while iterating a collection.",
+              "end_col": 32,
+              "end_line": 3,
+              "kind": "comprehension_candidate_call",
+              "line": 3,
+              "snippet": "sum(candidate)"
+            }
+          ],
+          "reason": "A call consumes the comprehension's candidate variable while iterating a collection."
+        },
+        "mutation": {
+          "confidence": "LOW",
+          "detected": false,
+          "evidence": [],
+          "reason": null
+        },
+        "population": {
+          "confidence": "MEDIUM",
+          "detected": true,
+          "evidence": [
+            {
+              "ast_node": "ListComp",
+              "cfg_blocks": [
+                "<module>:sequence@1"
+              ],
+              "col": 17,
+              "description": "A comprehension invokes a computation on each element of a collection; generator and call source locations are retained.",
+              "end_col": 61,
+              "end_line": 3,
+              "kind": "candidate_comprehension",
+              "line": 3,
+              "snippet": "[sum(candidate) for candidate in population]"
+            }
+          ],
+          "reason": "A comprehension invokes a computation on each element of a collection; generator and call source locations are retained."
+        },
+        "replacement": {
+          "confidence": "LOW",
+          "detected": false,
+          "evidence": [],
+          "reason": null
+        },
+        "selection": {
+          "confidence": "LOW",
+          "detected": false,
+          "evidence": [],
+          "reason": null
+        },
+        "termination": {
+          "confidence": "LOW",
+          "detected": false,
+          "evidence": [],
+          "reason": null
+        }
+      },
+      "program_name": "comprehension_fitness",
+      "rationale": {
+        "crossover": "The comprehension only scores candidates; it does not rank/filter survivors, modify candidates, combine parents, replace the collection, or define a generation stop condition.",
+        "fitness_evaluation": "sum(candidate) produces a score for each candidate.",
+        "mutation": "The comprehension only scores candidates; it does not rank/filter survivors, modify candidates, combine parents, replace the collection, or define a generation stop condition.",
+        "population": "The comprehension iterates a collection of candidate vectors.",
+        "replacement": "The comprehension only scores candidates; it does not rank/filter survivors, modify candidates, combine parents, replace the collection, or define a generation stop condition.",
+        "selection": "The comprehension only scores candidates; it does not rank/filter survivors, modify candidates, combine parents, replace the collection, or define a generation stop condition.",
+        "termination": "The comprehension only scores candidates; it does not rank/filter survivors, modify candidates, combine parents, replace the collection, or define a generation stop condition."
+      },
+      "safety_expectation": null,
+      "safety_verdict": "SAFE",
+      "safety_verdict_unchanged": true,
+      "safety_verdict_without_ea": "SAFE"
+    },
+    {
+      "category": "two_parent_crossover_helper",
+      "ground_truth": {
+        "crossover": true,
+        "fitness_evaluation": true,
+        "mutation": false,
+        "population": true,
+        "replacement": false,
+        "selection": false,
+        "termination": false
+      },
+      "path": "programs/two_parent_crossover_helper.py",
+      "predictions": {
+        "crossover": {
+          "confidence": "HIGH",
+          "detected": true,
+          "evidence": [
+            {
+              "ast_node": "BinOp",
+              "cfg_blocks": [
+                "<module>:sequence@1",
+                "crossover:sequence@4"
+              ],
+              "col": 11,
+              "description": "The helper constructs a returned value by combining multiple argument-derived representations.",
+              "end_col": 46,
+              "end_line": 5,
+              "kind": "helper_crossover",
+              "line": 5,
+              "snippet": "parent_a[:point] + parent_b[point:]"
+            },
+            {
+              "ast_node": "BinOp",
+              "cfg_blocks": [
+                "<module>:sequence@1",
+                "crossover:sequence@4"
+              ],
+              "col": 11,
+              "description": "A combined representation is constructed from at least two candidate sources.",
+              "end_col": 46,
+              "end_line": 5,
+              "kind": "multi_parent_recombination",
+              "line": 5,
+              "snippet": "parent_a[:point] + parent_b[point:]"
+            },
+            {
+              "ast_node": "Call",
+              "cfg_blocks": [
+                "<module>:sequence@10"
+              ],
+              "col": 8,
+              "description": "Local helper 'crossover' receives values structurally linked to the EA role inputs.",
+              "end_col": 37,
+              "end_line": 11,
+              "kind": "helper_call_site",
+              "line": 11,
+              "snippet": "crossover(parent_a, parent_b)"
+            }
+          ],
+          "reason": "The helper constructs a returned value by combining multiple argument-derived representations."
+        },
+        "fitness_evaluation": {
+          "confidence": "HIGH",
+          "detected": true,
+          "evidence": [
+            {
+              "ast_node": "Assign",
+              "cfg_blocks": [
+                "<module>:loop_header@8",
+                "<module>:sequence@9"
+              ],
+              "col": 4,
+              "description": "A computed value depends on a candidate passed to a call.",
+              "end_col": 23,
+              "end_line": 9,
+              "kind": "candidate_dependent_call",
+              "line": 9,
+              "snippet": "score = sum(parent)"
+            }
+          ],
+          "reason": "A computed value depends on a candidate passed to a call."
+        },
+        "mutation": {
+          "confidence": "LOW",
+          "detected": false,
+          "evidence": [],
+          "reason": null
+        },
+        "population": {
+          "confidence": "HIGH",
+          "detected": true,
+          "evidence": [
+            {
+              "ast_node": "For",
+              "cfg_blocks": [
+                "<module>:loop_header@8"
+              ],
+              "col": 0,
+              "description": "A loop iterates a collection and uses each element in candidate evaluation or reproduction logic.",
+              "end_col": 23,
+              "end_line": 9,
+              "kind": "candidate_iteration",
+              "line": 8,
+              "snippet": "for parent in population:\n    score = sum(parent)"
+            }
+          ],
+          "reason": "A loop iterates a collection and uses each element in candidate evaluation or reproduction logic."
+        },
+        "replacement": {
+          "confidence": "LOW",
+          "detected": false,
+          "evidence": [],
+          "reason": null
+        },
+        "selection": {
+          "confidence": "LOW",
+          "detected": false,
+          "evidence": [],
+          "reason": null
+        },
+        "termination": {
+          "confidence": "LOW",
+          "detected": false,
+          "evidence": [],
+          "reason": null
+        }
+      },
+      "program_name": "two_parent_crossover_helper",
+      "rationale": {
+        "crossover": "crossover(parent_a, parent_b) constructs a child by joining a slice from each parent.",
+        "fitness_evaluation": "The parents are scored using sum(parent).",
+        "mutation": "The example does not rank/filter candidates, mutate a candidate, replace the population, or implement a generation stop condition.",
+        "population": "A candidate collection is iterated and supplies both parents.",
+        "replacement": "The example does not rank/filter candidates, mutate a candidate, replace the population, or implement a generation stop condition.",
+        "selection": "The example does not rank/filter candidates, mutate a candidate, replace the population, or implement a generation stop condition.",
+        "termination": "The example does not rank/filter candidates, mutate a candidate, replace the population, or implement a generation stop condition."
+      },
+      "safety_expectation": null,
+      "safety_verdict": "SAFE",
+      "safety_verdict_unchanged": true,
+      "safety_verdict_without_ea": "SAFE"
+    },
+    {
+      "category": "mutation_helper",
+      "ground_truth": {
+        "crossover": false,
+        "fitness_evaluation": true,
+        "mutation": true,
+        "population": true,
+        "replacement": false,
+        "selection": false,
+        "termination": false
+      },
+      "path": "programs/mutation_helper.py",
+      "predictions": {
+        "crossover": {
+          "confidence": "LOW",
+          "detected": false,
+          "evidence": [],
+          "reason": null
+        },
+        "fitness_evaluation": {
+          "confidence": "HIGH",
+          "detected": true,
+          "evidence": [
+            {
+              "ast_node": "Assign",
+              "cfg_blocks": [
+                "<module>:loop_header@9",
+                "<module>:sequence@10"
+              ],
+              "col": 4,
+              "description": "A computed value depends on a candidate passed to a call.",
+              "end_col": 27,
+              "end_line": 10,
+              "kind": "candidate_dependent_call",
+              "line": 10,
+              "snippet": "score = sum(individual)"
+            }
+          ],
+          "reason": "A computed value depends on a candidate passed to a call."
+        },
+        "mutation": {
+          "confidence": "MEDIUM",
+          "detected": true,
+          "evidence": [
+            {
+              "ast_node": "Assign",
+              "cfg_blocks": [
+                "<module>:sequence@1",
+                "mutate:sequence@4"
+              ],
+              "col": 4,
+              "description": "The helper modifies a copy of its candidate argument and returns that copy.",
+              "end_col": 31,
+              "end_line": 5,
+              "kind": "helper_mutation",
+              "line": 5,
+              "snippet": "changed[0] = 1 - changed[0]"
+            },
+            {
+              "ast_node": "Call",
+              "cfg_blocks": [
+                "<module>:loop_header@9",
+                "<module>:sequence@10"
+              ],
+              "col": 12,
+              "description": "Local helper 'mutate' receives values structurally linked to the EA role inputs.",
+              "end_col": 30,
+              "end_line": 11,
+              "kind": "helper_call_site",
+              "line": 11,
+              "snippet": "mutate(individual)"
+            }
+          ],
+          "reason": "The helper modifies a copy of its candidate argument and returns that copy."
+        },
+        "population": {
+          "confidence": "HIGH",
+          "detected": true,
+          "evidence": [
+            {
+              "ast_node": "For",
+              "cfg_blocks": [
+                "<module>:loop_header@9"
+              ],
+              "col": 0,
+              "description": "A loop iterates a collection and uses each element in candidate evaluation or reproduction logic.",
+              "end_col": 30,
+              "end_line": 11,
+              "kind": "candidate_iteration",
+              "line": 9,
+              "snippet": "for individual in population:\n    score = sum(individual)\n    child = mutate(individual)"
+            }
+          ],
+          "reason": "A loop iterates a collection and uses each element in candidate evaluation or reproduction logic."
+        },
+        "replacement": {
+          "confidence": "LOW",
+          "detected": false,
+          "evidence": [],
+          "reason": null
+        },
+        "selection": {
+          "confidence": "LOW",
+          "detected": false,
+          "evidence": [],
+          "reason": null
+        },
+        "termination": {
+          "confidence": "LOW",
+          "detected": false,
+          "evidence": [],
+          "reason": null
+        }
+      },
+      "program_name": "mutation_helper",
+      "rationale": {
+        "crossover": "No ranking/filtering, two-parent recombination, population replacement, or generation termination is present.",
+        "fitness_evaluation": "Each candidate receives a sum-based score.",
+        "mutation": "mutate copies a candidate, changes a gene, and returns the modified copy.",
+        "population": "A collection of candidate vectors is iterated.",
+        "replacement": "No ranking/filtering, two-parent recombination, population replacement, or generation termination is present.",
+        "selection": "No ranking/filtering, two-parent recombination, population replacement, or generation termination is present.",
+        "termination": "No ranking/filtering, two-parent recombination, population replacement, or generation termination is present."
+      },
+      "safety_expectation": null,
+      "safety_verdict": "SAFE",
+      "safety_verdict_unchanged": true,
+      "safety_verdict_without_ea": "SAFE"
+    },
+    {
+      "category": "slice_replacement",
+      "ground_truth": {
+        "crossover": false,
+        "fitness_evaluation": true,
+        "mutation": false,
+        "population": true,
+        "replacement": true,
+        "selection": true,
+        "termination": false
+      },
+      "path": "programs/slice_replacement.py",
+      "predictions": {
+        "crossover": {
+          "confidence": "LOW",
+          "detected": false,
+          "evidence": [],
+          "reason": null
+        },
+        "fitness_evaluation": {
+          "confidence": "HIGH",
+          "detected": true,
+          "evidence": [
+            {
+              "ast_node": "Assign",
+              "cfg_blocks": [
+                "<module>:loop_header@3",
+                "<module>:sequence@4"
+              ],
+              "col": 4,
+              "description": "A computed value depends on a candidate passed to a call.",
+              "end_col": 26,
+              "end_line": 4,
+              "kind": "candidate_dependent_call",
+              "line": 4,
+              "snippet": "score = sum(candidate)"
+            }
+          ],
+          "reason": "A computed value depends on a candidate passed to a call."
+        },
+        "mutation": {
+          "confidence": "LOW",
+          "detected": false,
+          "evidence": [],
+          "reason": null
+        },
+        "population": {
+          "confidence": "HIGH",
+          "detected": true,
+          "evidence": [
+            {
+              "ast_node": "For",
+              "cfg_blocks": [
+                "<module>:loop_header@3"
+              ],
+              "col": 0,
+              "description": "A loop iterates a collection and uses each element in candidate evaluation or reproduction logic.",
+              "end_col": 26,
+              "end_line": 4,
+              "kind": "candidate_iteration",
+              "line": 3,
+              "snippet": "for candidate in population:\n    score = sum(candidate)"
+            }
+          ],
+          "reason": "A loop iterates a collection and uses each element in candidate evaluation or reproduction logic."
+        },
+        "replacement": {
+          "confidence": "HIGH",
+          "detected": true,
+          "evidence": [
+            {
+              "ast_node": "Assign",
+              "cfg_blocks": [
+                "<module>:sequence@5"
+              ],
+              "col": 0,
+              "description": "A statically resolved alias of an inferred population is replaced by slice assignment.",
+              "end_col": 36,
+              "end_line": 7,
+              "kind": "population_slice_replacement",
+              "line": 7,
+              "snippet": "population[:] = selected + offspring"
+            },
+            {
+              "ast_node": "Assign",
+              "cfg_blocks": [
+                "<module>:sequence@5"
+              ],
+              "col": 0,
+              "description": "An element of an inferred candidate collection is replaced.",
+              "end_col": 36,
+              "end_line": 7,
+              "kind": "survivor_replacement",
+              "line": 7,
+              "snippet": "population[:] = selected + offspring"
+            }
+          ],
+          "reason": "A statically resolved alias of an inferred population is replaced by slice assignment."
+        },
+        "selection": {
+          "confidence": "MEDIUM",
+          "detected": true,
+          "evidence": [
+            {
+              "ast_node": "Assign",
+              "cfg_blocks": [
+                "<module>:sequence@5"
+              ],
+              "col": 0,
+              "description": "A slice of the population is retained as survivors.",
+              "end_col": 25,
+              "end_line": 5,
+              "kind": "survivor_slice",
+              "line": 5,
+              "snippet": "selected = population[:1]"
+            },
+            {
+              "ast_node": "Assign",
+              "cfg_blocks": [
+                "<module>:sequence@5"
+              ],
+              "col": 0,
+              "description": "The retained slice is used to rebuild the population.",
+              "end_col": 36,
+              "end_line": 7,
+              "kind": "survivor_slice_use",
+              "line": 7,
+              "snippet": "population[:] = selected + offspring"
+            }
+          ],
+          "reason": "A slice of the population is retained as survivors."
+        },
+        "termination": {
+          "confidence": "LOW",
+          "detected": false,
+          "evidence": [],
+          "reason": null
+        }
+      },
+      "program_name": "slice_replacement",
+      "rationale": {
+        "crossover": "The offspring are supplied as values; this source does not modify an existing candidate or construct one from two parents, and has no process termination condition.",
+        "fitness_evaluation": "Each candidate is scored by sum(candidate).",
+        "mutation": "The offspring are supplied as values; this source does not modify an existing candidate or construct one from two parents, and has no process termination condition.",
+        "population": "A collection of candidates is iterated and retained as a population.",
+        "replacement": "population[:] is replaced with the selected subset and offspring collection.",
+        "selection": "A slice retains a selected subset of candidates.",
+        "termination": "The offspring are supplied as values; this source does not modify an existing candidate or construct one from two parents, and has no process termination condition."
+      },
+      "safety_expectation": null,
+      "safety_verdict": "SAFE",
+      "safety_verdict_unchanged": true,
+      "safety_verdict_without_ea": "SAFE"
+    },
+    {
+      "category": "termination_helper",
+      "ground_truth": {
+        "crossover": false,
+        "fitness_evaluation": true,
+        "mutation": false,
+        "population": true,
+        "replacement": false,
+        "selection": false,
+        "termination": true
+      },
+      "path": "programs/termination_helper.py",
+      "predictions": {
+        "crossover": {
+          "confidence": "LOW",
+          "detected": false,
+          "evidence": [],
+          "reason": null
+        },
+        "fitness_evaluation": {
+          "confidence": "HIGH",
+          "detected": true,
+          "evidence": [
+            {
+              "ast_node": "Assign",
+              "cfg_blocks": [
+                "<module>:loop_header@8",
+                "<module>:loop_header@9",
+                "<module>:sequence@10"
+              ],
+              "col": 8,
+              "description": "A computed value depends on a candidate passed to a call.",
+              "end_col": 52,
+              "end_line": 10,
+              "kind": "candidate_dependent_call",
+              "line": 10,
+              "snippet": "best_score = max(best_score, sum(candidate))"
+            }
+          ],
+          "reason": "A computed value depends on a candidate passed to a call."
+        },
+        "mutation": {
+          "confidence": "LOW",
+          "detected": false,
+          "evidence": [],
+          "reason": null
+        },
+        "population": {
+          "confidence": "HIGH",
+          "detected": true,
+          "evidence": [
+            {
+              "ast_node": "For",
+              "cfg_blocks": [
+                "<module>:loop_header@8",
+                "<module>:loop_header@9"
+              ],
+              "col": 4,
+              "description": "A loop iterates a collection and uses each element in candidate evaluation or reproduction logic.",
+              "end_col": 52,
+              "end_line": 10,
+              "kind": "candidate_iteration",
+              "line": 9,
+              "snippet": "for candidate in population:\n    best_score = max(best_score, sum(candidate))"
+            }
+          ],
+          "reason": "A loop iterates a collection and uses each element in candidate evaluation or reproduction logic."
+        },
+        "replacement": {
+          "confidence": "LOW",
+          "detected": false,
+          "evidence": [],
+          "reason": null
+        },
+        "selection": {
+          "confidence": "LOW",
+          "detected": false,
+          "evidence": [],
+          "reason": null
+        },
+        "termination": {
+          "confidence": "MEDIUM",
+          "detected": true,
+          "evidence": [
+            {
+              "ast_node": "Return",
+              "cfg_blocks": [
+                "<module>:sequence@1",
+                "should_continue:sequence@4"
+              ],
+              "col": 4,
+              "description": "The helper returns a condition structurally derived from its arguments.",
+              "end_col": 30,
+              "end_line": 4,
+              "kind": "helper_termination_condition",
+              "line": 4,
+              "snippet": "return best_score < target"
+            },
+            {
+              "ast_node": "While",
+              "cfg_blocks": [
+                "<module>:loop_header@8"
+              ],
+              "col": 0,
+              "description": "The evolutionary loop is controlled by a runtime condition.",
+              "end_col": 52,
+              "end_line": 10,
+              "kind": "loop_termination",
+              "line": 8,
+              "snippet": "while should_continue(best_score, 2):\n    for candidate in population:\n        best_score = max(best_score, sum(candidate))"
+            },
+            {
+              "ast_node": "Call",
+              "cfg_blocks": [
+                "<module>:loop_header@8"
+              ],
+              "col": 6,
+              "description": "The EA process loop uses a locally summarized condition helper.",
+              "end_col": 36,
+              "end_line": 8,
+              "kind": "helper_termination_call",
+              "line": 8,
+              "snippet": "should_continue(best_score, 2)"
+            }
+          ],
+          "reason": "The helper returns a condition structurally derived from its arguments."
+        }
+      },
+      "program_name": "termination_helper",
+      "rationale": {
+        "crossover": "No ranking/filtering, candidate modification, multi-parent combination, or population replacement is present.",
+        "fitness_evaluation": "Each candidate is scored using sum(candidate) to update best_score.",
+        "mutation": "No ranking/filtering, candidate modification, multi-parent combination, or population replacement is present.",
+        "population": "A collection of candidate vectors is traversed by the process loop.",
+        "replacement": "No ranking/filtering, candidate modification, multi-parent combination, or population replacement is present.",
+        "selection": "No ranking/filtering, candidate modification, multi-parent combination, or population replacement is present.",
+        "termination": "The outer EA process loop continues according to the helper-returned condition should_continue(best_score, 2)."
+      },
+      "safety_expectation": null,
+      "safety_verdict": "CONDITIONALLY_SAFE",
+      "safety_verdict_unchanged": true,
+      "safety_verdict_without_ea": "CONDITIONALLY_SAFE"
+    },
+    {
+      "category": "non_ea_control_flow",
+      "ground_truth": {
+        "crossover": false,
+        "fitness_evaluation": false,
+        "mutation": false,
+        "population": false,
+        "replacement": false,
+        "selection": false,
+        "termination": false
+      },
+      "path": "programs/non_ea_loop.py",
+      "predictions": {
+        "crossover": {
+          "confidence": "LOW",
+          "detected": false,
+          "evidence": [],
+          "reason": null
+        },
+        "fitness_evaluation": {
+          "confidence": "LOW",
+          "detected": false,
+          "evidence": [],
+          "reason": null
+        },
+        "mutation": {
+          "confidence": "LOW",
+          "detected": false,
+          "evidence": [],
+          "reason": null
+        },
+        "population": {
+          "confidence": "LOW",
+          "detected": false,
+          "evidence": [],
+          "reason": null
+        },
+        "replacement": {
+          "confidence": "LOW",
+          "detected": false,
+          "evidence": [],
+          "reason": null
+        },
+        "selection": {
+          "confidence": "LOW",
+          "detected": false,
+          "evidence": [],
+          "reason": null
+        },
+        "termination": {
+          "confidence": "LOW",
+          "detected": false,
+          "evidence": [],
+          "reason": null
+        }
+      },
+      "program_name": "non_ea_loop",
+      "rationale": {
+        "crossover": "The loops only accumulate an integer total; range iteration and a while condition alone are not EA termination or population evidence, and there are no candidates or evolutionary operators.",
+        "fitness_evaluation": "The loops only accumulate an integer total; range iteration and a while condition alone are not EA termination or population evidence, and there are no candidates or evolutionary operators.",
+        "mutation": "The loops only accumulate an integer total; range iteration and a while condition alone are not EA termination or population evidence, and there are no candidates or evolutionary operators.",
+        "population": "The loops only accumulate an integer total; range iteration and a while condition alone are not EA termination or population evidence, and there are no candidates or evolutionary operators.",
+        "replacement": "The loops only accumulate an integer total; range iteration and a while condition alone are not EA termination or population evidence, and there are no candidates or evolutionary operators.",
+        "selection": "The loops only accumulate an integer total; range iteration and a while condition alone are not EA termination or population evidence, and there are no candidates or evolutionary operators.",
+        "termination": "The loops only accumulate an integer total; range iteration and a while condition alone are not EA termination or population evidence, and there are no candidates or evolutionary operators."
+      },
+      "safety_expectation": "SAFE",
+      "safety_verdict": "SAFE",
+      "safety_verdict_unchanged": true,
+      "safety_verdict_without_ea": "SAFE"
+    },
+    {
+      "category": "non_ea_indexed_writes",
+      "ground_truth": {
+        "crossover": false,
+        "fitness_evaluation": false,
+        "mutation": false,
+        "population": false,
+        "replacement": false,
+        "selection": false,
+        "termination": false
+      },
+      "path": "programs/non_ea_indexed_writes.py",
+      "predictions": {
+        "crossover": {
+          "confidence": "LOW",
+          "detected": false,
+          "evidence": [],
+          "reason": null
+        },
+        "fitness_evaluation": {
+          "confidence": "LOW",
+          "detected": false,
+          "evidence": [],
+          "reason": null
+        },
+        "mutation": {
+          "confidence": "LOW",
+          "detected": false,
+          "evidence": [],
+          "reason": null
+        },
+        "population": {
+          "confidence": "LOW",
+          "detected": false,
+          "evidence": [],
+          "reason": null
+        },
+        "replacement": {
+          "confidence": "LOW",
+          "detected": false,
+          "evidence": [],
+          "reason": null
+        },
+        "selection": {
+          "confidence": "LOW",
+          "detected": false,
+          "evidence": [],
+          "reason": null
+        },
+        "termination": {
+          "confidence": "LOW",
+          "detected": false,
+          "evidence": [],
+          "reason": null
+        }
+      },
+      "program_name": "non_ea_indexed_writes",
+      "rationale": {
+        "crossover": "The indexed writes fill a fixed matrix with row-plus-column values; they are not candidate mutation, recombination, or population replacement.",
+        "fitness_evaluation": "The indexed writes fill a fixed matrix with row-plus-column values; they are not candidate mutation, recombination, or population replacement.",
+        "mutation": "The indexed writes fill a fixed matrix with row-plus-column values; they are not candidate mutation, recombination, or population replacement.",
+        "population": "The indexed writes fill a fixed matrix with row-plus-column values; they are not candidate mutation, recombination, or population replacement.",
+        "replacement": "The indexed writes fill a fixed matrix with row-plus-column values; they are not candidate mutation, recombination, or population replacement.",
+        "selection": "The indexed writes fill a fixed matrix with row-plus-column values; they are not candidate mutation, recombination, or population replacement.",
+        "termination": "The indexed writes fill a fixed matrix with row-plus-column values; they are not candidate mutation, recombination, or population replacement."
+      },
+      "safety_expectation": null,
+      "safety_verdict": "SAFE",
+      "safety_verdict_unchanged": true,
+      "safety_verdict_without_ea": "SAFE"
+    },
+    {
+      "category": "non_ea_random_indexing",
+      "ground_truth": {
+        "crossover": false,
+        "fitness_evaluation": false,
+        "mutation": false,
+        "population": false,
+        "replacement": false,
+        "selection": false,
+        "termination": false
+      },
+      "path": "programs/non_ea_random_indexing.py",
+      "predictions": {
+        "crossover": {
+          "confidence": "LOW",
+          "detected": false,
+          "evidence": [],
+          "reason": null
+        },
+        "fitness_evaluation": {
+          "confidence": "LOW",
+          "detected": false,
+          "evidence": [],
+          "reason": null
+        },
+        "mutation": {
+          "confidence": "LOW",
+          "detected": false,
+          "evidence": [],
+          "reason": null
+        },
+        "population": {
+          "confidence": "LOW",
+          "detected": false,
+          "evidence": [],
+          "reason": null
+        },
+        "replacement": {
+          "confidence": "LOW",
+          "detected": false,
+          "evidence": [],
+          "reason": null
+        },
+        "selection": {
+          "confidence": "LOW",
+          "detected": false,
+          "evidence": [],
+          "reason": null
+        },
+        "termination": {
+          "confidence": "LOW",
+          "detected": false,
+          "evidence": [],
+          "reason": null
+        }
+      },
+      "program_name": "non_ea_random_indexing",
+      "rationale": {
+        "crossover": "A single random choice selects an ordinary color string; there is no candidate population, fitness relationship, iterative selection, or reproduction.",
+        "fitness_evaluation": "A single random choice selects an ordinary color string; there is no candidate population, fitness relationship, iterative selection, or reproduction.",
+        "mutation": "A single random choice selects an ordinary color string; there is no candidate population, fitness relationship, iterative selection, or reproduction.",
+        "population": "A single random choice selects an ordinary color string; there is no candidate population, fitness relationship, iterative selection, or reproduction.",
+        "replacement": "A single random choice selects an ordinary color string; there is no candidate population, fitness relationship, iterative selection, or reproduction.",
+        "selection": "A single random choice selects an ordinary color string; there is no candidate population, fitness relationship, iterative selection, or reproduction.",
+        "termination": "A single random choice selects an ordinary color string; there is no candidate population, fitness relationship, iterative selection, or reproduction."
+      },
+      "safety_expectation": null,
+      "safety_verdict": "SAFE",
+      "safety_verdict_unchanged": true,
+      "safety_verdict_without_ea": "SAFE"
+    },
+    {
+      "category": "ordinary_callback_registration",
+      "ground_truth": {
+        "crossover": false,
+        "fitness_evaluation": false,
+        "mutation": false,
+        "population": false,
+        "replacement": false,
+        "selection": false,
+        "termination": false
+      },
+      "path": "programs/ordinary_callback_registration.py",
+      "predictions": {
+        "crossover": {
+          "confidence": "LOW",
+          "detected": false,
+          "evidence": [],
+          "reason": null
+        },
+        "fitness_evaluation": {
+          "confidence": "LOW",
+          "detected": false,
+          "evidence": [],
+          "reason": null
+        },
+        "mutation": {
+          "confidence": "LOW",
+          "detected": false,
+          "evidence": [],
+          "reason": null
+        },
+        "population": {
+          "confidence": "LOW",
+          "detected": false,
+          "evidence": [],
+          "reason": null
+        },
+        "replacement": {
+          "confidence": "LOW",
+          "detected": false,
+          "evidence": [],
+          "reason": null
+        },
+        "selection": {
+          "confidence": "LOW",
+          "detected": false,
+          "evidence": [],
+          "reason": null
+        },
+        "termination": {
+          "confidence": "LOW",
+          "detected": false,
+          "evidence": [],
+          "reason": null
+        }
+      },
+      "program_name": "ordinary_callback_registration",
+      "rationale": {
+        "crossover": "A generic on_message callback trims text. Registration and dispatch without EA-role structure are not evidence of evolutionary operators.",
+        "fitness_evaluation": "A generic on_message callback trims text. Registration and dispatch without EA-role structure are not evidence of evolutionary operators.",
+        "mutation": "A generic on_message callback trims text. Registration and dispatch without EA-role structure are not evidence of evolutionary operators.",
+        "population": "A generic on_message callback trims text. Registration and dispatch without EA-role structure are not evidence of evolutionary operators.",
+        "replacement": "A generic on_message callback trims text. Registration and dispatch without EA-role structure are not evidence of evolutionary operators.",
+        "selection": "A generic on_message callback trims text. Registration and dispatch without EA-role structure are not evidence of evolutionary operators.",
+        "termination": "A generic on_message callback trims text. Registration and dispatch without EA-role structure are not evidence of evolutionary operators."
+      },
+      "safety_expectation": "SAFE",
+      "safety_verdict": "SAFE",
+      "safety_verdict_unchanged": true,
+      "safety_verdict_without_ea": "SAFE"
+    },
+    {
+      "category": "safe_ea",
+      "ground_truth": {
+        "crossover": false,
+        "fitness_evaluation": true,
+        "mutation": true,
+        "population": true,
+        "replacement": true,
+        "selection": true,
+        "termination": true
+      },
+      "path": "programs/safe_ea.py",
+      "predictions": {
+        "crossover": {
+          "confidence": "LOW",
+          "detected": false,
+          "evidence": [],
+          "reason": null
+        },
+        "fitness_evaluation": {
+          "confidence": "HIGH",
+          "detected": true,
+          "evidence": [
+            {
+              "ast_node": "Assign",
+              "cfg_blocks": [
+                "<module>:loop_header@4",
+                "<module>:sequence@5"
+              ],
+              "col": 4,
+              "description": "A computed value depends on a candidate passed to a call.",
+              "end_col": 26,
+              "end_line": 5,
+              "kind": "candidate_dependent_call",
+              "line": 5,
+              "snippet": "score = sum(candidate)"
+            },
+            {
+              "ast_node": "Assign",
+              "cfg_blocks": [
+                "<module>:loop_header@13",
+                "<module>:loop_header@14",
+                "<module>:sequence@15"
+              ],
+              "col": 8,
+              "description": "A computed value depends on a candidate passed to a call.",
+              "end_col": 30,
+              "end_line": 15,
+              "kind": "candidate_dependent_call",
+              "line": 15,
+              "snippet": "score = sum(candidate)"
+            }
+          ],
+          "reason": "A computed value depends on a candidate passed to a call."
+        },
+        "mutation": {
+          "confidence": "HIGH",
+          "detected": true,
+          "evidence": [
+            {
+              "ast_node": "Assign",
+              "cfg_blocks": [
+                "<module>:loop_header@8",
+                "<module>:sequence@9"
+              ],
+              "col": 4,
+              "description": "A candidate or its alias is modified through an element or attribute update.",
+              "end_col": 43,
+              "end_line": 10,
+              "kind": "candidate_modification",
+              "line": 10,
+              "snippet": "child[random.randrange(len(child))] = 1"
+            }
+          ],
+          "reason": "A candidate or its alias is modified through an element or attribute update."
+        },
+        "population": {
+          "confidence": "HIGH",
+          "detected": true,
+          "evidence": [
+            {
+              "ast_node": "For",
+              "cfg_blocks": [
+                "<module>:loop_header@4"
+              ],
+              "col": 0,
+              "description": "A loop iterates a collection and uses each element in candidate evaluation or reproduction logic.",
+              "end_col": 26,
+              "end_line": 5,
+              "kind": "candidate_iteration",
+              "line": 4,
+              "snippet": "for candidate in population:\n    score = sum(candidate)"
+            },
+            {
+              "ast_node": "For",
+              "cfg_blocks": [
+                "<module>:loop_header@8"
+              ],
+              "col": 0,
+              "description": "A loop iterates a collection and uses each element in candidate evaluation or reproduction logic.",
+              "end_col": 27,
+              "end_line": 11,
+              "kind": "candidate_iteration",
+              "line": 8,
+              "snippet": "for candidate in selected:\n    child = candidate.copy()\n    child[random.randrange(len(child))] = 1\n    offspring.append(child)"
+            },
+            {
+              "ast_node": "For",
+              "cfg_blocks": [
+                "<module>:loop_header@13",
+                "<module>:loop_header@14"
+              ],
+              "col": 4,
+              "description": "A loop iterates a collection and uses each element in candidate evaluation or reproduction logic.",
+              "end_col": 30,
+              "end_line": 15,
+              "kind": "candidate_iteration",
+              "line": 14,
+              "snippet": "for candidate in population:\n    score = sum(candidate)"
+            }
+          ],
+          "reason": "A loop iterates a collection and uses each element in candidate evaluation or reproduction logic."
+        },
+        "replacement": {
+          "confidence": "HIGH",
+          "detected": true,
+          "evidence": [
+            {
+              "ast_node": "Assign",
+              "cfg_blocks": [
+                "<module>:sequence@12"
+              ],
+              "col": 0,
+              "description": "A candidate collection is replaced by a newly composed collection.",
+              "end_col": 33,
+              "end_line": 12,
+              "kind": "population_reconstruction",
+              "line": 12,
+              "snippet": "population = selected + offspring"
+            }
+          ],
+          "reason": "A candidate collection is replaced by a newly composed collection."
+        },
+        "selection": {
+          "confidence": "HIGH",
+          "detected": true,
+          "evidence": [
+            {
+              "ast_node": "Call",
+              "cfg_blocks": [
+                "<module>:sequence@6"
+              ],
+              "col": 11,
+              "description": "A ranking, filtering, or sampling operation consumes an inferred candidate collection.",
+              "end_col": 52,
+              "end_line": 6,
+              "kind": "rank_or_filter",
+              "line": 6,
+              "snippet": "sorted(population, key=sum, reverse=True)"
+            }
+          ],
+          "reason": "A ranking, filtering, or sampling operation consumes an inferred candidate collection."
+        },
+        "termination": {
+          "confidence": "HIGH",
+          "detected": true,
+          "evidence": [
+            {
+              "ast_node": "For",
+              "cfg_blocks": [
+                "<module>:loop_header@13"
+              ],
+              "col": 0,
+              "description": "The evolutionary loop iterates a finite built-in range or literal collection.",
+              "end_col": 30,
+              "end_line": 15,
+              "kind": "loop_termination",
+              "line": 13,
+              "snippet": "for generation in range(4):\n    for candidate in population:\n        score = sum(candidate)"
+            }
+          ],
+          "reason": "The evolutionary loop iterates a finite built-in range or literal collection."
+        }
+      },
+      "program_name": "safe_ea",
+      "rationale": {
+        "crossover": "Although candidates are copied and mutated, no child is formed by combining two parents; mutation is not crossover.",
+        "fitness_evaluation": "Each candidate is scored by sum(candidate).",
+        "mutation": "A selected candidate copy has one gene changed.",
+        "population": "Candidate vectors are traversed and updated as a population.",
+        "replacement": "The population is rebuilt from selected candidates and offspring.",
+        "selection": "Candidates are ranked and the best subset is selected.",
+        "termination": "The generation process is bounded by range(4)."
+      },
+      "safety_expectation": "SAFE",
+      "safety_verdict": "SAFE",
+      "safety_verdict_unchanged": true,
+      "safety_verdict_without_ea": "SAFE"
+    },
+    {
+      "category": "unsafe_ea",
+      "ground_truth": {
+        "crossover": false,
+        "fitness_evaluation": true,
+        "mutation": true,
+        "population": true,
+        "replacement": true,
+        "selection": true,
+        "termination": false
+      },
+      "path": "programs/unsafe_ea.py",
+      "predictions": {
+        "crossover": {
+          "confidence": "LOW",
+          "detected": false,
+          "evidence": [],
+          "reason": null
+        },
+        "fitness_evaluation": {
+          "confidence": "HIGH",
+          "detected": true,
+          "evidence": [
+            {
+              "ast_node": "Assign",
+              "cfg_blocks": [
+                "<module>:loop_header@3",
+                "<module>:sequence@4"
+              ],
+              "col": 4,
+              "description": "A computed value depends on a candidate passed to a call.",
+              "end_col": 26,
+              "end_line": 4,
+              "kind": "candidate_dependent_call",
+              "line": 4,
+              "snippet": "score = sum(candidate)"
+            }
+          ],
+          "reason": "A computed value depends on a candidate passed to a call."
+        },
+        "mutation": {
+          "confidence": "MEDIUM",
+          "detected": true,
+          "evidence": [
+            {
+              "ast_node": "Assign",
+              "cfg_blocks": [
+                "<module>:sequence@5"
+              ],
+              "col": 0,
+              "description": "A population or selected candidate is copied.",
+              "end_col": 26,
+              "end_line": 6,
+              "kind": "candidate_copy",
+              "line": 6,
+              "snippet": "child = selected[0].copy()"
+            },
+            {
+              "ast_node": "Assign",
+              "cfg_blocks": [
+                "<module>:sequence@5"
+              ],
+              "col": 0,
+              "description": "The candidate copy (or an alias of it) is modified through an element or attribute write.",
+              "end_col": 23,
+              "end_line": 7,
+              "kind": "candidate_copy_modification",
+              "line": 7,
+              "snippet": "child[0] = 1 - child[0]"
+            }
+          ],
+          "reason": "A population or selected candidate is copied."
+        },
+        "population": {
+          "confidence": "HIGH",
+          "detected": true,
+          "evidence": [
+            {
+              "ast_node": "For",
+              "cfg_blocks": [
+                "<module>:loop_header@3"
+              ],
+              "col": 0,
+              "description": "A loop iterates a collection and uses each element in candidate evaluation or reproduction logic.",
+              "end_col": 26,
+              "end_line": 4,
+              "kind": "candidate_iteration",
+              "line": 3,
+              "snippet": "for candidate in population:\n    score = sum(candidate)"
+            }
+          ],
+          "reason": "A loop iterates a collection and uses each element in candidate evaluation or reproduction logic."
+        },
+        "replacement": {
+          "confidence": "HIGH",
+          "detected": true,
+          "evidence": [
+            {
+              "ast_node": "Assign",
+              "cfg_blocks": [
+                "<module>:sequence@5"
+              ],
+              "col": 0,
+              "description": "A statically resolved alias of an inferred population is replaced by slice assignment.",
+              "end_col": 34,
+              "end_line": 8,
+              "kind": "population_slice_replacement",
+              "line": 8,
+              "snippet": "population[:] = selected + [child]"
+            },
+            {
+              "ast_node": "Assign",
+              "cfg_blocks": [
+                "<module>:sequence@5"
+              ],
+              "col": 0,
+              "description": "An element of an inferred candidate collection is replaced.",
+              "end_col": 34,
+              "end_line": 8,
+              "kind": "survivor_replacement",
+              "line": 8,
+              "snippet": "population[:] = selected + [child]"
+            }
+          ],
+          "reason": "A statically resolved alias of an inferred population is replaced by slice assignment."
+        },
+        "selection": {
+          "confidence": "HIGH",
+          "detected": true,
+          "evidence": [
+            {
+              "ast_node": "Call",
+              "cfg_blocks": [
+                "<module>:sequence@5"
+              ],
+              "col": 11,
+              "description": "A ranking, filtering, or sampling operation consumes an inferred candidate collection.",
+              "end_col": 38,
+              "end_line": 5,
+              "kind": "rank_or_filter",
+              "line": 5,
+              "snippet": "sorted(population, key=sum)"
+            }
+          ],
+          "reason": "A ranking, filtering, or sampling operation consumes an inferred candidate collection."
+        },
+        "termination": {
+          "confidence": "LOW",
+          "detected": false,
+          "evidence": [],
+          "reason": null
+        }
+      },
+      "program_name": "unsafe_ea",
+      "rationale": {
+        "crossover": "The program contains no two-parent recombination and no generation/process termination loop; the unsafe eval(input()) sink does not imply any EA role.",
+        "fitness_evaluation": "sum(candidate) computes a candidate score.",
+        "mutation": "A copied candidate has a gene flipped.",
+        "population": "Candidate vectors are iterated and maintained as a population.",
+        "replacement": "A slice assignment replaces the current population with selected candidates and a child.",
+        "selection": "Candidates are sorted by score.",
+        "termination": "The program contains no two-parent recombination and no generation/process termination loop; the unsafe eval(input()) sink does not imply any EA role."
+      },
+      "safety_expectation": "UNSAFE",
+      "safety_verdict": "UNSAFE",
+      "safety_verdict_unchanged": true,
+      "safety_verdict_without_ea": "UNSAFE"
+    },
+    {
+      "category": "incomplete_ambiguous_ea",
+      "ground_truth": {
+        "crossover": false,
+        "fitness_evaluation": true,
+        "mutation": false,
+        "population": true,
+        "replacement": false,
+        "selection": false,
+        "termination": false
+      },
+      "path": "programs/incomplete_ambiguous_ea.py",
+      "predictions": {
+        "crossover": {
+          "confidence": "LOW",
+          "detected": false,
+          "evidence": [],
+          "reason": null
+        },
+        "fitness_evaluation": {
+          "confidence": "HIGH",
+          "detected": true,
+          "evidence": [
+            {
+              "ast_node": "Assign",
+              "cfg_blocks": [
+                "<module>:loop_header@3",
+                "<module>:sequence@4"
+              ],
+              "col": 4,
+              "description": "A computed value depends on a candidate passed to a call.",
+              "end_col": 32,
+              "end_line": 4,
+              "kind": "candidate_dependent_call",
+              "line": 4,
+              "snippet": "value = objective(candidate)"
+            },
+            {
+              "ast_node": "Call",
+              "cfg_blocks": [
+                "<module>:loop_header@3",
+                "<module>:sequence@4"
+              ],
+              "col": 12,
+              "description": "A candidate is consumed by an evaluation-like computation inside collection iteration.",
+              "end_col": 32,
+              "end_line": 4,
+              "kind": "candidate_evaluation_call",
+              "line": 4,
+              "snippet": "objective(candidate)"
+            }
+          ],
+          "reason": "A computed value depends on a candidate passed to a call."
+        },
+        "mutation": {
+          "confidence": "LOW",
+          "detected": false,
+          "evidence": [],
+          "reason": null
+        },
+        "population": {
+          "confidence": "HIGH",
+          "detected": true,
+          "evidence": [
+            {
+              "ast_node": "For",
+              "cfg_blocks": [
+                "<module>:loop_header@3"
+              ],
+              "col": 0,
+              "description": "A loop iterates a collection and uses each element in candidate evaluation or reproduction logic.",
+              "end_col": 32,
+              "end_line": 4,
+              "kind": "candidate_iteration",
+              "line": 3,
+              "snippet": "for candidate in population:\n    value = objective(candidate)"
+            }
+          ],
+          "reason": "A loop iterates a collection and uses each element in candidate evaluation or reproduction logic."
+        },
+        "replacement": {
+          "confidence": "LOW",
+          "detected": false,
+          "evidence": [],
+          "reason": null
+        },
+        "selection": {
+          "confidence": "LOW",
+          "detected": false,
+          "evidence": [],
+          "reason": null
+        },
+        "termination": {
+          "confidence": "LOW",
+          "detected": false,
+          "evidence": [],
+          "reason": null
+        }
+      },
+      "program_name": "incomplete_ambiguous_ea",
+      "rationale": {
+        "crossover": "Only candidate scoring is visible; the EA is incomplete. No selection, mutation, crossover, replacement, or process termination role is present. (Label corrected in Build 7: an earlier edit set fitness to false without changing the program, contradicting its documented intent.)",
+        "fitness_evaluation": "objective(candidate) computes a per-candidate objective value; the program docstring states it is candidate scoring, matching the specification example score = objective(individual).",
+        "mutation": "Only candidate scoring is visible; the EA is incomplete. No selection, mutation, crossover, replacement, or process termination role is present. (Label corrected in Build 7: an earlier edit set fitness to false without changing the program, contradicting its documented intent.)",
+        "population": "A candidate collection is explicitly traversed and its elements are passed to an operation.",
+        "replacement": "Only candidate scoring is visible; the EA is incomplete. No selection, mutation, crossover, replacement, or process termination role is present. (Label corrected in Build 7: an earlier edit set fitness to false without changing the program, contradicting its documented intent.)",
+        "selection": "Only candidate scoring is visible; the EA is incomplete. No selection, mutation, crossover, replacement, or process termination role is present. (Label corrected in Build 7: an earlier edit set fitness to false without changing the program, contradicting its documented intent.)",
+        "termination": "Only candidate scoring is visible; the EA is incomplete. No selection, mutation, crossover, replacement, or process termination role is present. (Label corrected in Build 7: an earlier edit set fitness to false without changing the program, contradicting its documented intent.)"
+      },
+      "safety_expectation": null,
+      "safety_verdict": "SAFE",
+      "safety_verdict_unchanged": true,
+      "safety_verdict_without_ea": "SAFE"
+    },
+    {
+      "category": "unsafe_non_ea",
+      "ground_truth": {
+        "crossover": false,
+        "fitness_evaluation": false,
+        "mutation": false,
+        "population": false,
+        "replacement": false,
+        "selection": false,
+        "termination": false
+      },
+      "path": "programs/unsafe_non_ea.py",
+      "predictions": {
+        "crossover": {
+          "confidence": "LOW",
+          "detected": false,
+          "evidence": [],
+          "reason": null
+        },
+        "fitness_evaluation": {
+          "confidence": "LOW",
+          "detected": false,
+          "evidence": [],
+          "reason": null
+        },
+        "mutation": {
+          "confidence": "LOW",
+          "detected": false,
+          "evidence": [],
+          "reason": null
+        },
+        "population": {
+          "confidence": "LOW",
+          "detected": false,
+          "evidence": [],
+          "reason": null
+        },
+        "replacement": {
+          "confidence": "LOW",
+          "detected": false,
+          "evidence": [],
+          "reason": null
+        },
+        "selection": {
+          "confidence": "LOW",
+          "detected": false,
+          "evidence": [],
+          "reason": null
+        },
+        "termination": {
+          "confidence": "LOW",
+          "detected": false,
+          "evidence": [],
+          "reason": null
+        }
+      },
+      "program_name": "unsafe_non_ea",
+      "rationale": {
+        "crossover": "The source only reads and dynamically evaluates a command; an unsafe sink is unrelated to every EA role.",
+        "fitness_evaluation": "The source only reads and dynamically evaluates a command; an unsafe sink is unrelated to every EA role.",
+        "mutation": "The source only reads and dynamically evaluates a command; an unsafe sink is unrelated to every EA role.",
+        "population": "The source only reads and dynamically evaluates a command; an unsafe sink is unrelated to every EA role.",
+        "replacement": "The source only reads and dynamically evaluates a command; an unsafe sink is unrelated to every EA role.",
+        "selection": "The source only reads and dynamically evaluates a command; an unsafe sink is unrelated to every EA role.",
+        "termination": "The source only reads and dynamically evaluates a command; an unsafe sink is unrelated to every EA role."
+      },
+      "safety_expectation": "UNSAFE",
+      "safety_verdict": "UNSAFE",
+      "safety_verdict_unchanged": true,
+      "safety_verdict_without_ea": "UNSAFE"
+    }
+  ],
+  "safety_separation": {
+    "all_checks_pass": true,
+    "all_programs_verdict_unchanged": {
+      "changed": [],
+      "checked": 18,
+      "unchanged": true
+    },
+    "non_ea_loop": {
+      "expectation_matches": true,
+      "expected": "SAFE",
+      "unchanged": true,
+      "with_ea": "SAFE",
+      "without_ea": "SAFE"
+    },
+    "ordinary_callback_registration": {
+      "expectation_matches": true,
+      "expected": "SAFE",
+      "unchanged": true,
+      "with_ea": "SAFE",
+      "without_ea": "SAFE"
+    },
+    "safe_ea": {
+      "expectation_matches": true,
+      "expected": "SAFE",
+      "unchanged": true,
+      "with_ea": "SAFE",
+      "without_ea": "SAFE"
+    },
+    "unknown_parse_status": {
+      "note": "UNKNOWN here is the benchmark harness status for invalid syntax; the safety API raises before producing a verdict.",
+      "status_with_ea": "UNKNOWN",
+      "status_without_ea": "UNKNOWN",
+      "unchanged": true
+    },
+    "unsafe_ea": {
+      "expectation_matches": true,
+      "expected": "UNSAFE",
+      "unchanged": true,
+      "with_ea": "UNSAFE",
+      "without_ea": "UNSAFE"
+    },
+    "unsafe_non_ea": {
+      "expectation_matches": true,
+      "expected": "UNSAFE",
+      "unchanged": true,
+      "with_ea": "UNSAFE",
+      "without_ea": "UNSAFE"
+    }
+  },
+  "schema_version": "1.0"
+}

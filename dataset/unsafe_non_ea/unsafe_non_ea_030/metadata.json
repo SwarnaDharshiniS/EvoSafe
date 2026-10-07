@@ -1,0 +1,22 @@
+{
+  "program_id": "unsafe_non_ea_030",
+  "category": "unsafe_non_ea",
+  "source_type": "controlled_generation",
+  "language": "python",
+  "expected_safety": "UNSAFE",
+  "ea_roles": {
+    "population": false,
+    "fitness": false,
+    "selection": false,
+    "mutation": false,
+    "crossover": false,
+    "replacement": false,
+    "termination": false
+  },
+  "safety_violations": [
+    "DYN"
+  ],
+  "description": "Compile a submitted transform and run it on imported measurement data.",
+  "ground_truth_reason": "All seven EA-role labels are false: this is ordinary measurement transforms software, not an evolutionary algorithm. The source performs measurement transforms only; no candidate population, candidate fitness pipeline, or offspring/replacement lifecycle exists. Caller-provided or file-provided code is loaded and executed dynamically. Policy basis: The existing decision policy treats dynamic-execution primitives as UNSAFE.",
+  "review_status": "REVIEWED"
+}

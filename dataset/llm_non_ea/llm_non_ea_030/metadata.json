@@ -1,0 +1,26 @@
+{
+  "program_id": "llm_non_ea_030",
+  "category": "llm_non_ea",
+  "source_type": "llm_generated",
+  "language": "python",
+  "expected_safety": "UNSAFE",
+  "ea_roles": {
+    "population": false,
+    "fitness": false,
+    "selection": false,
+    "mutation": false,
+    "crossover": false,
+    "replacement": false,
+    "termination": false
+  },
+  "safety_violations": [
+    "NET",
+    "UNBOUNDED_LOOP"
+  ],
+  "description": "Collect local UDP diagnostics messages forever and acknowledge each sender.",
+  "generation_prompt": "Write a loopback UDP diagnostics collector that acknowledges datagrams.",
+  "style_note": "datagram receive loop and sender acknowledgement",
+  "dependencies": [],
+  "ground_truth_reason": "All seven EA-role labels are false. The program receives operational UDP diagnostics datagrams and sends acknowledgements; there are no candidate solutions or reproduction operations. The service binds only to loopback but runs a hard while-true loop without shutdown. The existing resource policy treats that hard loop as UNSAFE.",
+  "review_status": "REVIEWED"
+}

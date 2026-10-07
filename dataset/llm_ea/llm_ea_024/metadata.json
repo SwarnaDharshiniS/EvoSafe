@@ -1,0 +1,24 @@
+{
+  "program_id": "llm_ea_024",
+  "category": "llm_ea",
+  "source_type": "llm_generated",
+  "language": "python",
+  "expected_safety": "UNSAFE",
+  "ea_roles": {
+    "population": true,
+    "fitness": true,
+    "selection": true,
+    "mutation": true,
+    "crossover": false,
+    "replacement": true,
+    "termination": false
+  },
+  "safety_violations": [
+    "RECURSION_RESOURCE_EXHAUSTION"
+  ],
+  "description": "Recursively expand numeric candidates until a threshold that cannot be met.",
+  "generation_prompt": "Use a recursive helper to grow candidates toward a target score.",
+  "style_note": "recursive score-gated operator",
+  "ground_truth_reason": "Ground truth is based on candidate flow and operations, not names. Positive evidence: population: a collection of candidate genomes is initialized and carried through the optimizer; fitness: a computation derives a score or loss from each candidate; selection: candidate-derived parents are chosen by ranking or top-k filtering; mutation: a candidate copy is changed to produce a new candidate; replacement: the active candidate collection is rebuilt or updated with selected parents and offspring. Negative evidence: no child structurally combines two distinct candidate inputs; the evolutionary process has no explicit generation or convergence stop condition. Prompt intent: Use a recursive helper to grow candidates toward a target score. Policy basis: The existing resource rule treats recursion without an obvious base condition as UNSAFE.",
+  "review_status": "REVIEWED"
+}

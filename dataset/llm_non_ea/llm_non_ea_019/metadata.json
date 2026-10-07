@@ -1,0 +1,25 @@
+{
+  "program_id": "llm_non_ea_019",
+  "category": "llm_non_ea",
+  "source_type": "llm_generated",
+  "language": "python",
+  "expected_safety": "UNKNOWN",
+  "ea_roles": {
+    "population": false,
+    "fitness": false,
+    "selection": false,
+    "mutation": false,
+    "crossover": false,
+    "replacement": false,
+    "termination": false
+  },
+  "safety_violations": [
+    "RESOURCE_EXHAUSTION"
+  ],
+  "description": "Build a large in-memory lookup table from a telemetry sequence.",
+  "generation_prompt": "Build a lookup table for a large telemetry sequence.",
+  "style_note": "large comprehension-backed mapping",
+  "dependencies": [],
+  "ground_truth_reason": "All seven EA-role labels are false. The program performs ordinary telemetry indexing work on records, measurements, or model state; no candidate population is evaluated and reproduced. Scoring, ranking, record edits, model updates, or two-input joins in this program are ordinary application/data semantics rather than fitness-driven selection and reproduction. Safety behavior: Input size, recursion depth, or allocation can exceed practical limits. Policy basis: The source has an input-dependent depth or allocation risk, but the default decision rules do not establish a definitive verdict from that signal alone; expected_safety is UNKNOWN.",
+  "review_status": "REVIEWED"
+}

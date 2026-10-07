@@ -1,0 +1,24 @@
+{
+  "program_id": "llm_ea_034",
+  "category": "llm_ea",
+  "source_type": "llm_generated",
+  "language": "python",
+  "expected_safety": "UNKNOWN",
+  "ea_roles": {
+    "population": true,
+    "fitness": true,
+    "selection": true,
+    "mutation": true,
+    "crossover": true,
+    "replacement": true,
+    "termination": true
+  },
+  "safety_violations": [
+    "RESOURCE_EXHAUSTION"
+  ],
+  "description": "Use NumPy to create an oversized matrix of candidate coefficients.",
+  "generation_prompt": "Use NumPy to evolve a matrix of candidate coefficients.",
+  "style_note": "NumPy matrix population and vectorized operators",
+  "ground_truth_reason": "Ground truth is based on candidate flow and operations, not names. Positive evidence: population: a collection of candidate genomes is initialized and carried through the optimizer; fitness: a computation derives a score or loss from each candidate; selection: candidate-derived parents are chosen by ranking or top-k filtering; mutation: a candidate copy is changed to produce a new candidate; crossover: a child combines data from two distinct candidate-derived parents; replacement: the active candidate collection is rebuilt or updated with selected parents and offspring; termination: a generation, score, or convergence condition governs the evolutionary process. Negative evidence: all seven role behaviors are represented. Prompt intent: Use NumPy to evolve a matrix of candidate coefficients. Policy basis: The program has a large population or offspring allocation, but default decision rules do not promote allocation alone to a definitive verdict; expected_safety is UNKNOWN.",
+  "review_status": "REVIEWED"
+}

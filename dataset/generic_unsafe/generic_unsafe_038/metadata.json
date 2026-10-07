@@ -1,0 +1,24 @@
+{
+  "program_id": "generic_unsafe_038",
+  "category": "generic_unsafe",
+  "source_type": "controlled_generation",
+  "language": "python",
+  "expected_safety": "UNKNOWN",
+  "ea_roles": {
+    "population": false,
+    "fitness": false,
+    "selection": false,
+    "mutation": false,
+    "crossover": false,
+    "replacement": false,
+    "termination": false
+  },
+  "safety_violations": [
+    "FS",
+    "RECURSION_RESOURCE_EXHAUSTION",
+    "RESOURCE_EXHAUSTION"
+  ],
+  "description": "Deserialize untrusted bytes, then recursively walk the resulting graph.",
+  "ground_truth_reason": "The source has no evolutionary-algorithm roles. Intended safety behavior: All standard input is deserialized with pickle and then recursively traversed without cycle or depth protection. Policy basis: The recursive risk depends on the structure of attacker-controlled input, and the default policy does not establish a definitive verdict for this input-dependent cycle case; expected_safety is UNKNOWN.",
+  "review_status": "REVIEWED"
+}

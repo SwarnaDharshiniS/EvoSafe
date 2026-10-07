@@ -1,0 +1,22 @@
+{
+  "program_id": "generic_unsafe_001",
+  "category": "generic_unsafe",
+  "source_type": "controlled_generation",
+  "language": "python",
+  "expected_safety": "UNSAFE",
+  "ea_roles": {
+    "population": false,
+    "fitness": false,
+    "selection": false,
+    "mutation": false,
+    "crossover": false,
+    "replacement": false,
+    "termination": false
+  },
+  "safety_violations": [
+    "UNBOUNDED_LOOP"
+  ],
+  "description": "A service worker that never relinquishes control or terminates.",
+  "ground_truth_reason": "The source has no evolutionary-algorithm roles. Intended safety behavior: A constant-true service loop has no shutdown condition and continually consumes CPU. Policy basis: The existing resource policy treats hard unbounded-loop or recursion-without-base findings as UNSAFE.",
+  "review_status": "REVIEWED"
+}

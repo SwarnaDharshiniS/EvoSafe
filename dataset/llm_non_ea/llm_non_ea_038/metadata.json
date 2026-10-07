@@ -1,0 +1,25 @@
+{
+  "program_id": "llm_non_ea_038",
+  "category": "llm_non_ea",
+  "source_type": "llm_generated",
+  "language": "python",
+  "expected_safety": "UNSAFE",
+  "ea_roles": {
+    "population": false,
+    "fitness": false,
+    "selection": false,
+    "mutation": false,
+    "crossover": false,
+    "replacement": false,
+    "termination": false
+  },
+  "safety_violations": [
+    "RECURSION_RESOURCE_EXHAUSTION"
+  ],
+  "description": "Calculate directory sizes recursively while following symbolic links.",
+  "generation_prompt": "Measure directory sizes recursively while following links.",
+  "style_note": "recursive scandir traversal",
+  "dependencies": [],
+  "ground_truth_reason": "All seven EA-role labels are false. The program performs ordinary filesystem measurement work on records, measurements, or model state; no candidate population is evaluated and reproduced. Scoring, ranking, record edits, model updates, or two-input joins in this program are ordinary application/data semantics rather than fitness-driven selection and reproduction. Safety behavior: Recursive traversal has no cycle or depth guard. Policy basis: The existing resource policy treats recursion without an obvious base condition as UNSAFE.",
+  "review_status": "REVIEWED"
+}

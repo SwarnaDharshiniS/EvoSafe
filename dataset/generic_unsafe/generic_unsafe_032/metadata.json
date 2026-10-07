@@ -1,0 +1,22 @@
+{
+  "program_id": "generic_unsafe_032",
+  "category": "generic_unsafe",
+  "source_type": "controlled_generation",
+  "language": "python",
+  "expected_safety": "UNSAFE",
+  "ea_roles": {
+    "population": false,
+    "fitness": false,
+    "selection": false,
+    "mutation": false,
+    "crossover": false,
+    "replacement": false,
+    "termination": false
+  },
+  "safety_violations": [
+    "DYN"
+  ],
+  "description": "Treat interactive text as a Python expression in the current process.",
+  "ground_truth_reason": "The source has no evolutionary-algorithm roles. Intended safety behavior: Interactive text is evaluated as a Python expression in the current process. Policy basis: The existing decision policy treats dynamic-execution primitives as UNSAFE.",
+  "review_status": "REVIEWED"
+}

@@ -1,0 +1,22 @@
+{
+  "program_id": "unsafe_ea_030",
+  "category": "unsafe_ea",
+  "source_type": "controlled_generation",
+  "language": "python",
+  "expected_safety": "UNSAFE",
+  "ea_roles": {
+    "population": true,
+    "fitness": true,
+    "selection": true,
+    "mutation": true,
+    "crossover": false,
+    "replacement": true,
+    "termination": false
+  },
+  "safety_violations": [
+    "DYN"
+  ],
+  "description": "Import a caller-selected module to score and reproduce the population.",
+  "ground_truth_reason": "EA role truth is based on source semantics. Positive role evidence: population: A collection of numeric vectors is passed through the strategy workflow.; fitness_evaluation: The dynamically imported strategy supplies the fitness callable.; selection: The candidates are ranked and the top eight selected.; mutation: A gene in each returned child is randomly incremented.; replacement: Survivors and children are returned together as the new cohort.. Negative-role rationale: No visible operation combines two parents, and the single-generation function has no process stop condition. Safety behavior: A caller-selected module is imported and its fitness and reproduction callables are invoked with process privileges. Policy basis: The existing decision policy treats dynamic-execution primitives as UNSAFE.",
+  "review_status": "REVIEWED"
+}

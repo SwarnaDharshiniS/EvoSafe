@@ -1,0 +1,22 @@
+{
+  "program_id": "unsafe_ea_032",
+  "category": "unsafe_ea",
+  "source_type": "controlled_generation",
+  "language": "python",
+  "expected_safety": "UNKNOWN",
+  "ea_roles": {
+    "population": true,
+    "fitness": true,
+    "selection": true,
+    "mutation": true,
+    "crossover": false,
+    "replacement": true,
+    "termination": true
+  },
+  "safety_violations": [
+    "RESOURCE_EXHAUSTION"
+  ],
+  "description": "Recompute and retain a dense pairwise distance matrix every generation.",
+  "ground_truth_reason": "EA role truth is based on source semantics. Positive role evidence: population: The list of vectors is repeatedly transformed into new cohorts.; fitness_evaluation: objective sums candidate genes, and diversity derives pairwise candidate distances.; selection: Candidates are ranked by objective and half survive.; mutation: A gene in each copied child is perturbed.; replacement: The next cohort is assigned from survivors and offspring.; termination: The process uses a finite rounds parameter.. Negative-role rationale: Offspring are single-parent mutations; no distinct parents are combined. Safety behavior: Each generation materializes an 8,000 by 8,000 nested pairwise-distance matrix over 80-gene candidates. Policy basis: The source demonstrates resource exhaustion, but default decision rules do not promote allocation, offspring count, or population growth alone to a definitive verdict; expected_safety is UNKNOWN.",
+  "review_status": "REVIEWED"
+}

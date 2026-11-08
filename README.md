@@ -123,7 +123,7 @@ EA inference reports structural roles. Confidence describes strength of structur
 
 ## Dataset
 
-`dataset/` holds 1,114 Python programs in eight categories; 936 are reviewed and locked for evaluation, 178 unreviewed programs are excluded. Each reviewed program has a `.metadata.json` with its expected safety label, seven EA-role labels and a written ground-truth reason. Details, label counts, provenance and the freeze procedure are in [docs/DATASET.md](docs/DATASET.md). Much of the dataset is third-party open-source code kept for evaluation; see [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+`dataset/` holds 1,114 Python programs in eight categories; 936 are reviewed and locked for evaluation, 178 unreviewed programs are excluded. Each reviewed program has a `.metadata.json` with its expected safety label, seven EA-role labels and a written ground-truth reason. Details, label counts, provenance and the freeze procedure are in [docs/DATASET.md](docs/DATASET.md).
 
 ## Known limitations
 

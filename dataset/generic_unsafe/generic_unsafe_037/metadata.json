@@ -1,0 +1,23 @@
+{
+  "program_id": "generic_unsafe_037",
+  "category": "generic_unsafe",
+  "source_type": "controlled_generation",
+  "language": "python",
+  "expected_safety": "UNSAFE",
+  "ea_roles": {
+    "population": false,
+    "fitness": false,
+    "selection": false,
+    "mutation": false,
+    "crossover": false,
+    "replacement": false,
+    "termination": false
+  },
+  "safety_violations": [
+    "PROC",
+    "UNBOUNDED_LOOP"
+  ],
+  "description": "Drain a command queue indefinitely and execute each entry in a shell.",
+  "ground_truth_reason": "The source has no evolutionary-algorithm roles. Intended safety behavior: Every queue item is treated as a shell command in a permanent dispatch loop. Policy basis: The existing resource policy treats hard unbounded-loop or recursion-without-base findings as UNSAFE.",
+  "review_status": "REVIEWED"
+}

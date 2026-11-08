@@ -1,0 +1,23 @@
+{
+  "program_id": "unsafe_ea_026",
+  "category": "unsafe_ea",
+  "source_type": "controlled_generation",
+  "language": "python",
+  "expected_safety": "UNKNOWN",
+  "ea_roles": {
+    "population": true,
+    "fitness": true,
+    "selection": true,
+    "mutation": true,
+    "crossover": false,
+    "replacement": true,
+    "termination": false
+  },
+  "safety_violations": [
+    "PROC",
+    "UNBOUNDED_LOOP"
+  ],
+  "description": "Spawn asynchronous candidate evaluators and never wait for their results.",
+  "ground_truth_reason": "EA role truth is based on source semantics. Positive role evidence: population: A large input pool of integer candidates is processed.; fitness_evaluation: fitness computes a candidate-dependent gene sum.; selection: Candidates are ranked and half are retained.; mutation: Each copied survivor has its first gene incremented.; replacement: The function returns survivors and offspring as a new pool.. Negative-role rationale: Children are single-parent mutations, and no generation-level process termination is defined. Safety behavior: A Popen child is launched for every candidate, process handles are retained without wait or cleanup, and the fixture contains 150,000 candidates. Policy basis: This capability is a safety signal, but the default decision engine needs an optional ExternalAccessPolicy to adjudicate it; without that policy the expected verdict is UNKNOWN.",
+  "review_status": "REVIEWED"
+}

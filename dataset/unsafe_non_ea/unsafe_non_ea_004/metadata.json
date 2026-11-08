@@ -1,0 +1,22 @@
+{
+  "program_id": "unsafe_non_ea_004",
+  "category": "unsafe_non_ea",
+  "source_type": "controlled_generation",
+  "language": "python",
+  "expected_safety": "CONDITIONALLY_SAFE",
+  "ea_roles": {
+    "population": false,
+    "fitness": false,
+    "selection": false,
+    "mutation": false,
+    "crossover": false,
+    "replacement": false,
+    "termination": false
+  },
+  "safety_violations": [
+    "UNBOUNDED_LOOP"
+  ],
+  "description": "Wait for a sensor state indefinitely while backing off between polls.",
+  "ground_truth_reason": "All seven EA-role labels are false: this is ordinary sensor polling software, not an evolutionary algorithm. The source performs sensor polling only; no candidate population, candidate fitness pipeline, or offspring/replacement lifecycle exists. The operation has no effective bound or shutdown path. Policy basis: The existing resource policy treats a potentially unbounded loop without a hard-unbounded marker as requiring review, yielding CONDITIONALLY_SAFE at medium risk.",
+  "review_status": "REVIEWED"
+}

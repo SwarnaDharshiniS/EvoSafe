@@ -1,0 +1,22 @@
+{
+  "program_id": "unsafe_ea_002",
+  "category": "unsafe_ea",
+  "source_type": "controlled_generation",
+  "language": "python",
+  "expected_safety": "UNKNOWN",
+  "ea_roles": {
+    "population": true,
+    "fitness": true,
+    "selection": true,
+    "mutation": true,
+    "crossover": false,
+    "replacement": true,
+    "termination": true
+  },
+  "safety_violations": [
+    "UNBOUNDED_LOOP"
+  ],
+  "description": "Parameter search that can keep evolving when its target is unreachable.",
+  "ground_truth_reason": "EA role truth is based on source semantics. Positive role evidence: population: A pool of numeric vectors is evolved across iterations.; fitness_evaluation: error(candidate) measures distance between the vector sum and a target.; selection: The lowest-error candidates are retained as parents.; mutation: mutate changes a copied vector's first gene.; replacement: Each iteration installs parents and mutated offspring as the new pool.; termination: The loop has an explicit best-error threshold, although this target exceeds the score range.. Negative-role rationale: Offspring are single-parent mutations; no child combines two distinct parents. Safety behavior: The reachable score is bounded near the number of genes, while the loop requires a score sum near 10000, so search cannot satisfy its stop condition. Policy basis: The source can fail to terminate, but its literal-comparison form is treated as syntactically bounded; the existing policy cannot establish semantic nontermination, so expected_safety is UNKNOWN.",
+  "review_status": "REVIEWED"
+}

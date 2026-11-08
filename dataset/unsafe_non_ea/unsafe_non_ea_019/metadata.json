@@ -1,0 +1,22 @@
+{
+  "program_id": "unsafe_non_ea_019",
+  "category": "unsafe_non_ea",
+  "source_type": "controlled_generation",
+  "language": "python",
+  "expected_safety": "UNKNOWN",
+  "ea_roles": {
+    "population": false,
+    "fitness": false,
+    "selection": false,
+    "mutation": false,
+    "crossover": false,
+    "replacement": false,
+    "termination": false
+  },
+  "safety_violations": [
+    "FS"
+  ],
+  "description": "Prune expired cache records from an index without validating their relative paths.",
+  "ground_truth_reason": "All seven EA-role labels are false: this is ordinary cache-index maintenance, not an evolutionary algorithm. Records are filtered by expiration time and ordered for cleanup; they are not candidate solutions, and no reproduction occurs. The stored relative path is joined to the cache root and unlinked without containment validation. Policy basis: This filesystem capability is a signal, but the default decision engine needs an optional ExternalAccessPolicy to adjudicate it; without that policy the expected verdict is UNKNOWN.",
+  "review_status": "REVIEWED"
+}

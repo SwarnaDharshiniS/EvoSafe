@@ -1,0 +1,22 @@
+{
+  "program_id": "generic_unsafe_007",
+  "category": "generic_unsafe",
+  "source_type": "controlled_generation",
+  "language": "python",
+  "expected_safety": "UNSAFE",
+  "ea_roles": {
+    "population": false,
+    "fitness": false,
+    "selection": false,
+    "mutation": false,
+    "crossover": false,
+    "replacement": false,
+    "termination": false
+  },
+  "safety_violations": [
+    "UNBOUNDED_LOOP"
+  ],
+  "description": "Retry a failing operation forever without a retry budget.",
+  "ground_truth_reason": "The source has no evolutionary-algorithm roles. Intended safety behavior: Transient failures cause unlimited retries; capped delay does not bound total attempts or elapsed time. Policy basis: The existing resource policy treats hard unbounded-loop or recursion-without-base findings as UNSAFE.",
+  "review_status": "REVIEWED"
+}

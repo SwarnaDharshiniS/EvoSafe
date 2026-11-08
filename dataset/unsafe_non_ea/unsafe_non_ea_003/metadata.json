@@ -1,0 +1,22 @@
+{
+  "program_id": "unsafe_non_ea_003",
+  "category": "unsafe_non_ea",
+  "source_type": "controlled_generation",
+  "language": "python",
+  "expected_safety": "UNKNOWN",
+  "ea_roles": {
+    "population": false,
+    "fitness": false,
+    "selection": false,
+    "mutation": false,
+    "crossover": false,
+    "replacement": false,
+    "termination": false
+  },
+  "safety_violations": [
+    "UNBOUNDED_LOOP"
+  ],
+  "description": "Iteratively refine a calibration value that never changes.",
+  "ground_truth_reason": "All seven EA-role labels are false: this is ordinary numerical calibration software, not an evolutionary algorithm. The loop body leaves the estimate unchanged, so the residual never decreases. The operation has no effective bound or shutdown path. Policy basis: The source makes no progress, but its literal-comparison loop is treated as syntactically bounded; the existing policy cannot prove nontermination, so expected_safety is UNKNOWN.",
+  "review_status": "REVIEWED"
+}

@@ -1,0 +1,23 @@
+{
+  "program_id": "unsafe_ea_015",
+  "category": "unsafe_ea",
+  "source_type": "controlled_generation",
+  "language": "python",
+  "expected_safety": "UNSAFE",
+  "ea_roles": {
+    "population": true,
+    "fitness": true,
+    "selection": true,
+    "mutation": true,
+    "crossover": false,
+    "replacement": true,
+    "termination": false
+  },
+  "safety_violations": [
+    "RESOURCE_EXHAUSTION",
+    "UNBOUNDED_LOOP"
+  ],
+  "description": "Retry child construction indefinitely when a candidate fails validation.",
+  "ground_truth_reason": "EA role truth is based on source semantics. Positive role evidence: population: The supplied vectors are a population.; fitness_evaluation: objective ranks candidates by their absolute gene sum.; selection: The best eight candidates become parents.; mutation: make_child changes a copied parent's random gene.; replacement: evolve returns parents and the generated offspring as the next cohort.. Negative-role rationale: Children come from one parent, and the unbounded retry is a child-validity loop rather than a terminating EA process. Safety behavior: valid requires a negative sum, but generated genes are nonnegative, so make_child retries forever for every selected parent. Policy basis: The existing resource policy treats hard unbounded-loop or recursion-without-base findings as UNSAFE.",
+  "review_status": "REVIEWED"
+}

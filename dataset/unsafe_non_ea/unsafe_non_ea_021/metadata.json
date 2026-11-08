@@ -1,0 +1,22 @@
+{
+  "program_id": "unsafe_non_ea_021",
+  "category": "unsafe_non_ea",
+  "source_type": "controlled_generation",
+  "language": "python",
+  "expected_safety": "UNKNOWN",
+  "ea_roles": {
+    "population": false,
+    "fitness": false,
+    "selection": false,
+    "mutation": false,
+    "crossover": false,
+    "replacement": false,
+    "termination": false
+  },
+  "safety_violations": [
+    "FS"
+  ],
+  "description": "Apply a mode supplied by a maintenance request to a filesystem path.",
+  "ground_truth_reason": "All seven EA-role labels are false: this is ordinary file-permission administration, not an evolutionary algorithm. The mode is operational metadata for a requested path; there is no candidate population or reproduction. os.chmod changes permissions on a caller-selected path without an allowlist. Policy basis: This filesystem capability is a signal, but the default decision engine needs an optional ExternalAccessPolicy to adjudicate it; without that policy the expected verdict is UNKNOWN.",
+  "review_status": "REVIEWED"
+}

@@ -1,0 +1,22 @@
+{
+  "program_id": "unsafe_non_ea_028",
+  "category": "unsafe_non_ea",
+  "source_type": "controlled_generation",
+  "language": "python",
+  "expected_safety": "UNSAFE",
+  "ea_roles": {
+    "population": false,
+    "fitness": false,
+    "selection": false,
+    "mutation": false,
+    "crossover": false,
+    "replacement": false,
+    "termination": false
+  },
+  "safety_violations": [
+    "DYN"
+  ],
+  "description": "Apply configured expressions to operational report rows.",
+  "ground_truth_reason": "All seven EA-role labels are false: this is ordinary report filtering, not an evolutionary algorithm. The expression annotates business records for display; records are not candidate solutions and are never bred or replaced. A configured expression is evaluated dynamically for each row. Policy basis: The existing decision policy treats dynamic-execution primitives as UNSAFE.",
+  "review_status": "REVIEWED"
+}

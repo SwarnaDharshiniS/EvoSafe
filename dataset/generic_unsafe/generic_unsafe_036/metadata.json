@@ -1,0 +1,24 @@
+{
+  "program_id": "generic_unsafe_036",
+  "category": "generic_unsafe",
+  "source_type": "controlled_generation",
+  "language": "python",
+  "expected_safety": "UNSAFE",
+  "ea_roles": {
+    "population": false,
+    "fitness": false,
+    "selection": false,
+    "mutation": false,
+    "crossover": false,
+    "replacement": false,
+    "termination": false
+  },
+  "safety_violations": [
+    "NET",
+    "RECURSION_RESOURCE_EXHAUSTION",
+    "UNBOUNDED_LOOP"
+  ],
+  "description": "Accept connections indefinitely and recurse for each client session.",
+  "ground_truth_reason": "The source has no evolutionary-algorithm roles. Intended safety behavior: The server listens on all interfaces indefinitely and recursively reads each client until disconnect. Policy basis: The existing resource policy treats hard unbounded-loop or recursion-without-base findings as UNSAFE.",
+  "review_status": "REVIEWED"
+}

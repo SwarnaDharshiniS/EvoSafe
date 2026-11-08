@@ -1,0 +1,22 @@
+{
+  "program_id": "unsafe_ea_004",
+  "category": "unsafe_ea",
+  "source_type": "controlled_generation",
+  "language": "python",
+  "expected_safety": "UNSAFE",
+  "ea_roles": {
+    "population": true,
+    "fitness": true,
+    "selection": true,
+    "mutation": true,
+    "crossover": false,
+    "replacement": true,
+    "termination": false
+  },
+  "safety_violations": [
+    "UNBOUNDED_LOOP"
+  ],
+  "description": "Continuously tune a policy against a moving stream of measurements.",
+  "ground_truth_reason": "EA role truth is based on source semantics. Positive role evidence: population: A list of weight vectors is repeatedly evolved.; fitness_evaluation: evaluate computes a candidate's weighted score for each observation.; selection: The best-scoring policies form the parent subset.; mutation: A copied policy gene is perturbed by random noise.; replacement: Each new cohort replaces the active population.. Negative-role rationale: The algorithm mutates one parent at a time and has no generation stop condition or two-parent child construction. Safety behavior: The algorithm runs forever and synchronously requests observations without a deadline or shutdown path. Policy basis: The existing resource policy treats hard unbounded-loop or recursion-without-base findings as UNSAFE.",
+  "review_status": "REVIEWED"
+}

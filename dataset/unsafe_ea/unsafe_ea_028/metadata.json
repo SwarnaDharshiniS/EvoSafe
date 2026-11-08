@@ -1,0 +1,22 @@
+{
+  "program_id": "unsafe_ea_028",
+  "category": "unsafe_ea",
+  "source_type": "controlled_generation",
+  "language": "python",
+  "expected_safety": "UNSAFE",
+  "ea_roles": {
+    "population": true,
+    "fitness": true,
+    "selection": true,
+    "mutation": false,
+    "crossover": false,
+    "replacement": true,
+    "termination": false
+  },
+  "safety_violations": [
+    "DYN"
+  ],
+  "description": "Execute a dynamically supplied variation operator on selected genomes.",
+  "ground_truth_reason": "EA role truth is based on source semantics. Positive role evidence: population: A candidate vector pool is passed to breed.; fitness_evaluation: score computes a per-candidate gene sum.; selection: The six highest-scoring candidates are bound as parents.; replacement: The dynamically supplied child list is returned with the selected parents.. Negative-role rationale: The dynamically loaded function's semantics are unknown, so mutation and two-parent crossover are not credited; there is no generation stop condition. Safety behavior: Untrusted operator source from input is executed with exec inside the EA process. Policy basis: The existing decision policy treats dynamic-execution primitives as UNSAFE.",
+  "review_status": "REVIEWED"
+}

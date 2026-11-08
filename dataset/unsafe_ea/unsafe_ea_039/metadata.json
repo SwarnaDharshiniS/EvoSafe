@@ -1,0 +1,24 @@
+{
+  "program_id": "unsafe_ea_039",
+  "category": "unsafe_ea",
+  "source_type": "controlled_generation",
+  "language": "python",
+  "expected_safety": "UNSAFE",
+  "ea_roles": {
+    "population": true,
+    "fitness": true,
+    "selection": true,
+    "mutation": true,
+    "crossover": true,
+    "replacement": false,
+    "termination": true
+  },
+  "safety_violations": [
+    "FS",
+    "RESOURCE_EXHAUSTION",
+    "UNBOUNDED_LOOP"
+  ],
+  "description": "Read candidate records forever, breed them, and append results to disk.",
+  "ground_truth_reason": "EA role truth is based on source semantics. Positive role evidence: population: Candidate records are accumulated into a population from input lines.; fitness_evaluation: fitness sums candidate genes.; selection: The two best candidates are chosen as parents.; mutation: A gene in the child is incremented.; crossover: The child combines the first gene from one parent with the remaining genes of another.; termination: Input processing stops only when the input stream reaches EOF.. Negative-role rationale: The old population is extended rather than replaced by a selected generation. Safety behavior: For every sufficiently large input, the candidate list grows by a thousand copies while each offspring record is appended to disk; an unending input stream drives unbounded resource use. Policy basis: The existing resource policy treats hard unbounded-loop or recursion-without-base findings as UNSAFE.",
+  "review_status": "REVIEWED"
+}

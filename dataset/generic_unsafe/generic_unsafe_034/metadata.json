@@ -1,0 +1,22 @@
+{
+  "program_id": "generic_unsafe_034",
+  "category": "generic_unsafe",
+  "source_type": "controlled_generation",
+  "language": "python",
+  "expected_safety": "UNSAFE",
+  "ea_roles": {
+    "population": false,
+    "fitness": false,
+    "selection": false,
+    "mutation": false,
+    "crossover": false,
+    "replacement": false,
+    "termination": false
+  },
+  "safety_violations": [
+    "DYN"
+  ],
+  "description": "Load and invoke a module selected by an untrusted plugin name.",
+  "ground_truth_reason": "The source has no evolutionary-algorithm roles. Intended safety behavior: A module and callable selected by caller input are imported and invoked in-process. Policy basis: The existing decision policy treats dynamic-execution primitives as UNSAFE.",
+  "review_status": "REVIEWED"
+}

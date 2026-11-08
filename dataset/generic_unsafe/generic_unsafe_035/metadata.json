@@ -1,0 +1,24 @@
+{
+  "program_id": "generic_unsafe_035",
+  "category": "generic_unsafe",
+  "source_type": "controlled_generation",
+  "language": "python",
+  "expected_safety": "UNSAFE",
+  "ea_roles": {
+    "population": false,
+    "fitness": false,
+    "selection": false,
+    "mutation": false,
+    "crossover": false,
+    "replacement": false,
+    "termination": false
+  },
+  "safety_violations": [
+    "FS",
+    "NET",
+    "UNBOUNDED_LOOP"
+  ],
+  "description": "Download response chunks without size limits and write them to disk.",
+  "ground_truth_reason": "The source has no evolutionary-algorithm roles. Intended safety behavior: A network response is copied to disk in an unbounded stream with no size, timeout, or destination policy. Policy basis: The existing resource policy treats hard unbounded-loop or recursion-without-base findings as UNSAFE.",
+  "review_status": "REVIEWED"
+}

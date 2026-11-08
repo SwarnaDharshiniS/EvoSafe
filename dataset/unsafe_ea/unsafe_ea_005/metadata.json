@@ -1,0 +1,22 @@
+{
+  "program_id": "unsafe_ea_005",
+  "category": "unsafe_ea",
+  "source_type": "controlled_generation",
+  "language": "python",
+  "expected_safety": "UNKNOWN",
+  "ea_roles": {
+    "population": true,
+    "fitness": true,
+    "selection": true,
+    "mutation": true,
+    "crossover": false,
+    "replacement": true,
+    "termination": true
+  },
+  "safety_violations": [
+    "UNBOUNDED_LOOP"
+  ],
+  "description": "Search for a score threshold that the scoring function cannot reach.",
+  "ground_truth_reason": "EA role truth is based on source semantics. Positive role evidence: population: Integer vectors are maintained as a candidate pool.; fitness_evaluation: score maps each vector to its sum modulo 100.; selection: The highest-scoring vectors are selected as parents.; mutation: Each copied child receives a newly randomized gene.; replacement: The pool is reassigned to selected parents and offspring.; termination: A while condition tests whether the target score has been reached.. Negative-role rationale: Only single-parent mutations are constructed; there is no two-parent recombination. Safety behavior: Modulo 100 limits the score to 0 through 99, but the loop requires a score of at least 100. Policy basis: The source can fail to terminate, but its literal-comparison form is treated as syntactically bounded; the existing policy cannot establish semantic nontermination, so expected_safety is UNKNOWN.",
+  "review_status": "REVIEWED"
+}

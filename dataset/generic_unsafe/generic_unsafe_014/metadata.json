@@ -1,0 +1,22 @@
+{
+  "program_id": "generic_unsafe_014",
+  "category": "generic_unsafe",
+  "source_type": "controlled_generation",
+  "language": "python",
+  "expected_safety": "UNKNOWN",
+  "ea_roles": {
+    "population": false,
+    "fitness": false,
+    "selection": false,
+    "mutation": false,
+    "crossover": false,
+    "replacement": false,
+    "termination": false
+  },
+  "safety_violations": [
+    "RECURSION_RESOURCE_EXHAUSTION"
+  ],
+  "description": "Consume linked records recursively with no guard against long chains.",
+  "ground_truth_reason": "The source has no evolutionary-algorithm roles. Intended safety behavior: A valid but long linked-record chain creates recursion depth proportional to input size, with no iterative fallback or depth limit. Policy basis: The supplied input can exceed recursion limits, but the existing policy does not adjudicate input-dependent recursion depth when a base case is visible; expected_safety is UNKNOWN.",
+  "review_status": "REVIEWED"
+}

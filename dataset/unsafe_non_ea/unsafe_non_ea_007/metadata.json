@@ -1,0 +1,22 @@
+{
+  "program_id": "unsafe_non_ea_007",
+  "category": "unsafe_non_ea",
+  "source_type": "controlled_generation",
+  "language": "python",
+  "expected_safety": "UNSAFE",
+  "ea_roles": {
+    "population": false,
+    "fitness": false,
+    "selection": false,
+    "mutation": false,
+    "crossover": false,
+    "replacement": false,
+    "termination": false
+  },
+  "safety_violations": [
+    "RECURSION_RESOURCE_EXHAUSTION"
+  ],
+  "description": "Resolve aliases recursively without a base case for cyclic configuration.",
+  "ground_truth_reason": "All seven EA-role labels are false: this is ordinary configuration alias resolution software, not an evolutionary algorithm. The source performs configuration alias resolution only; no candidate population, candidate fitness pipeline, or offspring/replacement lifecycle exists. Recursive traversal has no cycle/depth guard. Policy basis: The existing resource policy treats this hard unbounded loop or recursion-without-base pattern as UNSAFE.",
+  "review_status": "REVIEWED"
+}

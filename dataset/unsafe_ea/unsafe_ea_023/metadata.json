@@ -1,0 +1,23 @@
+{
+  "program_id": "unsafe_ea_023",
+  "category": "unsafe_ea",
+  "source_type": "controlled_generation",
+  "language": "python",
+  "expected_safety": "UNKNOWN",
+  "ea_roles": {
+    "population": true,
+    "fitness": true,
+    "selection": true,
+    "mutation": true,
+    "crossover": false,
+    "replacement": true,
+    "termination": false
+  },
+  "safety_violations": [
+    "DYN",
+    "PROC"
+  ],
+  "description": "Evaluate each candidate by constructing and executing a shell command.",
+  "ground_truth_reason": "EA role truth is based on source semantics. Positive role evidence: population: The input list is a pool of candidate vectors.; fitness_evaluation: fitness invokes an external evaluator and parses its result as the candidate score.; selection: Candidates are ranked by external fitness and the best eight retained.; mutation: A gene in the leading candidate copy is incremented.; replacement: Selected parents and the child form the returned next cohort.. Negative-role rationale: The child is a single-parent mutation, and the module performs one generation without an explicit stopping criterion. Safety behavior: Candidate data and a caller-supplied evaluator string are interpolated into a shell command passed to subprocess.run(shell=True). Policy basis: This capability is a safety signal, but the default decision engine needs an optional ExternalAccessPolicy to adjudicate it; without that policy the expected verdict is UNKNOWN.",
+  "review_status": "REVIEWED"
+}

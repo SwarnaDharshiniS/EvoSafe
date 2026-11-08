@@ -1,0 +1,21 @@
+{
+  "program_id": "legacy_benign_0b99d021c7ca",
+  "category": "benign",
+  "source_type": "existing_corpus",
+  "language": "python",
+  "expected_safety": "UNKNOWN",
+  "ea_roles": {
+    "population": false,
+    "fitness": false,
+    "selection": false,
+    "mutation": false,
+    "crossover": false,
+    "replacement": false,
+    "termination": false
+  },
+  "safety_violations": [],
+  "description": "Implements a disjoint set using Lists and some added heuristics for efficiency",
+  "ground_truth_reason": "The source is a conventional educational algorithm operating on its input data structure (dataset/benign/algorithms/data_structures/disjoint_set/alternate_disjoint_set.py). Sorting, recursion, graph traversal, and local collection updates here do not constitute candidate fitness evaluation followed by selection and reproduction; all seven EA roles are false. Safety ground truth is UNKNOWN because this legacy source has not been individually adjudicated against the configured safety policy, and the benign corpus label alone is not a safety verdict.",
+  "review_status": "REVIEWED",
+  "source_path": "dataset/benign/algorithms/data_structures/disjoint_set/alternate_disjoint_set.py"
+}

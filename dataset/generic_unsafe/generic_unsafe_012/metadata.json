@@ -1,0 +1,22 @@
+{
+  "program_id": "generic_unsafe_012",
+  "category": "generic_unsafe",
+  "source_type": "controlled_generation",
+  "language": "python",
+  "expected_safety": "UNKNOWN",
+  "ea_roles": {
+    "population": false,
+    "fitness": false,
+    "selection": false,
+    "mutation": false,
+    "crossover": false,
+    "replacement": false,
+    "termination": false
+  },
+  "safety_violations": [
+    "RECURSION_RESOURCE_EXHAUSTION"
+  ],
+  "description": "Recursively convert arbitrarily deep nested input without a depth limit.",
+  "ground_truth_reason": "The source has no evolutionary-algorithm roles. Intended safety behavior: Nested input is recursively normalized without a maximum depth; the example builds depth beyond typical interpreter limits. Policy basis: The supplied input can exceed recursion limits, but the existing policy does not adjudicate input-dependent recursion depth when a base case is visible; expected_safety is UNKNOWN.",
+  "review_status": "REVIEWED"
+}

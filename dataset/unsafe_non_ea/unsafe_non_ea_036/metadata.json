@@ -1,0 +1,24 @@
+{
+  "program_id": "unsafe_non_ea_036",
+  "category": "unsafe_non_ea",
+  "source_type": "controlled_generation",
+  "language": "python",
+  "expected_safety": "UNSAFE",
+  "ea_roles": {
+    "population": false,
+    "fitness": false,
+    "selection": false,
+    "mutation": false,
+    "crossover": false,
+    "replacement": false,
+    "termination": false
+  },
+  "safety_violations": [
+    "FS",
+    "RESOURCE_EXHAUSTION",
+    "UNBOUNDED_LOOP"
+  ],
+  "description": "Aggregate a growing event file and repeatedly sort all records in memory.",
+  "ground_truth_reason": "All seven EA-role labels are false: this is ordinary event-log aggregation software, not an evolutionary algorithm. Input records are timestamp-sorted for reporting and accumulated as operational events; they are not candidate solutions, and no evolutionary selection or reproduction occurs. The operation has no effective bound or shutdown path. Policy basis: The existing resource policy treats this hard unbounded loop or recursion-without-base pattern as UNSAFE.",
+  "review_status": "REVIEWED"
+}

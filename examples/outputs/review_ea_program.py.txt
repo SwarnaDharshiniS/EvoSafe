@@ -1,0 +1,1995 @@
+=== examples/review_ea_program.py: AST ===
+{
+  "node_type": "Module",
+  "body": [
+    {
+      "node_type": "Expr",
+      "line": 1,
+      "col": 0,
+      "end_line": 1,
+      "end_col": 80,
+      "value": {
+        "node_type": "Constant",
+        "line": 1,
+        "col": 0,
+        "end_line": 1,
+        "end_col": 80,
+        "value": "Evolve short integer vectors toward a fixed target over eight generations.",
+        "kind": "str"
+      }
+    },
+    {
+      "node_type": "Import",
+      "line": 3,
+      "col": 0,
+      "end_line": 3,
+      "end_col": 13,
+      "names": [
+        {
+          "name": "random",
+          "asname": null
+        }
+      ]
+    },
+    {
+      "node_type": "Assign",
+      "line": 6,
+      "col": 0,
+      "end_line": 6,
+      "end_col": 27,
+      "targets": [
+        {
+          "node_type": "Name",
+          "line": 6,
+          "col": 0,
+          "end_line": 6,
+          "end_col": 6,
+          "id": "TARGET",
+          "ctx": "Store"
+        }
+      ],
+      "value": {
+        "node_type": "Tuple",
+        "line": 6,
+        "col": 9,
+        "end_line": 6,
+        "end_col": 27,
+        "elts": [
+          {
+            "node_type": "Constant",
+            "line": 6,
+            "col": 10,
+            "end_line": 6,
+            "end_col": 11,
+            "value": 2,
+            "kind": "int"
+          },
+          {
+            "node_type": "Constant",
+            "line": 6,
+            "col": 13,
+            "end_line": 6,
+            "end_col": 14,
+            "value": 4,
+            "kind": "int"
+          },
+          {
+            "node_type": "Constant",
+            "line": 6,
+            "col": 16,
+            "end_line": 6,
+            "end_col": 17,
+            "value": 1,
+            "kind": "int"
+          },
+          {
+            "node_type": "Constant",
+            "line": 6,
+            "col": 19,
+            "end_line": 6,
+            "end_col": 20,
+            "value": 3,
+            "kind": "int"
+          },
+          {
+            "node_type": "Constant",
+            "line": 6,
+            "col": 22,
+            "end_line": 6,
+            "end_col": 23,
+            "value": 5,
+            "kind": "int"
+          },
+          {
+            "node_type": "Constant",
+            "line": 6,
+            "col": 25,
+            "end_line": 6,
+            "end_col": 26,
+            "value": 0,
+            "kind": "int"
+          }
+        ],
+        "ctx": "Load"
+      }
+    },
+    {
+      "node_type": "FunctionDef",
+      "line": 9,
+      "col": 0,
+      "end_line": 10,
+      "end_col": 77,
+      "is_async": false,
+      "name": "distance",
+      "args": {
+        "args": [
+          {
+            "name": "candidate",
+            "annotation": {
+              "node_type": "Subscript",
+              "line": 9,
+              "col": 24,
+              "end_line": 9,
+              "end_col": 33,
+              "value": {
+                "node_type": "Name",
+                "line": 9,
+                "col": 24,
+                "end_line": 9,
+                "end_col": 28,
+                "id": "list",
+                "ctx": "Load"
+              },
+              "slice": {
+                "node_type": "Name",
+                "line": 9,
+                "col": 29,
+                "end_line": 9,
+                "end_col": 32,
+                "id": "int",
+                "ctx": "Load"
+              },
+              "ctx": "Load"
+            }
+          }
+        ],
+        "vararg": null,
+        "kwonlyargs": [],
+        "kwarg": null,
+        "posonlyargs": [],
+        "defaults": [],
+        "kw_defaults": []
+      },
+      "returns": {
+        "node_type": "Name",
+        "line": 9,
+        "col": 38,
+        "end_line": 9,
+        "end_col": 41,
+        "id": "int",
+        "ctx": "Load"
+      },
+      "decorators": [],
+      "body": [
+        {
+          "node_type": "Return",
+          "line": 10,
+          "col": 4,
+          "end_line": 10,
+          "end_col": 77,
+          "value": {
+            "node_type": "Call",
+            "line": 10,
+            "col": 11,
+            "end_line": 10,
+            "end_col": 77,
+            "func": {
+              "node_type": "Name",
+              "line": 10,
+              "col": 11,
+              "end_line": 10,
+              "end_col": 14,
+              "id": "sum",
+              "ctx": "Load"
+            },
+            "args": [
+              {
+                "node_type": "GeneratorExp",
+                "line": 10,
+                "col": 14,
+                "end_line": 10,
+                "end_col": 77,
+                "elt": {
+                  "node_type": "Call",
+                  "line": 10,
+                  "col": 15,
+                  "end_line": 10,
+                  "end_col": 33,
+                  "func": {
+                    "node_type": "Name",
+                    "line": 10,
+                    "col": 15,
+                    "end_line": 10,
+                    "end_col": 18,
+                    "id": "abs",
+                    "ctx": "Load"
+                  },
+                  "args": [
+                    {
+                      "node_type": "BinOp",
+                      "line": 10,
+                      "col": 19,
+                      "end_line": 10,
+                      "end_col": 32,
+                      "left": {
+                        "node_type": "Name",
+                        "line": 10,
+                        "col": 19,
+                        "end_line": 10,
+                        "end_col": 23,
+                        "id": "gene",
+                        "ctx": "Load"
+                      },
+                      "op": "Sub",
+                      "right": {
+                        "node_type": "Name",
+                        "line": 10,
+                        "col": 26,
+                        "end_line": 10,
+                        "end_col": 32,
+                        "id": "target",
+                        "ctx": "Load"
+                      }
+                    }
+                  ],
+                  "keywords": []
+                },
+                "generators": [
+                  {
+                    "node_type": "comprehension",
+                    "target": {
+                      "node_type": "Tuple",
+                      "line": 10,
+                      "col": 38,
+                      "end_line": 10,
+                      "end_col": 50,
+                      "elts": [
+                        {
+                          "node_type": "Name",
+                          "line": 10,
+                          "col": 38,
+                          "end_line": 10,
+                          "end_col": 42,
+                          "id": "gene",
+                          "ctx": "Store"
+                        },
+                        {
+                          "node_type": "Name",
+                          "line": 10,
+                          "col": 44,
+                          "end_line": 10,
+                          "end_col": 50,
+                          "id": "target",
+                          "ctx": "Store"
+                        }
+                      ],
+                      "ctx": "Store"
+                    },
+                    "iter": {
+                      "node_type": "Call",
+                      "line": 10,
+                      "col": 54,
+                      "end_line": 10,
+                      "end_col": 76,
+                      "func": {
+                        "node_type": "Name",
+                        "line": 10,
+                        "col": 54,
+                        "end_line": 10,
+                        "end_col": 57,
+                        "id": "zip",
+                        "ctx": "Load"
+                      },
+                      "args": [
+                        {
+                          "node_type": "Name",
+                          "line": 10,
+                          "col": 58,
+                          "end_line": 10,
+                          "end_col": 67,
+                          "id": "candidate",
+                          "ctx": "Load"
+                        },
+                        {
+                          "node_type": "Name",
+                          "line": 10,
+                          "col": 69,
+                          "end_line": 10,
+                          "end_col": 75,
+                          "id": "TARGET",
+                          "ctx": "Load"
+                        }
+                      ],
+                      "keywords": []
+                    },
+                    "ifs": [],
+                    "is_async": false
+                  }
+                ]
+              }
+            ],
+            "keywords": []
+          }
+        }
+      ]
+    },
+    {
+      "node_type": "FunctionDef",
+      "line": 13,
+      "col": 0,
+      "end_line": 29,
+      "end_col": 31,
+      "is_async": false,
+      "name": "evolve",
+      "args": {
+        "args": [
+          {
+            "name": "seed",
+            "annotation": {
+              "node_type": "Name",
+              "line": 13,
+              "col": 17,
+              "end_line": 13,
+              "end_col": 20,
+              "id": "int",
+              "ctx": "Load"
+            }
+          }
+        ],
+        "vararg": null,
+        "kwonlyargs": [],
+        "kwarg": null,
+        "posonlyargs": [],
+        "defaults": [
+          {
+            "node_type": "Constant",
+            "line": 13,
+            "col": 23,
+            "end_line": 13,
+            "end_col": 24,
+            "value": 7,
+            "kind": "int"
+          }
+        ],
+        "kw_defaults": []
+      },
+      "returns": {
+        "node_type": "Subscript",
+        "line": 13,
+        "col": 29,
+        "end_line": 13,
+        "end_col": 50,
+        "value": {
+          "node_type": "Name",
+          "line": 13,
+          "col": 29,
+          "end_line": 13,
+          "end_col": 34,
+          "id": "tuple",
+          "ctx": "Load"
+        },
+        "slice": {
+          "node_type": "Tuple",
+          "line": 13,
+          "col": 35,
+          "end_line": 13,
+          "end_col": 49,
+          "elts": [
+            {
+              "node_type": "Subscript",
+              "line": 13,
+              "col": 35,
+              "end_line": 13,
+              "end_col": 44,
+              "value": {
+                "node_type": "Name",
+                "line": 13,
+                "col": 35,
+                "end_line": 13,
+                "end_col": 39,
+                "id": "list",
+                "ctx": "Load"
+              },
+              "slice": {
+                "node_type": "Name",
+                "line": 13,
+                "col": 40,
+                "end_line": 13,
+                "end_col": 43,
+                "id": "int",
+                "ctx": "Load"
+              },
+              "ctx": "Load"
+            },
+            {
+              "node_type": "Name",
+              "line": 13,
+              "col": 46,
+              "end_line": 13,
+              "end_col": 49,
+              "id": "int",
+              "ctx": "Load"
+            }
+          ],
+          "ctx": "Load"
+        },
+        "ctx": "Load"
+      },
+      "decorators": [],
+      "body": [
+        {
+          "node_type": "Assign",
+          "line": 14,
+          "col": 4,
+          "end_line": 14,
+          "end_col": 29,
+          "targets": [
+            {
+              "node_type": "Name",
+              "line": 14,
+              "col": 4,
+              "end_line": 14,
+              "end_col": 7,
+              "id": "rng",
+              "ctx": "Store"
+            }
+          ],
+          "value": {
+            "node_type": "Call",
+            "line": 14,
+            "col": 10,
+            "end_line": 14,
+            "end_col": 29,
+            "func": {
+              "node_type": "Attribute",
+              "line": 14,
+              "col": 10,
+              "end_line": 14,
+              "end_col": 23,
+              "value": {
+                "node_type": "Name",
+                "line": 14,
+                "col": 10,
+                "end_line": 14,
+                "end_col": 16,
+                "id": "random",
+                "ctx": "Load"
+              },
+              "attr": "Random",
+              "ctx": "Load"
+            },
+            "args": [
+              {
+                "node_type": "Name",
+                "line": 14,
+                "col": 24,
+                "end_line": 14,
+                "end_col": 28,
+                "id": "seed",
+                "ctx": "Load"
+              }
+            ],
+            "keywords": []
+          }
+        },
+        {
+          "node_type": "Assign",
+          "line": 15,
+          "col": 4,
+          "end_line": 15,
+          "end_col": 72,
+          "targets": [
+            {
+              "node_type": "Name",
+              "line": 15,
+              "col": 4,
+              "end_line": 15,
+              "end_col": 14,
+              "id": "population",
+              "ctx": "Store"
+            }
+          ],
+          "value": {
+            "node_type": "ListComp",
+            "line": 15,
+            "col": 17,
+            "end_line": 15,
+            "end_col": 72,
+            "elt": {
+              "node_type": "ListComp",
+              "line": 15,
+              "col": 18,
+              "end_line": 15,
+              "end_col": 52,
+              "elt": {
+                "node_type": "Call",
+                "line": 15,
+                "col": 19,
+                "end_line": 15,
+                "end_col": 35,
+                "func": {
+                  "node_type": "Attribute",
+                  "line": 15,
+                  "col": 19,
+                  "end_line": 15,
+                  "end_col": 32,
+                  "value": {
+                    "node_type": "Name",
+                    "line": 15,
+                    "col": 19,
+                    "end_line": 15,
+                    "end_col": 22,
+                    "id": "rng",
+                    "ctx": "Load"
+                  },
+                  "attr": "randrange",
+                  "ctx": "Load"
+                },
+                "args": [
+                  {
+                    "node_type": "Constant",
+                    "line": 15,
+                    "col": 33,
+                    "end_line": 15,
+                    "end_col": 34,
+                    "value": 6,
+                    "kind": "int"
+                  }
+                ],
+                "keywords": []
+              },
+              "generators": [
+                {
+                  "node_type": "comprehension",
+                  "target": {
+                    "node_type": "Name",
+                    "line": 15,
+                    "col": 40,
+                    "end_line": 15,
+                    "end_col": 41,
+                    "id": "_",
+                    "ctx": "Store"
+                  },
+                  "iter": {
+                    "node_type": "Name",
+                    "line": 15,
+                    "col": 45,
+                    "end_line": 15,
+                    "end_col": 51,
+                    "id": "TARGET",
+                    "ctx": "Load"
+                  },
+                  "ifs": [],
+                  "is_async": false
+                }
+              ]
+            },
+            "generators": [
+              {
+                "node_type": "comprehension",
+                "target": {
+                  "node_type": "Name",
+                  "line": 15,
+                  "col": 57,
+                  "end_line": 15,
+                  "end_col": 58,
+                  "id": "_",
+                  "ctx": "Store"
+                },
+                "iter": {
+                  "node_type": "Call",
+                  "line": 15,
+                  "col": 62,
+                  "end_line": 15,
+                  "end_col": 71,
+                  "func": {
+                    "node_type": "Name",
+                    "line": 15,
+                    "col": 62,
+                    "end_line": 15,
+                    "end_col": 67,
+                    "id": "range",
+                    "ctx": "Load"
+                  },
+                  "args": [
+                    {
+                      "node_type": "Constant",
+                      "line": 15,
+                      "col": 68,
+                      "end_line": 15,
+                      "end_col": 70,
+                      "value": 12,
+                      "kind": "int"
+                    }
+                  ],
+                  "keywords": []
+                },
+                "ifs": [],
+                "is_async": false
+              }
+            ]
+          }
+        },
+        {
+          "node_type": "For",
+          "line": 17,
+          "col": 4,
+          "end_line": 26,
+          "end_col": 39,
+          "is_async": false,
+          "target": {
+            "node_type": "Name",
+            "line": 17,
+            "col": 8,
+            "end_line": 17,
+            "end_col": 19,
+            "id": "_generation",
+            "ctx": "Store"
+          },
+          "iter": {
+            "node_type": "Call",
+            "line": 17,
+            "col": 23,
+            "end_line": 17,
+            "end_col": 31,
+            "func": {
+              "node_type": "Name",
+              "line": 17,
+              "col": 23,
+              "end_line": 17,
+              "end_col": 28,
+              "id": "range",
+              "ctx": "Load"
+            },
+            "args": [
+              {
+                "node_type": "Constant",
+                "line": 17,
+                "col": 29,
+                "end_line": 17,
+                "end_col": 30,
+                "value": 8,
+                "kind": "int"
+              }
+            ],
+            "keywords": []
+          },
+          "body": [
+            {
+              "node_type": "Assign",
+              "line": 18,
+              "col": 8,
+              "end_line": 18,
+              "end_col": 54,
+              "targets": [
+                {
+                  "node_type": "Name",
+                  "line": 18,
+                  "col": 8,
+                  "end_line": 18,
+                  "end_col": 15,
+                  "id": "parents",
+                  "ctx": "Store"
+                }
+              ],
+              "value": {
+                "node_type": "Subscript",
+                "line": 18,
+                "col": 18,
+                "end_line": 18,
+                "end_col": 54,
+                "value": {
+                  "node_type": "Call",
+                  "line": 18,
+                  "col": 18,
+                  "end_line": 18,
+                  "end_col": 50,
+                  "func": {
+                    "node_type": "Name",
+                    "line": 18,
+                    "col": 18,
+                    "end_line": 18,
+                    "end_col": 24,
+                    "id": "sorted",
+                    "ctx": "Load"
+                  },
+                  "args": [
+                    {
+                      "node_type": "Name",
+                      "line": 18,
+                      "col": 25,
+                      "end_line": 18,
+                      "end_col": 35,
+                      "id": "population",
+                      "ctx": "Load"
+                    }
+                  ],
+                  "keywords": [
+                    {
+                      "arg": "key",
+                      "value": {
+                        "node_type": "Name",
+                        "line": 18,
+                        "col": 41,
+                        "end_line": 18,
+                        "end_col": 49,
+                        "id": "distance",
+                        "ctx": "Load"
+                      }
+                    }
+                  ]
+                },
+                "slice": {
+                  "node_type": "Slice",
+                  "line": 18,
+                  "col": 51,
+                  "end_line": 18,
+                  "end_col": 53,
+                  "upper": {
+                    "node_type": "Constant",
+                    "line": 18,
+                    "col": 52,
+                    "end_line": 18,
+                    "end_col": 53,
+                    "value": 4,
+                    "kind": "int"
+                  }
+                },
+                "ctx": "Load"
+              }
+            },
+            {
+              "node_type": "Assign",
+              "line": 19,
+              "col": 8,
+              "end_line": 19,
+              "end_col": 21,
+              "targets": [
+                {
+                  "node_type": "Name",
+                  "line": 19,
+                  "col": 8,
+                  "end_line": 19,
+                  "end_col": 16,
+                  "id": "children",
+                  "ctx": "Store"
+                }
+              ],
+              "value": {
+                "node_type": "List",
+                "line": 19,
+                "col": 19,
+                "end_line": 19,
+                "end_col": 21,
+                "elts": [],
+                "ctx": "Load"
+              }
+            },
+            {
+              "node_type": "For",
+              "line": 20,
+              "col": 8,
+              "end_line": 25,
+              "end_col": 34,
+              "is_async": false,
+              "target": {
+                "node_type": "Tuple",
+                "line": 20,
+                "col": 12,
+                "end_line": 20,
+                "end_col": 24,
+                "elts": [
+                  {
+                    "node_type": "Name",
+                    "line": 20,
+                    "col": 12,
+                    "end_line": 20,
+                    "end_col": 17,
+                    "id": "index",
+                    "ctx": "Store"
+                  },
+                  {
+                    "node_type": "Name",
+                    "line": 20,
+                    "col": 19,
+                    "end_line": 20,
+                    "end_col": 24,
+                    "id": "first",
+                    "ctx": "Store"
+                  }
+                ],
+                "ctx": "Store"
+              },
+              "iter": {
+                "node_type": "Call",
+                "line": 20,
+                "col": 28,
+                "end_line": 20,
+                "end_col": 46,
+                "func": {
+                  "node_type": "Name",
+                  "line": 20,
+                  "col": 28,
+                  "end_line": 20,
+                  "end_col": 37,
+                  "id": "enumerate",
+                  "ctx": "Load"
+                },
+                "args": [
+                  {
+                    "node_type": "Name",
+                    "line": 20,
+                    "col": 38,
+                    "end_line": 20,
+                    "end_col": 45,
+                    "id": "parents",
+                    "ctx": "Load"
+                  }
+                ],
+                "keywords": []
+              },
+              "body": [
+                {
+                  "node_type": "Assign",
+                  "line": 21,
+                  "col": 12,
+                  "end_line": 21,
+                  "end_col": 56,
+                  "targets": [
+                    {
+                      "node_type": "Name",
+                      "line": 21,
+                      "col": 12,
+                      "end_line": 21,
+                      "end_col": 18,
+                      "id": "second",
+                      "ctx": "Store"
+                    }
+                  ],
+                  "value": {
+                    "node_type": "Subscript",
+                    "line": 21,
+                    "col": 21,
+                    "end_line": 21,
+                    "end_col": 56,
+                    "value": {
+                      "node_type": "Name",
+                      "line": 21,
+                      "col": 21,
+                      "end_line": 21,
+                      "end_col": 28,
+                      "id": "parents",
+                      "ctx": "Load"
+                    },
+                    "slice": {
+                      "node_type": "BinOp",
+                      "line": 21,
+                      "col": 29,
+                      "end_line": 21,
+                      "end_col": 55,
+                      "left": {
+                        "node_type": "BinOp",
+                        "line": 21,
+                        "col": 30,
+                        "end_line": 21,
+                        "end_col": 39,
+                        "left": {
+                          "node_type": "Name",
+                          "line": 21,
+                          "col": 30,
+                          "end_line": 21,
+                          "end_col": 35,
+                          "id": "index",
+                          "ctx": "Load"
+                        },
+                        "op": "Add",
+                        "right": {
+                          "node_type": "Constant",
+                          "line": 21,
+                          "col": 38,
+                          "end_line": 21,
+                          "end_col": 39,
+                          "value": 1,
+                          "kind": "int"
+                        }
+                      },
+                      "op": "Mod",
+                      "right": {
+                        "node_type": "Call",
+                        "line": 21,
+                        "col": 43,
+                        "end_line": 21,
+                        "end_col": 55,
+                        "func": {
+                          "node_type": "Name",
+                          "line": 21,
+                          "col": 43,
+                          "end_line": 21,
+                          "end_col": 46,
+                          "id": "len",
+                          "ctx": "Load"
+                        },
+                        "args": [
+                          {
+                            "node_type": "Name",
+                            "line": 21,
+                            "col": 47,
+                            "end_line": 21,
+                            "end_col": 54,
+                            "id": "parents",
+                            "ctx": "Load"
+                          }
+                        ],
+                        "keywords": []
+                      }
+                    },
+                    "ctx": "Load"
+                  }
+                },
+                {
+                  "node_type": "Assign",
+                  "line": 22,
+                  "col": 12,
+                  "end_line": 22,
+                  "end_col": 42,
+                  "targets": [
+                    {
+                      "node_type": "Name",
+                      "line": 22,
+                      "col": 12,
+                      "end_line": 22,
+                      "end_col": 17,
+                      "id": "child",
+                      "ctx": "Store"
+                    }
+                  ],
+                  "value": {
+                    "node_type": "BinOp",
+                    "line": 22,
+                    "col": 20,
+                    "end_line": 22,
+                    "end_col": 42,
+                    "left": {
+                      "node_type": "Subscript",
+                      "line": 22,
+                      "col": 20,
+                      "end_line": 22,
+                      "end_col": 29,
+                      "value": {
+                        "node_type": "Name",
+                        "line": 22,
+                        "col": 20,
+                        "end_line": 22,
+                        "end_col": 25,
+                        "id": "first",
+                        "ctx": "Load"
+                      },
+                      "slice": {
+                        "node_type": "Slice",
+                        "line": 22,
+                        "col": 26,
+                        "end_line": 22,
+                        "end_col": 28,
+                        "upper": {
+                          "node_type": "Constant",
+                          "line": 22,
+                          "col": 27,
+                          "end_line": 22,
+                          "end_col": 28,
+                          "value": 3,
+                          "kind": "int"
+                        }
+                      },
+                      "ctx": "Load"
+                    },
+                    "op": "Add",
+                    "right": {
+                      "node_type": "Subscript",
+                      "line": 22,
+                      "col": 32,
+                      "end_line": 22,
+                      "end_col": 42,
+                      "value": {
+                        "node_type": "Name",
+                        "line": 22,
+                        "col": 32,
+                        "end_line": 22,
+                        "end_col": 38,
+                        "id": "second",
+                        "ctx": "Load"
+                      },
+                      "slice": {
+                        "node_type": "Slice",
+                        "line": 22,
+                        "col": 39,
+                        "end_line": 22,
+                        "end_col": 41,
+                        "lower": {
+                          "node_type": "Constant",
+                          "line": 22,
+                          "col": 39,
+                          "end_line": 22,
+                          "end_col": 40,
+                          "value": 3,
+                          "kind": "int"
+                        }
+                      },
+                      "ctx": "Load"
+                    }
+                  }
+                },
+                {
+                  "node_type": "Assign",
+                  "line": 23,
+                  "col": 12,
+                  "end_line": 23,
+                  "end_col": 48,
+                  "targets": [
+                    {
+                      "node_type": "Name",
+                      "line": 23,
+                      "col": 12,
+                      "end_line": 23,
+                      "end_col": 20,
+                      "id": "position",
+                      "ctx": "Store"
+                    }
+                  ],
+                  "value": {
+                    "node_type": "Call",
+                    "line": 23,
+                    "col": 23,
+                    "end_line": 23,
+                    "end_col": 48,
+                    "func": {
+                      "node_type": "Attribute",
+                      "line": 23,
+                      "col": 23,
+                      "end_line": 23,
+                      "end_col": 36,
+                      "value": {
+                        "node_type": "Name",
+                        "line": 23,
+                        "col": 23,
+                        "end_line": 23,
+                        "end_col": 26,
+                        "id": "rng",
+                        "ctx": "Load"
+                      },
+                      "attr": "randrange",
+                      "ctx": "Load"
+                    },
+                    "args": [
+                      {
+                        "node_type": "Call",
+                        "line": 23,
+                        "col": 37,
+                        "end_line": 23,
+                        "end_col": 47,
+                        "func": {
+                          "node_type": "Name",
+                          "line": 23,
+                          "col": 37,
+                          "end_line": 23,
+                          "end_col": 40,
+                          "id": "len",
+                          "ctx": "Load"
+                        },
+                        "args": [
+                          {
+                            "node_type": "Name",
+                            "line": 23,
+                            "col": 41,
+                            "end_line": 23,
+                            "end_col": 46,
+                            "id": "child",
+                            "ctx": "Load"
+                          }
+                        ],
+                        "keywords": []
+                      }
+                    ],
+                    "keywords": []
+                  }
+                },
+                {
+                  "node_type": "Assign",
+                  "line": 24,
+                  "col": 12,
+                  "end_line": 24,
+                  "end_col": 46,
+                  "targets": [
+                    {
+                      "node_type": "Subscript",
+                      "line": 24,
+                      "col": 12,
+                      "end_line": 24,
+                      "end_col": 27,
+                      "value": {
+                        "node_type": "Name",
+                        "line": 24,
+                        "col": 12,
+                        "end_line": 24,
+                        "end_col": 17,
+                        "id": "child",
+                        "ctx": "Load"
+                      },
+                      "slice": {
+                        "node_type": "Name",
+                        "line": 24,
+                        "col": 18,
+                        "end_line": 24,
+                        "end_col": 26,
+                        "id": "position",
+                        "ctx": "Load"
+                      },
+                      "ctx": "Store"
+                    }
+                  ],
+                  "value": {
+                    "node_type": "Call",
+                    "line": 24,
+                    "col": 30,
+                    "end_line": 24,
+                    "end_col": 46,
+                    "func": {
+                      "node_type": "Attribute",
+                      "line": 24,
+                      "col": 30,
+                      "end_line": 24,
+                      "end_col": 43,
+                      "value": {
+                        "node_type": "Name",
+                        "line": 24,
+                        "col": 30,
+                        "end_line": 24,
+                        "end_col": 33,
+                        "id": "rng",
+                        "ctx": "Load"
+                      },
+                      "attr": "randrange",
+                      "ctx": "Load"
+                    },
+                    "args": [
+                      {
+                        "node_type": "Constant",
+                        "line": 24,
+                        "col": 44,
+                        "end_line": 24,
+                        "end_col": 45,
+                        "value": 6,
+                        "kind": "int"
+                      }
+                    ],
+                    "keywords": []
+                  }
+                },
+                {
+                  "node_type": "Expr",
+                  "line": 25,
+                  "col": 12,
+                  "end_line": 25,
+                  "end_col": 34,
+                  "value": {
+                    "node_type": "Call",
+                    "line": 25,
+                    "col": 12,
+                    "end_line": 25,
+                    "end_col": 34,
+                    "func": {
+                      "node_type": "Attribute",
+                      "line": 25,
+                      "col": 12,
+                      "end_line": 25,
+                      "end_col": 27,
+                      "value": {
+                        "node_type": "Name",
+                        "line": 25,
+                        "col": 12,
+                        "end_line": 25,
+                        "end_col": 20,
+                        "id": "children",
+                        "ctx": "Load"
+                      },
+                      "attr": "append",
+                      "ctx": "Load"
+                    },
+                    "args": [
+                      {
+                        "node_type": "Name",
+                        "line": 25,
+                        "col": 28,
+                        "end_line": 25,
+                        "end_col": 33,
+                        "id": "child",
+                        "ctx": "Load"
+                      }
+                    ],
+                    "keywords": []
+                  }
+                }
+              ]
+            },
+            {
+              "node_type": "Assign",
+              "line": 26,
+              "col": 8,
+              "end_line": 26,
+              "end_col": 39,
+              "targets": [
+                {
+                  "node_type": "Name",
+                  "line": 26,
+                  "col": 8,
+                  "end_line": 26,
+                  "end_col": 18,
+                  "id": "population",
+                  "ctx": "Store"
+                }
+              ],
+              "value": {
+                "node_type": "BinOp",
+                "line": 26,
+                "col": 21,
+                "end_line": 26,
+                "end_col": 39,
+                "left": {
+                  "node_type": "Name",
+                  "line": 26,
+                  "col": 21,
+                  "end_line": 26,
+                  "end_col": 28,
+                  "id": "parents",
+                  "ctx": "Load"
+                },
+                "op": "Add",
+                "right": {
+                  "node_type": "Name",
+                  "line": 26,
+                  "col": 31,
+                  "end_line": 26,
+                  "end_col": 39,
+                  "id": "children",
+                  "ctx": "Load"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "node_type": "Assign",
+          "line": 28,
+          "col": 4,
+          "end_line": 28,
+          "end_col": 40,
+          "targets": [
+            {
+              "node_type": "Name",
+              "line": 28,
+              "col": 4,
+              "end_line": 28,
+              "end_col": 8,
+              "id": "best",
+              "ctx": "Store"
+            }
+          ],
+          "value": {
+            "node_type": "Call",
+            "line": 28,
+            "col": 11,
+            "end_line": 28,
+            "end_col": 40,
+            "func": {
+              "node_type": "Name",
+              "line": 28,
+              "col": 11,
+              "end_line": 28,
+              "end_col": 14,
+              "id": "min",
+              "ctx": "Load"
+            },
+            "args": [
+              {
+                "node_type": "Name",
+                "line": 28,
+                "col": 15,
+                "end_line": 28,
+                "end_col": 25,
+                "id": "population",
+                "ctx": "Load"
+              }
+            ],
+            "keywords": [
+              {
+                "arg": "key",
+                "value": {
+                  "node_type": "Name",
+                  "line": 28,
+                  "col": 31,
+                  "end_line": 28,
+                  "end_col": 39,
+                  "id": "distance",
+                  "ctx": "Load"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "node_type": "Return",
+          "line": 29,
+          "col": 4,
+          "end_line": 29,
+          "end_col": 31,
+          "value": {
+            "node_type": "Tuple",
+            "line": 29,
+            "col": 11,
+            "end_line": 29,
+            "end_col": 31,
+            "elts": [
+              {
+                "node_type": "Name",
+                "line": 29,
+                "col": 11,
+                "end_line": 29,
+                "end_col": 15,
+                "id": "best",
+                "ctx": "Load"
+              },
+              {
+                "node_type": "Call",
+                "line": 29,
+                "col": 17,
+                "end_line": 29,
+                "end_col": 31,
+                "func": {
+                  "node_type": "Name",
+                  "line": 29,
+                  "col": 17,
+                  "end_line": 29,
+                  "end_col": 25,
+                  "id": "distance",
+                  "ctx": "Load"
+                },
+                "args": [
+                  {
+                    "node_type": "Name",
+                    "line": 29,
+                    "col": 26,
+                    "end_line": 29,
+                    "end_col": 30,
+                    "id": "best",
+                    "ctx": "Load"
+                  }
+                ],
+                "keywords": []
+              }
+            ],
+            "ctx": "Load"
+          }
+        }
+      ]
+    },
+    {
+      "node_type": "If",
+      "line": 32,
+      "col": 0,
+      "end_line": 33,
+      "end_col": 19,
+      "test": {
+        "node_type": "Compare",
+        "line": 32,
+        "col": 3,
+        "end_line": 32,
+        "end_col": 25,
+        "left": {
+          "node_type": "Name",
+          "line": 32,
+          "col": 3,
+          "end_line": 32,
+          "end_col": 11,
+          "id": "__name__",
+          "ctx": "Load"
+        },
+        "ops": [
+          "Eq"
+        ],
+        "comparators": [
+          {
+            "node_type": "Constant",
+            "line": 32,
+            "col": 15,
+            "end_line": 32,
+            "end_col": 25,
+            "value": "__main__",
+            "kind": "str"
+          }
+        ]
+      },
+      "body": [
+        {
+          "node_type": "Expr",
+          "line": 33,
+          "col": 4,
+          "end_line": 33,
+          "end_col": 19,
+          "value": {
+            "node_type": "Call",
+            "line": 33,
+            "col": 4,
+            "end_line": 33,
+            "end_col": 19,
+            "func": {
+              "node_type": "Name",
+              "line": 33,
+              "col": 4,
+              "end_line": 33,
+              "end_col": 9,
+              "id": "print",
+              "ctx": "Load"
+            },
+            "args": [
+              {
+                "node_type": "Call",
+                "line": 33,
+                "col": 10,
+                "end_line": 33,
+                "end_col": 18,
+                "func": {
+                  "node_type": "Name",
+                  "line": 33,
+                  "col": 10,
+                  "end_line": 33,
+                  "end_col": 16,
+                  "id": "evolve",
+                  "ctx": "Load"
+                },
+                "args": [],
+                "keywords": []
+              }
+            ],
+            "keywords": []
+          }
+        }
+      ]
+    }
+  ]
+}
+=== examples/review_ea_program.py: module CFG ===
+{
+  "name": "examples/review_ea_program.py",
+  "blocks": [
+    {
+      "id": 1,
+      "kind": "entry",
+      "label": "examples/review_ea_program.py",
+      "stmts": [],
+      "lines": {
+        "start": null,
+        "end": null
+      }
+    },
+    {
+      "id": 3,
+      "kind": "sequence",
+      "label": "",
+      "stmts": [
+        "'Evolve short integer vectors toward a fixed target over eight generations.'",
+        "import random",
+        "TARGET = (2, 4, 1, 3, 5, 0)",
+        "def distance(candidate: list[int]) -> int:\n    return sum((abs(gene - target) for gene, target in zip(candidate, TARGET)))"
+      ],
+      "lines": {
+        "start": 1,
+        "end": 10
+      }
+    },
+    {
+      "id": 4,
+      "kind": "sequence",
+      "label": "",
+      "stmts": [
+        "def evolve(seed: int=7) -> tuple[list[int], int]:\n    rng = random.Random(seed)\n    population = [[rng.randrange(6) for _ in TARGET] for _ in range(12)]\n    for _generation in range(8):\n        parents = sorted(population, key=distance)[:4]\n        children = []\n        for index, first in enumerate(parents):\n            second = parents[(index + 1) % len(parents)]\n            child = first[:3] + second[3:]\n            position = rng.randrange(len(child))\n            child[position] = rng.randrange(6)\n            children.append(child)\n        population = parents + children\n    best = min(population, key=distance)\n    return (best, distance(best))"
+      ],
+      "lines": {
+        "start": 13,
+        "end": 29
+      }
+    },
+    {
+      "id": 5,
+      "kind": "branch",
+      "label": "if if __name__ == '__main__':\n    print(evolve())",
+      "stmts": [
+        "if __name__ == '__main__':\n    print(evolve())"
+      ],
+      "lines": {
+        "start": 32,
+        "end": 33
+      }
+    },
+    {
+      "id": 6,
+      "kind": "sequence",
+      "label": "",
+      "stmts": [
+        "print(evolve())"
+      ],
+      "lines": {
+        "start": 33,
+        "end": 33
+      }
+    },
+    {
+      "id": 2,
+      "kind": "exit",
+      "label": "examples/review_ea_program.py:exit",
+      "stmts": [],
+      "lines": {
+        "start": null,
+        "end": null
+      }
+    }
+  ],
+  "edges": [
+    {
+      "from": 1,
+      "to": 3,
+      "label": "unconditional"
+    },
+    {
+      "from": 3,
+      "to": 4,
+      "label": "unconditional"
+    },
+    {
+      "from": 4,
+      "to": 5,
+      "label": "unconditional"
+    },
+    {
+      "from": 5,
+      "to": 6,
+      "label": "true"
+    },
+    {
+      "from": 5,
+      "to": 2,
+      "label": "fallthrough"
+    },
+    {
+      "from": 6,
+      "to": 2,
+      "label": "fallthrough"
+    }
+  ],
+  "summary": {
+    "total_blocks": 6,
+    "total_edges": 6,
+    "branches": 1,
+    "loops": 0,
+    "loop_back_edges": 0
+  }
+}
+=== examples/review_ea_program.py: taint ===
+{
+  "total": 0,
+  "critical": 0,
+  "high": 0,
+  "medium": 0,
+  "findings": []
+}
+=== examples/review_ea_program.py: capabilities ===
+{
+  "source": "<string>",
+  "summary": {
+    "capabilities": [],
+    "highest_severity": null,
+    "total_uses": 0,
+    "FS": 0,
+    "NET": 0,
+    "PROC": 0,
+    "DYN": 0
+  },
+  "by_capability": {}
+}
+=== examples/review_ea_program.py: resources ===
+{
+  "source": "<string>",
+  "risk_score": "LOW",
+  "metrics": {
+    "loop_nesting_depth": 2,
+    "recursion_present": false,
+    "potentially_unbounded_loops": false,
+    "max_function_call_depth": 1,
+    "complexity_heuristic": "O(n^2)"
+  },
+  "flags": [],
+  "summary": {
+    "total_flags": 0,
+    "while_true": 0,
+    "recursive_no_base": 0,
+    "large_range": 0,
+    "suspicious_allocation": 0
+  }
+}
+=== examples/review_ea_program.py: safety manifest ===
+{
+  "analysis_version": "1.0.0",
+  "capability_summary": {
+    "by_capability": {},
+    "capabilities": [],
+    "counts": {
+      "DYN": 0,
+      "FS": 0,
+      "NET": 0,
+      "PROC": 0
+    },
+    "highest_severity": null,
+    "total_uses": 0
+  },
+  "cfg_metadata": {
+    "name": "examples/review_ea_program.py",
+    "summary": {
+      "branches": 1,
+      "loop_back_edges": 0,
+      "loops": 0,
+      "total_blocks": 6,
+      "total_edges": 6
+    }
+  },
+  "confidence_metadata": {
+    "canonicalization": "json-sort-keys+compact",
+    "coverage": 1.0,
+    "deterministic": true,
+    "input_hashes": {
+      "capability": "7632a4828061d3f63504429088b87de0180e6d92e3b937ff023b3443652fd6ed",
+      "cfg": "8ce51d8ab1fff82043542bcc32e8563764997582d84c068f637411d5f0418329",
+      "resource": "a90f27b7bb0f78873c9ab20a01bf896d426b9c88d526c03abf21d72656a00c2d",
+      "taint": "d02702132a2fe22d4662a099f989c588c07b6190290bb69051dbda99ba9606ef"
+    },
+    "score": 1.0
+  },
+  "decision_trace": {
+    "policy_results": [],
+    "reasons": [],
+    "rule_hits": [],
+    "verdict": "SAFE"
+  },
+  "execution_policy": null,
+  "manifest_digest": "60d21d36fb021c93a09a8cc5a71a291860c1be971c4c21931863df533e2210d9",
+  "manifest_schema_version": "1.0",
+  "overall_verdict": "SAFE",
+  "rejection_reasons": [],
+  "resource_risk_summary": {
+    "flags": [],
+    "metrics": {
+      "complexity_heuristic": "O(n^2)",
+      "loop_nesting_depth": 2,
+      "max_function_call_depth": 1,
+      "potentially_unbounded_loops": false,
+      "recursion_present": false
+    },
+    "risk_score": "LOW",
+    "summary": {
+      "large_range": 0,
+      "recursive_no_base": 0,
+      "suspicious_allocation": 0,
+      "total_flags": 0,
+      "while_true": 0
+    }
+  },
+  "taint_flow_summary": {
+    "critical": 0,
+    "findings": [],
+    "high": 0,
+    "medium": 0,
+    "total": 0
+  },
+  "timestamp": "1970-01-01T00:00:00Z"
+}
+=== examples/review_ea_program.py: Safety IR ===
+{
+  "analysis_version": "1.0.0",
+  "decision": {
+    "policy_results": [],
+    "reasons": [],
+    "rule_hits": [],
+    "verdict": "SAFE"
+  },
+  "ea_roles": null,
+  "edges": {
+    "graph": [
+      {
+        "edge_id": "edge:1c82eb7f666fa05a",
+        "edge_type": "cfg_next",
+        "from": "cfg:1247073115b8860c",
+        "metadata": {
+          "label": "unconditional"
+        },
+        "to": "cfg:74d8697d0fb1f6e4"
+      },
+      {
+        "edge_id": "edge:3d9ca05dfefb5f0c",
+        "edge_type": "cfg_next",
+        "from": "cfg:2e8fe57a63e85634",
+        "metadata": {
+          "label": "unconditional"
+        },
+        "to": "cfg:6c5a5ab8c1c85770"
+      },
+      {
+        "edge_id": "edge:e9b3c12bc0ec132a",
+        "edge_type": "cfg_next",
+        "from": "cfg:6c5a5ab8c1c85770",
+        "metadata": {
+          "label": "fallthrough"
+        },
+        "to": "cfg:a2d785cdbcaebd4b"
+      },
+      {
+        "edge_id": "edge:1dd9ae777482fa9a",
+        "edge_type": "cfg_next",
+        "from": "cfg:6c5a5ab8c1c85770",
+        "metadata": {
+          "label": "true"
+        },
+        "to": "cfg:be5286bcf94e329c"
+      },
+      {
+        "edge_id": "edge:d0e99b76fd194548",
+        "edge_type": "cfg_next",
+        "from": "cfg:74d8697d0fb1f6e4",
+        "metadata": {
+          "label": "unconditional"
+        },
+        "to": "cfg:2e8fe57a63e85634"
+      },
+      {
+        "edge_id": "edge:892886fe2959296c",
+        "edge_type": "cfg_next",
+        "from": "cfg:be5286bcf94e329c",
+        "metadata": {
+          "label": "fallthrough"
+        },
+        "to": "cfg:a2d785cdbcaebd4b"
+      },
+      {
+        "edge_id": "edge:a4ce1ce54ecdadf5",
+        "edge_type": "contains",
+        "from": "fn:68f2dc1e25d98dbe",
+        "metadata": {
+          "relation": "function_loop"
+        },
+        "to": "loop:96b98815e09676dc"
+      },
+      {
+        "edge_id": "edge:8363767fb3e2a438",
+        "edge_type": "contains",
+        "from": "fn:68f2dc1e25d98dbe",
+        "metadata": {
+          "relation": "function_loop"
+        },
+        "to": "loop:9d099ab3686cf659"
+      },
+      {
+        "edge_id": "edge:35cc8c187b04a5a7",
+        "edge_type": "contains",
+        "from": "manifest_root",
+        "metadata": {},
+        "to": "fn:68f2dc1e25d98dbe"
+      },
+      {
+        "edge_id": "edge:d4d3d38925e00a35",
+        "edge_type": "contains",
+        "from": "manifest_root",
+        "metadata": {},
+        "to": "fn:8d193082be55d46d"
+      }
+    ],
+    "taint_flows": []
+  },
+  "evidence": [],
+  "ir_version": "1.1",
+  "metadata": {
+    "capability_total": 0,
+    "cfg_summary": {
+      "branches": 1,
+      "loop_back_edges": 0,
+      "loops": 0,
+      "total_blocks": 6,
+      "total_edges": 6
+    },
+    "decision_reasons": [],
+    "ea_confidence_semantics": null,
+    "ea_inference_enabled": false,
+    "execution_policy": null,
+    "full_python_semantics": false,
+    "modeling_scope": "safety_relevant_only",
+    "resource_risk": "LOW",
+    "taint_total": 0
+  },
+  "node_type": "ManifestRoot",
+  "nodes": {
+    "capabilities": [],
+    "cfg_blocks": [
+      {
+        "block_kind": "branch",
+        "label": "if if __name__ == '__main__':\n    print(evolve())",
+        "lines": {
+          "end": 33,
+          "start": 32
+        },
+        "node_id": "cfg:6c5a5ab8c1c85770",
+        "node_type": "CFGBlockNode",
+        "stmt_count": 1
+      },
+      {
+        "block_kind": "entry",
+        "label": "examples/review_ea_program.py",
+        "lines": {
+          "end": null,
+          "start": null
+        },
+        "node_id": "cfg:1247073115b8860c",
+        "node_type": "CFGBlockNode",
+        "stmt_count": 0
+      },
+      {
+        "block_kind": "exit",
+        "label": "examples/review_ea_program.py:exit",
+        "lines": {
+          "end": null,
+          "start": null
+        },
+        "node_id": "cfg:a2d785cdbcaebd4b",
+        "node_type": "CFGBlockNode",
+        "stmt_count": 0
+      },
+      {
+        "block_kind": "sequence",
+        "label": "",
+        "lines": {
+          "end": 10,
+          "start": 1
+        },
+        "node_id": "cfg:74d8697d0fb1f6e4",
+        "node_type": "CFGBlockNode",
+        "stmt_count": 4
+      },
+      {
+        "block_kind": "sequence",
+        "label": "",
+        "lines": {
+          "end": 29,
+          "start": 13
+        },
+        "node_id": "cfg:2e8fe57a63e85634",
+        "node_type": "CFGBlockNode",
+        "stmt_count": 1
+      },
+      {
+        "block_kind": "sequence",
+        "label": "",
+        "lines": {
+          "end": 33,
+          "start": 33
+        },
+        "node_id": "cfg:be5286bcf94e329c",
+        "node_type": "CFGBlockNode",
+        "stmt_count": 1
+      }
+    ],
+    "functions": [
+      {
+        "is_async": false,
+        "name": "distance",
+        "node_id": "fn:8d193082be55d46d",
+        "node_type": "FunctionNode",
+        "recursion_suspected": false,
+        "source": {
+          "col": 0,
+          "end_col": 77,
+          "end_line": 10,
+          "line": 9
+        }
+      },
+      {
+        "is_async": false,
+        "name": "evolve",
+        "node_id": "fn:68f2dc1e25d98dbe",
+        "node_type": "FunctionNode",
+        "recursion_suspected": false,
+        "source": {
+          "col": 0,
+          "end_col": 31,
+          "end_line": 29,
+          "line": 13
+        }
+      }
+    ],
+    "loops": [
+      {
+        "loop_kind": "For",
+        "nesting_depth": 1,
+        "node_id": "loop:96b98815e09676dc",
+        "node_type": "LoopNode",
+        "potentially_unbounded": false,
+        "source": {
+          "col": 4,
+          "end_col": 39,
+          "end_line": 26,
+          "line": 17
+        }
+      },
+      {
+        "loop_kind": "For",
+        "nesting_depth": 2,
+        "node_id": "loop:9d099ab3686cf659",
+        "node_type": "LoopNode",
+        "potentially_unbounded": false,
+        "source": {
+          "col": 8,
+          "end_col": 34,
+          "end_line": 25,
+          "line": 20
+        }
+      }
+    ]
+  },
+  "safety_facts": {
+    "capability": {
+      "by_capability": {},
+      "source": "examples/review_ea_program.py",
+      "summary": {
+        "DYN": 0,
+        "FS": 0,
+        "NET": 0,
+        "PROC": 0,
+        "capabilities": [],
+        "highest_severity": null,
+        "total_uses": 0
+      }
+    },
+    "resource": {
+      "flags": [],
+      "metrics": {
+        "complexity_heuristic": "O(n^2)",
+        "loop_nesting_depth": 2,
+        "max_function_call_depth": 1,
+        "potentially_unbounded_loops": false,
+        "recursion_present": false
+      },
+      "risk_score": "LOW",
+      "source": "examples/review_ea_program.py",
+      "summary": {
+        "large_range": 0,
+        "recursive_no_base": 0,
+        "suspicious_allocation": 0,
+        "total_flags": 0,
+        "while_true": 0
+      }
+    },
+    "taint": {
+      "critical": 0,
+      "findings": [],
+      "high": 0,
+      "medium": 0,
+      "total": 0
+    }
+  },
+  "source_name": "examples/review_ea_program.py",
+  "timestamp": "1970-01-01T00:00:00Z",
+  "verdict_hint": "SAFE"
+}

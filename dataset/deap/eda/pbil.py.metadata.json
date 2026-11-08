@@ -1,0 +1,21 @@
+{
+  "program_id": "legacy_deap_8eedb37d3d28",
+  "category": "deap",
+  "source_type": "existing_corpus",
+  "language": "python",
+  "expected_safety": "UNKNOWN",
+  "ea_roles": {
+    "population": true,
+    "fitness": true,
+    "selection": true,
+    "mutation": false,
+    "crossover": false,
+    "replacement": true,
+    "termination": true
+  },
+  "safety_violations": [],
+  "description": "DEAP example for pbil.",
+  "ground_truth_reason": "This estimation-of-distribution optimizer generates a candidate batch, evaluates candidates, updates its sampling distribution from selected results, and iterates to a configured bound. It does not directly mutate candidate copies or recombine two candidates. Safety expectation remains UNKNOWN because this legacy example has not been independently adjudicated against all enabled safety-policy conditions.",
+  "review_status": "REVIEWED",
+  "source_path": "dataset/deap/eda/pbil.py"
+}

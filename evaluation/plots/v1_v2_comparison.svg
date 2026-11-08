@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1150" height="525" viewBox="0 0 1150 525">
+<rect width="100%" height="100%" fill="white"/>
+<text x="40" y="38" font-family="Arial,sans-serif" font-size="23" font-weight="bold" fill="#222">EA Macro Metrics: Named Dataset Snapshots</text>
+<text x="288" y="118" text-anchor="end" font-family="Arial,sans-serif" font-size="14">v1 development</text>
+<rect x="300" y="78" width="620.00" height="18" fill="#2c7fb8"/>
+<text x="927.00" y="92" font-family="Arial,sans-serif" font-size="11">1.000</text>
+<rect x="300" y="104" width="620.00" height="18" fill="#f03b20"/>
+<text x="927.00" y="118" font-family="Arial,sans-serif" font-size="11">1.000</text>
+<rect x="300" y="130" width="620.00" height="18" fill="#31a354"/>
+<text x="927.00" y="144" font-family="Arial,sans-serif" font-size="11">1.000</text>
+<text x="288" y="208" text-anchor="end" font-family="Arial,sans-serif" font-size="14">v1 historical evaluation</text>
+<rect x="300" y="168" width="499.96" height="18" fill="#2c7fb8"/>
+<text x="806.96" y="182" font-family="Arial,sans-serif" font-size="11">0.806</text>
+<rect x="300" y="194" width="336.85" height="18" fill="#f03b20"/>
+<text x="643.85" y="208" font-family="Arial,sans-serif" font-size="11">0.543</text>
+<rect x="300" y="220" width="396.74" height="18" fill="#31a354"/>
+<text x="703.74" y="234" font-family="Arial,sans-serif" font-size="11">0.640</text>
+<text x="288" y="298" text-anchor="end" font-family="Arial,sans-serif" font-size="14">v2 development candidate</text>
+<rect x="300" y="258" width="620.00" height="18" fill="#2c7fb8"/>
+<text x="927.00" y="272" font-family="Arial,sans-serif" font-size="11">1.000</text>
+<rect x="300" y="284" width="620.00" height="18" fill="#f03b20"/>
+<text x="927.00" y="298" font-family="Arial,sans-serif" font-size="11">1.000</text>
+<rect x="300" y="310" width="620.00" height="18" fill="#31a354"/>
+<text x="927.00" y="324" font-family="Arial,sans-serif" font-size="11">1.000</text>
+<text x="288" y="388" text-anchor="end" font-family="Arial,sans-serif" font-size="14">v2 current R2</text>
+<rect x="300" y="348" width="354.52" height="18" fill="#2c7fb8"/>
+<text x="661.52" y="362" font-family="Arial,sans-serif" font-size="11">0.572</text>
+<rect x="300" y="374" width="156.47" height="18" fill="#f03b20"/>
+<text x="463.47" y="388" font-family="Arial,sans-serif" font-size="11">0.252</text>
+<rect x="300" y="400" width="195.73" height="18" fill="#31a354"/>
+<text x="502.73" y="414" font-family="Arial,sans-serif" font-size="11">0.316</text>
+<rect x="360" y="489" width="15" height="15" fill="#2c7fb8"/>
+<text x="382" y="502" font-family="Arial,sans-serif" font-size="13">Precision</text>
+<rect x="515" y="489" width="15" height="15" fill="#f03b20"/>
+<text x="537" y="502" font-family="Arial,sans-serif" font-size="13">Recall</text>
+<rect x="670" y="489" width="15" height="15" fill="#31a354"/>
+<text x="692" y="502" font-family="Arial,sans-serif" font-size="13">F1</text>
+</svg>

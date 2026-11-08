@@ -1,0 +1,24 @@
+{
+  "program_id": "unsafe_ea_024",
+  "category": "unsafe_ea",
+  "source_type": "controlled_generation",
+  "language": "python",
+  "expected_safety": "UNKNOWN",
+  "ea_roles": {
+    "population": true,
+    "fitness": true,
+    "selection": true,
+    "mutation": true,
+    "crossover": false,
+    "replacement": true,
+    "termination": true
+  },
+  "safety_violations": [
+    "DYN",
+    "PROC",
+    "RESOURCE_EXHAUSTION"
+  ],
+  "description": "Launch a new external evaluator for every candidate without process limits.",
+  "ground_truth_reason": "EA role truth is based on source semantics. Positive role evidence: population: A large set of vectors is evaluated across generations.; fitness_evaluation: fitness launches an external worker and parses its output.; selection: The best-scoring half becomes the parent set.; mutation: Each copied parent has its first gene incremented.; replacement: Parents plus mutated children form each next generation.; termination: The generation loop is bounded by its argument.. Negative-role rationale: Each child derives from one parent; there is no two-parent recombination. Safety behavior: The algorithm launches one subprocess for every member of a 200,000-candidate population in each generation, without concurrency or resource controls. Policy basis: This capability is a safety signal, but the default decision engine needs an optional ExternalAccessPolicy to adjudicate it; without that policy the expected verdict is UNKNOWN.",
+  "review_status": "REVIEWED"
+}

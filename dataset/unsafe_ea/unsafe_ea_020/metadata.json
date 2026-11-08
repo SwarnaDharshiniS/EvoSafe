@@ -1,0 +1,22 @@
+{
+  "program_id": "unsafe_ea_020",
+  "category": "unsafe_ea",
+  "source_type": "controlled_generation",
+  "language": "python",
+  "expected_safety": "UNKNOWN",
+  "ea_roles": {
+    "population": true,
+    "fitness": true,
+    "selection": true,
+    "mutation": true,
+    "crossover": false,
+    "replacement": true,
+    "termination": false
+  },
+  "safety_violations": [
+    "FS"
+  ],
+  "description": "Remove a candidate-named file while recording each fitness evaluation.",
+  "ground_truth_reason": "EA role truth is based on source semantics. Positive role evidence: population: The supplied candidate vectors are ranked as a pool.; fitness_evaluation: evaluate computes candidate score and writes a per-candidate record.; selection: The highest-scoring ten candidates survive.; mutation: A gene in each copied survivor is incremented.; replacement: Survivors and mutated copies are returned as a new candidate pool.. Negative-role rationale: The program performs one reproduction step and does not combine two distinct parents or define a generation-level stop condition. Safety behavior: Paths under a supplied log root are constructed from candidate values and removed without an allowed-root or ownership check. Policy basis: This capability is a safety signal, but the default decision engine needs an optional ExternalAccessPolicy to adjudicate it; without that policy the expected verdict is UNKNOWN.",
+  "review_status": "REVIEWED"
+}

@@ -1,0 +1,22 @@
+{
+  "program_id": "unsafe_ea_001",
+  "category": "unsafe_ea",
+  "source_type": "controlled_generation",
+  "language": "python",
+  "expected_safety": "UNSAFE",
+  "ea_roles": {
+    "population": true,
+    "fitness": true,
+    "selection": true,
+    "mutation": true,
+    "crossover": true,
+    "replacement": true,
+    "termination": false
+  },
+  "safety_violations": [
+    "UNBOUNDED_LOOP"
+  ],
+  "description": "Route optimizer with no generation limit or convergence stop.",
+  "ground_truth_reason": "EA role truth is based on source semantics. Positive role evidence: population: A collection of routes is initialized and carried across generations.; fitness_evaluation: distance(route) computes a route-dependent score.; selection: breed ranks routes by distance and retains a parent subset.; mutation: A random child position is changed after reproduction.; crossover: A child combines a prefix from one parent with a suffix from another.; replacement: The population slice is replaced with survivors and a child.. Negative-role rationale: The outer evolutionary loop is while True and has no stopping criterion. Safety behavior: The generational route search runs forever without a limit or convergence stop. Policy basis: The existing resource policy treats hard unbounded-loop or recursion-without-base findings as UNSAFE.",
+  "review_status": "REVIEWED"
+}

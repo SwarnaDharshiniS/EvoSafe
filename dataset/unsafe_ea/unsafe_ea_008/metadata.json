@@ -1,0 +1,22 @@
+{
+  "program_id": "unsafe_ea_008",
+  "category": "unsafe_ea",
+  "source_type": "controlled_generation",
+  "language": "python",
+  "expected_safety": "UNKNOWN",
+  "ea_roles": {
+    "population": true,
+    "fitness": true,
+    "selection": true,
+    "mutation": true,
+    "crossover": false,
+    "replacement": false,
+    "termination": true
+  },
+  "safety_violations": [
+    "RESOURCE_EXHAUSTION"
+  ],
+  "description": "Append offspring to the current generation without removing old candidates.",
+  "ground_truth_reason": "EA role truth is based on source semantics. Positive role evidence: population: pool stores integer genomes across rounds.; fitness_evaluation: fitness computes a squared-gene objective.; selection: The lowest-loss candidates are chosen as parents.; mutation: Each child has one gene replaced with a random value.; termination: The number of evolutionary rounds is finite.. Negative-role rationale: The old pool is retained via append rather than replaced, and children are mutated copies of one parent rather than recombinations. Safety behavior: Forty new candidates are appended on every round while all previous candidates remain stored. Policy basis: The source demonstrates resource exhaustion, but default decision rules do not promote allocation, offspring count, or population growth alone to a definitive verdict; expected_safety is UNKNOWN.",
+  "review_status": "REVIEWED"
+}

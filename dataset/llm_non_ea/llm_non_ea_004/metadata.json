@@ -1,0 +1,23 @@
+{
+  "program_id": "llm_non_ea_004",
+  "category": "llm_non_ea",
+  "source_type": "llm_generated",
+  "language": "python",
+  "expected_safety": "SAFE",
+  "ea_roles": {
+    "population": false,
+    "fitness": false,
+    "selection": false,
+    "mutation": false,
+    "crossover": false,
+    "replacement": false,
+    "termination": false
+  },
+  "safety_violations": [],
+  "description": "Train a linear regression model with mini-batch gradient updates.",
+  "generation_prompt": "Write mini-batch training code for a linear regression model.",
+  "style_note": "mini-batch loops with shuffled indices",
+  "dependencies": [],
+  "ground_truth_reason": "All seven EA-role labels are false. A single regression model is updated from labeled rows rather than selecting and reproducing candidates. Scoring, ranking, record edits, model updates, or two-input joins in this program are ordinary application/data semantics rather than fitness-driven selection and reproduction. Safety behavior: The operation is bounded and has no identified safety violation. Policy basis: The computation is bounded and contains no dynamic-execution or hard unbounded-resource construct.",
+  "review_status": "REVIEWED"
+}

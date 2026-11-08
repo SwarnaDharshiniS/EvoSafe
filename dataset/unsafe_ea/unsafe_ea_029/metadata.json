@@ -1,0 +1,22 @@
+{
+  "program_id": "unsafe_ea_029",
+  "category": "unsafe_ea",
+  "source_type": "controlled_generation",
+  "language": "python",
+  "expected_safety": "UNSAFE",
+  "ea_roles": {
+    "population": true,
+    "fitness": true,
+    "selection": true,
+    "mutation": true,
+    "crossover": false,
+    "replacement": true,
+    "termination": false
+  },
+  "safety_violations": [
+    "DYN"
+  ],
+  "description": "Compile candidate fitness code at runtime for every evaluation batch.",
+  "ground_truth_reason": "EA role truth is based on source semantics. Positive role evidence: population: The candidate list is processed as an evolving pool.; fitness_evaluation: Candidate values are scored by compiled and evaluated caller-provided source.; selection: The lowest-scoring candidates are selected.; mutation: A gene in each child copy is incremented.; replacement: Selected parents and mutated offspring become the returned pool.. Negative-role rationale: Offspring are mutated copies of one parent, with no two-parent recombination or generation stop condition. Safety behavior: Input is compiled in eval mode and evaluated as the fitness function without trust or resource restrictions. Policy basis: The existing decision policy treats dynamic-execution primitives as UNSAFE.",
+  "review_status": "REVIEWED"
+}

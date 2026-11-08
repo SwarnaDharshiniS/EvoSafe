@@ -1,0 +1,1490 @@
+{
+  "dataset_version": "review-2.0",
+  "timestamp_utc": "2026-10-08T06:01:26Z",
+  "review": "Review 2",
+  "readiness": {
+    "ready_for_frozen_evaluation": true,
+    "status": "READY_WITH_RECORDED_DUPLICATES",
+    "blocking_validation_failure_count": 0,
+    "known_duplicate_findings_are_blocking": false,
+    "note": "All reviewed evaluation sources and metadata pass structural validation. Duplicate source groups are retained and recorded; unreviewed files are excluded from the evaluation set."
+  },
+  "inventory": {
+    "category_count": 8,
+    "program_count_all_categories": 1114,
+    "reviewed_evaluation_program_count": 936,
+    "unreviewed_program_count_excluded": 178,
+    "per_category": {
+      "benign": {
+        "program_count": 602,
+        "python_file_count_including_package_markers": 622,
+        "package_marker_count_excluded_from_program_count": 20,
+        "metadata_file_count": 600,
+        "reviewed_program_count": 600,
+        "unreviewed_program_count": 2,
+        "expected_safety_counts": {
+          "SAFE": 0,
+          "UNSAFE": 0,
+          "UNKNOWN": 600,
+          "CONDITIONALLY_SAFE": 0
+        },
+        "source_type_counts": {
+          "existing_corpus": 600
+        },
+        "ea_role_counts": {
+          "population": {
+            "positive": 0,
+            "negative": 600
+          },
+          "fitness": {
+            "positive": 0,
+            "negative": 600
+          },
+          "selection": {
+            "positive": 0,
+            "negative": 600
+          },
+          "mutation": {
+            "positive": 0,
+            "negative": 600
+          },
+          "crossover": {
+            "positive": 0,
+            "negative": 600
+          },
+          "replacement": {
+            "positive": 0,
+            "negative": 600
+          },
+          "termination": {
+            "positive": 0,
+            "negative": 600
+          }
+        }
+      },
+      "deap": {
+        "program_count": 54,
+        "python_file_count_including_package_markers": 55,
+        "package_marker_count_excluded_from_program_count": 1,
+        "metadata_file_count": 51,
+        "reviewed_program_count": 51,
+        "unreviewed_program_count": 3,
+        "expected_safety_counts": {
+          "SAFE": 0,
+          "UNSAFE": 0,
+          "UNKNOWN": 51,
+          "CONDITIONALLY_SAFE": 0
+        },
+        "source_type_counts": {
+          "existing_corpus": 51
+        },
+        "ea_role_counts": {
+          "population": {
+            "positive": 48,
+            "negative": 3
+          },
+          "fitness": {
+            "positive": 50,
+            "negative": 1
+          },
+          "selection": {
+            "positive": 50,
+            "negative": 1
+          },
+          "mutation": {
+            "positive": 43,
+            "negative": 8
+          },
+          "crossover": {
+            "positive": 37,
+            "negative": 14
+          },
+          "replacement": {
+            "positive": 50,
+            "negative": 1
+          },
+          "termination": {
+            "positive": 50,
+            "negative": 1
+          }
+        }
+      },
+      "generic_unsafe": {
+        "program_count": 40,
+        "python_file_count_including_package_markers": 40,
+        "package_marker_count_excluded_from_program_count": 0,
+        "metadata_file_count": 40,
+        "reviewed_program_count": 40,
+        "unreviewed_program_count": 0,
+        "expected_safety_counts": {
+          "SAFE": 0,
+          "UNSAFE": 15,
+          "UNKNOWN": 23,
+          "CONDITIONALLY_SAFE": 2
+        },
+        "source_type_counts": {
+          "controlled_generation": 40
+        },
+        "ea_role_counts": {
+          "population": {
+            "positive": 0,
+            "negative": 40
+          },
+          "fitness": {
+            "positive": 0,
+            "negative": 40
+          },
+          "selection": {
+            "positive": 0,
+            "negative": 40
+          },
+          "mutation": {
+            "positive": 0,
+            "negative": 40
+          },
+          "crossover": {
+            "positive": 0,
+            "negative": 40
+          },
+          "replacement": {
+            "positive": 0,
+            "negative": 40
+          },
+          "termination": {
+            "positive": 0,
+            "negative": 40
+          }
+        }
+      },
+      "llm_ea": {
+        "program_count": 40,
+        "python_file_count_including_package_markers": 40,
+        "package_marker_count_excluded_from_program_count": 0,
+        "metadata_file_count": 40,
+        "reviewed_program_count": 40,
+        "unreviewed_program_count": 0,
+        "expected_safety_counts": {
+          "SAFE": 17,
+          "UNSAFE": 13,
+          "UNKNOWN": 9,
+          "CONDITIONALLY_SAFE": 1
+        },
+        "source_type_counts": {
+          "llm_generated": 40
+        },
+        "ea_role_counts": {
+          "population": {
+            "positive": 40,
+            "negative": 0
+          },
+          "fitness": {
+            "positive": 40,
+            "negative": 0
+          },
+          "selection": {
+            "positive": 40,
+            "negative": 0
+          },
+          "mutation": {
+            "positive": 38,
+            "negative": 2
+          },
+          "crossover": {
+            "positive": 14,
+            "negative": 26
+          },
+          "replacement": {
+            "positive": 40,
+            "negative": 0
+          },
+          "termination": {
+            "positive": 25,
+            "negative": 15
+          }
+        }
+      },
+      "llm_non_ea": {
+        "program_count": 40,
+        "python_file_count_including_package_markers": 40,
+        "package_marker_count_excluded_from_program_count": 0,
+        "metadata_file_count": 40,
+        "reviewed_program_count": 40,
+        "unreviewed_program_count": 0,
+        "expected_safety_counts": {
+          "SAFE": 18,
+          "UNSAFE": 10,
+          "UNKNOWN": 11,
+          "CONDITIONALLY_SAFE": 1
+        },
+        "source_type_counts": {
+          "llm_generated": 40
+        },
+        "ea_role_counts": {
+          "population": {
+            "positive": 0,
+            "negative": 40
+          },
+          "fitness": {
+            "positive": 0,
+            "negative": 40
+          },
+          "selection": {
+            "positive": 0,
+            "negative": 40
+          },
+          "mutation": {
+            "positive": 0,
+            "negative": 40
+          },
+          "crossover": {
+            "positive": 0,
+            "negative": 40
+          },
+          "replacement": {
+            "positive": 0,
+            "negative": 40
+          },
+          "termination": {
+            "positive": 0,
+            "negative": 40
+          }
+        }
+      },
+      "non_deap": {
+        "program_count": 258,
+        "python_file_count_including_package_markers": 285,
+        "package_marker_count_excluded_from_program_count": 27,
+        "metadata_file_count": 85,
+        "reviewed_program_count": 85,
+        "unreviewed_program_count": 173,
+        "expected_safety_counts": {
+          "SAFE": 0,
+          "UNSAFE": 0,
+          "UNKNOWN": 85,
+          "CONDITIONALLY_SAFE": 0
+        },
+        "source_type_counts": {
+          "existing_corpus": 85
+        },
+        "ea_role_counts": {
+          "population": {
+            "positive": 79,
+            "negative": 6
+          },
+          "fitness": {
+            "positive": 79,
+            "negative": 6
+          },
+          "selection": {
+            "positive": 79,
+            "negative": 6
+          },
+          "mutation": {
+            "positive": 79,
+            "negative": 6
+          },
+          "crossover": {
+            "positive": 59,
+            "negative": 26
+          },
+          "replacement": {
+            "positive": 79,
+            "negative": 6
+          },
+          "termination": {
+            "positive": 79,
+            "negative": 6
+          }
+        }
+      },
+      "unsafe_ea": {
+        "program_count": 40,
+        "python_file_count_including_package_markers": 40,
+        "package_marker_count_excluded_from_program_count": 0,
+        "metadata_file_count": 40,
+        "reviewed_program_count": 40,
+        "unreviewed_program_count": 0,
+        "expected_safety_counts": {
+          "SAFE": 0,
+          "UNSAFE": 11,
+          "UNKNOWN": 28,
+          "CONDITIONALLY_SAFE": 1
+        },
+        "source_type_counts": {
+          "controlled_generation": 40
+        },
+        "ea_role_counts": {
+          "population": {
+            "positive": 40,
+            "negative": 0
+          },
+          "fitness": {
+            "positive": 40,
+            "negative": 0
+          },
+          "selection": {
+            "positive": 40,
+            "negative": 0
+          },
+          "mutation": {
+            "positive": 34,
+            "negative": 6
+          },
+          "crossover": {
+            "positive": 5,
+            "negative": 35
+          },
+          "replacement": {
+            "positive": 34,
+            "negative": 6
+          },
+          "termination": {
+            "positive": 18,
+            "negative": 22
+          }
+        }
+      },
+      "unsafe_non_ea": {
+        "program_count": 40,
+        "python_file_count_including_package_markers": 40,
+        "package_marker_count_excluded_from_program_count": 0,
+        "metadata_file_count": 40,
+        "reviewed_program_count": 40,
+        "unreviewed_program_count": 0,
+        "expected_safety_counts": {
+          "SAFE": 0,
+          "UNSAFE": 18,
+          "UNKNOWN": 20,
+          "CONDITIONALLY_SAFE": 2
+        },
+        "source_type_counts": {
+          "controlled_generation": 40
+        },
+        "ea_role_counts": {
+          "population": {
+            "positive": 0,
+            "negative": 40
+          },
+          "fitness": {
+            "positive": 0,
+            "negative": 40
+          },
+          "selection": {
+            "positive": 0,
+            "negative": 40
+          },
+          "mutation": {
+            "positive": 0,
+            "negative": 40
+          },
+          "crossover": {
+            "positive": 0,
+            "negative": 40
+          },
+          "replacement": {
+            "positive": 0,
+            "negative": 40
+          },
+          "termination": {
+            "positive": 0,
+            "negative": 40
+          }
+        }
+      }
+    },
+    "metadata_file_count": 936,
+    "metadata_file_count_by_category": {
+      "benign": 600,
+      "deap": 51,
+      "generic_unsafe": 40,
+      "llm_ea": 40,
+      "llm_non_ea": 40,
+      "non_deap": 85,
+      "unsafe_ea": 40,
+      "unsafe_non_ea": 40
+    },
+    "python_file_count_including_package_markers": 1162,
+    "notebook_file_count_excluded": 7
+  },
+  "ground_truth": {
+    "safety_label_counts": {
+      "SAFE": 35,
+      "UNSAFE": 67,
+      "UNKNOWN": 827,
+      "CONDITIONALLY_SAFE": 7
+    },
+    "safety_label_counts_by_category": {
+      "benign": {
+        "SAFE": 0,
+        "UNSAFE": 0,
+        "UNKNOWN": 600,
+        "CONDITIONALLY_SAFE": 0
+      },
+      "deap": {
+        "SAFE": 0,
+        "UNSAFE": 0,
+        "UNKNOWN": 51,
+        "CONDITIONALLY_SAFE": 0
+      },
+      "generic_unsafe": {
+        "SAFE": 0,
+        "UNSAFE": 15,
+        "UNKNOWN": 23,
+        "CONDITIONALLY_SAFE": 2
+      },
+      "llm_ea": {
+        "SAFE": 17,
+        "UNSAFE": 13,
+        "UNKNOWN": 9,
+        "CONDITIONALLY_SAFE": 1
+      },
+      "llm_non_ea": {
+        "SAFE": 18,
+        "UNSAFE": 10,
+        "UNKNOWN": 11,
+        "CONDITIONALLY_SAFE": 1
+      },
+      "non_deap": {
+        "SAFE": 0,
+        "UNSAFE": 0,
+        "UNKNOWN": 85,
+        "CONDITIONALLY_SAFE": 0
+      },
+      "unsafe_ea": {
+        "SAFE": 0,
+        "UNSAFE": 11,
+        "UNKNOWN": 28,
+        "CONDITIONALLY_SAFE": 1
+      },
+      "unsafe_non_ea": {
+        "SAFE": 0,
+        "UNSAFE": 18,
+        "UNKNOWN": 20,
+        "CONDITIONALLY_SAFE": 2
+      }
+    },
+    "ea_role_counts": {
+      "population": {
+        "positive": 207,
+        "negative": 729
+      },
+      "fitness": {
+        "positive": 209,
+        "negative": 727
+      },
+      "selection": {
+        "positive": 209,
+        "negative": 727
+      },
+      "mutation": {
+        "positive": 194,
+        "negative": 742
+      },
+      "crossover": {
+        "positive": 115,
+        "negative": 821
+      },
+      "replacement": {
+        "positive": 203,
+        "negative": 733
+      },
+      "termination": {
+        "positive": 172,
+        "negative": 764
+      }
+    },
+    "ea_role_counts_by_category": {
+      "benign": {
+        "population": {
+          "positive": 0,
+          "negative": 600
+        },
+        "fitness": {
+          "positive": 0,
+          "negative": 600
+        },
+        "selection": {
+          "positive": 0,
+          "negative": 600
+        },
+        "mutation": {
+          "positive": 0,
+          "negative": 600
+        },
+        "crossover": {
+          "positive": 0,
+          "negative": 600
+        },
+        "replacement": {
+          "positive": 0,
+          "negative": 600
+        },
+        "termination": {
+          "positive": 0,
+          "negative": 600
+        }
+      },
+      "deap": {
+        "population": {
+          "positive": 48,
+          "negative": 3
+        },
+        "fitness": {
+          "positive": 50,
+          "negative": 1
+        },
+        "selection": {
+          "positive": 50,
+          "negative": 1
+        },
+        "mutation": {
+          "positive": 43,
+          "negative": 8
+        },
+        "crossover": {
+          "positive": 37,
+          "negative": 14
+        },
+        "replacement": {
+          "positive": 50,
+          "negative": 1
+        },
+        "termination": {
+          "positive": 50,
+          "negative": 1
+        }
+      },
+      "generic_unsafe": {
+        "population": {
+          "positive": 0,
+          "negative": 40
+        },
+        "fitness": {
+          "positive": 0,
+          "negative": 40
+        },
+        "selection": {
+          "positive": 0,
+          "negative": 40
+        },
+        "mutation": {
+          "positive": 0,
+          "negative": 40
+        },
+        "crossover": {
+          "positive": 0,
+          "negative": 40
+        },
+        "replacement": {
+          "positive": 0,
+          "negative": 40
+        },
+        "termination": {
+          "positive": 0,
+          "negative": 40
+        }
+      },
+      "llm_ea": {
+        "population": {
+          "positive": 40,
+          "negative": 0
+        },
+        "fitness": {
+          "positive": 40,
+          "negative": 0
+        },
+        "selection": {
+          "positive": 40,
+          "negative": 0
+        },
+        "mutation": {
+          "positive": 38,
+          "negative": 2
+        },
+        "crossover": {
+          "positive": 14,
+          "negative": 26
+        },
+        "replacement": {
+          "positive": 40,
+          "negative": 0
+        },
+        "termination": {
+          "positive": 25,
+          "negative": 15
+        }
+      },
+      "llm_non_ea": {
+        "population": {
+          "positive": 0,
+          "negative": 40
+        },
+        "fitness": {
+          "positive": 0,
+          "negative": 40
+        },
+        "selection": {
+          "positive": 0,
+          "negative": 40
+        },
+        "mutation": {
+          "positive": 0,
+          "negative": 40
+        },
+        "crossover": {
+          "positive": 0,
+          "negative": 40
+        },
+        "replacement": {
+          "positive": 0,
+          "negative": 40
+        },
+        "termination": {
+          "positive": 0,
+          "negative": 40
+        }
+      },
+      "non_deap": {
+        "population": {
+          "positive": 79,
+          "negative": 6
+        },
+        "fitness": {
+          "positive": 79,
+          "negative": 6
+        },
+        "selection": {
+          "positive": 79,
+          "negative": 6
+        },
+        "mutation": {
+          "positive": 79,
+          "negative": 6
+        },
+        "crossover": {
+          "positive": 59,
+          "negative": 26
+        },
+        "replacement": {
+          "positive": 79,
+          "negative": 6
+        },
+        "termination": {
+          "positive": 79,
+          "negative": 6
+        }
+      },
+      "unsafe_ea": {
+        "population": {
+          "positive": 40,
+          "negative": 0
+        },
+        "fitness": {
+          "positive": 40,
+          "negative": 0
+        },
+        "selection": {
+          "positive": 40,
+          "negative": 0
+        },
+        "mutation": {
+          "positive": 34,
+          "negative": 6
+        },
+        "crossover": {
+          "positive": 5,
+          "negative": 35
+        },
+        "replacement": {
+          "positive": 34,
+          "negative": 6
+        },
+        "termination": {
+          "positive": 18,
+          "negative": 22
+        }
+      },
+      "unsafe_non_ea": {
+        "population": {
+          "positive": 0,
+          "negative": 40
+        },
+        "fitness": {
+          "positive": 0,
+          "negative": 40
+        },
+        "selection": {
+          "positive": 0,
+          "negative": 40
+        },
+        "mutation": {
+          "positive": 0,
+          "negative": 40
+        },
+        "crossover": {
+          "positive": 0,
+          "negative": 40
+        },
+        "replacement": {
+          "positive": 0,
+          "negative": 40
+        },
+        "termination": {
+          "positive": 0,
+          "negative": 40
+        }
+      }
+    }
+  },
+  "provenance": {
+    "source_type_counts": {
+      "controlled_generation": 120,
+      "existing_corpus": 736,
+      "llm_generated": 80
+    },
+    "source_type_counts_by_category": {
+      "benign": {
+        "existing_corpus": 600
+      },
+      "deap": {
+        "existing_corpus": 51
+      },
+      "generic_unsafe": {
+        "controlled_generation": 40
+      },
+      "llm_ea": {
+        "llm_generated": 40
+      },
+      "llm_non_ea": {
+        "llm_generated": 40
+      },
+      "non_deap": {
+        "existing_corpus": 85
+      },
+      "unsafe_ea": {
+        "controlled_generation": 40
+      },
+      "unsafe_non_ea": {
+        "controlled_generation": 40
+      }
+    }
+  },
+  "validation": {
+    "selected_program_count": 936,
+    "selected_program_syntax_pass_count": 936,
+    "selected_program_syntax_failure_count": 0,
+    "selected_program_syntax_failures": [],
+    "all_python_files_count": 1162,
+    "all_python_files_syntax_failure_count": 2,
+    "all_python_files_syntax_failures": [
+      {
+        "path": "dataset/benign/algorithms/dynamic_programming/catalan_numbers.py",
+        "error_type": "SyntaxError",
+        "line": 74,
+        "message": "multiple exception types must be parenthesized (catalan_numbers.py, line 74)"
+      },
+      {
+        "path": "dataset/benign/algorithms/dynamic_programming/egg_dropping.py",
+        "error_type": "SyntaxError",
+        "line": 69,
+        "message": "multiple exception types must be parenthesized (egg_dropping.py, line 69)"
+      }
+    ],
+    "unreadable_selected_source_count": 0,
+    "unreadable_selected_sources": [],
+    "missing_metadata_referenced_source_count": 0,
+    "missing_metadata_referenced_sources": [],
+    "metadata_file_count": 936,
+    "metadata_failure_count": 0,
+    "metadata_failures": [],
+    "duplicate_program_id_count": 0,
+    "duplicate_program_ids": []
+  },
+  "duplicates": {
+    "selected_programs_compared": 936,
+    "exact_program_duplicate_group_count": 3,
+    "exact_program_duplicate_extra_file_count": 9,
+    "exact_program_duplicate_groups": [
+      [
+        "dataset/benign/cookbook/11/creating_a_tcp_server/echoserv.py",
+        "dataset/benign/cookbook/11/creating_a_tcp_server/echoserv1.py"
+      ],
+      [
+        "dataset/benign/cookbook/15/consuming_an_iterable_from_c/setup.py",
+        "dataset/benign/cookbook/15/diagnosing_segmentation_faults/setup.py",
+        "dataset/benign/cookbook/15/passing_null_terminated_strings_to_c_libraries/setup.py",
+        "dataset/benign/cookbook/15/passing_unicode_strings_to_c_libraries/setup.py",
+        "dataset/benign/cookbook/15/reading_file_like_objects_from_c/setup.py",
+        "dataset/benign/cookbook/15/working_with_c_strings_of_dubious_encoding/setup.py"
+      ],
+      [
+        "dataset/benign/cookbook/15/defining_and_exporting_c_apis_from_extension_modules/setup.py",
+        "dataset/benign/cookbook/15/managing_opaque_pointers_in_c_extension_modules/setup.py",
+        "dataset/benign/cookbook/15/writing_a_simple_c_extension_module/setup.py",
+        "dataset/benign/cookbook/15/writing_an_extension_function_that_operates_on_arrays/setup.py"
+      ]
+    ],
+    "exact_token_duplicate_group_count": 3,
+    "exact_token_duplicate_extra_file_count": 9,
+    "exact_token_duplicate_groups": [
+      [
+        "dataset/benign/cookbook/11/creating_a_tcp_server/echoserv.py",
+        "dataset/benign/cookbook/11/creating_a_tcp_server/echoserv1.py"
+      ],
+      [
+        "dataset/benign/cookbook/15/consuming_an_iterable_from_c/setup.py",
+        "dataset/benign/cookbook/15/diagnosing_segmentation_faults/setup.py",
+        "dataset/benign/cookbook/15/passing_null_terminated_strings_to_c_libraries/setup.py",
+        "dataset/benign/cookbook/15/passing_unicode_strings_to_c_libraries/setup.py",
+        "dataset/benign/cookbook/15/reading_file_like_objects_from_c/setup.py",
+        "dataset/benign/cookbook/15/working_with_c_strings_of_dubious_encoding/setup.py"
+      ],
+      [
+        "dataset/benign/cookbook/15/defining_and_exporting_c_apis_from_extension_modules/setup.py",
+        "dataset/benign/cookbook/15/managing_opaque_pointers_in_c_extension_modules/setup.py",
+        "dataset/benign/cookbook/15/writing_a_simple_c_extension_module/setup.py",
+        "dataset/benign/cookbook/15/writing_an_extension_function_that_operates_on_arrays/setup.py"
+      ]
+    ],
+    "exact_metadata_duplicate_group_count": 0,
+    "exact_metadata_duplicate_groups": [],
+    "near_duplicate_threshold": 0.9,
+    "near_duplicate_method": "SequenceMatcher over Python token sequences after removing comments, indentation, and newline tokens; token-length-ratio pruning below 0.90.",
+    "near_duplicate_pair_count": 116,
+    "near_duplicate_pairs_by_category_pair": {
+      "benign <-> benign": 30,
+      "deap <-> deap": 3,
+      "non_deap <-> non_deap": 83
+    },
+    "near_duplicate_pairs": [
+      {
+        "left": "dataset/benign/cookbook/11/creating_a_tcp_server/echoserv.py",
+        "right": "dataset/benign/cookbook/11/creating_a_tcp_server/echoserv1.py",
+        "similarity": 1.0
+      },
+      {
+        "left": "dataset/benign/cookbook/15/consuming_an_iterable_from_c/setup.py",
+        "right": "dataset/benign/cookbook/15/diagnosing_segmentation_faults/setup.py",
+        "similarity": 1.0
+      },
+      {
+        "left": "dataset/benign/cookbook/15/consuming_an_iterable_from_c/setup.py",
+        "right": "dataset/benign/cookbook/15/passing_null_terminated_strings_to_c_libraries/setup.py",
+        "similarity": 1.0
+      },
+      {
+        "left": "dataset/benign/cookbook/15/consuming_an_iterable_from_c/setup.py",
+        "right": "dataset/benign/cookbook/15/passing_unicode_strings_to_c_libraries/setup.py",
+        "similarity": 1.0
+      },
+      {
+        "left": "dataset/benign/cookbook/15/consuming_an_iterable_from_c/setup.py",
+        "right": "dataset/benign/cookbook/15/reading_file_like_objects_from_c/setup.py",
+        "similarity": 1.0
+      },
+      {
+        "left": "dataset/benign/cookbook/15/consuming_an_iterable_from_c/setup.py",
+        "right": "dataset/benign/cookbook/15/working_with_c_strings_of_dubious_encoding/setup.py",
+        "similarity": 1.0
+      },
+      {
+        "left": "dataset/benign/cookbook/15/defining_and_exporting_c_apis_from_extension_modules/setup.py",
+        "right": "dataset/benign/cookbook/15/managing_opaque_pointers_in_c_extension_modules/setup.py",
+        "similarity": 1.0
+      },
+      {
+        "left": "dataset/benign/cookbook/15/defining_and_exporting_c_apis_from_extension_modules/setup.py",
+        "right": "dataset/benign/cookbook/15/writing_a_simple_c_extension_module/setup.py",
+        "similarity": 1.0
+      },
+      {
+        "left": "dataset/benign/cookbook/15/defining_and_exporting_c_apis_from_extension_modules/setup.py",
+        "right": "dataset/benign/cookbook/15/writing_an_extension_function_that_operates_on_arrays/setup.py",
+        "similarity": 1.0
+      },
+      {
+        "left": "dataset/benign/cookbook/15/diagnosing_segmentation_faults/setup.py",
+        "right": "dataset/benign/cookbook/15/passing_null_terminated_strings_to_c_libraries/setup.py",
+        "similarity": 1.0
+      },
+      {
+        "left": "dataset/benign/cookbook/15/diagnosing_segmentation_faults/setup.py",
+        "right": "dataset/benign/cookbook/15/passing_unicode_strings_to_c_libraries/setup.py",
+        "similarity": 1.0
+      },
+      {
+        "left": "dataset/benign/cookbook/15/diagnosing_segmentation_faults/setup.py",
+        "right": "dataset/benign/cookbook/15/reading_file_like_objects_from_c/setup.py",
+        "similarity": 1.0
+      },
+      {
+        "left": "dataset/benign/cookbook/15/diagnosing_segmentation_faults/setup.py",
+        "right": "dataset/benign/cookbook/15/working_with_c_strings_of_dubious_encoding/setup.py",
+        "similarity": 1.0
+      },
+      {
+        "left": "dataset/benign/cookbook/15/managing_opaque_pointers_in_c_extension_modules/setup.py",
+        "right": "dataset/benign/cookbook/15/writing_a_simple_c_extension_module/setup.py",
+        "similarity": 1.0
+      },
+      {
+        "left": "dataset/benign/cookbook/15/managing_opaque_pointers_in_c_extension_modules/setup.py",
+        "right": "dataset/benign/cookbook/15/writing_an_extension_function_that_operates_on_arrays/setup.py",
+        "similarity": 1.0
+      },
+      {
+        "left": "dataset/benign/cookbook/15/passing_null_terminated_strings_to_c_libraries/setup.py",
+        "right": "dataset/benign/cookbook/15/passing_unicode_strings_to_c_libraries/setup.py",
+        "similarity": 1.0
+      },
+      {
+        "left": "dataset/benign/cookbook/15/passing_null_terminated_strings_to_c_libraries/setup.py",
+        "right": "dataset/benign/cookbook/15/reading_file_like_objects_from_c/setup.py",
+        "similarity": 1.0
+      },
+      {
+        "left": "dataset/benign/cookbook/15/passing_null_terminated_strings_to_c_libraries/setup.py",
+        "right": "dataset/benign/cookbook/15/working_with_c_strings_of_dubious_encoding/setup.py",
+        "similarity": 1.0
+      },
+      {
+        "left": "dataset/benign/cookbook/15/passing_unicode_strings_to_c_libraries/setup.py",
+        "right": "dataset/benign/cookbook/15/reading_file_like_objects_from_c/setup.py",
+        "similarity": 1.0
+      },
+      {
+        "left": "dataset/benign/cookbook/15/passing_unicode_strings_to_c_libraries/setup.py",
+        "right": "dataset/benign/cookbook/15/working_with_c_strings_of_dubious_encoding/setup.py",
+        "similarity": 1.0
+      },
+      {
+        "left": "dataset/benign/cookbook/15/reading_file_like_objects_from_c/setup.py",
+        "right": "dataset/benign/cookbook/15/working_with_c_strings_of_dubious_encoding/setup.py",
+        "similarity": 1.0
+      },
+      {
+        "left": "dataset/benign/cookbook/15/writing_a_simple_c_extension_module/setup.py",
+        "right": "dataset/benign/cookbook/15/writing_an_extension_function_that_operates_on_arrays/setup.py",
+        "similarity": 1.0
+      },
+      {
+        "left": "dataset/non_deap/pygad/example_multi_objective.py",
+        "right": "dataset/non_deap/pygad/example_multi_objective_nsga3.py",
+        "similarity": 0.9894
+      },
+      {
+        "left": "dataset/deap/gp/symbreg.py",
+        "right": "dataset/deap/gp/symbreg_epsilon_lexicase.py",
+        "similarity": 0.9818
+      },
+      {
+        "left": "dataset/non_deap/pygad/plots/example_plot_pareto_front_curve_3d.py",
+        "right": "dataset/non_deap/pygad/plots/example_plot_pareto_front_pcp.py",
+        "similarity": 0.9806
+      },
+      {
+        "left": "dataset/non_deap/pygad/benchmarks/example_zdt1.py",
+        "right": "dataset/non_deap/pygad/plots/example_plot_pareto_front_curve_2d.py",
+        "similarity": 0.9789
+      },
+      {
+        "left": "dataset/benign/cookbook/11/implementing_remote_procedure_call/jsonrpcserver.py",
+        "right": "dataset/benign/cookbook/11/implementing_remote_procedure_call/rpcserver.py",
+        "similarity": 0.9766
+      },
+      {
+        "left": "dataset/non_deap/pygad/plots/example_plot_fitness_band.py",
+        "right": "dataset/non_deap/pygad/plots/example_plot_population_diversity.py",
+        "similarity": 0.9747
+      },
+      {
+        "left": "dataset/non_deap/pygad/benchmarks/example_classic_ackley.py",
+        "right": "dataset/non_deap/pygad/benchmarks/example_classic_griewank.py",
+        "similarity": 0.9746
+      },
+      {
+        "left": "dataset/non_deap/pygad/benchmarks/example_classic_ackley.py",
+        "right": "dataset/non_deap/pygad/benchmarks/example_classic_rastrigin.py",
+        "similarity": 0.9746
+      },
+      {
+        "left": "dataset/non_deap/pygad/benchmarks/example_classic_griewank.py",
+        "right": "dataset/non_deap/pygad/benchmarks/example_classic_rastrigin.py",
+        "similarity": 0.9746
+      },
+      {
+        "left": "dataset/deap/gp/symbreg.py",
+        "right": "dataset/deap/gp/symbreg_harm.py",
+        "similarity": 0.9742
+      },
+      {
+        "left": "dataset/deap/gp/symbreg_epsilon_lexicase.py",
+        "right": "dataset/deap/gp/symbreg_harm.py",
+        "similarity": 0.9722
+      },
+      {
+        "left": "dataset/non_deap/pygad/benchmarks/example_zdt1.py",
+        "right": "dataset/non_deap/pygad/benchmarks/example_zdt2.py",
+        "similarity": 0.9684
+      },
+      {
+        "left": "dataset/non_deap/pygad/benchmarks/example_zdt1.py",
+        "right": "dataset/non_deap/pygad/benchmarks/example_zdt3.py",
+        "similarity": 0.9684
+      },
+      {
+        "left": "dataset/non_deap/pygad/benchmarks/example_zdt2.py",
+        "right": "dataset/non_deap/pygad/benchmarks/example_zdt3.py",
+        "similarity": 0.9684
+      },
+      {
+        "left": "dataset/non_deap/pygad/benchmarks/example_zdt4.py",
+        "right": "dataset/non_deap/pygad/benchmarks/example_zdt6.py",
+        "similarity": 0.9684
+      },
+      {
+        "left": "dataset/non_deap/pygad/plots/example_plot_pareto_front_curve_3d.py",
+        "right": "dataset/non_deap/pygad/plots/example_plot_pareto_front_heatmap.py",
+        "similarity": 0.9665
+      },
+      {
+        "left": "dataset/non_deap/pygad/plots/example_plot_pareto_front_heatmap.py",
+        "right": "dataset/non_deap/pygad/plots/example_plot_pareto_front_pcp.py",
+        "similarity": 0.9665
+      },
+      {
+        "left": "dataset/non_deap/pygad/plots/example_plot_non_dominated_hypervolume.py",
+        "right": "dataset/non_deap/pygad/plots/example_plot_pareto_front_evolution.py",
+        "similarity": 0.9652
+      },
+      {
+        "left": "dataset/non_deap/pygad/plots/example_plot_fitness_band.py",
+        "right": "dataset/non_deap/pygad/plots/example_plot_new_solution_rate.py",
+        "similarity": 0.962
+      },
+      {
+        "left": "dataset/non_deap/pygad/plots/example_plot_new_solution_rate.py",
+        "right": "dataset/non_deap/pygad/plots/example_plot_population_diversity.py",
+        "similarity": 0.962
+      },
+      {
+        "left": "dataset/non_deap/pygad/benchmarks/example_dtlz1.py",
+        "right": "dataset/non_deap/pygad/benchmarks/example_dtlz2.py",
+        "similarity": 0.9592
+      },
+      {
+        "left": "dataset/benign/cookbook/15/wrapping_existing_c_code_with_cython/setup.py",
+        "right": "dataset/benign/cookbook/15/wrapping_existing_c_code_with_cython/setup_alt.py",
+        "similarity": 0.9583
+      },
+      {
+        "left": "dataset/non_deap/pygad/benchmarks/example_zdt2.py",
+        "right": "dataset/non_deap/pygad/plots/example_plot_pareto_front_curve_2d.py",
+        "similarity": 0.9579
+      },
+      {
+        "left": "dataset/non_deap/pygad/benchmarks/example_zdt3.py",
+        "right": "dataset/non_deap/pygad/plots/example_plot_pareto_front_curve_2d.py",
+        "similarity": 0.9579
+      },
+      {
+        "left": "dataset/non_deap/pygad/benchmarks/example_classic_ackley.py",
+        "right": "dataset/non_deap/pygad/benchmarks/example_classic_rosenbrock.py",
+        "similarity": 0.9576
+      },
+      {
+        "left": "dataset/non_deap/pygad/benchmarks/example_classic_griewank.py",
+        "right": "dataset/non_deap/pygad/benchmarks/example_classic_rosenbrock.py",
+        "similarity": 0.9576
+      },
+      {
+        "left": "dataset/non_deap/pygad/benchmarks/example_classic_rastrigin.py",
+        "right": "dataset/non_deap/pygad/benchmarks/example_classic_rosenbrock.py",
+        "similarity": 0.9576
+      },
+      {
+        "left": "dataset/non_deap/pygad/plots/example_plot_genes.py",
+        "right": "dataset/non_deap/pygad/plots/example_plot_new_solution_rate.py",
+        "similarity": 0.9565
+      },
+      {
+        "left": "dataset/benign/cookbook/12/simple_parallel_programming/findrobots.py",
+        "right": "dataset/benign/cookbook/12/simple_parallel_programming/findrobots_par.py",
+        "similarity": 0.9538
+      },
+      {
+        "left": "dataset/non_deap/pygad/plots/example_plot_pareto_front_curve_3d.py",
+        "right": "dataset/non_deap/pygad/plots/example_plot_pareto_front_scatter_matrix.py",
+        "similarity": 0.9515
+      },
+      {
+        "left": "dataset/non_deap/pygad/plots/example_plot_pareto_front_pcp.py",
+        "right": "dataset/non_deap/pygad/plots/example_plot_pareto_front_scatter_matrix.py",
+        "similarity": 0.9515
+      },
+      {
+        "left": "dataset/non_deap/pygad/benchmarks/example_dtlz2.py",
+        "right": "dataset/non_deap/pygad/benchmarks/example_dtlz4.py",
+        "similarity": 0.95
+      },
+      {
+        "left": "dataset/non_deap/pygad/benchmarks/example_classic_ackley.py",
+        "right": "dataset/non_deap/pygad/benchmarks/example_classic_schwefel.py",
+        "similarity": 0.9492
+      },
+      {
+        "left": "dataset/non_deap/pygad/benchmarks/example_classic_griewank.py",
+        "right": "dataset/non_deap/pygad/benchmarks/example_classic_schwefel.py",
+        "similarity": 0.9492
+      },
+      {
+        "left": "dataset/non_deap/pygad/benchmarks/example_classic_rastrigin.py",
+        "right": "dataset/non_deap/pygad/benchmarks/example_classic_schwefel.py",
+        "similarity": 0.9492
+      },
+      {
+        "left": "dataset/non_deap/pygad/benchmarks/example_classic_rosenbrock.py",
+        "right": "dataset/non_deap/pygad/benchmarks/example_classic_schwefel.py",
+        "similarity": 0.9492
+      },
+      {
+        "left": "dataset/non_deap/pygad/benchmarks/example_classic_rosenbrock.py",
+        "right": "dataset/non_deap/pygad/benchmarks/example_classic_sphere.py",
+        "similarity": 0.9492
+      },
+      {
+        "left": "dataset/non_deap/pygad/benchmarks/example_dtlz2.py",
+        "right": "dataset/non_deap/pygad/benchmarks/example_dtlz3.py",
+        "similarity": 0.949
+      },
+      {
+        "left": "dataset/non_deap/pygad/plots/example_plot_fitness.py",
+        "right": "dataset/non_deap/pygad/plots/example_plot_new_solution_rate.py",
+        "similarity": 0.9481
+      },
+      {
+        "left": "dataset/non_deap/pygad/benchmarks/example_zdt1.py",
+        "right": "dataset/non_deap/pygad/benchmarks/example_zdt4.py",
+        "similarity": 0.9474
+      },
+      {
+        "left": "dataset/non_deap/pygad/benchmarks/example_zdt1.py",
+        "right": "dataset/non_deap/pygad/benchmarks/example_zdt6.py",
+        "similarity": 0.9474
+      },
+      {
+        "left": "dataset/non_deap/pygad/benchmarks/example_zdt2.py",
+        "right": "dataset/non_deap/pygad/benchmarks/example_zdt4.py",
+        "similarity": 0.9474
+      },
+      {
+        "left": "dataset/non_deap/pygad/benchmarks/example_zdt2.py",
+        "right": "dataset/non_deap/pygad/benchmarks/example_zdt6.py",
+        "similarity": 0.9474
+      },
+      {
+        "left": "dataset/non_deap/pygad/benchmarks/example_zdt3.py",
+        "right": "dataset/non_deap/pygad/benchmarks/example_zdt4.py",
+        "similarity": 0.9474
+      },
+      {
+        "left": "dataset/non_deap/pygad/benchmarks/example_zdt3.py",
+        "right": "dataset/non_deap/pygad/benchmarks/example_zdt6.py",
+        "similarity": 0.9474
+      },
+      {
+        "left": "dataset/non_deap/pygad/benchmarks/example_zdt4.py",
+        "right": "dataset/non_deap/pygad/plots/example_plot_pareto_front_curve_2d.py",
+        "similarity": 0.9474
+      },
+      {
+        "left": "dataset/non_deap/pygad/benchmarks/example_zdt6.py",
+        "right": "dataset/non_deap/pygad/plots/example_plot_pareto_front_curve_2d.py",
+        "similarity": 0.9474
+      },
+      {
+        "left": "dataset/non_deap/pygad/benchmarks/example_classic_himmelblau.py",
+        "right": "dataset/non_deap/pygad/benchmarks/example_classic_sphere.py",
+        "similarity": 0.9442
+      },
+      {
+        "left": "dataset/non_deap/pygad/plots/example_plot_fitness_band.py",
+        "right": "dataset/non_deap/pygad/plots/example_plot_genes.py",
+        "similarity": 0.9441
+      },
+      {
+        "left": "dataset/non_deap/pygad/plots/example_plot_genes.py",
+        "right": "dataset/non_deap/pygad/plots/example_plot_population_diversity.py",
+        "similarity": 0.9441
+      },
+      {
+        "left": "dataset/non_deap/pygad/benchmarks/example_classic_ackley.py",
+        "right": "dataset/non_deap/pygad/benchmarks/example_classic_sphere.py",
+        "similarity": 0.9407
+      },
+      {
+        "left": "dataset/non_deap/pygad/benchmarks/example_classic_griewank.py",
+        "right": "dataset/non_deap/pygad/benchmarks/example_classic_sphere.py",
+        "similarity": 0.9407
+      },
+      {
+        "left": "dataset/non_deap/pygad/benchmarks/example_classic_rastrigin.py",
+        "right": "dataset/non_deap/pygad/benchmarks/example_classic_sphere.py",
+        "similarity": 0.9407
+      },
+      {
+        "left": "dataset/non_deap/pygad/benchmarks/example_classic_schwefel.py",
+        "right": "dataset/non_deap/pygad/benchmarks/example_classic_sphere.py",
+        "similarity": 0.9407
+      },
+      {
+        "left": "dataset/non_deap/pygad/benchmarks/example_dtlz1.py",
+        "right": "dataset/non_deap/pygad/benchmarks/example_dtlz4.py",
+        "similarity": 0.94
+      },
+      {
+        "left": "dataset/non_deap/pygad/benchmarks/example_dtlz1.py",
+        "right": "dataset/non_deap/pygad/benchmarks/example_dtlz3.py",
+        "similarity": 0.9388
+      },
+      {
+        "left": "dataset/non_deap/pygad/benchmarks/example_zdt1.py",
+        "right": "dataset/non_deap/pygad/plots/example_plot_non_dominated_hypervolume.py",
+        "similarity": 0.9381
+      },
+      {
+        "left": "dataset/non_deap/pygad/plots/example_plot_non_dominated_hypervolume.py",
+        "right": "dataset/non_deap/pygad/plots/example_plot_pareto_front_curve_2d.py",
+        "similarity": 0.9381
+      },
+      {
+        "left": "dataset/non_deap/pygad/plots/example_plot_pareto_front_heatmap.py",
+        "right": "dataset/non_deap/pygad/plots/example_plot_pareto_front_scatter_matrix.py",
+        "similarity": 0.9378
+      },
+      {
+        "left": "dataset/non_deap/pygad/quality_indicators/example_generational_distance.py",
+        "right": "dataset/non_deap/pygad/quality_indicators/example_inverted_generational_distance.py",
+        "similarity": 0.937
+      },
+      {
+        "left": "dataset/benign/cookbook/11/implementing_remote_procedure_call/jsonrpclient.py",
+        "right": "dataset/benign/cookbook/11/implementing_remote_procedure_call/rpcclient.py",
+        "similarity": 0.9369
+      },
+      {
+        "left": "dataset/non_deap/pygad/benchmarks/example_classic_ackley.py",
+        "right": "dataset/non_deap/pygad/benchmarks/example_classic_himmelblau.py",
+        "similarity": 0.9356
+      },
+      {
+        "left": "dataset/non_deap/pygad/benchmarks/example_classic_griewank.py",
+        "right": "dataset/non_deap/pygad/benchmarks/example_classic_himmelblau.py",
+        "similarity": 0.9356
+      },
+      {
+        "left": "dataset/non_deap/pygad/benchmarks/example_classic_himmelblau.py",
+        "right": "dataset/non_deap/pygad/benchmarks/example_classic_rastrigin.py",
+        "similarity": 0.9356
+      },
+      {
+        "left": "dataset/non_deap/pygad/benchmarks/example_classic_himmelblau.py",
+        "right": "dataset/non_deap/pygad/benchmarks/example_classic_schwefel.py",
+        "similarity": 0.9356
+      },
+      {
+        "left": "dataset/non_deap/pygad/benchmarks/example_dtlz2.py",
+        "right": "dataset/non_deap/pygad/plots/example_plot_pareto_front_curve_3d.py",
+        "similarity": 0.9353
+      },
+      {
+        "left": "dataset/non_deap/pygad/benchmarks/example_dtlz2.py",
+        "right": "dataset/non_deap/pygad/plots/example_plot_pareto_front_pcp.py",
+        "similarity": 0.9353
+      },
+      {
+        "left": "dataset/non_deap/pygad/plots/example_plot_fitness.py",
+        "right": "dataset/non_deap/pygad/plots/example_plot_fitness_band.py",
+        "similarity": 0.9351
+      },
+      {
+        "left": "dataset/non_deap/pygad/plots/example_plot_fitness.py",
+        "right": "dataset/non_deap/pygad/plots/example_plot_population_diversity.py",
+        "similarity": 0.9351
+      },
+      {
+        "left": "dataset/non_deap/pygad/benchmarks/example_dtlz3.py",
+        "right": "dataset/non_deap/pygad/benchmarks/example_dtlz4.py",
+        "similarity": 0.93
+      },
+      {
+        "left": "dataset/non_deap/pygad/plots/example_plot_fitness.py",
+        "right": "dataset/non_deap/pygad/plots/example_plot_genes.py",
+        "similarity": 0.9299
+      },
+      {
+        "left": "dataset/non_deap/pygad/benchmarks/example_classic_himmelblau.py",
+        "right": "dataset/non_deap/pygad/benchmarks/example_classic_rosenbrock.py",
+        "similarity": 0.927
+      },
+      {
+        "left": "dataset/non_deap/pygad/benchmarks/example_dtlz1.py",
+        "right": "dataset/non_deap/pygad/plots/example_plot_pareto_front_curve_3d.py",
+        "similarity": 0.9254
+      },
+      {
+        "left": "dataset/non_deap/pygad/benchmarks/example_dtlz1.py",
+        "right": "dataset/non_deap/pygad/plots/example_plot_pareto_front_pcp.py",
+        "similarity": 0.9254
+      },
+      {
+        "left": "dataset/non_deap/pygad/benchmarks/example_zdt1.py",
+        "right": "dataset/non_deap/pygad/plots/example_plot_pareto_front_evolution.py",
+        "similarity": 0.9239
+      },
+      {
+        "left": "dataset/non_deap/pygad/plots/example_plot_pareto_front_curve_2d.py",
+        "right": "dataset/non_deap/pygad/plots/example_plot_pareto_front_evolution.py",
+        "similarity": 0.9239
+      },
+      {
+        "left": "dataset/benign/cookbook/11/interacting_with_http_services_as_a_client/example1.py",
+        "right": "dataset/benign/cookbook/11/interacting_with_http_services_as_a_client/example2.py",
+        "similarity": 0.9231
+      },
+      {
+        "left": "dataset/benign/cookbook/8/how_to_define_more_than_one_constructor_in_a_class/example.py",
+        "right": "dataset/benign/cookbook/8/how_to_define_more_than_one_constructor_in_a_class/example2.py",
+        "similarity": 0.9216
+      },
+      {
+        "left": "dataset/non_deap/pygad/benchmarks/example_dtlz2.py",
+        "right": "dataset/non_deap/pygad/plots/example_plot_pareto_front_heatmap.py",
+        "similarity": 0.9216
+      },
+      {
+        "left": "dataset/non_deap/pygad/gann/example_regression.py",
+        "right": "dataset/non_deap/pygad/gann/example_regression_fish.py",
+        "similarity": 0.9199
+      },
+      {
+        "left": "dataset/non_deap/pygad/benchmarks/example_zdt2.py",
+        "right": "dataset/non_deap/pygad/plots/example_plot_non_dominated_hypervolume.py",
+        "similarity": 0.9175
+      },
+      {
+        "left": "dataset/non_deap/pygad/benchmarks/example_zdt3.py",
+        "right": "dataset/non_deap/pygad/plots/example_plot_non_dominated_hypervolume.py",
+        "similarity": 0.9175
+      },
+      {
+        "left": "dataset/non_deap/pygad/benchmarks/example_dtlz2.py",
+        "right": "dataset/non_deap/pygad/plots/example_plot_pareto_front_scatter_matrix.py",
+        "similarity": 0.9154
+      },
+      {
+        "left": "dataset/non_deap/pygad/benchmarks/example_dtlz1.py",
+        "right": "dataset/non_deap/pygad/plots/example_plot_pareto_front_heatmap.py",
+        "similarity": 0.9118
+      },
+      {
+        "left": "dataset/benign/cookbook/8/implementing_the_visitor_pattern_without_recursion/example1.py",
+        "right": "dataset/benign/cookbook/8/implementing_the_visitor_pattern_without_recursion/example2.py",
+        "similarity": 0.9083
+      },
+      {
+        "left": "dataset/non_deap/pygad/benchmarks/example_zdt4.py",
+        "right": "dataset/non_deap/pygad/plots/example_plot_non_dominated_hypervolume.py",
+        "similarity": 0.9072
+      },
+      {
+        "left": "dataset/non_deap/pygad/benchmarks/example_zdt6.py",
+        "right": "dataset/non_deap/pygad/plots/example_plot_non_dominated_hypervolume.py",
+        "similarity": 0.9072
+      },
+      {
+        "left": "dataset/non_deap/pygad/benchmarks/example_dtlz1.py",
+        "right": "dataset/non_deap/pygad/plots/example_plot_pareto_front_scatter_matrix.py",
+        "similarity": 0.9055
+      },
+      {
+        "left": "dataset/non_deap/pygad/benchmarks/example_dtlz3.py",
+        "right": "dataset/non_deap/pygad/plots/example_plot_pareto_front_curve_3d.py",
+        "similarity": 0.9055
+      },
+      {
+        "left": "dataset/non_deap/pygad/benchmarks/example_dtlz3.py",
+        "right": "dataset/non_deap/pygad/plots/example_plot_pareto_front_pcp.py",
+        "similarity": 0.9055
+      },
+      {
+        "left": "dataset/non_deap/pygad/benchmarks/example_zdt2.py",
+        "right": "dataset/non_deap/pygad/plots/example_plot_pareto_front_evolution.py",
+        "similarity": 0.9036
+      },
+      {
+        "left": "dataset/non_deap/pygad/benchmarks/example_zdt3.py",
+        "right": "dataset/non_deap/pygad/plots/example_plot_pareto_front_evolution.py",
+        "similarity": 0.9036
+      },
+      {
+        "left": "dataset/benign/cookbook/8/delegation_and_proxies/example1.py",
+        "right": "dataset/benign/cookbook/8/delegation_and_proxies/example4.py",
+        "similarity": 0.9011
+      },
+      {
+        "left": "dataset/non_deap/pygad/quality_indicators/example_inverted_generational_distance.py",
+        "right": "dataset/non_deap/pygad/quality_indicators/example_spacing.py",
+        "similarity": 0.9008
+      }
+    ]
+  },
+  "freeze": {
+    "lock_file": "dataset/dataset_lock.json",
+    "hash_algorithm": "SHA-256",
+    "overall_dataset_hash": "c40f92f8c0b49732a045469c1091bccf32d5d14360234456edc8fb7218680082",
+    "hash_scope": "Sorted reviewed evaluation program paths and their adjacent/per-program metadata paths and SHA-256 hashes. Unreviewed files and generated report/manifest files are excluded.",
+    "category_counts_at_freeze": {
+      "benign": {
+        "program_count": 602,
+        "reviewed_program_count": 600,
+        "unreviewed_program_count": 2
+      },
+      "deap": {
+        "program_count": 54,
+        "reviewed_program_count": 51,
+        "unreviewed_program_count": 3
+      },
+      "generic_unsafe": {
+        "program_count": 40,
+        "reviewed_program_count": 40,
+        "unreviewed_program_count": 0
+      },
+      "llm_ea": {
+        "program_count": 40,
+        "reviewed_program_count": 40,
+        "unreviewed_program_count": 0
+      },
+      "llm_non_ea": {
+        "program_count": 40,
+        "reviewed_program_count": 40,
+        "unreviewed_program_count": 0
+      },
+      "non_deap": {
+        "program_count": 258,
+        "reviewed_program_count": 85,
+        "unreviewed_program_count": 173
+      },
+      "unsafe_ea": {
+        "program_count": 40,
+        "reviewed_program_count": 40,
+        "unreviewed_program_count": 0
+      },
+      "unsafe_non_ea": {
+        "program_count": 40,
+        "reviewed_program_count": 40,
+        "unreviewed_program_count": 0
+      }
+    }
+  }
+}

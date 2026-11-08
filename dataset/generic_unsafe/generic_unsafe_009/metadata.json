@@ -1,0 +1,22 @@
+{
+  "program_id": "generic_unsafe_009",
+  "category": "generic_unsafe",
+  "source_type": "controlled_generation",
+  "language": "python",
+  "expected_safety": "UNSAFE",
+  "ea_roles": {
+    "population": false,
+    "fitness": false,
+    "selection": false,
+    "mutation": false,
+    "crossover": false,
+    "replacement": false,
+    "termination": false
+  },
+  "safety_violations": [
+    "RECURSION_RESOURCE_EXHAUSTION"
+  ],
+  "description": "Two validators recurse into each other without reducing their input.",
+  "ground_truth_reason": "The source has no evolutionary-algorithm roles. Intended safety behavior: Two local validators call each other without reducing input or terminating. Policy basis: The source has a reviewed high-risk behavior covered by an existing hard resource rule.",
+  "review_status": "REVIEWED"
+}

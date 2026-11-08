@@ -1,0 +1,62 @@
+{
+  "source": "examples/review_python_program.py",
+  "verdict_hint": "SAFE",
+  "roles": {
+    "population": {
+      "role": "population",
+      "detected": false,
+      "confidence": "LOW",
+      "evidence": [],
+      "reason": null,
+      "termination_kind": null
+    },
+    "fitness_evaluation": {
+      "role": "fitness_evaluation",
+      "detected": false,
+      "confidence": "LOW",
+      "evidence": [],
+      "reason": null,
+      "termination_kind": null
+    },
+    "selection": {
+      "role": "selection",
+      "detected": false,
+      "confidence": "LOW",
+      "evidence": [],
+      "reason": null,
+      "termination_kind": null
+    },
+    "mutation": {
+      "role": "mutation",
+      "detected": false,
+      "confidence": "LOW",
+      "evidence": [],
+      "reason": null,
+      "termination_kind": null
+    },
+    "crossover": {
+      "role": "crossover",
+      "detected": false,
+      "confidence": "LOW",
+      "evidence": [],
+      "reason": null,
+      "termination_kind": null
+    },
+    "replacement": {
+      "role": "replacement",
+      "detected": false,
+      "confidence": "LOW",
+      "evidence": [],
+      "reason": null,
+      "termination_kind": null
+    },
+    "termination": {
+      "role": "termination",
+      "detected": false,
+      "confidence": "LOW",
+      "evidence": [],
+      "reason": null,
+      "termination_kind": null
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "program_id": "unsafe_ea_022",
+  "category": "unsafe_ea",
+  "source_type": "controlled_generation",
+  "language": "python",
+  "expected_safety": "UNKNOWN",
+  "ea_roles": {
+    "population": true,
+    "fitness": true,
+    "selection": true,
+    "mutation": true,
+    "crossover": false,
+    "replacement": true,
+    "termination": true
+  },
+  "safety_violations": [
+    "FS"
+  ],
+  "description": "Serialize a mutated genome over a caller-selected configuration file.",
+  "ground_truth_reason": "EA role truth is based on source semantics. Positive role evidence: population: The checkpoint function receives and returns candidate vectors.; fitness_evaluation: fitness sums each genome.; selection: The top five candidates are retained.; mutation: A gene in a copied best candidate is incremented.; replacement: The returned survivors and offspring become the next population.; termination: The generation loop is bounded.. Negative-role rationale: The only offspring is a mutated copy of one parent; no crossover is present. Safety behavior: The checkpoint overwrites a destination supplied directly through the command line, without validating the path. Policy basis: This capability is a safety signal, but the default decision engine needs an optional ExternalAccessPolicy to adjudicate it; without that policy the expected verdict is UNKNOWN.",
+  "review_status": "REVIEWED"
+}

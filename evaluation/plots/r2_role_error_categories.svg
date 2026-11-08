@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="469" viewBox="0 0 1080 469">
+<rect width="100%" height="100%" fill="white"/>
+<text x="32" y="34" text-anchor="start" font-family="Arial,sans-serif" font-size="21" font-weight="bold" fill="#222">EA Role Error Instances by Primary Category</text>
+<text x="260" y="86" text-anchor="end" font-family="Arial,sans-serif" font-size="12" font-weight="normal" fill="#222">NumPy/array operations</text>
+<rect x="275" y="70" width="590.0" height="20" fill="#d95f0e"/>
+<text x="872.0" y="85" text-anchor="start" font-family="Arial,sans-serif" font-size="11" font-weight="normal" fill="#222">476</text>
+<text x="260" y="120" text-anchor="end" font-family="Arial,sans-serif" font-size="12" font-weight="normal" fill="#222">non-EA lookalikes</text>
+<rect x="275" y="104" width="435.1" height="20" fill="#d95f0e"/>
+<text x="717.0630252100841" y="119" text-anchor="start" font-family="Arial,sans-serif" font-size="11" font-weight="normal" fill="#222">351</text>
+<text x="260" y="154" text-anchor="end" font-family="Arial,sans-serif" font-size="12" font-weight="normal" fill="#222">replacement / offspring flow</text>
+<rect x="275" y="138" width="120.2" height="20" fill="#d95f0e"/>
+<text x="402.2310924369748" y="153" text-anchor="start" font-family="Arial,sans-serif" font-size="11" font-weight="normal" fill="#222">97</text>
+<text x="260" y="188" text-anchor="end" font-family="Arial,sans-serif" font-size="12" font-weight="normal" fill="#222">selection/ranking</text>
+<rect x="275" y="172" width="115.3" height="20" fill="#d95f0e"/>
+<text x="397.2731092436975" y="187" text-anchor="start" font-family="Arial,sans-serif" font-size="11" font-weight="normal" fill="#222">93</text>
+<text x="260" y="222" text-anchor="end" font-family="Arial,sans-serif" font-size="12" font-weight="normal" fill="#222">candidate lineage / fitness dependency</text>
+<rect x="275" y="206" width="79.3" height="20" fill="#d95f0e"/>
+<text x="361.327731092437" y="221" text-anchor="start" font-family="Arial,sans-serif" font-size="11" font-weight="normal" fill="#222">64</text>
+<text x="260" y="256" text-anchor="end" font-family="Arial,sans-serif" font-size="12" font-weight="normal" fill="#222">mutation</text>
+<rect x="275" y="240" width="78.1" height="20" fill="#d95f0e"/>
+<text x="360.0882352941177" y="255" text-anchor="start" font-family="Arial,sans-serif" font-size="11" font-weight="normal" fill="#222">63</text>
+<text x="260" y="290" text-anchor="end" font-family="Arial,sans-serif" font-size="12" font-weight="normal" fill="#222">population/collection recognition</text>
+<rect x="275" y="274" width="71.9" height="20" fill="#d95f0e"/>
+<text x="353.890756302521" y="289" text-anchor="start" font-family="Arial,sans-serif" font-size="11" font-weight="normal" fill="#222">58</text>
+<text x="260" y="324" text-anchor="end" font-family="Arial,sans-serif" font-size="12" font-weight="normal" fill="#222">termination</text>
+<rect x="275" y="308" width="65.7" height="20" fill="#d95f0e"/>
+<text x="347.6932773109244" y="323" text-anchor="start" font-family="Arial,sans-serif" font-size="11" font-weight="normal" fill="#222">53</text>
+<text x="260" y="358" text-anchor="end" font-family="Arial,sans-serif" font-size="12" font-weight="normal" fill="#222">candidate lineage / two-parent crossover</text>
+<rect x="275" y="342" width="53.3" height="20" fill="#d95f0e"/>
+<text x="335.29831932773106" y="357" text-anchor="start" font-family="Arial,sans-serif" font-size="11" font-weight="normal" fill="#222">43</text>
+<text x="260" y="392" text-anchor="end" font-family="Arial,sans-serif" font-size="12" font-weight="normal" fill="#222">indirect calls/callbacks</text>
+<rect x="275" y="376" width="35.9" height="20" fill="#d95f0e"/>
+<text x="317.9453781512605" y="391" text-anchor="start" font-family="Arial,sans-serif" font-size="11" font-weight="normal" fill="#222">29</text>
+<text x="260" y="426" text-anchor="end" font-family="Arial,sans-serif" font-size="12" font-weight="normal" fill="#222">helper functions</text>
+<rect x="275" y="410" width="1.2" height="20" fill="#d95f0e"/>
+<text x="283.23949579831935" y="425" text-anchor="start" font-family="Arial,sans-serif" font-size="11" font-weight="normal" fill="#222">1</text>
+</svg>

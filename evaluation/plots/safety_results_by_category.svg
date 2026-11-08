@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="608" viewBox="0 0 1100 608">
+<rect width="100%" height="100%" fill="white"/>
+<text x="40" y="38" font-family="Arial,sans-serif" font-size="23" font-weight="bold" fill="#222">Ground-Truth Safety Labels by Category</text>
+<text x="268" y="98" text-anchor="end" font-family="Arial,sans-serif" font-size="14">benign</text>
+<rect x="280.00" y="75" width="650.00" height="28" fill="#969696"/>
+<text x="605.00" y="94" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="white">600</text>
+<text x="268" y="154" text-anchor="end" font-family="Arial,sans-serif" font-size="14">deap</text>
+<rect x="280.00" y="131" width="55.25" height="28" fill="#969696"/>
+<text x="307.62" y="150" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="white">51</text>
+<text x="268" y="210" text-anchor="end" font-family="Arial,sans-serif" font-size="14">generic_unsafe</text>
+<rect x="280.00" y="187" width="16.25" height="28" fill="#d7301f"/>
+<rect x="296.25" y="187" width="24.92" height="28" fill="#969696"/>
+<rect x="321.17" y="187" width="2.17" height="28" fill="#fdae61"/>
+<text x="268" y="266" text-anchor="end" font-family="Arial,sans-serif" font-size="14">llm_ea</text>
+<rect x="280.00" y="243" width="18.42" height="28" fill="#2b8cbe"/>
+<rect x="298.42" y="243" width="14.08" height="28" fill="#d7301f"/>
+<rect x="312.50" y="243" width="9.75" height="28" fill="#969696"/>
+<rect x="322.25" y="243" width="1.08" height="28" fill="#fdae61"/>
+<text x="268" y="322" text-anchor="end" font-family="Arial,sans-serif" font-size="14">llm_non_ea</text>
+<rect x="280.00" y="299" width="19.50" height="28" fill="#2b8cbe"/>
+<rect x="299.50" y="299" width="10.83" height="28" fill="#d7301f"/>
+<rect x="310.33" y="299" width="11.92" height="28" fill="#969696"/>
+<rect x="322.25" y="299" width="1.08" height="28" fill="#fdae61"/>
+<text x="268" y="378" text-anchor="end" font-family="Arial,sans-serif" font-size="14">non_deap</text>
+<rect x="280.00" y="355" width="92.08" height="28" fill="#969696"/>
+<text x="326.04" y="374" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="white">85</text>
+<text x="268" y="434" text-anchor="end" font-family="Arial,sans-serif" font-size="14">unsafe_ea</text>
+<rect x="280.00" y="411" width="11.92" height="28" fill="#d7301f"/>
+<rect x="291.92" y="411" width="30.33" height="28" fill="#969696"/>
+<text x="307.08" y="430" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="white">28</text>
+<rect x="322.25" y="411" width="1.08" height="28" fill="#fdae61"/>
+<text x="268" y="490" text-anchor="end" font-family="Arial,sans-serif" font-size="14">unsafe_non_ea</text>
+<rect x="280.00" y="467" width="19.50" height="28" fill="#d7301f"/>
+<rect x="299.50" y="467" width="21.67" height="28" fill="#969696"/>
+<rect x="321.17" y="467" width="2.17" height="28" fill="#fdae61"/>
+<rect x="70" y="573" width="16" height="16" fill="#2b8cbe"/>
+<text x="92" y="586" font-family="Arial,sans-serif" font-size="13">SAFE</text>
+<rect x="320" y="573" width="16" height="16" fill="#d7301f"/>
+<text x="342" y="586" font-family="Arial,sans-serif" font-size="13">UNSAFE</text>
+<rect x="570" y="573" width="16" height="16" fill="#969696"/>
+<text x="592" y="586" font-family="Arial,sans-serif" font-size="13">UNKNOWN</text>
+<rect x="820" y="573" width="16" height="16" fill="#fdae61"/>
+<text x="842" y="586" font-family="Arial,sans-serif" font-size="13">CONDITIONALLY_SAFE</text>
+</svg>

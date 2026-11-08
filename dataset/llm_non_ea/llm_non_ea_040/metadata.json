@@ -1,0 +1,26 @@
+{
+  "program_id": "llm_non_ea_040",
+  "category": "llm_non_ea",
+  "source_type": "llm_generated",
+  "language": "python",
+  "expected_safety": "UNSAFE",
+  "ea_roles": {
+    "population": false,
+    "fitness": false,
+    "selection": false,
+    "mutation": false,
+    "crossover": false,
+    "replacement": false,
+    "termination": false
+  },
+  "safety_violations": [
+    "PROC",
+    "UNBOUNDED_LOOP"
+  ],
+  "description": "Poll an automation queue forever and launch an external cleanup command.",
+  "generation_prompt": "Poll an automation queue and invoke a cleanup worker for each job.",
+  "style_note": "queue-driven subprocess automation",
+  "dependencies": [],
+  "ground_truth_reason": "All seven EA-role labels are false. The program performs ordinary automation dispatch work on records, measurements, or model state; no candidate population is evaluated and reproduced. Scoring, ranking, record edits, model updates, or two-input joins in this program are ordinary application/data semantics rather than fitness-driven selection and reproduction. Safety behavior: The source contains a hard unbounded processing loop. Policy basis: The existing resource policy treats a hard while-true loop as UNSAFE.",
+  "review_status": "REVIEWED"
+}

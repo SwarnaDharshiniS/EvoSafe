@@ -1,0 +1,22 @@
+{
+  "program_id": "generic_unsafe_004",
+  "category": "generic_unsafe",
+  "source_type": "controlled_generation",
+  "language": "python",
+  "expected_safety": "CONDITIONALLY_SAFE",
+  "ea_roles": {
+    "population": false,
+    "fitness": false,
+    "selection": false,
+    "mutation": false,
+    "crossover": false,
+    "replacement": false,
+    "termination": false
+  },
+  "safety_violations": [
+    "UNBOUNDED_LOOP"
+  ],
+  "description": "Wait forever for a path marker that may never be created.",
+  "ground_truth_reason": "The source has no evolutionary-algorithm roles. Intended safety behavior: Filesystem existence is polled forever without a deadline or cancellation mechanism. Policy basis: The existing resource policy treats a potentially unbounded loop without a hard-unbounded marker as requiring review, yielding CONDITIONALLY_SAFE at medium risk.",
+  "review_status": "REVIEWED"
+}

@@ -1,0 +1,22 @@
+{
+  "program_id": "generic_unsafe_033",
+  "category": "generic_unsafe",
+  "source_type": "controlled_generation",
+  "language": "python",
+  "expected_safety": "UNSAFE",
+  "ea_roles": {
+    "population": false,
+    "fitness": false,
+    "selection": false,
+    "mutation": false,
+    "crossover": false,
+    "replacement": false,
+    "termination": false
+  },
+  "safety_violations": [
+    "DYN"
+  ],
+  "description": "Execute the contents of a path as Python code with process privileges.",
+  "ground_truth_reason": "The source has no evolutionary-algorithm roles. Intended safety behavior: File contents are compiled and executed without provenance or trust validation. Policy basis: The existing decision policy treats dynamic-execution primitives as UNSAFE.",
+  "review_status": "REVIEWED"
+}

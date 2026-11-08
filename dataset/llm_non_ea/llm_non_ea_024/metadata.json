@@ -1,0 +1,25 @@
+{
+  "program_id": "llm_non_ea_024",
+  "category": "llm_non_ea",
+  "source_type": "llm_generated",
+  "language": "python",
+  "expected_safety": "UNKNOWN",
+  "ea_roles": {
+    "population": false,
+    "fitness": false,
+    "selection": false,
+    "mutation": false,
+    "crossover": false,
+    "replacement": false,
+    "termination": false
+  },
+  "safety_violations": [
+    "PROC"
+  ],
+  "description": "Run a formatter command assembled from task record paths.",
+  "generation_prompt": "Format a document using source and destination fields from a task record.",
+  "style_note": "record-driven shell command construction",
+  "dependencies": [],
+  "ground_truth_reason": "All seven EA-role labels are false. The program formats an operational document based on task records and has no candidate evaluation or reproduction. Task paths are interpolated into a shell command, but they are not connected to a recognized taint source in this source; the process capability alone requires an optional ExternalAccessPolicy, so expected_safety is UNKNOWN.",
+  "review_status": "REVIEWED"
+}

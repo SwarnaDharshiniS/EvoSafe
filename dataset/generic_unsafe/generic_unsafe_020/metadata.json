@@ -1,0 +1,22 @@
+{
+  "program_id": "generic_unsafe_020",
+  "category": "generic_unsafe",
+  "source_type": "controlled_generation",
+  "language": "python",
+  "expected_safety": "UNKNOWN",
+  "ea_roles": {
+    "population": false,
+    "fitness": false,
+    "selection": false,
+    "mutation": false,
+    "crossover": false,
+    "replacement": false,
+    "termination": false
+  },
+  "safety_violations": [
+    "RESOURCE_EXHAUSTION"
+  ],
+  "description": "Read an unbounded stream entirely into memory before processing it.",
+  "ground_truth_reason": "The source has no evolutionary-algorithm roles. Intended safety behavior: An arbitrary-length stream is read completely and split into additional retained objects. Policy basis: The source demonstrates resource exhaustion, but default decision rules do not promote allocation, offspring count, or population growth alone to a definitive verdict; expected_safety is UNKNOWN.",
+  "review_status": "REVIEWED"
+}

@@ -1,0 +1,92 @@
+{
+  "source": "examples/review_ea_program.py",
+  "verdict_hint": "SAFE",
+  "roles": {
+    "population": {
+      "role": "population",
+      "detected": true,
+      "confidence": "MEDIUM",
+      "evidence": [
+        {
+          "kind": "candidate_comprehension",
+          "description": "A comprehension invokes a computation on each element of a collection; generator and call source locations are retained.",
+          "line": 10,
+          "col": 14,
+          "end_line": 10,
+          "end_col": 77,
+          "ast_node": "GeneratorExp",
+          "snippet": "(abs(gene - target) for gene, target in zip(candidate, TARGET))",
+          "cfg_blocks": [
+            "<module>:sequence@1",
+            "distance:sequence@10"
+          ]
+        }
+      ],
+      "reason": "A comprehension invokes a computation on each element of a collection; generator and call source locations are retained.",
+      "termination_kind": null
+    },
+    "fitness_evaluation": {
+      "role": "fitness_evaluation",
+      "detected": true,
+      "confidence": "MEDIUM",
+      "evidence": [
+        {
+          "kind": "comprehension_candidate_call",
+          "description": "A call consumes the comprehension's candidate variable while iterating a collection.",
+          "line": 10,
+          "col": 15,
+          "end_line": 10,
+          "end_col": 33,
+          "ast_node": "Call",
+          "snippet": "abs(gene - target)",
+          "cfg_blocks": [
+            "<module>:sequence@1",
+            "distance:sequence@10"
+          ]
+        }
+      ],
+      "reason": "A call consumes the comprehension's candidate variable while iterating a collection.",
+      "termination_kind": null
+    },
+    "selection": {
+      "role": "selection",
+      "detected": false,
+      "confidence": "LOW",
+      "evidence": [],
+      "reason": null,
+      "termination_kind": null
+    },
+    "mutation": {
+      "role": "mutation",
+      "detected": false,
+      "confidence": "LOW",
+      "evidence": [],
+      "reason": null,
+      "termination_kind": null
+    },
+    "crossover": {
+      "role": "crossover",
+      "detected": false,
+      "confidence": "LOW",
+      "evidence": [],
+      "reason": null,
+      "termination_kind": null
+    },
+    "replacement": {
+      "role": "replacement",
+      "detected": false,
+      "confidence": "LOW",
+      "evidence": [],
+      "reason": null,
+      "termination_kind": null
+    },
+    "termination": {
+      "role": "termination",
+      "detected": false,
+      "confidence": "LOW",
+      "evidence": [],
+      "reason": null,
+      "termination_kind": null
+    }
+  }
+}

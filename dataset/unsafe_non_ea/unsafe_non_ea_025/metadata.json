@@ -1,0 +1,22 @@
+{
+  "program_id": "unsafe_non_ea_025",
+  "category": "unsafe_non_ea",
+  "source_type": "controlled_generation",
+  "language": "python",
+  "expected_safety": "UNKNOWN",
+  "ea_roles": {
+    "population": false,
+    "fitness": false,
+    "selection": false,
+    "mutation": false,
+    "crossover": false,
+    "replacement": false,
+    "termination": false
+  },
+  "safety_violations": [
+    "PROC"
+  ],
+  "description": "Start one external worker for every queued document and never reap it.",
+  "ground_truth_reason": "All seven EA-role labels are false: this is ordinary document worker orchestration software, not an evolutionary algorithm. The source performs document worker orchestration only; no candidate population, candidate fitness pipeline, or offspring/replacement lifecycle exists. External processes are started without adequate input or resource controls. Policy basis: This capability is a signal, but the default decision engine needs an optional ExternalAccessPolicy to adjudicate it; without that policy the expected verdict is UNKNOWN.",
+  "review_status": "REVIEWED"
+}

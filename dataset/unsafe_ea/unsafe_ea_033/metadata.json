@@ -1,0 +1,22 @@
+{
+  "program_id": "unsafe_ea_033",
+  "category": "unsafe_ea",
+  "source_type": "controlled_generation",
+  "language": "python",
+  "expected_safety": "UNKNOWN",
+  "ea_roles": {
+    "population": true,
+    "fitness": true,
+    "selection": true,
+    "mutation": true,
+    "crossover": false,
+    "replacement": true,
+    "termination": false
+  },
+  "safety_violations": [
+    "RESOURCE_EXHAUSTION"
+  ],
+  "description": "Enumerate a massive discrete genome space and materialize every candidate.",
+  "ground_truth_reason": "EA role truth is based on source semantics. Positive role evidence: population: The Cartesian product is materialized as the candidate population.; fitness_evaluation: fitness scores each tuple by its sum.; selection: The highest-scoring twenty tuples are selected.; mutation: Each offspring tuple increments every selected parent's genes.; replacement: The returned pool contains selected candidates and offspring.. Negative-role rationale: The source makes no multi-parent recombination and has no multi-generation stopping condition. Safety behavior: The algorithm materializes all 100^8 possible genomes before ranking any candidate. Policy basis: The source demonstrates resource exhaustion, but default decision rules do not promote allocation, offspring count, or population growth alone to a definitive verdict; expected_safety is UNKNOWN.",
+  "review_status": "REVIEWED"
+}

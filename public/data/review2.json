@@ -1,0 +1,184 @@
+{
+ "dataset_version": "review-2.0",
+ "dataset_hash": "c40f92f8c0b49732a045469c1091bccf32d5d14360234456edc8fb7218680082",
+ "programs": 936,
+ "safety": {
+  "determinate": 109,
+  "correct": 107,
+  "accuracy": 0.98165138,
+  "ground_truth_counts": {
+   "SAFE": 35,
+   "UNSAFE": 67,
+   "UNKNOWN": 827,
+   "CONDITIONALLY_SAFE": 7
+  },
+  "prediction_counts": {
+   "SAFE": 482,
+   "UNSAFE": 260,
+   "UNKNOWN": 0,
+   "CONDITIONALLY_SAFE": 194
+  },
+  "classes": {
+   "SAFE": {
+    "precision": 0.97142857,
+    "recall": 0.97142857,
+    "f1": 0.97142857
+   },
+   "UNSAFE": {
+    "precision": 1.0,
+    "recall": 0.98507463,
+    "f1": 0.9924812
+   }
+  }
+ },
+ "roles": {
+  "population": {
+   "precision": 0.40336134,
+   "recall": 0.46376812,
+   "f1": 0.43146067
+  },
+  "fitness": {
+   "precision": 0.37799043,
+   "recall": 0.37799043,
+   "f1": 0.37799043
+  },
+  "selection": {
+   "precision": 0.58928571,
+   "recall": 0.15789474,
+   "f1": 0.2490566
+  },
+  "mutation": {
+   "precision": 0.80597015,
+   "recall": 0.27835052,
+   "f1": 0.4137931
+  },
+  "crossover": {
+   "precision": 0.56,
+   "recall": 0.12173913,
+   "f1": 0.2
+  },
+  "replacement": {
+   "precision": 0.67857143,
+   "recall": 0.09359606,
+   "f1": 0.16450216
+  },
+  "termination": {
+   "precision": 0.5875,
+   "recall": 0.27325581,
+   "f1": 0.37301587
+  }
+ },
+ "roles_macro": {
+  "precision": 0.57181129,
+  "recall": 0.25237069,
+  "f1": 0.3156884
+ },
+ "categories": {
+  "benign": {
+   "programs": 600,
+   "determinate": 0,
+   "unknown": 600,
+   "safety_accuracy": null,
+   "ea_macro_f1": 0.0
+  },
+  "deap": {
+   "programs": 51,
+   "determinate": 0,
+   "unknown": 51,
+   "safety_accuracy": null,
+   "ea_macro_f1": 0.62780674
+  },
+  "generic_unsafe": {
+   "programs": 40,
+   "determinate": 17,
+   "unknown": 23,
+   "safety_accuracy": 1.0,
+   "ea_macro_f1": 0.0
+  },
+  "llm_ea": {
+   "programs": 40,
+   "determinate": 31,
+   "unknown": 9,
+   "safety_accuracy": 0.93548387,
+   "ea_macro_f1": 0.47136242
+  },
+  "llm_non_ea": {
+   "programs": 40,
+   "determinate": 29,
+   "unknown": 11,
+   "safety_accuracy": 1.0,
+   "ea_macro_f1": 0.0
+  },
+  "non_deap": {
+   "programs": 85,
+   "determinate": 0,
+   "unknown": 85,
+   "safety_accuracy": null,
+   "ea_macro_f1": 0.02090592
+  },
+  "unsafe_ea": {
+   "programs": 40,
+   "determinate": 12,
+   "unknown": 28,
+   "safety_accuracy": 1.0,
+   "ea_macro_f1": 0.47878595
+  },
+  "unsafe_non_ea": {
+   "programs": 40,
+   "determinate": 20,
+   "unknown": 20,
+   "safety_accuracy": 1.0,
+   "ea_macro_f1": 0.0
+  }
+ },
+ "snapshots": [
+  {
+   "snapshot": "v1 development",
+   "programs": 18,
+   "macro_precision": 1.0,
+   "macro_recall": 1.0,
+   "macro_f1": 1.0,
+   "dataset": "evaluation/ea_role_benchmark/benchmark.json",
+   "metric_roles_included": 7,
+   "dataset_hash": "df7eb2077acc22cb82a1fe98273ec532f346f7fc041dca6b5a02fec06fdf6801",
+   "detector_fingerprint_matches_r2": false,
+   "comparability_note": "Tuned/development set; optimistic. Same 18-program set also used by v2 development."
+  },
+  {
+   "snapshot": "v1 historical evaluation",
+   "programs": 51,
+   "macro_precision": 0.8063832772166105,
+   "macro_recall": 0.5432992202729044,
+   "macro_f1": 0.6399048961218141,
+   "dataset": "evaluation/ea_role_benchmark_holdout/benchmark.json",
+   "metric_roles_included": 6,
+   "dataset_hash": "2547168beb217e1cb3f0733ea8391348a26b2dd6f81b7a687eef9fd497bd6460",
+   "detector_fingerprint_matches_r2": false,
+   "comparability_note": "Held-out benchmark with v1; distinct from the 18-program development set and current R2 corpus."
+  },
+  {
+   "snapshot": "v2 development candidate",
+   "programs": 18,
+   "macro_precision": 1.0,
+   "macro_recall": 1.0,
+   "macro_f1": 1.0,
+   "dataset": "evaluation/ea_role_benchmark/benchmark.json",
+   "metric_roles_included": 7,
+   "dataset_hash": "df7eb2077acc22cb82a1fe98273ec532f346f7fc041dca6b5a02fec06fdf6801",
+   "detector_fingerprint_matches_r2": false,
+   "comparability_note": "Saved v2 candidate snapshot on the same 18-program development set; candidate fingerprint does not match R2 run fingerprint."
+  },
+  {
+   "snapshot": "v2 current R2",
+   "programs": 936,
+   "macro_precision": 0.57181129,
+   "macro_recall": 0.25237069,
+   "macro_f1": 0.3156884,
+   "dataset": "dataset/dataset_lock.json",
+   "metric_roles_included": 7,
+   "dataset_hash": "c40f92f8c0b49732a045469c1091bccf32d5d14360234456edc8fb7218680082",
+   "detector_fingerprint_matches_r2": true,
+   "comparability_note": "Current frozen R2 corpus; different 936-program dataset and broad label composition, so do not treat score deltas as paired gains."
+  }
+ ]
+}

@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EvoSafe</title>
+<meta name="description" content="Paste Python source and see whether EvoSafe judges it safe to run, with every finding pinned to the line that caused it.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2318272B'/%3E%3Cpath d='M9 17l5 5 9-12' fill='none' stroke='%2373d3a8' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script src="config.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="top">
+  <a class="brand" href="#/analyze" aria-label="EvoSafe, analyze">
+    <svg viewBox="0 0 32 32" width="28" height="28" aria-hidden="true"><rect width="32" height="32" rx="7" fill="currentColor"/><path d="M9 17l5 5 9-12" fill="none" stroke="var(--ground)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <span>EvoSafe</span>
+  </a>
+  <nav aria-label="Pages">
+    <a href="#/analyze" data-nav="analyze">Analyze</a>
+    <a href="#/evaluation" data-nav="evaluation">Evaluation</a>
+    <a href="#/about" data-nav="about">About</a>
+    <a href="https://github.com/SwarnaDharshiniS/EvoSafe" rel="noopener">Source</a>
+  </nav>
+</header>
+
+<main id="main">
+  <!-- Analyze -->
+  <section id="view-analyze" class="view" aria-label="Analyze Python source">
+    <div class="bench">
+      <div class="left">
+        <div class="bar">
+          <label for="example">Start from</label>
+          <select id="example"></select>
+          <span id="lines" class="count" aria-live="polite"></span>
+        </div>
+
+        <div class="editor" id="editor">
+          <div class="gutter" id="gutter" aria-hidden="true"></div>
+          <div class="codewrap">
+            <div class="hl" id="hl" aria-hidden="true"><div id="hlinner"></div></div>
+            <textarea id="src" spellcheck="false" autocapitalize="off" autocomplete="off" wrap="off"
+              aria-label="Python source" placeholder="Paste Python here"></textarea>
+          </div>
+        </div>
+        <p id="syntax" class="syntax" role="alert" hidden></p>
+
+        <fieldset class="picks">
+          <legend>Analyses to run</legend>
+          <div id="picks" class="pickrow"></div>
+        </fieldset>
+
+        <div class="actions">
+          <button id="run" class="go" type="button">Analyze</button>
+          <span class="hint">Ctrl or ⌘ + Enter. Your code is parsed, never run.</span>
+        </div>
+      </div>
+
+      <div class="right" id="results" aria-live="polite">
+        <div class="empty" id="empty">
+          <p class="empty-title">Results appear here</p>
+          <p>Pick an example or paste your own Python, choose the analyses you want, then press Analyze.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Evaluation -->
+  <section id="view-evaluation" class="view prose" hidden aria-label="Evaluation results"></section>
+
+  <!-- About -->
+  <section id="view-about" class="view prose" hidden aria-label="About EvoSafe"></section>
+</main>
+
+<footer class="foot">
+  <span>This demo does not save the code you submit.</span>
+  <span>A verdict reflects EvoSafe's rules and evidence, not a proof that code is harmless.</span>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

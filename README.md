@@ -32,6 +32,17 @@ Evaluated on the frozen Review 2 dataset: **936 reviewed programs, 0 analysis fa
 
 A `SAFE` verdict is the outcome of configured rules and evidence. It is not a proof that arbitrary Python code is harmless.
 
+## Demo website
+
+Paste Python, choose which analyses to run (taint flows, capabilities, resource risk, EA roles, control-flow graph, syntax tree, safety manifest, Safety IR) and read the verdict with every finding pinned to its source line. It also has an Evaluation page with the Review 2 numbers.
+
+```bash
+python3 -m pip install -r requirements.txt uvicorn
+python3 dev_server.py      # http://127.0.0.1:8000
+```
+
+It is a small FastAPI service plus a static UI, deployed on Vercel. See [docs/DEPLOY.md](docs/DEPLOY.md) for the deployment steps and why GitHub Pages alone cannot host it. The service only analyses source; it never executes it.
+
 ## Capabilities
 
 - **AST parsing** — parse Python source and serialise the syntax tree.
@@ -50,8 +61,8 @@ A `SAFE` verdict is the outcome of configured rules and evidence. It is not a pr
 ```bash
 git clone https://github.com/SwarnaDharshiniS/EvoSafe.git
 cd EvoSafe
-python3 -m pip install -r requirements.txt   # networkx
-python3 -m unittest discover -s tests         # 412 pass, 4 skipped (see below)
+python3 -m pip install -r requirements.txt httpx   # networkx, fastapi (demo), httpx (API tests)
+python3 -m unittest discover -s tests              # all pass; 4 skip without the optional Python/ tree
 python3 examples/api_quickstart.py
 ```
 
@@ -95,7 +106,7 @@ print(ir["decision"]["verdict"])
 print({name: role["detected"] for name, role in ir["ea_roles"]["roles"].items()})
 ```
 
-> **Two entry points, one difference.** `build_safety_ir_from_source` (and the `safety-ir` command) applies the default *external-access policy*, so programs that touch the filesystem or network come back `CONDITIONALLY_SAFE`. `analysis.pipeline.analyze_program` runs the same analyzers but applies **no policy unless you pass one**, so the same program returns `SAFE`. On the Review 2 corpus the two disagree on 87 of 936 programs, all `CONDITIONALLY_SAFE` vs `SAFE`. **The reported results use the Safety IR entry point.**
+> **Two entry points, one difference.** `build_safety_ir_from_source` (and the `safety-ir` command) applies the default *external-access policy*, so programs that touch the filesystem or network come back `CONDITIONALLY_SAFE`. `analysis.pipeline.analyze_program` runs the same analyzers but applies **no policy unless you pass one**, so the same program returns `SAFE`. 
 
 More examples: [examples/api_quickstart.py](examples/api_quickstart.py), [examples/quickstart.ipynb](examples/quickstart.ipynb), and saved CLI output for two sample programs in [examples/outputs/](examples/outputs/).
 
@@ -110,6 +121,8 @@ EA inference reports structural roles. Confidence describes strength of structur
 | Path | Contents |
 |---|---|
 | `main.py` | CLI entry point |
+| `api/`, `webapp/`, `public/` | Demo website: FastAPI service, analysis wrapper and examples, browser UI |
+| `dev_server.py`, `vercel.json` | Local server for the demo; Vercel deployment config |
 | `parser/` | Python source and notebook parsing |
 | `cfg/` | Control-flow graph construction |
 | `analysis/` | Taint, capability, resource, decision, manifest, Safety IR, pipeline, EA inference |
@@ -123,7 +136,7 @@ EA inference reports structural roles. Confidence describes strength of structur
 
 ## Dataset
 
-`dataset/` holds 1,114 Python programs in eight categories; 936 are reviewed and locked for evaluation, 178 unreviewed programs are excluded. Each reviewed program has a `.metadata.json` with its expected safety label, seven EA-role labels and a written ground-truth reason. Details, label counts, provenance and the freeze procedure are in [docs/DATASET.md](docs/DATASET.md). Much of the dataset is third-party open-source code kept for evaluation; see [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+`dataset/` holds 1,114 Python programs in eight categories; 936 are reviewed and locked for evaluation, 178 unreviewed programs are excluded. Each reviewed program has a `.metadata.json` with its expected safety label, seven EA-role labels and a written ground-truth reason. Details, label counts, provenance and the freeze procedure are in [docs/DATASET.md](docs/DATASET.md). 
 
 ## Known limitations
 

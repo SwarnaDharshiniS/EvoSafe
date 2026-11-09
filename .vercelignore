@@ -1,0 +1,9 @@
+# Not needed at run time; keeps the serverless bundle small.
+dataset/
+evaluation/
+tests/
+docs/
+examples/
+scripts/
+Python/
+*.zip

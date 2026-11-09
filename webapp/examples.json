@@ -1,0 +1,44 @@
+[
+ {
+  "id": "ga-allocation",
+  "title": "Genetic algorithm",
+  "description": "A small GA with dictionary genomes: population, fitness, selection and mutation.",
+  "origin": "dataset/llm_ea/llm_ea_013/program.py",
+  "source": "\"\"\"Use a dictionary genome for a small resource-allocation optimization.\"\"\"\n\nfrom random import choice, randrange\n\nLIMITS = {\"cpu\": 8, \"memory\": 12, \"workers\": 6}\n\n\ndef penalty(config):\n    return sum(max(0, config[key] - limit) for key, limit in LIMITS.items())\n\n\ndef evolve():\n    population = [{key: randrange(16) for key in LIMITS} for _ in range(30)]\n    for _ in range(20):\n        selected = sorted(population, key=penalty)[:8]\n        children = []\n        for parent in selected:\n            child = parent.copy()\n            key = choice(tuple(LIMITS))\n            child[key] = max(0, child[key] + randrange(-2, 3))\n            children.append(child)\n        population = selected + children\n    return min(population, key=penalty)\n\n\nif __name__ == \"__main__\":\n    print(evolve())"
+ },
+ {
+  "id": "ea-socket",
+  "title": "EA fed by a network socket",
+  "description": "An evolutionary loop that unpickles candidates from the network and never terminates.",
+  "origin": "dataset/unsafe_ea/unsafe_ea_037/program.py",
+  "source": "\"\"\"Accept unbounded candidate submissions and feed them into a live EA.\"\"\"\n\nimport pickle\nimport socket\nfrom random import random\n\n\ndef fitness(candidate):\n    return sum(candidate)\n\n\ndef evolve_from_stream(port=9010):\n    population = [[0, 0, 0] for _ in range(20)]\n    listener = socket.socket()\n    listener.bind((\"127.0.0.1\", port))\n    listener.listen()\n    while True:\n        client, _address = listener.accept()\n        incoming = pickle.loads(client.recv(1_000_000))\n        ranked = sorted(population + [incoming], key=fitness, reverse=True)\n        parents = ranked[:10]\n        offspring = [parent.copy() for parent in parents]\n        for child in offspring:\n            child[0] += random()\n        population = parents + offspring\n        client.close()\n\n\nif __name__ == \"__main__\":\n    evolve_from_stream()"
+ },
+ {
+  "id": "cmd-injection",
+  "title": "Command injection",
+  "description": "User input flows straight into a shell command.",
+  "origin": "written for the demo",
+  "source": "import os\n\n\ndef ping(host):\n    os.system(\"ping -c 1 \" + host)\n\n\ntarget = input(\"Host to ping: \")\nping(target)\n"
+ },
+ {
+  "id": "eval-input",
+  "title": "Dynamic code execution",
+  "description": "Evaluates text typed by the user.",
+  "origin": "written for the demo",
+  "source": "def calculate():\n    expression = input(\"Expression: \")\n    return eval(expression)\n\n\nprint(calculate())\n"
+ },
+ {
+  "id": "endless-loop",
+  "title": "Loop that never ends",
+  "description": "A worker with while True and no exit.",
+  "origin": "dataset/generic_unsafe/generic_unsafe_001/program.py",
+  "source": "\"\"\"A service worker that never relinquishes control or terminates.\"\"\"\n\nfrom time import monotonic\n\n\ndef service(clock=monotonic):\n    started = clock()\n    completed = 0\n    while True:\n        completed += 1\n        if completed % 10_000_000 == 0:\n            elapsed = clock() - started\n            print(f\"processed {completed} empty turns in {elapsed:.1f}s\")\n\n\nif __name__ == \"__main__\":\n    service()"
+ },
+ {
+  "id": "safe-utility",
+  "title": "Ordinary safe code",
+  "description": "A plain function with no I/O, no EA structure and bounded loops.",
+  "origin": "dataset/llm_non_ea/llm_non_ea_001/program.py",
+  "source": "\"\"\"Aggregate daily sales rows into totals by store and date.\"\"\"\n\nfrom collections import defaultdict\n\n\ndef summarize(rows):\n    totals = defaultdict(float)\n    for row in rows:\n        totals[(row[\"store\"], row[\"day\"])] += float(row[\"amount\"])\n    return dict(totals)\n\n\nif __name__ == \"__main__\":\n    print(summarize([{\"store\": \"north\", \"day\": \"mon\", \"amount\": 12.5}]))"
+ }
+]

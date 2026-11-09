@@ -1,8 +1,7 @@
 """HTTP API for the EvoSafe demo (FastAPI).
 
-``app`` is the full API, used by dev_server.py and the tests.
-``endpoint_app(kind)`` builds a single-endpoint app that answers on ANY path; the Vercel
-functions in api/ use it, so they work no matter what path the platform hands the function.
+``app`` is the one entrypoint: Vercel runs it (see ``[tool.vercel]`` in pyproject.toml),
+dev_server.py serves it next to the UI, and the tests import it.
 """
 
 from __future__ import annotations
@@ -60,14 +59,7 @@ app.get("/api/health")(health)
 app.get("/api/examples")(examples)
 app.post("/api/analyze")(analyze)
 
-
-def endpoint_app(kind: str) -> FastAPI:
-    """A one-endpoint app that answers on every path (used by the Vercel functions in api/)."""
-    application = _new_app(docs_url=None, redoc_url=None, openapi_url=None)
-    if kind == "health":
-        application.get("/{rest:path}")(health)
-    elif kind == "analyze":
-        application.post("/{rest:path}")(analyze)
-    else:
-        raise ValueError(kind)
-    return application
+# Safety net for deployments that hand the function a path other than /api/analyze (for example
+# a platform rewrite): any other POST is treated as an analysis request. GET requests that do not
+# match a route still return 404.
+app.post("/{rest:path}", include_in_schema=False)(analyze)

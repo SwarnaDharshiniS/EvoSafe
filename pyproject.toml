@@ -1,0 +1,14 @@
+[project]
+name = "evosafe-demo"
+version = "1.0.0"
+description = "EvoSafe static-analysis toolkit and demo website"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi>=0.110",
+    "networkx>=3.0",
+]
+
+# Vercel: serve the demo API from one FastAPI app. The repository also contains a command-line
+# tool (main.py) that is not a web app, so the entrypoint is named explicitly.
+[tool.vercel]
+entrypoint = "webapp.app:app"

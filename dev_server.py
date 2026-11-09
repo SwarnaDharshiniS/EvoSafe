@@ -2,7 +2,7 @@
 
     python3 dev_server.py          # then open http://127.0.0.1:8000
 
-On Vercel the UI in public/ is served by the platform and each file in api/ runs as a Python function.
+On Vercel the UI in public/ is served by the platform and the FastAPI app in webapp/app.py runs as the Python function.
 """
 from fastapi.staticfiles import StaticFiles
 

@@ -4,6 +4,8 @@ EvoSafe is a Python **static-analysis toolkit** that decides whether a piece of 
 
 It combines three safety analyses (taint, capabilities, resource risk) into a rule-based verdict (`SAFE`, `CONDITIONALLY_SAFE`, `UNSAFE`), serialises everything into a deterministic **Safety IR** (a JSON, compiler-style intermediate representation), and can attach an **EA-role inference** layer that labels seven structural roles: population, fitness evaluation, selection, mutation, crossover, replacement and termination.
 
+> **Status: Review 2 feature freeze (thesis version).** The code, dataset (`review-2.0`) and results below are frozen. Everything in the Results section can be regenerated with one command (`python3 scripts/reproduce_r2.py`).
+
 ## Results at a glance
 
 Evaluated on the frozen Review 2 dataset: **936 reviewed programs, 0 analysis failures**, dataset SHA-256 `c40f92f8…8680082`. Full tables: [docs/RESULTS.md](docs/RESULTS.md).
@@ -59,8 +61,8 @@ It is a small FastAPI service plus a static UI, deployed on Vercel. See [docs/DE
 ## Quick start
 
 ```bash
-git clone https://github.com/SwarnaDharshiniS/EvoSafe.git
-cd EvoSafe
+git clone <this-repository>
+cd <this-repository>
 python3 -m pip install -r requirements.txt httpx   # networkx, fastapi (demo), httpx (API tests)
 python3 -m unittest discover -s tests              # all pass; 4 skip without the optional Python/ tree
 python3 examples/api_quickstart.py
@@ -106,7 +108,7 @@ print(ir["decision"]["verdict"])
 print({name: role["detected"] for name, role in ir["ea_roles"]["roles"].items()})
 ```
 
-> **Two entry points, one difference.** `build_safety_ir_from_source` (and the `safety-ir` command) applies the default *external-access policy*, so programs that touch the filesystem or network come back `CONDITIONALLY_SAFE`. `analysis.pipeline.analyze_program` runs the same analyzers but applies **no policy unless you pass one**, so the same program returns `SAFE`. 
+> **Two entry points, one difference.** `build_safety_ir_from_source` (and the `safety-ir` command) applies the default *external-access policy*, so programs that touch the filesystem or network come back `CONDITIONALLY_SAFE`. `analysis.pipeline.analyze_program` runs the same analyzers but applies **no policy unless you pass one**, so the same program returns `SAFE`. On the Review 2 corpus the two disagree on 87 of 936 programs, all `CONDITIONALLY_SAFE` vs `SAFE`. **The reported results use the Safety IR entry point.**
 
 More examples: [examples/api_quickstart.py](examples/api_quickstart.py), [examples/quickstart.ipynb](examples/quickstart.ipynb), and saved CLI output for two sample programs in [examples/outputs/](examples/outputs/).
 
@@ -116,13 +118,23 @@ Severity is ordered `SAFE` < `CONDITIONALLY_SAFE` < `UNSAFE`. Taint findings and
 
 EA inference reports structural roles. Confidence describes strength of structural evidence, not a probability. Dynamic or unresolved flows may remain undetected.
 
+## Reproducing the Review 2 results
+
+```bash
+python3 scripts/reproduce_r2.py
+```
+
+The script (1) recomputes the dataset hash from `dataset/dataset_lock.json` and checks it matches, (2) re-analyses all 936 locked programs through the Safety IR entry point with EA inference on, (3) compares every prediction with the archived `evaluation/r2_results.json`, and (4) recomputes the safety and role metrics. It exits `0` only when the hash matches and every prediction is identical. It takes a few seconds and never executes the analysed programs.
+
+Two optional pieces need a third-party tree that is not redistributed here: four tests (and the older 2,562-program corpus evaluation, `scripts/evaluate_ea_corpus.py`) expect files from [TheAlgorithms/Python](https://github.com/TheAlgorithms/Python) under `Python/`. Run `scripts/fetch_python_tree.sh` to fetch them; without it those four tests are skipped and everything else is unaffected.
+
 ## Repository layout
 
 | Path | Contents |
 |---|---|
 | `main.py` | CLI entry point |
-| `api/`, `webapp/`, `public/` | Demo website: FastAPI service, analysis wrapper and examples, browser UI |
-| `dev_server.py`, `vercel.json` | Local server for the demo; Vercel deployment config |
+| `webapp/`, `public/` | Demo website: FastAPI service with example programs, and the browser UI |
+| `dev_server.py`, `vercel.json`, `pyproject.toml` | Local server for the demo; Vercel deployment config and entrypoint |
 | `parser/` | Python source and notebook parsing |
 | `cfg/` | Control-flow graph construction |
 | `analysis/` | Taint, capability, resource, decision, manifest, Safety IR, pipeline, EA inference |
@@ -136,7 +148,7 @@ EA inference reports structural roles. Confidence describes strength of structur
 
 ## Dataset
 
-`dataset/` holds 1,114 Python programs in eight categories; 936 are reviewed and locked for evaluation, 178 unreviewed programs are excluded. Each reviewed program has a `.metadata.json` with its expected safety label, seven EA-role labels and a written ground-truth reason. Details, label counts, provenance and the freeze procedure are in [docs/DATASET.md](docs/DATASET.md). 
+`dataset/` holds 1,114 Python programs in eight categories; 936 are reviewed and locked for evaluation, 178 unreviewed programs are excluded. Each reviewed program has a `.metadata.json` with its expected safety label, seven EA-role labels and a written ground-truth reason. Details, label counts, provenance and the freeze procedure are in [docs/DATASET.md](docs/DATASET.md). Much of the dataset is third-party open-source code kept for evaluation; see [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
 
 ## Known limitations
 

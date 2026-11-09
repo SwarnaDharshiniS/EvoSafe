@@ -187,6 +187,7 @@ async function run() {
       if (body.line) goToLine(body.line);
       return;
     }
+    if (resp.status === 404) throw new Error("The analysis service isn't available at /api/analyze.");
     if (!resp.ok) throw new Error(body.detail || `The server answered ${resp.status}.`);
     state.result = body;
     state.source = source;
@@ -197,7 +198,7 @@ async function run() {
     paintEditor();
     renderResults(true);
   } catch (err) {
-    showError("Couldn't reach the analysis service. " + (err.message || "") + " Check your connection and try again.");
+    showError(`Couldn't get an analysis. ${err.message || ""} Try again in a moment.`);
   } finally {
     btn.disabled = false;
     btn.textContent = "Analyze";
@@ -564,7 +565,8 @@ async function boot() {
   window.addEventListener("hashchange", route);
 
   try {
-    state.examples = await (await fetch(API + "/api/examples")).json();
+    const list = await (await fetch("data/examples.json")).json();
+    state.examples = Array.isArray(list) ? list : [];
   } catch {
     state.examples = [];
   }

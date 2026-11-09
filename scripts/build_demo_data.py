@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Extract the numbers the demo's Evaluation page shows from the frozen Review 2 metrics.
 
-Reads evaluation/r2_metrics.json and writes public/data/review2.json. Run it again if the
+Reads evaluation/r2_metrics.json and writes public/data/review2.json, and copies webapp/examples.json to public/data/examples.json (the UI loads examples as a static file). Run it again if the
 metrics are ever regenerated.
 """
 from __future__ import annotations
@@ -49,6 +49,9 @@ def main() -> None:
     dest.parent.mkdir(parents=True, exist_ok=True)
     dest.write_text(json.dumps(out, indent=1))
     print(f"wrote {dest.relative_to(ROOT)}")
+    examples = ROOT / "webapp" / "examples.json"
+    (ROOT / "public" / "data" / "examples.json").write_text(examples.read_text(encoding="utf-8"), encoding="utf-8")
+    print("wrote public/data/examples.json")
 
 
 if __name__ == "__main__":

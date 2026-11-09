@@ -12,7 +12,7 @@ from webapp import service  # noqa: E402
 try:
     from fastapi.testclient import TestClient  # noqa: E402
 
-    from api.index import app  # noqa: E402
+    from webapp.app import app  # noqa: E402
 
     HAVE_API = True
 except Exception:  # fastapi / httpx not installed

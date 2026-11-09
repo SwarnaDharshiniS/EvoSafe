@@ -4,11 +4,9 @@ EvoSafe is a Python **static-analysis toolkit** that decides whether a piece of 
 
 It combines three safety analyses (taint, capabilities, resource risk) into a rule-based verdict (`SAFE`, `CONDITIONALLY_SAFE`, `UNSAFE`), serialises everything into a deterministic **Safety IR** (a JSON, compiler-style intermediate representation), and can attach an **EA-role inference** layer that labels seven structural roles: population, fitness evaluation, selection, mutation, crossover, replacement and termination.
 
-> **Status: Review 2 feature freeze (thesis version).** The code, dataset (`review-2.0`) and results below are frozen. Everything in the Results section can be regenerated with one command (`python3 scripts/reproduce_r2.py`).
-
 ## Results at a glance
 
-Evaluated on the frozen Review 2 dataset: **936 reviewed programs, 0 analysis failures**, dataset SHA-256 `c40f92f8…8680082`. Full tables: [docs/RESULTS.md](docs/RESULTS.md).
+Evaluated on the frozen dataset: **936 reviewed programs, 0 analysis failures**, dataset SHA-256 `c40f92f8…8680082`. Full tables: [docs/RESULTS.md](docs/RESULTS.md).
 
 | Question | Result | How to read it |
 |---|---|---|
@@ -29,21 +27,21 @@ Evaluated on the frozen Review 2 dataset: **936 reviewed programs, 0 analysis fa
 
 - **Most ground truth is `UNKNOWN`.** 827 of 936 programs (the legacy benign / DEAP / PyGAD / mealpy / pymoo corpus) have no individually adjudicated safety label, so safety accuracy is established only on the 109 determinate cases. The tool gave all 827 a verdict (447 `SAFE`, 194 `UNSAFE`, 186 `CONDITIONALLY_SAFE`) but those verdicts are not scored.
 - **EA recall is the main weakness.** Replacement (recall 0.094), crossover (0.122) and selection (0.158) are the weakest roles. The error analysis (1,328 role errors: 361 false positives, 967 false negatives) traces most misses to indirect data flow — rebinding, slices, helper-returned collections — and most false positives to ordinary comprehensions and non-EA code that merely looks like EA code. See [docs/RESULTS.md](docs/RESULTS.md#ea-role-error-analysis).
-- **Numbers from different benchmarks are not comparable.** The 18-program development set scores 1.000 because it was used to tune the detectors; the 51-program held-out v1 set scores 0.640 macro-F1 (6 roles); the 936-program Review 2 set scores 0.316 (7 roles). These are different data, not a paired before/after.
+- **Numbers from different benchmarks are not comparable.** The 18-program development set scores 1.000 because it was used to tune the detectors; the 51-program held-out v1 set scores 0.640 macro-F1 (6 roles); the 936-program set scores 0.316 (7 roles). These are different data, not a paired before/after.
 - **Duplicates exist.** 3 exact-duplicate source groups and 116 near-duplicate pairs (token similarity ≥ 0.90) are recorded and retained, which can reduce the independence of examples.
 
 A `SAFE` verdict is the outcome of configured rules and evidence. It is not a proof that arbitrary Python code is harmless.
 
 ## Demo website
 
-Paste Python, choose which analyses to run (taint flows, capabilities, resource risk, EA roles, control-flow graph, syntax tree, safety manifest, Safety IR) and read the verdict with every finding pinned to its source line. It also has an Evaluation page with the Review 2 numbers.
+Paste Python, choose which analyses to run (taint flows, capabilities, resource risk, EA roles, control-flow graph, syntax tree, safety manifest, Safety IR) and read the verdict with every finding pinned to its source line. 
 
 ```bash
 python3 -m pip install -r requirements.txt uvicorn
 python3 dev_server.py      # http://127.0.0.1:8000
 ```
 
-It is a small FastAPI service plus a static UI, deployed on Vercel. See [docs/DEPLOY.md](docs/DEPLOY.md) for the deployment steps and why GitHub Pages alone cannot host it. The service only analyses source; it never executes it.
+It is a small FastAPI service plus a static UI, deployed on Vercel. The service only analyses source; it never executes it.
 
 ## Capabilities
 
@@ -61,14 +59,12 @@ It is a small FastAPI service plus a static UI, deployed on Vercel. See [docs/DE
 ## Quick start
 
 ```bash
-git clone <this-repository>
-cd <this-repository>
+git clone https://github.com/SwarnaDharshiniS/EvoSafe.git
+cd EvoSafe
 python3 -m pip install -r requirements.txt httpx   # networkx, fastapi (demo), httpx (API tests)
 python3 -m unittest discover -s tests              # all pass; 4 skip without the optional Python/ tree
 python3 examples/api_quickstart.py
 ```
-
-Python 3.12 is the recommended runtime; the suite and the Review 2 reproduction have also been run on 3.13. EvoSafe uses repository-local modules rather than an installable package, so run everything from the repository root.
 
 ### Command line
 
@@ -108,7 +104,7 @@ print(ir["decision"]["verdict"])
 print({name: role["detected"] for name, role in ir["ea_roles"]["roles"].items()})
 ```
 
-> **Two entry points, one difference.** `build_safety_ir_from_source` (and the `safety-ir` command) applies the default *external-access policy*, so programs that touch the filesystem or network come back `CONDITIONALLY_SAFE`. `analysis.pipeline.analyze_program` runs the same analyzers but applies **no policy unless you pass one**, so the same program returns `SAFE`. On the Review 2 corpus the two disagree on 87 of 936 programs, all `CONDITIONALLY_SAFE` vs `SAFE`. **The reported results use the Safety IR entry point.**
+> **Two entry points, one difference.** `build_safety_ir_from_source` (and the `safety-ir` command) applies the default *external-access policy*, so programs that touch the filesystem or network come back `CONDITIONALLY_SAFE`. `analysis.pipeline.analyze_program` runs the same analyzers but applies **no policy unless you pass one**, so the same program returns `SAFE`. 
 
 More examples: [examples/api_quickstart.py](examples/api_quickstart.py), [examples/quickstart.ipynb](examples/quickstart.ipynb), and saved CLI output for two sample programs in [examples/outputs/](examples/outputs/).
 
@@ -117,16 +113,6 @@ More examples: [examples/api_quickstart.py](examples/api_quickstart.py), [exampl
 Severity is ordered `SAFE` < `CONDITIONALLY_SAFE` < `UNSAFE`. Taint findings and dynamic-execution signals can produce `UNSAFE`; high-risk unbounded resource patterns can too, while other unbounded-resource findings require review. Policies can make a result conditional or unsafe. Always read the evidence, rule hits and reasons rather than treating the verdict as a proof.
 
 EA inference reports structural roles. Confidence describes strength of structural evidence, not a probability. Dynamic or unresolved flows may remain undetected.
-
-## Reproducing the Review 2 results
-
-```bash
-python3 scripts/reproduce_r2.py
-```
-
-The script (1) recomputes the dataset hash from `dataset/dataset_lock.json` and checks it matches, (2) re-analyses all 936 locked programs through the Safety IR entry point with EA inference on, (3) compares every prediction with the archived `evaluation/r2_results.json`, and (4) recomputes the safety and role metrics. It exits `0` only when the hash matches and every prediction is identical. It takes a few seconds and never executes the analysed programs.
-
-Two optional pieces need a third-party tree that is not redistributed here: four tests (and the older 2,562-program corpus evaluation, `scripts/evaluate_ea_corpus.py`) expect files from [TheAlgorithms/Python](https://github.com/TheAlgorithms/Python) under `Python/`. Run `scripts/fetch_python_tree.sh` to fetch them; without it those four tests are skipped and everything else is unaffected.
 
 ## Repository layout
 
@@ -139,8 +125,8 @@ Two optional pieces need a third-party tree that is not redistributed here: four
 | `cfg/` | Control-flow graph construction |
 | `analysis/` | Taint, capability, resource, decision, manifest, Safety IR, pipeline, EA inference |
 | `sandbox/` | Validation-gated execution orchestration and scheduling |
-| `dataset/` | Frozen `review-2.0` dataset, lock file, manifest and validation report |
-| `evaluation/` | Review 2 results, metrics, error analysis, plots, and the earlier EA benchmark and corpus summaries |
+| `dataset/` | Dataset, lock file, manifest and validation report |
+| `evaluation/` | Results, metrics, error analysis, plots, and the earlier EA benchmark and corpus summaries |
 | `scripts/` | `reproduce_r2.py`, benchmark and corpus evaluators, `fetch_python_tree.sh` |
 | `examples/` | API quickstart, notebook, sample programs and their CLI outputs |
 | `tests/` | Unit and integration tests |
@@ -148,7 +134,7 @@ Two optional pieces need a third-party tree that is not redistributed here: four
 
 ## Dataset
 
-`dataset/` holds 1,114 Python programs in eight categories; 936 are reviewed and locked for evaluation, 178 unreviewed programs are excluded. Each reviewed program has a `.metadata.json` with its expected safety label, seven EA-role labels and a written ground-truth reason. Details, label counts, provenance and the freeze procedure are in [docs/DATASET.md](docs/DATASET.md). Much of the dataset is third-party open-source code kept for evaluation; see [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+`dataset/` holds 1,114 Python programs in eight categories; 936 are reviewed and locked for evaluation, 178 unreviewed programs are excluded. Each reviewed program has a `.metadata.json` with its expected safety label, seven EA-role labels and a written ground-truth reason. Details, label counts, provenance and the freeze procedure are in [docs/DATASET.md](docs/DATASET.md). 
 
 ## Known limitations
 
